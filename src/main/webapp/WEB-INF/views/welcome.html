@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+    <head th:insert="/WEB-INF/fragments/general.html :: head (title='Welcome')" />
+
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <div class="mx-auto">
+                <h1>Welcome to the Microprofile Training</h1>
+            </div>
+        </nav>
+        <section>
+            Hello this is the weclome page
+        </section>
+        <div th:replace="/WEB-INF/fragments/general.html :: scripts" />
+    </body>
+</html>

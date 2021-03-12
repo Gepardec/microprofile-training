@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="de">
+    <head th:insert="/WEB-INF/fragments/general.html :: head (title='Welcome')" />
+
+    <body>
+        <header th:replace="/WEB-INF/fragments/general.html :: header-subpage(title='Microprofile Training', href=@{/welcome})" />
+
+        <section>
+            HELLO to the index of the microprofile training
+        </section>
+        <div th:replace="/WEB-INF/fragments/general.html :: scripts" />
+    </body>
+</html>
