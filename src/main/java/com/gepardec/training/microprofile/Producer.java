@@ -3,11 +3,11 @@ package com.gepardec.training.microprofile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
-@Dependent
+@ApplicationScoped
 public class Producer {
 
     @Produces
