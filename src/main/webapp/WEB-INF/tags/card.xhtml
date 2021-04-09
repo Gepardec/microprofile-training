@@ -1,0 +1,26 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <!--@elvariable id="title" type="java.lang.String"-->
+    <!--@elvariable id="rendered" type="java.lang.Boolean"-->
+
+    <h:panelGroup id="uc-example-concurrency" rendered="#{empty rendered ? true : rendered}" styleClass="row m-1" layout="block">
+        <div class="col mb-2">
+            <section class="card">
+                <div class="card-body">
+                    <h2 class="card-title">#{title}</h2>
+
+                    <div class="card-text text-start">
+                        <ui:insert name="body" />
+
+                        <div class="text-center">
+                            <ui:insert name="buttons" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </h:panelGroup>
+</ui:component>

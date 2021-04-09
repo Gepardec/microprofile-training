@@ -1,0 +1,15 @@
+<ui:component
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <!--@elvariable id="text" type="java.lang.String"-->
+    <!--@elvariable id="path" type="java.lang.String"-->
+    <!--@elvariable id="target" type="java.lang.String"-->
+    <!--@elvariable id="request" type="javax.servlet.http.HttpServletRequest"-->
+    <!--@elvariable id="rendered" type="java.lang.Boolean"-->
+
+    <h:outputLink rendered="#{empty rendered ? true : rendered}" styleClass="btn btn-primary" pt:target="#{empty target ? '_self' : target}" value="#{request.contextPath.concat('/api').concat(path)}">
+        <ui:insert name="beforeText" />#{text}
+    </h:outputLink>
+</ui:component>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta charset="UTF-8" />
+        <h:outputStylesheet library="mdb5-3.4.0" name="css/mdb.min.css" />
+        <h:outputStylesheet library="font-awesome-5.15.2" name="css/all.min.css" />
+        <h:outputStylesheet library="css" name="style.css" />
+        <ui:insert name="header" />
+    </h:head>
+
+    <h:body>
+        <f:view contentType="text/html">
+            <main>
+                <article>
+                    <ui:insert name="body" />
+                </article>
+            </main>
+
+            <h:outputScript library="mdb5-3.4.0" name="js/mdb.min.js" />
+            <h:outputScript library="font-awesome-5.15.2" name="js/all.min.js" />
+        </f:view>
+    </h:body>
+</html>
