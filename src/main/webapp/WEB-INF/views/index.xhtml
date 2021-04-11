@@ -1,5 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="header">
@@ -7,21 +8,19 @@
     </ui:define>
 
     <ui:define name="body">
-        <tag:header title="Index" backPath="/welcome" />
-
-
         <div class="container-lg">
-            <div id="uc-example-concurrency" class="row m-1">
+            <div id="example-id" class="row m-1">
                 <div class="col mb-2">
-                    <tag:card title="First part" backPath="/index">
+                    <tag:card title="First part">
                         <ui:define name="body">
                             <p>
                                 The card body
                             </p>
                         </ui:define>
                         <ui:define name="buttons">
-                            <tag:button text="To example" path="/index">
-                            </tag:button>
+                            <h:outputLink styleClass="btn btn-primary" value="#">
+                                To example
+                            </h:outputLink>
                         </ui:define>
                     </tag:card>
                 </div>

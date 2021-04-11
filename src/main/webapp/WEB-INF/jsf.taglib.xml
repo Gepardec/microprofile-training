@@ -9,30 +9,6 @@
     <namespace>http://tags.microprofile.training.gepardec.com</namespace>
     <short-name>tags</short-name>
 
-
-    <tag>
-        <tag-name>header</tag-name>
-        <source>tags/header.xhtml</source>
-        <attribute>
-            <description>The header title</description>
-            <name>title</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description>The header back path without ${request.contextPath}/api. If empty no button is rendered</description>
-            <name>backPath</name>
-            <required>false</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description>If true tag is rendered, otherwise not</description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-    </tag>
-
     <tag>
         <tag-name>card</tag-name>
         <source>tags/card.xhtml</source>
@@ -40,41 +16,6 @@
             <description>The card title</description>
             <name>title</name>
             <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description>The header back path without ${request.contextPath}/api</description>
-            <name>backPath</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description>If true tag is rendered, otherwise not</description>
-            <name>rendered</name>
-            <required>false</required>
-            <type>java.lang.Boolean</type>
-        </attribute>
-    </tag>
-
-    <tag>
-        <tag-name>button</tag-name>
-        <source>tags/button.xhtml</source>
-        <attribute>
-            <description>The button text</description>
-            <name>text</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description>The button path without ${request.contextPath}/api</description>
-            <name>path</name>
-            <required>true</required>
-            <type>java.lang.String</type>
-        </attribute>
-        <attribute>
-            <description>The button target like _self</description>
-            <name>target</name>
-            <required>false</required>
             <type>java.lang.String</type>
         </attribute>
         <attribute>
