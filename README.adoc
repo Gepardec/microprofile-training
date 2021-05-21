@@ -3,23 +3,21 @@
 This repository holds the training for the microprofile specifications.
 After working through the training one should be able to understand the most common microprofile specifications, their impacts, their interoperability and how to use them properly in real time applications.
 
-This training is based on the link:https://jakarta.ee/release/8/[Jakarta-EE 8.0] link:https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-3.3[(Eclipse MicroProfile 3.3)] specification and the link:https://www.wildfly.org/[Wildfly 22.0.0.Final] application server.
-
-IMPORTANT: This repository is in working progress, and as long as you see this message you cannot rely on consistency between the doc and the current implementation state.
+This training is based on the link:https://jakarta.ee/release/8/[Jakarta-EE 8.0] link:https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-4.0[(Eclipse MicroProfile 4)] specification and the link:https://www.wildfly.org/[Wildfly 23.0.2.Final] application server.
 
 == Used Tools
 
 To get the application running you need the following software installed:
 
 . link:https://jdk.java.net/java-se-ri/11[OpenJDK 11]
-. link:https://www.wildfly.org/downloads/[Wildfly 22.0.0.FINAL (Jakarta EE 8 Full & Web Distribution)]
-. link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.6.x]
+. link:https://www.wildfly.org/downloads/[Wildfly 23.0.2.FINAL (Jakarta EE 8 Full & Web Distribution)]
+. link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.x.x]
 . link:https://docs.docker.com/engine/[Docker]
 . link:https://docs.docker.com/compose/[Docker Compose]
 
 == Accessing the application
 
-The application can be accessed via `http://localhost:8080/mptraining/welcome`. +
+The application can be accessed via `http://localhost:8080/mptraining/api/welcome`. +
 
 Follow the instructions to work through the exercises.
 

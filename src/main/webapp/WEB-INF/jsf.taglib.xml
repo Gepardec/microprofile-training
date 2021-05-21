@@ -13,8 +13,37 @@
         <tag-name>card</tag-name>
         <source>tags/card.xhtml</source>
         <attribute>
+            <description>The card id</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>The card title</description>
             <name>title</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>If true tag is rendered, otherwise not</description>
+            <name>rendered</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+
+    <tag>
+        <tag-name>button</tag-name>
+        <source>tags/button.xhtml</source>
+        <attribute>
+            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
+            <name>path</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The button text</description>
+            <name>text</name>
             <required>true</required>
             <type>java.lang.String</type>
         </attribute>

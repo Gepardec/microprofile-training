@@ -1,11 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <f:view>
-        <h:outputLabel value="Error" />
-    </f:view>
-</html>
+>
+
+    <ui:define name="header">
+        <title>Basic Index</title>
+    </ui:define>
+
+    <ui:define name="body">
+        <div class="d-flex flex-column justify-content-center h-100">
+            <div>
+                <div class="text-center my-3">
+                    <i class="fas fa-exclamation-triangle fa-10x" style="color: red;" />
+                </div>
+                <div class="fs-5 my-2"><b>URI:</b> #{uri} </div>
+                <div class="fs-5 my-2"><b>Exception:</b> #{exceptionType}</div>
+                <div class="fs-5 my-2"><b>Message:</b> #{exceptionMessage}</div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+

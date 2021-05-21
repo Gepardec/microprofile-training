@@ -3,24 +3,23 @@
     xmlns:h="http://java.sun.com/jsf/html"
 >
 
+    <!--@elvariable id="id" type="java.lang.String"-->
     <!--@elvariable id="title" type="java.lang.String"-->
     <!--@elvariable id="rendered" type="java.lang.Boolean"-->
 
-    <h:panelGroup id="uc-example-concurrency" rendered="#{empty rendered ? true : rendered}" styleClass="row m-1" layout="block">
-        <div class="col mb-2">
-            <section class="card">
-                <div class="card-body">
-                    <h2 class="card-title">#{title}</h2>
+    <h:panelGroup id="${id}" rendered="#{empty rendered ? true : rendered}" styleClass="p-1" layout="block">
+        <section class="card">
+            <div class="card-body">
+                <h2 class="card-title text-start">#{title}</h2>
 
-                    <div class="card-text text-start">
-                        <ui:insert name="body" />
+                <div class="card-text text-start">
+                    <ui:insert name="body" />
 
-                        <div class="text-center">
-                            <ui:insert name="buttons" />
-                        </div>
+                    <div class="text-center">
+                        <ui:insert name="buttons" />
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </h:panelGroup>
 </ui:component>
