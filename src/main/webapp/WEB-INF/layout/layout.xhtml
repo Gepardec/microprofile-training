@@ -6,63 +6,67 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
-    <!--@elvariable id="basePath" type="java.lang.String"-->
     <!--@elvariable id="onWelcomePage" type="java.lang.Boolean"-->
-    <!--@elvariable id="onIndexPage" type="java.lang.Boolean"-->
+    <!--@elvariable id="onBasicIndexPage" type="java.lang.Boolean"-->
+    <!--@elvariable id="onAdvancedIndexPage" type="java.lang.Boolean"-->
 
     <h:head>
         <meta charset="UTF-8" />
-        <h:outputStylesheet library="mdb5-3.4.0" name="css/mdb.min.css" />
-        <h:outputStylesheet library="font-awesome-5.15.2" name="css/all.min.css" />
+        <h:outputStylesheet library="mdb5-3.6.0" name="css/mdb.min.css" />
+        <h:outputStylesheet name="webjars/font-awesome/5.15.2/css/all.min.css" />
         <h:outputStylesheet library="css" name="style.css" />
         <ui:insert name="header" />
     </h:head>
 
-    <h:body>
+    <h:body lang="en">
         <f:view contentType="text/html">
             <ui:param name="onWelcomePage" value="#{pathHelper.isOnPage('/welcome')}" />
-            <ui:param name="onIndexPage" value="#{pathHelper.isOnPage('/index')}" />
+            <ui:param name="onBasicIndexPage" value="#{pathHelper.isOnPage('/basic/index')}" />
+            <ui:param name="onAdvancedIndexPage" value="#{pathHelper.isOnPage('/advanced/index')}" />
 
-            <header>
-                <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light scrolling-navbar">
-                    <div class="container-fluid">
-                        <h1 class="navbar-brand">Microprofile Training</h1>
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-mdb-toggle="collapse"
-                            data-mdb-target="#navbarNav"
-                            aria-controls="navbarNav"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <i class="fas fa-bars" />
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <h:outputLink styleClass="nav-link #{onWelcomePage ? 'active' : ''}"
-                                        pt:aria-current="#{onWelcomePage ? 'page' : ''}"
-                                        value="${basePath}/welcome">Welcome</h:outputLink>
-                                </li>
-                                <li class="nav-item">
-                                    <h:outputLink styleClass="nav-link #{onIndexPage ? 'active' : ''}"
-                                        pt:aria-current="#{onIndexPage ? 'page' : ''}"
-                                        value="${basePath}/index">Index</h:outputLink>
-                                </li>
-                            </ul>
+            <nav id="navbar-container" class="navbar navbar-expand-lg fixed-top">
+                <div class="container-fluid">
+                    <h1 class="navbar-brand">Microprofile Training</h1>
+                    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fas fa-align-justify" />
+                    </button>
+                    <div class="collapse navbar-collapse" id="navLinkContent">
+                        <div class="navbar-nav w-100 d-flex flex-lg-row flex-column justify-content-end">
+                            <div class="nav-item">
+                                <h:outputLink styleClass="nav-link #{onWelcomePage ? 'active' : ''}"
+                                    pt:aria-current="#{onWelcomePage ? 'page' : ''}"
+                                    value="${pathHelper.buildPath('/welcome')}">Welcome</h:outputLink>
+                            </div>
+                            <div class="nav-item">
+                                <h:outputLink styleClass="nav-link #{onBasicIndexPage ? 'active' : ''}"
+                                    pt:aria-current="#{onBasicIndexPage ? 'page' : ''}"
+                                    value="${pathHelper.buildPath('/basic/index')}">Basic</h:outputLink>
+                            </div>
+                            <div class="nav-item">
+                                <h:outputLink styleClass="nav-link #{onAdvancedIndexPage ? 'active' : ''}"
+                                    pt:aria-current="#{onAdvancedIndexPage ? 'page' : ''}"
+                                    value="${pathHelper.buildPath('/advanced/index')}">Advanced</h:outputLink>
+                            </div>
                         </div>
                     </div>
-                </nav>
-            </header>
+                </div>
+            </nav>
 
             <main>
                 <article>
-                    <ui:insert name="body" />
+                    <div class="main-container">
+                        <ui:insert name="body" />
+                    </div>
                 </article>
             </main>
 
-            <h:outputScript library="mdb5-3.4.0" name="js/mdb.min.js" />
-            <h:outputScript library="font-awesome-5.15.2" name="js/all.min.js" />
+            <footer>
+                &#169; 2021 Gepardec IT Services
+            </footer>
+            <h:outputScript library="mdb5-3.6.0" name="js/mdb.min.js" />
+            <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
         </f:view>
+
+        <ui:insert name="bottom" />
     </h:body>
 </html>

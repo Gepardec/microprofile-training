@@ -6,5 +6,6 @@
         <locale-config>
             <default-locale>en</default-locale>
         </locale-config>
+        <resource-handler>org.omnifaces.resourcehandler.UnmappedResourceHandler</resource-handler>
     </application>
 </faces-config>
