@@ -1,6 +1,6 @@
 {
-  "id": "microprofile-metrics",
-  "realm": "microprofile-metrics",
+  "id": "microprofile",
+  "realm": "microprofile",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -51,7 +51,7 @@
         "description": "${role_uma_authorization}",
         "composite": false,
         "clientRole": false,
-        "containerId": "microprofile-metrics",
+        "containerId": "microprofile",
         "attributes": {}
       },
       {
@@ -60,12 +60,12 @@
         "description": "${role_offline-access}",
         "composite": false,
         "clientRole": false,
-        "containerId": "microprofile-metrics",
+        "containerId": "microprofile",
         "attributes": {}
       },
       {
         "id": "cc78ca12-0ee9-48de-b585-a3dc79b3c085",
-        "name": "default-roles-microprofile-metrics",
+        "name": "default-roles-microprofile",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -81,7 +81,7 @@
           }
         },
         "clientRole": false,
-        "containerId": "microprofile-metrics",
+        "containerId": "microprofile",
         "attributes": {}
       }
     ],
@@ -396,11 +396,11 @@
   "groups": [],
   "defaultRole": {
     "id": "cc78ca12-0ee9-48de-b585-a3dc79b3c085",
-    "name": "default-roles-microprofile-metrics",
+    "name": "default-roles-microprofile",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
-    "containerId": "microprofile-metrics"
+    "containerId": "microprofile"
   },
   "requiredCredentials": [
     "password"
@@ -475,13 +475,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/microprofile-metrics/account/",
+      "baseUrl": "/realms/microprofile/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/microprofile-metrics/account/*"
+        "/realms/microprofile/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -516,13 +516,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/microprofile-metrics/account/",
+      "baseUrl": "/realms/microprofile/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/microprofile-metrics/account/*"
+        "/realms/microprofile/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -680,13 +680,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/microprofile-metrics/console/",
+      "baseUrl": "/admin/microprofile/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/microprofile-metrics/console/*"
+        "/admin/microprofile/console/*"
       ],
       "webOrigins": [
         "+"
