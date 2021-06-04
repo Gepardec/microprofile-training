@@ -36,7 +36,7 @@ IMPORTANT: In this mode you won't be able to hot-code deploy.
 Refer to the documentation of the IDE of your choice, which must provide integration for Wildfly/JBoss servers, for how to set up the project.
 
 IMPORTANT: You need to run the server with the `standalone-microprofile.xml` configuration provided in the `infrastructure/wildfly` directory. +
-Copy this file into your wildfly `standalone/configuration` directory and change add `-c standalone-microprofile.xml` to the startup script of your wildfly run configuration.
+Copy this file into your wildfly `standalone/configuration` directory and add `-c standalone-microprofile.xml` to the startup script of your wildfly run configuration.
 
 == Starting up the infrastructure
 
