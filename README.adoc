@@ -14,6 +14,8 @@ To get the application running you need the following software installed:
 . link:https://jdk.java.net/java-se-ri/11[OpenJDK 11]
 . link:https://www.wildfly.org/downloads/[Wildfly 22.0.0.FINAL (Jakarta EE 8 Full & Web Distribution)]
 . link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.6.x]
+. link:https://docs.docker.com/engine/[Docker]
+. link:https://docs.docker.com/compose/[Docker Compose]
 
 == Accessing the application
 
@@ -33,4 +35,17 @@ IMPORTANT: In this mode you won't be able to hot-code deploy.
 
 Refer to the documentation of the IDE of your choice, which must provide integration for Wildfly/JBoss servers, for how to set up the project.
 
-IMPORTANT: You need to run the server with the `standalone-microprofile.xml` configuration.
+IMPORTANT: You need to run the server with the `standalone-microprofile.xml` configuration provided in the `infrastructure/wildfly` directory. +
+Copy this file into your wildfly `standalone/configuration` directory and change add `-c standalone-microprofile.xml` to the startup script of your wildfly run configuration.
+
+== Starting up the infrastructure
+
+Change to the `infrastructure` directory and run `docker-compose up`.
+
+To access the infrastructure tools use one of the following links:
+
+* link:http://localhost:9090[Prometheus]
+* link:http://localhost:3000[Grafana]
+* link:http://localhost:8081[Keycloak]
+
+The credentials can be found in the `docker-compose.yml`.
