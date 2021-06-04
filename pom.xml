@@ -120,6 +120,11 @@
             <artifactId>microprofile-metrics-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.rest.client</groupId>
+            <artifactId>microprofile-rest-client-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- Application Dependencies -->
         <dependency>
