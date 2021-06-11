@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.basic.config;
 
 import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.inject.ConfigProperties;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.RequestScoped;
@@ -42,6 +43,10 @@ public class MPConfigController {
     @ConfigProperty(name = "property.empty", defaultValue = "I should be empty")
     private String emptyValue;
 
+    @Inject
+    @ConfigProperties
+    private Server server = new Server();
+
     @Path("/file")
     @GET
     public String getConfigFromFile() {
@@ -82,6 +87,14 @@ public class MPConfigController {
     public String getEmptyValue() {
         model.put("emptyValue", emptyValue);
         return "basic/config/config_empty.xhtml";
+    }
+    @Path("/propertyclass")
+    @GET
+    public String getPropertyClass() {
+        model.put("host", server.getHost());
+        model.put("port", server.getPort());
+        model.put("endpoint", server.getEndpoint());
+        return "basic/config/config_property_class.xhtml";
     }
 
     public Boolean isSystemProperty(String name) {
