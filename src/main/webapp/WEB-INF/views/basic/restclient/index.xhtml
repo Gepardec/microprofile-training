@@ -1,13 +1,13 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="header">
-        <title>Basic Index</title>
+        <title>RestClient</title>
     </ui:define>
 
     <ui:define name="body">
-        <tag:card id="mp-config" title="Microprofile Config">
+        <tag:card id="example1" title="example 1">
             <ui:define name="body">
                 <p>
                     ...
@@ -18,7 +18,7 @@
             </ui:define>
         </tag:card>
 
-        <tag:card id="mp-health" title="Microprofile Health">
+        <tag:card id="example2" title="example 2">
             <ui:define name="body">
                 <p>
                     ...
@@ -29,14 +29,14 @@
             </ui:define>
         </tag:card>
 
-        <tag:card id="mp-restclient" title="Microprofile RestClient">
+        <tag:card id="example3" title="example 3">
             <ui:define name="body">
                 <p>
                     ...
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button text="Go to example" path="/basic/restclient" />
+                <tag:button text="Go to example" path="/basic/index" />
             </ui:define>
         </tag:card>
     </ui:define>
