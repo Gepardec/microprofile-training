@@ -10,11 +10,21 @@
         <tag:card id="mp-config" title="Microprofile Config">
             <ui:define name="body">
                 <p>
-                    ...
+                    The specification for Microprofile
+                    <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                       target="_blank">
+                        Config
+                    </a>
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button text="Go to example" />
+                <tag:button text="Property file" path="/config/file"/>
+                <tag:button text="Environment variable" path="/config/env"/>
+                <tag:button text="System property" path="/config/sys"/>
+                <tag:button text="Converter" path="/config/converter"/>
+                <tag:button text="Empty property" path="/config/empty"/>
+                <tag:button text="Property class TODO" path="/config/propertyclass"/>
+                <tag:button text="Property expressions TODO" path="/config/expression"/>
             </ui:define>
         </tag:card>
 

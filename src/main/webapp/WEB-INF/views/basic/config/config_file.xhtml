@@ -1,0 +1,71 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com" xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="header">
+        <title>Basic Index</title>
+    </ui:define>
+
+    <ui:define name="body">
+        <main>
+            <article>
+                <div class="container-lg">
+                    <div class="row m-2">
+                        <div class="col">
+                            <section>
+                                <p>
+                                    The specification for Microprofile
+                                    <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                                       target="_blank">
+                                        Config
+                                    </a>
+                                </p>
+
+                                <p>
+                                    Configuration can be provided by property file, environment variable, system property or a custom ConfigSource.
+                                </p>
+                                <p>A property file is packed into the binary. Changes in the property file need repackaging of the whole application.</p>
+
+                                <p>
+                                    Let's take a look at the property file at
+                                    <code>src/main/resources/META-INF/microprofile-config.properties</code> and the Controller class at
+                                    <code>com.gepardec.training.microprofile.basic.config.MPConfigController</code>
+                                </p>
+
+                                <hr class="mt-3 mb-3"/>
+
+                                <div class="row my-1">
+                                    <div class="col-sm text-center text-sm-right mr-sm-1">
+                                        Application name:
+                                    </div>
+                                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                                        <h:outputText value="${applicationName}" class="font-weight-bold"/>
+                                    </div>
+                                </div>
+
+                                <hr class="mt-3 mb-3"/>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="row m-2">
+                        <div class="col">
+                            <section>
+                                <h5>
+                                    Your Task:
+                                </h5>
+
+                                <p>
+                                    Provide the application name via property file
+                                    <code>src/main/resources/META-INF/microprofile-config.properties</code>. Also take a look at the controller class
+                                    <code>com.gepardec.training.microprofile.basic.config.MPConfigController</code>.
+                                </p>
+
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </ui:define>
+</ui:composition>
