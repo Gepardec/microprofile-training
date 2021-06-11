@@ -36,15 +36,17 @@ public class MPConfigController {
     private String envApplicationName;
 
     @Inject
-    @ConfigProperty(name = "file.value")
-    private BigDecimal value;
+    @ConfigProperty(name = "converter.value1")
+    private BigDecimal value1;
+
+    @Inject
+    @ConfigProperty(name = "converter.value2")
+    private BigDecimal value2;
 
     @Inject
     @ConfigProperty(name = "property.empty", defaultValue = "I should be empty")
     private String emptyValue;
 
-    @Inject
-    @ConfigProperties
     private Server server = new Server();
 
     @Path("/file")
@@ -78,7 +80,8 @@ public class MPConfigController {
     @Path("/converter")
     @GET
     public String getConverter() {
-        model.put("value", value.toString());
+        model.put("value1", value1);
+        model.put("value2", value2);
         return "basic/config/config_converter.xhtml";
     }
 

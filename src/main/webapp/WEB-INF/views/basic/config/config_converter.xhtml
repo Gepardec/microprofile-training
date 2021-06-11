@@ -30,10 +30,18 @@
 
                                 <div class="row my-1">
                                     <div class="col-sm text-center text-sm-right mr-sm-1">
-                                        Value (should be 1):
+                                        Value:
                                     </div>
                                     <div class="col-sm text-center text-sm-left ml-sm-1">
-                                        <h:outputText value="${value}" class="font-weight-bold"/>
+                                        <h:outputText value="${value1}" class="font-weight-bold"/>
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-sm text-center text-sm-right mr-sm-1">
+                                        Value:
+                                    </div>
+                                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                                        <h:outputText value="${value2}" class="font-weight-bold"/>
                                     </div>
                                 </div>
 
@@ -50,7 +58,7 @@
                                 </h5>
 
                                 <p>
-                                    Implement and register a custom converter for the type BigDecimal so that the value is always 1.
+                                    Implement and register a custom converter for the type BigDecimal so that the value is always rounded to two decimal places.
                                 </p>
 
                             </section>
