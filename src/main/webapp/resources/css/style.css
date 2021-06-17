@@ -30,8 +30,17 @@ main > section {
     height: 100%;
 }
 
-.main-container {
-    height: 100%;
-    max-width: 1024px;
-    margin: auto;
+/*.main-container {*/
+/*    height: 100%;*/
+/*}*/
+
+@media screen and (min-width: 1024px) {
+    .main-container {
+        width: 1024px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .main-container {
+        width: 100%;
+    }
 }

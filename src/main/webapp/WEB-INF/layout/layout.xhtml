@@ -56,14 +56,16 @@
 
             <main>
                 <article>
-                    <div class="main-container">
-                        <ui:insert name="body" />
+                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center w-100 h-100">
+                        <div class="main-container">
+                            <ui:insert name="body" />
+                        </div>
                     </div>
                 </article>
             </main>
 
-            <footer>
-                &#169; 2021 Gepardec IT Services
+            <footer class="bg-light d-flex justify-content-center align-items-center">
+                <div>&#169; 2021 Gepardec IT Services</div>
             </footer>
             <h:outputScript library="mdb5-3.6.0" name="js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
