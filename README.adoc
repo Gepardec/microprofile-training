@@ -47,3 +47,7 @@ To access the infrastructure tools use one of the following links:
 * link:http://localhost:8081[Keycloak]
 
 The credentials can be found in the `docker-compose.yml`.
+
+== Further documentation
+
+See the link:/wiki/Home[WIKI] for contribution guidelines and deeper documentation about this application.
