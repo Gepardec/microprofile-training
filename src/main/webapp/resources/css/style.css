@@ -26,7 +26,7 @@ article {
     height: 100%;
 }
 
-section {
+main > section {
     height: 100%;
 }
 

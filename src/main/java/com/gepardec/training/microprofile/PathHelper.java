@@ -22,6 +22,10 @@ public class PathHelper {
         return servletRequest.getServletContext().getContextPath() + "/api";
     }
 
+    public String resourcePath() {
+        return servletRequest.getServletContext().getContextPath() + "/resources";
+    }
+
     public String buildPath(String path) {
         if (StringUtils.isBlank(path)) {
             return "#";
@@ -29,6 +33,10 @@ public class PathHelper {
             return path;
         }
         return basePath() + path;
+    }
+
+    public String buildResourcePath(String path) {
+        return resourcePath() + path;
     }
 
 }
