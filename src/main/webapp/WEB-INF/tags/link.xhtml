@@ -1,0 +1,14 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <!--@elvariable id="path" type="java.lang.String"-->
+    <!--@elvariable id="text" type="java.lang.String"-->
+    <!--@elvariable id="target" type="java.lang.String"-->
+    <!--@elvariable id="rendered" type="java.lang.Boolean"-->
+
+    <h:outputLink rendered="#{not empty rendered ? rendered : true}" target="#{not empty target ? target : '_self'}" value="#{pathHelper.buildPath(path)}">
+        ${text}
+    </h:outputLink>
+</ui:component>
