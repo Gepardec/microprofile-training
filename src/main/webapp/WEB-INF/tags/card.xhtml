@@ -7,8 +7,8 @@
     <!--@elvariable id="title" type="java.lang.String"-->
     <!--@elvariable id="rendered" type="java.lang.Boolean"-->
 
-    <h:panelGroup id="${id}" rendered="#{empty rendered ? true : rendered}" styleClass="p-1" layout="block">
-        <section class="card">
+    <section>
+        <h:panelGroup id="${id}" rendered="#{empty rendered ? true : rendered}" styleClass="card bg-light m-2 w-100" layout="block">
             <div class="card-body">
                 <h2 class="card-title text-start">#{title}</h2>
 
@@ -20,6 +20,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </h:panelGroup>
+        </h:panelGroup>
+    </section>
 </ui:component>

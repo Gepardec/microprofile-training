@@ -26,12 +26,16 @@
 
             <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
                 <div class="container-fluid">
-                    <h1 class="navbar-brand">Microprofile Training</h1>
+                    <div class="navbar-brand">
+                        <a href="https://microprofile.io/" target="_blank">
+                            <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="50" alt="MP-Logo" title="https://microprofile.io/" />
+                        </a>
+                    </div>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fas fa-align-justify" />
                     </button>
                     <div class="collapse navbar-collapse" id="navLinkContent">
-                        <div class="navbar-nav w-100 d-flex flex-lg-row flex-column justify-content-end">
+                        <div class="navbar-nav w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
                             <div class="nav-item">
                                 <h:outputLink styleClass="nav-link #{onWelcomePage ? 'active' : ''}"
                                     pt:aria-current="#{onWelcomePage ? 'page' : ''}"
@@ -52,16 +56,18 @@
                 </div>
             </nav>
 
-            <main>
-                <article>
-                    <div class="main-container">
-                        <ui:insert name="body" />
+            <main class="bg-image">
+                <article class="main-article">
+                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center w-100 h-100">
+                        <div class="main-container">
+                            <ui:insert name="body" />
+                        </div>
                     </div>
                 </article>
             </main>
 
-            <footer>
-                &#169; 2021 Gepardec IT Services
+            <footer class="bg-light d-flex justify-content-center align-items-center">
+                &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1 text-muted">2021 Gepardec IT Services</a>
             </footer>
             <h:outputScript library="mdb5-3.6.0" name="js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
