@@ -1,6 +1,6 @@
 # Developer Guide
 
-This page represents the guide which will help you to setup the project on your local machine and tells you how to contribute to the project.
+This page represents the guide which will help you setup the project on your local machine and tells you how to contribute to the project.
 
 The project is based on the following listed specifications.
 
