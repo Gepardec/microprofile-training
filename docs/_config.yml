@@ -8,7 +8,7 @@ encoding: UTF-8
 lsi: false
 markdown: kramdown
 highlighter: rouge
-theme: jekyll-theme-minimal
+theme: jekyll-theme-slate
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 kramdown:
   auto_ids: true
