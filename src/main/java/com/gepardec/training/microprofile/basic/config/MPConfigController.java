@@ -53,7 +53,7 @@ public class MPConfigController {
     public String getConfigFromFile() {
         // TODO check not env/sysProp
         model.put("applicationName", fileApplicationName);
-        return "basic/config/config_file.xhtml";
+        return "basic/config_file.xhtml";
     }
 
     @Path("/env")
@@ -63,7 +63,7 @@ public class MPConfigController {
         model.put("isEnv", isEnvVariable("env.application.name"));
         if (!isEnvVariable("env.application.name") || (isEnvVariable("env.application.name") && isSystemProperty("env.application.name")))
             model.put("envMessage", "Warning: Config is not provided via environment variable.");
-        return "basic/config/config_env.xhtml";
+        return "basic/config_env.xhtml";
     }
 
     @Path("/sys")
@@ -73,7 +73,7 @@ public class MPConfigController {
         if (!isSystemProperty("system.application.name"))
             model.put("sysMessage", "Warning: Config is not provided via System Property!");
         model.put("isSystemProperty", isSystemProperty("system.application.name"));
-        return "basic/config/config_sys.xhtml";
+        return "basic/config_sys.xhtml";
     }
 
     @Path("/converter")
@@ -81,14 +81,14 @@ public class MPConfigController {
     public String getConverter() {
         model.put("value1", value1);
         model.put("value2", value2);
-        return "basic/config/config_converter.xhtml";
+        return "basic/config_converter.xhtml";
     }
 
     @Path("/empty")
     @GET
     public String getEmptyValue() {
         model.put("emptyValue", emptyValue);
-        return "basic/config/config_empty.xhtml";
+        return "basic/config_empty.xhtml";
     }
     @Path("/propertyclass")
     @GET
@@ -96,7 +96,14 @@ public class MPConfigController {
         model.put("host", server.getHost());
         model.put("port", server.getPort());
         model.put("endpoint", server.getEndpoint());
-        return "basic/config/config_property_class.xhtml";
+        return "basic/config_property_class.xhtml";
+    }
+
+    @Path("/customconfigsource")
+    @GET
+    public String getCustomConfigSource() {
+//        TODO implement
+        return "advanced/config_custom_config_source.xhtml";
     }
 
     public Boolean isSystemProperty(String name) {
