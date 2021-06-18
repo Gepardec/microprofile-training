@@ -1,4 +1,4 @@
-# Project Guide
+# Developer Guide
 
 This page represents the guide which will help you to setup the project on your local machine and tells you how to contribute to the project.
 

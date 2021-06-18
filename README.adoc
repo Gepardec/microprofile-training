@@ -50,4 +50,4 @@ The credentials can be found in the `docker-compose.yml`.
 
 == Further documentation
 
-See the link:https://github.com/Gepardec/microprofile-training/wiki[WIKI] for contribution guidelines and deeper documentation about this application.
+See our link:https://gepardec.github.io/microprofile-training/[github pages] for contribution guidelines and deeper documentation about this project.
