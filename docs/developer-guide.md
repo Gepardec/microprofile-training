@@ -123,3 +123,4 @@ The directory for all the applications images.
       The directory holding the images for a context view
 
 All provided images must be `PNG` files.
+
