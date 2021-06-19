@@ -2,18 +2,25 @@ html {
     height: 100%;
 }
 
+nav {
+    min-height: 75px;
+}
+
 body {
-    padding-top: 79px;
-    padding-bottom: 50px;
+    padding-top: 75px;
+    padding-bottom: 75px;
     height: 100%;
     font-size: 1.2rem;
 }
 
 footer {
     bottom: 0;
-    height: 50px;
+    height: 75px;
     text-align: center;
     padding: 5px;
+    background: #1f6c04;
+    width: 100%;
+    position: relative;
 }
 
 main {
@@ -29,6 +36,10 @@ article {
 
 section {
     height: 100%;
+}
+
+.shadow-inverted {
+    box-shadow: 0 -.5rem 1rem rgba(0,0,0,.15);
 }
 
 .main-article {

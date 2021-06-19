@@ -23,7 +23,7 @@ This project depends on the following software:
 4. [Docker](https://docs.docker.com/engine/)
 5. [Docker Compose](https://docs.docker.com/compose/)
 
-## How to setup your environment
+## How to set up your environment
 
 Install the depending software, check out the github repository and setup the IDE of your choice.
 See the repository root README for further details.
@@ -32,12 +32,10 @@ See the repository root README for further details.
 
 All of our documentation is done in this Github WIKI which relates to the projects repository.
 
-# How to use Git Branching
+## How to use Git Branching
 
 We use the simple [Github-Flow](https://guides.github.com/introduction/flow/) because we need no special version handling. 
 We name our feature branches `feature/<ticket_id_or_expresive_name>` and merge them via reviewed Merge-Requests.
-
-# Implementation Guide
 
 ## How to implement (MVC) Controllers
 
@@ -101,71 +99,7 @@ The directory which encapsulates the resources and views of a context which coul
    - `/example-one.xhtml`  
    The view for the example one. 
 
-### JSF GUI Components
-
-#### Tags
-
-The custom JSF tags implement GUI components which are used globally.
-
-`xmlns:tag="http://tags.microprofile.training.gepardec.com"` 
-
-##### Button
-
-Attributes:
-
-1. `text`  
-The text for the button
-2. `path` (Optional)  
-The relative path from the rest application path on, or a in-page references via '#'
-3. `rendered` (Optional, default true)  
-The rendered flag
-
-```
-<tag:button text="Go to example"/>
-<tag:button text="Go to example" path="#otherId"/>
-<tag:button text="Go to example" path="/basic/index"/>
-```
-
-##### Link
-
-Attributes:
-
-1. `text`  
-The text for the button
-2. `path` (Optional)  
-The relative path from the rest application path on, or a in-page references via '#'
-3. `target`  
-The link target (Optional, default _self)
-4. `rendered` (Optional, default true)  
-The rendered flag
-
-```
-<tag:link text="Go to example"/>
-<tag:link text="Go to example" path="#otherId"/>
-<tag:link text="Go to example" path="/basic/index" target="_blank"/>
-```
-
-##### Card
-
-The following attributes are required:
-
-1. `id`  
-The unique card id within a view
-2. `title`   
-The card title
-3. `rendered` (Optional, default true)  
-The rendered flag
-
-```
-<tag:card id="test" title="First part">
-    <ui:define name="body">
-        <p>...</p>
-    </ui:define>
-    <ui:define name="buttons">
-        <tag:button text="Go to example" path="/basic/index"/>
-    </ui:define>
-</tag:card>
-```
+See [section](#jsf-components) for a list of available JSF components for building GUIs.
 
 ## How to provide static resources
 
@@ -180,12 +114,14 @@ The static resource are organized in the root directory `src/main/webapp/resourc
 The directory for a framework such as `mdb` which also defines the version.  
 If a webjar of the used framework exists, then the webjar should be used.
 * `/css`   
-The directory for all of the applications stylings.
+The directory for all the applications stylings.
 * `/img`   
-The directory for all of the applications images.
+The directory for all the applications images.
    * `/<context>`  
    The directory holding the images for a context
       * `/<view>`  
       The directory holding the images for a context view
 
 All provided images must be `PNG` files.
+
+{% include_relative components-jsf.md %}

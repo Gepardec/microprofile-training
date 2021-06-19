@@ -3,11 +3,12 @@
     xmlns:h="http://java.sun.com/jsf/html"
 >
 
+    <!--@elvariable id="id" type="java.lang.String"-->
     <!--@elvariable id="path" type="java.lang.String"-->
     <!--@elvariable id="text" type="java.lang.String"-->
     <!--@elvariable id="rendered" type="java.lang.Boolean"-->
 
-    <h:outputLink rendered="#{not empty rendered ? rendered : true}" styleClass="btn btn-primary" value="#{pathHelper.buildPath(path)}">
+    <h:outputLink id="#{id}" rendered="#{not empty rendered ? rendered : true}" styleClass="btn btn-primary" value="#{pathHelper.buildPath(path)}" title="#{pathHelper.buildPath(path)}">
         ${text}
     </h:outputLink>
 </ui:component>
