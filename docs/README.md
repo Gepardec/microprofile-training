@@ -5,11 +5,11 @@ This project will be developed under the umbrella of a [Gepardec Learning Friday
 
 * [Developer Guide](#developer-guide)
 * [Infrastructure Guide](#infrastructure-guide)
-* [JSF Components](#components-jsf)
+* [JSF Components](#jsf-components)
 
 {% include_relative developer-guide.md %}
 
 {% include_relative infrastructure-guide.md %}
 
-{% include_relative components-jsf.md %}
+{% include_relative jsf-components.md %}
  

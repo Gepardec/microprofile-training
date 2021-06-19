@@ -11,7 +11,7 @@ All applications define the following admin user.
 
 The following listed application are available.
 
- Application        | URL           | Task  |
+| Application        | URL           | Task  |
 | :------------- |:-------------| :-----------------|
 | Keycloak      | http://localhost:18080/auth/ | OpenId-Connect Server |
 | Grafana       | http://localhost:13000       | Metric Frontend |
