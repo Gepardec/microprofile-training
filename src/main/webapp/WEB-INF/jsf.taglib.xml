@@ -36,6 +36,12 @@
         <tag-name>button</tag-name>
         <source>tags/button.xhtml</source>
         <attribute>
+            <description>The page unique id</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
             <name>path</name>
             <required>false</required>
@@ -59,6 +65,12 @@
         <tag-name>link</tag-name>
         <source>tags/link.xhtml</source>
         <attribute>
+            <description>The page unique id</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
             <name>path</name>
             <required>false</required>
@@ -71,9 +83,38 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <description>The link text</description>
+            <description>The link target</description>
             <name>target</name>
             <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>If true tag is rendered, otherwise not</description>
+            <name>rendered</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+
+    <tag>
+        <tag-name>navLink</tag-name>
+        <source>tags/navLink.xhtml</source>
+        <attribute>
+            <description>The page unique id</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
+            <name>path</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The link text</description>
+            <name>text</name>
+            <required>true</required>
             <type>java.lang.String</type>
         </attribute>
         <attribute>
