@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Path("/config")
 @RequestScoped
 @Controller
-public class MPConfigController {
+public class BasicMPConfigController {
 
     @Inject
     private Models model;
@@ -34,15 +34,12 @@ public class MPConfigController {
     @ConfigProperty(name = "env.application.name", defaultValue = "Here should be your application name")
     private String envApplicationName;
 
-    @Inject
     @ConfigProperty(name = "converter.value1")
     private BigDecimal value1;
 
-    @Inject
     @ConfigProperty(name = "converter.value2")
     private BigDecimal value2;
 
-    @Inject
     @ConfigProperty(name = "property.empty", defaultValue = "I should be empty")
     private String emptyValue;
 
@@ -99,12 +96,6 @@ public class MPConfigController {
         return "basic/config_property_class.xhtml";
     }
 
-    @Path("/customconfigsource")
-    @GET
-    public String getCustomConfigSource() {
-//        TODO implement
-        return "advanced/config_custom_config_source.xhtml";
-    }
 
     public Boolean isSystemProperty(String name) {
         return System.getProperty(name) != null && !System.getProperty(name).isBlank();

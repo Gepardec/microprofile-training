@@ -9,6 +9,7 @@
     <ui:define name="body">
         <main>
             <article>
+
                 <div class="container-lg">
                     <div class="row m-2">
                         <div class="col">
@@ -22,24 +23,25 @@
                                 </p>
 
                                 <p>
-                                    Configuration can be provided by property file, environment variable, system property or a custom ConfigSource.
-                                </p>
-                                <p>A property file is packed into the binary. Changes in the property file need repackaging of the whole application.</p>
-
-                                <p>
-                                    Let's take a look at the property file at
-                                    <code>src/main/resources/META-INF/microprofile-config.properties</code> and the Controller class at
-                                    <code>com.gepardec.training.microprofile.basic.config.BasicMPConfigController</code>
+                                    A custom ConfigSource can be implemented in order to obtain your configuration other than property-file, environemnt variable or system variable.
                                 </p>
 
                                 <hr class="mt-3 mb-3"/>
 
                                 <div class="row my-1">
                                     <div class="col-sm text-center text-sm-right mr-sm-1">
-                                        Application name:
+                                        Value1:
                                     </div>
                                     <div class="col-sm text-center text-sm-left ml-sm-1">
-                                        <h:outputText value="${applicationName}" class="font-weight-bold"/>
+                                        <h:outputText value="${customValue1}" class="font-weight-bold"/>
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-sm text-center text-sm-right mr-sm-1">
+                                        Value2:
+                                    </div>
+                                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                                        <h:outputText value="${customValue2}" class="font-weight-bold"/>
                                     </div>
                                 </div>
 
@@ -56,9 +58,8 @@
                                 </h5>
 
                                 <p>
-                                    Provide the application name via property file
-                                    <code>src/main/resources/META-INF/microprofile-config.properties</code>. Also take a look at the controller class
-                                    <code>com.gepardec.training.microprofile.basic.config.BasicMPConfigController</code>.
+                                    Implement and register a custom ConfigSource that retrieves the Configuration from com.gepardec.training.microprofile.advanced.config.MyConfiguration.
+                                    Use the Controller class com.gepardec.training.microprofile.advanced.config.AdvancedMPConfigController.java
                                 </p>
 
                             </section>
@@ -69,3 +70,6 @@
         </main>
     </ui:define>
 </ui:composition>
+
+
+
