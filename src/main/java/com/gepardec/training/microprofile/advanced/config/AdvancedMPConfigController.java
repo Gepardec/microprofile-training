@@ -27,11 +27,25 @@ public class AdvancedMPConfigController {
     @ConfigProperty(name = "custom.value2", defaultValue = "Missing value from custom ConfigSource")
     private String customValue2;
 
+    @ConfigProperty(name = "drop.in.value1", defaultValue = "Missing value from Drop-In ConfigSource")
+    private String dropInValue1;
+
+    @ConfigProperty(name = "drop.in.value2", defaultValue = "Missing value from Drop-In ConfigSource")
+    private String dropInValue2;
+
     @Path("/customconfigsource")
     @GET
     public String getCustomConfigSource() {
         model.put("customValue1", customValue1);
         model.put("customValue2", customValue2);
         return "advanced/config_custom_config_source.xhtml";
+    }
+
+    @Path("/drop-in-configuration")
+    @GET
+    public String getDropInConfiguration() {
+        model.put("dropInValue1", dropInValue1);
+        model.put("dropInValue2", dropInValue2);
+        return "advanced/config_drop-in.xhtml";
     }
 }
