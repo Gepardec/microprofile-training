@@ -1,0 +1,66 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="header">
+        <title>CDI</title>
+    </ui:define>
+
+    <ui:define name="body">
+        <main>
+            <article>
+
+                <div class="container-lg">
+                    <div class="row m-2">
+                        <div class="col">
+                            <section>
+                                <p>
+                                    The specification for Microprofile
+                                    <a href="https://download.eclipse.org/microprofile/microprofile-rest-client-2.0/microprofile-rest-client-spec-2.0.html"
+                                       target="_blank">
+                                        Rest Client
+                                    </a>
+                                </p>
+
+                                <p>
+                                    The RestClientBuilder from MP allows to make typesafe rest calls.
+                                    It's also easy to use and the syntax feels intuitive.
+                                </p>
+
+                                <hr class="mt-3 mb-3"/>
+
+                                <div class="row my-1">
+                                    <div class="col-sm text-center text-sm-right mr-sm-1">
+                                        Value:
+                                    </div>
+                                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                                        <h:outputText value="${value}" class="font-weight-bold"/>
+                                    </div>
+                                </div>
+
+                                <hr class="mt-3 mb-3"/>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="row m-2">
+                        <div class="col">
+                            <section>
+                                <h5>
+                                    Your Task:
+                                </h5>
+
+                                <p>
+                                    Invoke the Restservice
+                                    <code>src/main/java/at/gepardec/training/microprofile/basic/restservice/CheetahApi</code>
+                                    with CDI in the <code>UseRestClientBuilder.class</code>..
+                                </p>
+
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </ui:define>
+</ui:composition>
