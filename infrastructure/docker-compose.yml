@@ -9,7 +9,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     ports:
-      - 9090:9090
+      - 19090:9090
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -20,9 +20,9 @@ services:
     image: grafana/grafana:latest
     environment:
       GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: Pa55w0rd
+      GF_SECURITY_ADMIN_PASSWORD: 'admin@123'
     ports:
-      - 3000:3000
+      - 13000:3000
     volumes:
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
@@ -38,26 +38,26 @@ services:
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: Pa55w0rd
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 'admin@123'
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
       DB_SCHEMA: public
-      DB_PASSWORD: Pa55w0rd
+      DB_DATABASE: keycloak
+      DB_USER: admin
+      DB_PASSWORD: 'admin@123'
       KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: Pa55w0rd
+      KEYCLOAK_PASSWORD: 'admin@123'
     command:
       - "-b 0.0.0.0"
       - "-Dkeycloak.import=/opt/jboss/keycloak/microprofile-realm.json"
     ports:
-      - 8081:8080
+      - 18080:8080
     volumes:
-      - ./keycloak/realm-export.json:/opt/jboss/keycloak/microprofile-realm.json
+      - ./keycloak/v2_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
     depends_on:
       - postgres

@@ -4,7 +4,8 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    xmlns:tag="http://tags.microprofile.training.gepardec.com"
+>
 
     <!--@elvariable id="onWelcomePage" type="java.lang.Boolean"-->
     <!--@elvariable id="onBasicIndexPage" type="java.lang.Boolean"-->
@@ -20,11 +21,8 @@
 
     <h:body lang="en">
         <f:view contentType="text/html">
-            <ui:param name="onWelcomePage" value="#{pathHelper.isOnPage('/welcome')}" />
-            <ui:param name="onBasicIndexPage" value="#{pathHelper.isOnPage('/basic/index')}" />
-            <ui:param name="onAdvancedIndexPage" value="#{pathHelper.isOnPage('/advanced/index')}" />
 
-            <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
                 <div class="container-fluid">
                     <div class="navbar-brand">
                         <a href="https://microprofile.io/" target="_blank">
@@ -35,21 +33,15 @@
                         <span class="fas fa-align-justify" />
                     </button>
                     <div class="collapse navbar-collapse" id="navLinkContent">
-                        <div class="navbar-nav w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
+                        <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
                             <div class="nav-item">
-                                <h:outputLink styleClass="nav-link #{onWelcomePage ? 'active' : ''}"
-                                    pt:aria-current="#{onWelcomePage ? 'page' : ''}"
-                                    value="${pathHelper.buildPath('/welcome')}">Welcome</h:outputLink>
+                                <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             </div>
                             <div class="nav-item">
-                                <h:outputLink styleClass="nav-link #{onBasicIndexPage ? 'active' : ''}"
-                                    pt:aria-current="#{onBasicIndexPage ? 'page' : ''}"
-                                    value="${pathHelper.buildPath('/basic/index')}">Basic</h:outputLink>
+                                <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
                             </div>
                             <div class="nav-item">
-                                <h:outputLink styleClass="nav-link #{onAdvancedIndexPage ? 'active' : ''}"
-                                    pt:aria-current="#{onAdvancedIndexPage ? 'page' : ''}"
-                                    value="${pathHelper.buildPath('/advanced/index')}">Advanced</h:outputLink>
+                                <tag:navLink id="navAdvancedLink" text="Advanced" path="/advanced/index" />
                             </div>
                         </div>
                     </div>
@@ -66,8 +58,8 @@
                 </article>
             </main>
 
-            <footer class="bg-light d-flex justify-content-center align-items-center">
-                &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1 text-muted">2021 Gepardec IT Services</a>
+            <footer class="bg-light d-flex justify-content-center align-items-center shadow-inverted">
+                &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1 text-muted" title="https://www.gepardec.com/">2021 Gepardec IT Services</a>
             </footer>
             <h:outputScript library="mdb5-3.6.0" name="js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />

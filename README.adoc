@@ -38,16 +38,16 @@ Copy this file into your wildfly `standalone/configuration` directory and add `-
 
 == Starting up the infrastructure
 
-Change to the `infrastructure` directory and run `docker-compose up`.
+Change to the `infrastructure` directory and run `docker-compose up -d`.
 
 To access the infrastructure tools use one of the following links:
 
-* link:http://localhost:9090[Prometheus]
-* link:http://localhost:3000[Grafana]
-* link:http://localhost:8081[Keycloak]
+* link:http://localhost:19090[Prometheus]
+* link:http://localhost:13000[Grafana]
+* link:http://localhost:18080[Keycloak]
 
-The credentials can be found in the `docker-compose.yml`.
+The credentials ofr all applications can be found in our link:https://gepardec.github.io/microprofile-training/#infrastructure-guide[infrastructure guide].
 
 == Further documentation
 
-See the link:https://github.com/Gepardec/microprofile-training/wiki[WIKI] for contribution guidelines and deeper documentation about this application.
+See our link:https://gepardec.github.io/microprofile-training/[WIKI] for contribution guidelines and deeper documentation about this project.
