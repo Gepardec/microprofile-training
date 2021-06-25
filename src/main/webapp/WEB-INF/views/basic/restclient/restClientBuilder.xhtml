@@ -1,12 +1,15 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="header">
         <title>RestClientBuilder</title>
     </ui:define>
 
     <ui:define name="body">
+        <tag:card id="restclientbuilder" title="RestClientBuilder">
+            <ui:define name="body">
             <article>
 
                 <div class="container-lg">
@@ -61,5 +64,7 @@
                     </div>
                 </div>
             </article>
+            </ui:define>
+        </tag:card>
     </ui:define>
 </ui:composition>

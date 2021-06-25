@@ -51,7 +51,7 @@ public class RestClientController {
     @GET
     public String exceptionHandling() {
             model.put("value", restClientCdi.invalid());
-        return "basic/restclient/exceptionHandling.xhtml";
+        return "basic/restclient/exceptionMapping.xhtml";
     }
 
     @Path("/headersFactory")

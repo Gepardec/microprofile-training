@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 //})
 //Not given
 // Can also be configured via MP-config
-@RegisterRestClient(baseUri = "http://localhost:8080/mptraining/api/")
+@RegisterRestClient//(baseUri = "http://localhost:8080/mptraining/api/")
 //For the first exercise base uri is not given
 @Path("/cheetahs")
 public interface ClientCheetahApi {

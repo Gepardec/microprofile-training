@@ -16,7 +16,7 @@ public class RestClientExceptionMapper implements ResponseExceptionMapper<Runtim
 
     @Override
     public RuntimeException toThrowable(Response response) {
-        log.info("Mapping error response to RuntimeException. code: %d", response.getStatus());
+        log.info("Mapping error response to RuntimeException. code: {}", response.getStatus());
         return new RuntimeException(readEntity(response));
     }
 
