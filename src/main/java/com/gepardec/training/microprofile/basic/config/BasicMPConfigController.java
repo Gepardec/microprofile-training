@@ -49,7 +49,7 @@ public class BasicMPConfigController {
     @ConfigProperty(name = "property.empty", defaultValue = "I should be empty")
     private String emptyValue;
 
-    private Server server = new Server();
+    private ServerConfig serverConfig = new ServerConfig();
 
     @Path("/file")
     @GET
@@ -96,9 +96,9 @@ public class BasicMPConfigController {
     @Path("/propertyclass")
     @GET
     public String getPropertyClass() {
-        model.put("host", server.getHost());
-        model.put("port", server.getPort());
-        model.put("endpoint", server.getEndpoint());
+        model.put("host", serverConfig.getHost());
+        model.put("port", serverConfig.getPort());
+        model.put("endpoint", serverConfig.getEndpoint());
         return "basic/config_property_class.xhtml";
     }
 

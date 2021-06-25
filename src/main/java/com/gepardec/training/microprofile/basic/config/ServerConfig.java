@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.basic.config;
 
-public class Server {
+public class ServerConfig {
 
     private String host = "Configure me";
     private String port = "Configure me";
