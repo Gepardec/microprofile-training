@@ -21,15 +21,19 @@ public class AdvancedMPConfigController {
     @Inject
     private Config config;
 
+    @Inject
     @ConfigProperty(name = "custom.value1", defaultValue = "Missing value from custom ConfigSource")
     private String customValue1;
 
+    @Inject
     @ConfigProperty(name = "custom.value2", defaultValue = "Missing value from custom ConfigSource")
     private String customValue2;
 
+    @Inject
     @ConfigProperty(name = "drop.in.value1", defaultValue = "Missing value from Drop-In ConfigSource")
     private String dropInValue1;
 
+    @Inject
     @ConfigProperty(name = "drop.in.value2", defaultValue = "Missing value from Drop-In ConfigSource")
     private String dropInValue2;
 

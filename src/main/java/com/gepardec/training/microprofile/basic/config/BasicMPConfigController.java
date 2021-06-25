@@ -22,24 +22,30 @@ public class BasicMPConfigController {
 
     private Config config;
 
+    @Inject
     // Do not change the default value
     @ConfigProperty(name = "file.application.name", defaultValue = "Here should be your application name")
     private String fileApplicationName;
 
+    @Inject
     // Do not change the default value
     @ConfigProperty(name = "system.application.name", defaultValue = "Here should be your application name")
     private String systemPropertyApplicationName;
 
+    @Inject
     // Do not change the default value
     @ConfigProperty(name = "env.application.name", defaultValue = "Here should be your application name")
     private String envApplicationName;
 
+    @Inject
     @ConfigProperty(name = "converter.value1")
     private BigDecimal value1;
 
+    @Inject
     @ConfigProperty(name = "converter.value2")
     private BigDecimal value2;
 
+    @Inject
     @ConfigProperty(name = "property.empty", defaultValue = "I should be empty")
     private String emptyValue;
 
