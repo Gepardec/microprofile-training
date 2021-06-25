@@ -10,9 +10,7 @@
         <tag:card id="example1" title="Basic usage of MP-RestClient">
             <ui:define name="body">
                 <p>
-                    In the first two examples you will learn how to access the
-                    <code>microprofile-training/src/main/java/com/gepardec/training/microprofile/basic/restclient/CheetahService</code>
-                    with MP. With JAX-RS it would probably look something like this:
+                    In the first two examples you will learn how to call a service with the MP-RestClient. With JAX-RS it would probably look something like this:
                     <br/>
                     <code> Client client = ClientBuilder.newClient();
                         String response = client.target("http://localhost:8081/cheetahs").request().get(String.class); </code>
