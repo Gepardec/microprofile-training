@@ -7,7 +7,7 @@
     </ui:define>
 
     <ui:define name="body">
-        <tag:card id="example1" title="RestClient Builder">
+        <tag:card id="example1" title="Basic usage of MP-RestClient">
             <ui:define name="body">
                 <p>
                     In the first two examples you will learn how to access the
@@ -22,20 +22,26 @@
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button text="RestClientBuilder" path="/basic/restclient/restClientBuilder"/>
-                <tag:button text="CDI" path="/basic/restclient/cdi"/>
+                <tag:button id="builder" text="RestClientBuilder" path="/basic/restclient/restClientBuilder" />
+                <tag:button id="cdi" text="CDI" path="/basic/restclient/cdi"/>
             </ui:define>
 
         </tag:card>
 
-        <tag:card id="example2" title="example 2">
+        <tag:card id="example2" title="Providers / ClientHeaders">
             <ui:define name="body">
                 <p>
-                    ...
+                    The <code>@RegisterProviders</code> annotation can be used to add
+                    JAX-RS client providers and extensions. The <code>@RegisterClientHeaders</code> annotation
+                    is used for registering an implementation of the interface ClientHeadersFactory which allows to read
+                    incoming HTTP Headers and to define additional outgoing Http Headers. Solve the two tasks, be aware the goal
+                    from the first example is to map the error response code to a java Exception not to fix the error.
+
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button text="Go to example" path="#"/>
+                <tag:button id="exceptionHandling" text="Providers" path="/basic/restclient/exceptionHandling" />
+                <tag:button id="headersFactory" text="ClientHeaders" path="/basic/restclient/headersFactory" />
             </ui:define>
         </tag:card>
 

@@ -1,7 +1,8 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
-import com.gepardec.training.microprofile.basic.restservice.ClientCheetahApi;
-
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -21,7 +22,10 @@ public class UseRestClientBuilder {
 
     }
 
-    public Object callCheetahService() throws URISyntaxException {
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public String welcomeMessage() throws URISyntaxException {
         createRestClientBuilder();
         if (cheetahApi != null) {
             return cheetahApi.welcomeMessage();

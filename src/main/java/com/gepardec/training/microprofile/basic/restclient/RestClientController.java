@@ -36,13 +36,28 @@ public class RestClientController {
     @GET
     public String restClientBuilder() throws URISyntaxException {
         UseRestClientBuilder restClientBuilder = new UseRestClientBuilder();
-        model.put("value", restClientBuilder.callCheetahService());
+        model.put("value", restClientBuilder.welcomeMessage());
         return "basic/restclient/restClientBuilder.xhtml";
     }
+
     @Path("/cdi")
     @GET
     public String cdi() {
-        model.put("value", restClientCdi.callCheetahService());
+        model.put("value", restClientCdi.welcomeMessage());
         return "basic/restclient/cdi.xhtml";
+    }
+
+    @Path("/exceptionHandling")
+    @GET
+    public String exceptionHandling() {
+            model.put("value", restClientCdi.invalid());
+        return "basic/restclient/exceptionHandling.xhtml";
+    }
+
+    @Path("/headersFactory")
+    @GET
+    public String headersFactory() {
+        //    model.put("value", restClientCdi.callCheetahService());
+        return "basic/restclient/headersFactory.xhtml";
     }
 }

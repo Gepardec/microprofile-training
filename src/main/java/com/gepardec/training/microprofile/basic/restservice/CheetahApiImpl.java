@@ -1,15 +1,19 @@
 package com.gepardec.training.microprofile.basic.restservice;
 
 import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/cheetahs")
 @RequestScoped
 public class CheetahApiImpl implements CheetahApi {
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public String welcomeMessage() {
+        return "Hello cheetahs";
+    }
 
     @Override
     @GET
@@ -19,9 +23,13 @@ public class CheetahApiImpl implements CheetahApi {
         return String.format("Hello cheetah %s!", name);
     }
 
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    public String welcomeMessage() {
-        return "Hello cheetahs";
+    @Path("/invalid")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response invalid() {
+            return Response
+                    .status(Response.Status.BAD_REQUEST)
+                    .entity("This is a planned error")
+                    .build();
     }
 }
