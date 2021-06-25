@@ -407,9 +407,4 @@
         <socket-binding name="txn-recovery-environment" port="4712"/>
         <socket-binding name="txn-status-manager" port="4713"/>
     </socket-binding-group>
-    <deployments>
-        <deployment name="microprofile-training-1.0.0-SNAPSHOT" runtime-name="microprofile-training-1.0.0-SNAPSHOT.war">
-            <fs-exploded path="/home/work/dev/projects/gepardec/git/microprofile-training/target/microprofile-training-1.0.0-SNAPSHOT"/>
-        </deployment>
-    </deployments>
 </server>

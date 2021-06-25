@@ -23,12 +23,6 @@ Follow the instructions to work through the exercises.
 
 IMPORTANT: When running in an IDE the actual port will depend on your configuration.
 
-== Running in standalone
-
-Run the application with `./mvnw wildfly:run`.
-
-IMPORTANT: In this mode you won't be able to hot-code deploy.
-
 == Running in an IDE
 
 Refer to the documentation of the IDE of your choice, which must provide integration for Wildfly/JBoss servers, for how to set up the project.
