@@ -1,0 +1,27 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="header">
+        <title>Basic Index</title>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>Microprofile Health</h1>
+            </div>
+            <tag:card id="mp-health" title="Health Endpoint">
+                <ui:define name="body">
+                    <p>
+                        Find the Health Endpoint. What is the current status?
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toExampleConfig" text="Go to example" />
+                </ui:define>
+            </tag:card>
+        </section>
+    </ui:define>
+</ui:composition>
+
