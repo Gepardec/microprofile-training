@@ -9,9 +9,10 @@
 
     <section>
         <h:panelGroup id="${id}" rendered="#{empty rendered ? true : rendered}" styleClass="card bg-light m-2" layout="block">
+            <div class="card-header text-center d-flex justify-content-center">
+                <div class="fs-3">#{title}</div>
+            </div>
             <div class="card-body">
-                <h2 class="card-title text-start">#{title}</h2>
-
                 <div class="card-text text-start">
                     <ui:insert name="body" />
 
