@@ -47,9 +47,9 @@ public class RestClientController {
         return "basic/restclient/cdi.xhtml";
     }
 
-    @Path("/exceptionHandling")
+    @Path("/exceptionMapping")
     @GET
-    public String exceptionHandling() {
+    public String exceptionMapping() {
             model.put("value", restClientCdi.invalid());
         return "basic/restclient/exceptionMapping.xhtml";
     }
@@ -57,7 +57,7 @@ public class RestClientController {
     @Path("/headersFactory")
     @GET
     public String headersFactory() {
-        //    model.put("value", restClientCdi.callCheetahService());
+            model.put("value", restClientCdi.welcomeMessage());
         return "basic/restclient/headersFactory.xhtml";
     }
 }

@@ -25,8 +25,10 @@
                                     </p>
 
                                     <p>
-                                        The RestClientBuilder from MP allows to make typesafe rest calls.
-                                        It's also easy to use and the syntax feels intuitive.
+                                        The
+                                        <code>@RegisterClientHeaders</code> annotation registers an implementation of the ClientHeadersFactory interface
+                                        which allows to read incoming HTTP Headers and to define additional outgoing Http Headers.
+
                                     </p>
 
                                     <hr class="mt-3 mb-3"/>
@@ -53,9 +55,8 @@
                                     </h5>
 
                                     <p>
-                                        Invoke the Restservice
-                                        <code>src/main/java/at/gepardec/training/microprofile/basic/restservice/CheetahApi</code>
-                                        with CDI in the <code>UseRestClientBuilder.class</code>..
+                                        Use the <code>src/main/java/at/gepardec/training/microprofile/basic/restclient/RestClientHeaderHandler</code>
+                                        to read the headers in the log and modify the outgoing headers.
                                     </p>
 
                                 </section>

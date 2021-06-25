@@ -1,7 +1,6 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
-import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
-import org.eclipse.microprofile.rest.client.annotation.RegisterProviders;
+import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
@@ -13,6 +12,7 @@ import javax.ws.rs.core.Response;
 //@RegisterProviders({
 //        @RegisterProvider(RestClientExceptionMapper.class),
 //})
+//@RegisterClientHeaders(RestClientHeaderHandler.class)
 //Not given
 // Can also be configured via MP-config
 @RegisterRestClient//(baseUri = "http://localhost:8080/mptraining/api/")
