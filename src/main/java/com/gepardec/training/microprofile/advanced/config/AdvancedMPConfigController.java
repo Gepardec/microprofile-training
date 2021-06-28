@@ -19,9 +19,6 @@ public class AdvancedMPConfigController {
     private Models model;
 
     @Inject
-    private Config config;
-
-    @Inject
     @ConfigProperty(name = "custom.value1", defaultValue = "Missing value from custom ConfigSource")
     private String customValue1;
 

@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.configuration;
+package com.gepardec.training.microprofile.dropinconfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
