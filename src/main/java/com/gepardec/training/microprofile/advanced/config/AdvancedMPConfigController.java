@@ -30,11 +30,11 @@ public class AdvancedMPConfigController {
     private String customValue2;
 
     @Inject
-    @ConfigProperty(name = "drop.in.value1", defaultValue = "Missing value from Drop-In ConfigSource")
+    @ConfigProperty(name = "drop.in.key1", defaultValue = "Missing value from Drop-In ConfigSource")
     private String dropInValue1;
 
     @Inject
-    @ConfigProperty(name = "drop.in.value2", defaultValue = "Missing value from Drop-In ConfigSource")
+    @ConfigProperty(name = "drop.in.key2", defaultValue = "Missing value from Drop-In ConfigSource")
     private String dropInValue2;
 
     @Path("/customconfigsource")
