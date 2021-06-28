@@ -16,15 +16,15 @@
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
                                target="_blank">
-                                Config
+                                Config.
                             </a>
                         </p>
 
                         <p>
                             Configuration can be provided by property file, environment variable, system property or a custom ConfigSource.
                         </p>
-                        <p>Environment variables are set in the operating system and therefore the application does not need to be rebuilt when changing the configuration.
-                            The application needs a restart after altering the environment variables.</p>
+                        <p>Environment variables are set in the operating system and therefore the application does not need to be rebuilt after changing the configuration.
+                            However, the application needs a restart after altering environment variables.</p>
 
                         <hr class="mt-3 mb-3"/>
 
@@ -36,9 +36,8 @@
                                 <h:outputText value="${envApplicationName}" class="font-weight-bold"/>
                             </div>
                         </div>
-                        <div class="row my-2">
-                            <div class="alert" align="center"><h:outputText value="${envMessage}"
-                                                                            class="alert-warning"/></div>
+                        <div>
+                            <h:outputText value="${envMessage}" class="alert-warning"/>
                         </div>
 
                         <hr class="mt-3 mb-3"/>

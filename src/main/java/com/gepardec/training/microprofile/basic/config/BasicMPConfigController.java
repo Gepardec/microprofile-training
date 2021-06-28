@@ -1,6 +1,5 @@
 package com.gepardec.training.microprofile.basic.config;
 
-import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.RequestScoped;
@@ -20,22 +19,11 @@ public class BasicMPConfigController {
     @Inject
     private Models model;
 
-    private Config config;
+    private String appNameFromPropertyFile;
 
-    @Inject
-    // Do not change the default value
-    @ConfigProperty(name = "file.application.name", defaultValue = "Here should be your application name")
-    private String fileApplicationName;
+    private String appNameFromSysProperty;
 
-    @Inject
-    // Do not change the default value
-    @ConfigProperty(name = "system.application.name", defaultValue = "Here should be your application name")
-    private String systemPropertyApplicationName;
-
-    @Inject
-    // Do not change the default value
-    @ConfigProperty(name = "env.application.name", defaultValue = "Here should be your application name")
-    private String envApplicationName;
+    private String appNameFromEnvVariable;
 
     @Inject
     @ConfigProperty(name = "converter.value1")
@@ -55,8 +43,8 @@ public class BasicMPConfigController {
 
     @Path("/file")
     @GET
-    public String getConfigFromFile() {
-        model.put("applicationName", fileApplicationName);
+    public String getConfigFromPropertyFile() {
+        model.put("applicationName", appNameFromPropertyFile);
         if(isEnvVariable("file.application.name") || isSystemProperty("file.application.name")) {
             model.put("fileMessage", "Warning: Config is not provided via environment variable.");
         }
@@ -65,8 +53,8 @@ public class BasicMPConfigController {
 
     @Path("/env")
     @GET
-    public String getConfigFromEnv() {
-        model.put("envApplicationName", envApplicationName);
+    public String getConfigFromEnvVariable() {
+        model.put("envApplicationName", appNameFromEnvVariable);
         model.put("isEnv", isEnvVariable("env.application.name"));
         if (!isEnvVariable("env.application.name") || (isEnvVariable("env.application.name") && isSystemProperty("env.application.name")))
             model.put("envMessage", "Warning: Config is not provided via environment variable.");
@@ -76,7 +64,7 @@ public class BasicMPConfigController {
     @Path("/sys")
     @GET
     public String getConfigFromSystemProperty() {
-        model.put("sysApplicationName", systemPropertyApplicationName);
+        model.put("sysApplicationName", appNameFromSysProperty);
         if (!isSystemProperty("system.application.name"))
             model.put("sysMessage", "Warning: Config is not provided via System Property!");
         model.put("isSystemProperty", isSystemProperty("system.application.name"));
