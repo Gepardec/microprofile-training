@@ -56,8 +56,10 @@ public class BasicMPConfigController {
     @Path("/file")
     @GET
     public String getConfigFromFile() {
-        // TODO check not env/sysProp
         model.put("applicationName", fileApplicationName);
+        if(isEnvVariable("file.application.name") || isSystemProperty("file.application.name")) {
+            model.put("fileMessage", "Warning: Config is not provided via environment variable.");
+        }
         return "basic/config_file.xhtml";
     }
 
