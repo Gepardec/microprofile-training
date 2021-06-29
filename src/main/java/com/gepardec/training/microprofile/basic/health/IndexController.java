@@ -23,4 +23,5 @@ public class IndexController {
     public String index() {
         return "basic/health/index.xhtml";
     }
+
 }

@@ -10,7 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class PreparedReadinessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("somedata")
+        return HealthCheckResponse.named("someotherdata")
                                   .withData("data","0815")
                                   .up()
                                   .build();

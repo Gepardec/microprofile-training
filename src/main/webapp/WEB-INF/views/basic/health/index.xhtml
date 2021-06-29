@@ -1,4 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
@@ -16,9 +17,18 @@
                     <p>
                         Find the Health Endpoint. What is the current status?
                     </p>
+                    <p>
+                    <h:outputLink value="http://0.0.0.0:8080/health" target="_blank">
+                        Show 0.0.0.0:8080/health
+                    </h:outputLink>
+                    </p>
+                    <h:outputLink value="http://0.0.0.0:9990/health" target="_blank">
+                        Show 0.0.0.0:9990/health
+                    </h:outputLink>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toExampleConfig" text="Go to example" />
+                    <tag:button id="toApplicationHealth" text="This isn't right" />
+                    <tag:button id="toServerHealth" text="Everything is fine" />
                 </ui:define>
             </tag:card>
         </section>
