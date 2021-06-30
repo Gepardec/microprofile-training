@@ -1,0 +1,83 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="header">
+        <title>Basic Index</title>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1><tag:link id="toBasicIndex" path="/basic/index"><i class="fas fa-step-backward me-2" /></tag:link>MP-Config Examples</h1>
+            </div>
+
+            <tag:card id="mp-config-file" title="Configuration from properties file">
+                <ui:define name="body">
+                    <p>
+                        BlaBla, what is the gola of this example
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleFile" text="Example" path="/basic/config/file" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-sys-prop" title="Configuration from system properties">
+                <ui:define name="body">
+                    <p>
+                        BlaBla, what is the gola of this example
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleSysProp" text="Example" path="/basic/config/sys" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-env" title="Configuration from environment">
+                <ui:define name="body">
+                    <p>
+                        BlaBla, what is the gola of this example
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleEnv" text="Example" path="/basic/config/env" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-converter" title="Configuration Converter">
+                <ui:define name="body">
+                    <p>
+                        BlaBla, what is the gola of this example
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleConverter" text="Example" path="/basic/config/converter" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-empty" title="Empty Configuration">
+                <ui:define name="body">
+                    <p>
+                        BlaBla, what is the gola of this example
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleEmpty" text="Example" path="/basic/config/empty" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-config-source" title="Configuration sources">
+                <ui:define name="body">
+                    <p>
+                        BlaBla, what is the gola of this example
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleConfigSource" text="Example" path="/basic/config/propertyclass" />
+                </ui:define>
+            </tag:card>
+        </section>
+    </ui:define>
+</ui:composition>
+

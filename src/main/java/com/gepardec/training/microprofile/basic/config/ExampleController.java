@@ -11,10 +11,10 @@ import javax.ws.rs.Path;
 import java.math.BigDecimal;
 
 
-@Path("/config")
+@Path("/basic/config")
 @RequestScoped
 @Controller
-public class BasicMPConfigController {
+public class ExampleController {
 
     @Inject
     private Models model;
@@ -48,7 +48,7 @@ public class BasicMPConfigController {
         if(isEnvVariable("file.application.name") || isSystemProperty("file.application.name")) {
             model.put("fileMessage", "Warning: Config is not provided via environment variable.");
         }
-        return "basic/config_file.xhtml";
+        return "basic/config/file.xhtml";
     }
 
     @Path("/env")
@@ -58,7 +58,7 @@ public class BasicMPConfigController {
         model.put("isEnv", isEnvVariable("env.application.name"));
         if (!isEnvVariable("env.application.name") || (isEnvVariable("env.application.name") && isSystemProperty("env.application.name")))
             model.put("envMessage", "Warning: Config is not provided via environment variable.");
-        return "basic/config_env.xhtml";
+        return "basic/config/env.xhtml";
     }
 
     @Path("/sys")
@@ -68,7 +68,7 @@ public class BasicMPConfigController {
         if (!isSystemProperty("system.application.name"))
             model.put("sysMessage", "Warning: Config is not provided via System Property!");
         model.put("isSystemProperty", isSystemProperty("system.application.name"));
-        return "basic/config_sys.xhtml";
+        return "basic/config/sys.xhtml";
     }
 
     @Path("/converter")
@@ -76,14 +76,14 @@ public class BasicMPConfigController {
     public String getConverter() {
         model.put("value1", value1);
         model.put("value2", value2);
-        return "basic/config_converter.xhtml";
+        return "basic/config/converter.xhtml";
     }
 
     @Path("/empty")
     @GET
     public String getEmptyValue() {
         model.put("emptyValue", emptyValue);
-        return "basic/config_empty.xhtml";
+        return "basic/config/empty.xhtml";
     }
     @Path("/propertyclass")
     @GET
@@ -95,7 +95,7 @@ public class BasicMPConfigController {
         model.put("frontendHost", frontendServerConfig.getHost());
         model.put("frontendPort", frontendServerConfig.getPort());
         model.put("frontendEndpoint", frontendServerConfig.getEndpoint());
-        return "basic/config_property_class.xhtml";
+        return "basic/config/property_class.xhtml";
     }
 
 

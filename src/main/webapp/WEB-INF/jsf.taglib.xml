@@ -79,7 +79,7 @@
         <attribute>
             <description>The link text</description>
             <name>text</name>
-            <required>true</required>
+            <required>false</required>
             <type>java.lang.String</type>
         </attribute>
         <attribute>
