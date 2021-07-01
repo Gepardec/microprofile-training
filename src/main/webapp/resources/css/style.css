@@ -2,7 +2,7 @@ html {
     height: 100%;
 }
 
-nav {
+html > nav {
     min-height: 75px;
 }
 

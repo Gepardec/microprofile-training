@@ -6,11 +6,12 @@
         <title>Basic Index</title>
     </ui:define>
 
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toWelcome" path="/welcome" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
     <ui:define name="body">
         <section>
-            <div class="text-center">
-                <h1>Basic Examples</h1>
-            </div>
             <tag:card id="mp-config" title="Microprofile Config">
                 <ui:define name="body">
                     <p>
@@ -18,7 +19,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples" path="/basic/config/index"/>
+                    <tag:button id="toConfigExamples" text="Examples" path="/basic/config/index" />
                 </ui:define>
             </tag:card>
         </section>

@@ -1,9 +1,14 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="header">
         <title>Property class</title>
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicConfigIndex" path="/basic/config/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -14,7 +19,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
-                               target="_blank">
+                                target="_blank">
                                 Config.
                             </a>
                         </p>
@@ -23,7 +28,7 @@
                             Properties can be aggregated into a CDI bean. A prefix allows to map these properties to different instances of this CDI bean.
                         </p>
 
-                        <hr class="mt-3 mb-3"/>
+                        <hr class="mt-3 mb-3" />
 
                         <p>
                             Backend:
@@ -34,7 +39,7 @@
                                 Host:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${backendHost}" class="font-weight-bold"/>
+                                <h:outputText value="${backendHost}" class="font-weight-bold" />
                             </div>
                         </div>
                         <div class="row my-1">
@@ -42,7 +47,7 @@
                                 Port:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${backendPort}" class="font-weight-bold"/>
+                                <h:outputText value="${backendPort}" class="font-weight-bold" />
                             </div>
                         </div>
                         <div class="row my-1">
@@ -50,7 +55,7 @@
                                 Endpoint:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${backendEndpoint}" class="font-weight-bold"/>
+                                <h:outputText value="${backendEndpoint}" class="font-weight-bold" />
                             </div>
                         </div>
 
@@ -61,7 +66,7 @@
                                 Host:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${frontendHost}" class="font-weight-bold"/>
+                                <h:outputText value="${frontendHost}" class="font-weight-bold" />
                             </div>
                         </div>
                         <div class="row my-1">
@@ -69,7 +74,7 @@
                                 Port:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${frontendPort}" class="font-weight-bold"/>
+                                <h:outputText value="${frontendPort}" class="font-weight-bold" />
                             </div>
                         </div>
                         <div class="row my-1">
@@ -77,11 +82,11 @@
                                 Endpoint:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${frontendEndpoint}" class="font-weight-bold"/>
+                                <h:outputText value="${frontendEndpoint}" class="font-weight-bold" />
                             </div>
                         </div>
 
-                        <hr class="mt-3 mb-3"/>
+                        <hr class="mt-3 mb-3" />
                     </section>
                 </div>
             </div>
@@ -95,7 +100,8 @@
 
                         <p>
                             <code>src\main\resources\META-INF\microprofile-config.properties</code> contains properties for a backend server configuration as well as a frontend server configuration. Make sure those values are used to populate the fields of
-                            <code>com.gepardec.training.microprofile.basic.config.ServerConfig</code>. Take a look at the controller class <code>com.gepardec.training.microprofile.basic.config.ExampleController</code>
+                            <code>com.gepardec.training.microprofile.basic.config.ServerConfig</code>. Take a look at the controller class
+                            <code>com.gepardec.training.microprofile.basic.config.ExampleController</code>
                         </p>
 
                     </section>

@@ -1,9 +1,14 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="header">
         <title>Empty property</title>
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicConfigIndex" path="/basic/config/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -15,7 +20,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
-                               target="_blank">
+                                target="_blank">
                                 Config.
                             </a>
                         </p>
@@ -24,18 +29,18 @@
                             Empty properties can lead to a NullpointerException or a DeploymentException. However there are ways to avoid this behaviour if an empty vaule is necessary.
                         </p>
 
-                        <hr class="mt-3 mb-3"/>
+                        <hr class="mt-3 mb-3" />
 
                         <div class="row my-1">
                             <div class="col-sm text-center text-sm-right mr-sm-1">
                                 Value:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${emptyValue}" class="font-weight-bold"/>
+                                <h:outputText value="${emptyValue}" class="font-weight-bold" />
                             </div>
                         </div>
 
-                        <hr class="mt-3 mb-3"/>
+                        <hr class="mt-3 mb-3" />
                     </section>
                 </div>
             </div>

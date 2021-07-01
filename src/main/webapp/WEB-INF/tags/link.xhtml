@@ -10,7 +10,7 @@
     <!--@elvariable id="rendered" type="java.lang.Boolean"-->
 
     <h:outputLink id="#{id}" rendered="#{not empty rendered ? rendered : true}" target="#{not empty target ? target : '_self'}" value="#{pathHelper.buildPath(path)}" title="#{pathHelper.buildPath(path)}">
-        ${text}
         <ui:insert />
+        ${text}
     </h:outputLink>
 </ui:component>
