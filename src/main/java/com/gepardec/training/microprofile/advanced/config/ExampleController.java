@@ -1,6 +1,5 @@
 package com.gepardec.training.microprofile.advanced.config;
 
-import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.RequestScoped;
@@ -10,10 +9,10 @@ import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/config-advanced")
+@Path("/advanced/config")
 @RequestScoped
 @Controller
-public class AdvancedMPConfigController {
+public class ExampleController {
 
     @Inject
     private Models model;
@@ -39,14 +38,14 @@ public class AdvancedMPConfigController {
     public String getCustomConfigSource() {
         model.put("customValue1", customValue1);
         model.put("customValue2", customValue2);
-        return "advanced/config_custom_config_source.xhtml";
+        return "advanced/config/custom_config_source.xhtml";
     }
 
-    @Path("/drop-in-configuration")
+    @Path("/dropinconfiguration")
     @GET
     public String getDropInConfiguration() {
         model.put("dropInValue1", dropInValue1);
         model.put("dropInValue2", dropInValue2);
-        return "advanced/config_drop-in.xhtml";
+        return "advanced/config/drop-in.xhtml";
     }
 }
