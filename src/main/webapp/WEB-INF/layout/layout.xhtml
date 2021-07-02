@@ -16,22 +16,25 @@
         <h:outputStylesheet library="mdb5-3.6.0" name="css/mdb.min.css" />
         <h:outputStylesheet name="webjars/font-awesome/5.15.2/css/all.min.css" />
         <h:outputStylesheet library="css" name="style.css" />
-        <ui:insert name="header" />
+        <title><ui:insert name="headerText" /></title>
     </h:head>
 
     <h:body lang="en">
         <f:view contentType="text/html">
             <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
-                <div class="container-fluid">
+                <div class="container-fluid d-flex justify-content-between">
                     <div class="navbar-brand">
                         <a href="https://microprofile.io/" target="_blank">
                             <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="50" alt="MP-Logo" title="https://microprofile.io/" />
                         </a>
                     </div>
+                    <div class="fs-2">
+                        <ui:insert name="headerText" />
+                    </div>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fas fa-align-justify" />
                     </button>
-                    <div class="collapse navbar-collapse" id="navLinkContent">
+                    <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navLinkContent">
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
                             <!-- Additional nav link to display -->
                             <ui:insert name="additionalNavLink" />
