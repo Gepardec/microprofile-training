@@ -27,12 +27,17 @@ public class OpenAPIController {
         return "basic/openapi/index.xhtml";
     }
 
-    @Path("/jaxrsinterface")
+    @Path("/document")
     @GET
-    public String getJaxrsinterface() {
-
-
-        return "basic/openapi/jaxrsinterface.xhtml";
+    public String getDocument() {
+        return "basic/openapi/document.xhtml";
     }
+
+    @Path("/annotations")
+    @GET
+    public String getAnnotations() {
+        return "basic/openapi/annotations.xhtml";
+    }
+
 
 }
