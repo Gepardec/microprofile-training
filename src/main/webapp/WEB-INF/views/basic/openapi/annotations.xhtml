@@ -33,20 +33,6 @@
 
             <hr class="mt-3 mb-3"/>
 
-            <div class="row my-1">
-                <div class="col-sm text-center text-sm-right mr-sm-1">
-                    Application name:
-                </div>
-                <div class="col-sm text-center text-sm-left ml-sm-1">
-                    <h:outputText value="${applicationName}" class="font-weight-bold"/>
-                </div>
-                <div>
-                    <h:outputText value="${fileMessage}" class="alert-warning"/>
-                </div>
-            </div>
-
-            <hr class="mt-3 mb-3"/>
-
             <div class="mt-2">
                 <h5>
                     Your Task:
@@ -64,8 +50,8 @@
                     responseCode = "204",
                     description = "No Cheetah found"
                     )
-
                 </p>
+                <p> Than again call <code>http://localhost:8080/openapi</code> an look if the changes are applied</p>
             </div>
         </section>
     </ui:define>
