@@ -25,10 +25,10 @@ public class CheetahResource {
     }
 
     @Produces(MediaType.APPLICATION_JSON)
-//    @Schema
-//    @APIResponse
-//    @Parameter
-//    @Operation
+    @Schema
+    @APIResponse
+    @Parameter
+    @Operation
     @GET
     public Set<Cheetah> list() {
         return cheetahs;
@@ -43,10 +43,10 @@ public class CheetahResource {
 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-//    @APIResponse(
-//            responseCode = "201",
-//            description = "Cheetah created"
-//    )
+    @APIResponse(
+            responseCode = "201",
+            description = "Cheetah created"
+    )
     @POST
     public Set<Cheetah> add(Cheetah cheetah) {
         cheetahs.add(cheetah);
@@ -61,16 +61,16 @@ public class CheetahResource {
         return cheetahs;
     }
 
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Description("This service is for testing error responses")
-//    @Operation(
-//            description = "Response will be an internal error server or noContent")
-//    @APIResponse(
-//            name = "internalError",
-//            responseCode = "204",
-//            description = "No Cheetah found"
-//    )
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Description("Missing description")
+    @Operation(
+            description = "Response will be an internal error server or noContent")
+    @APIResponse(
+            name = "internalError",
+            responseCode = "204",
+            description = "Missing description"
+    )
     @DELETE
     public Response error(Cheetah cheetah) {
         if(cheetah == null){

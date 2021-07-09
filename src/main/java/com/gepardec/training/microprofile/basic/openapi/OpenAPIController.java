@@ -39,5 +39,11 @@ public class OpenAPIController {
         return "basic/openapi/annotations.xhtml";
     }
 
+    @Path("/filter")
+    @GET
+    public String getFilter() {
+        return "basic/openapi/oasFilter.xhtml";
+    }
+
 
 }
