@@ -12,23 +12,33 @@
             <div class="text-center">
                 <h1>Microprofile Health</h1>
             </div>
-            <tag:card id="mp-health" title="Health Endpoint">
+            <tag:card id="mp-health" title="Find the Health Endpoint">
                 <ui:define name="body">
                     <p>
-                        Find the Health Endpoint. What is the current status?
+                        <h:outputText value="${healthState.question(1)}">
+                        </h:outputText>
                     </p>
                     <p>
-                    <h:outputLink value="http://0.0.0.0:8080/health" target="_blank">
-                        Show 0.0.0.0:8080/health
-                    </h:outputLink>
+                        <h:outputLink value="http://0.0.0.0:8080/health" target="_blank">
+                            Show 0.0.0.0:8080/health
+                        </h:outputLink>
                     </p>
                     <h:outputLink value="http://0.0.0.0:9990/health" target="_blank">
                         Show 0.0.0.0:9990/health
                     </h:outputLink>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toApplicationHealth" text="This isn't right" />
-                    <tag:button id="toServerHealth" text="Everything is fine" />
+                    <h:commandButton text="This isn't right" onclick="alert('h:button1');" action="#{healthState.respond(1,1)}" update="answerOne"/>
+                    <tag:button id="toApplicationHealth" onclick="alert('h:button2');" text="This isn't right" action="#{healthState.respond(1,1)}" update="answerOne"/>
+                    <tag:button id="toServerHealth" onclick="alert('h:button3');" text="Everything is fine" action="#{healthState.respond(1,1)}" />
+                </ui:define>
+            </tag:card>
+            <tag:card id="answerOne">
+                <ui:define name="body" id="answerOne">
+                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                        <h:outputText value="${healthState.answer(1)}">
+                        </h:outputText>
+                    </div>
                 </ui:define>
             </tag:card>
         </section>

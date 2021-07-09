@@ -1,16 +1,22 @@
 package com.gepardec.training.microprofile.basic.health;
 
-import org.eclipse.microprofile.metrics.annotation.Metered;
-import org.eclipse.microprofile.metrics.annotation.Timed;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.mvc.Controller;
+import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 @Path("/basic/health")
 @RequestScoped
 @Controller
-public class IndexController {
+public class HealthController {
+
+    @Inject
+    Models models;
+
+    @Inject
+    HealthState healthState;
 
     @Path("/")
     @GET
@@ -21,6 +27,7 @@ public class IndexController {
     @Path("/index")
     @GET
     public String index() {
+        models.put("healthState",healthState);
         return "basic/health/index.xhtml";
     }
 
