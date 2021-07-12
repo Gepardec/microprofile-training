@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.basic.health;
 
-import com.gepardec.training.microprofile.basic.health.qra.QuestionResponseAnswer;
+import com.gepardec.training.microprofile.basic.health.questionaire.Questionaire;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Map;
 @ApplicationScoped
 public class HealthState {
 
-    QuestionResponseAnswer questionaire = new QuestionResponseAnswer();
+    Questionaire questionaire = new Questionaire();
 
      Map<Integer,String> givenResponsesAndTheAnswers= new HashMap<>();
 

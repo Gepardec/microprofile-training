@@ -1,12 +1,12 @@
-package com.gepardec.training.microprofile.basic.health.qra;
+package com.gepardec.training.microprofile.basic.health.questionaire;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class QuestionResponseAnswer {
+public class Questionaire {
     Map<Integer, Question<Integer, String>> questions = new HashMap<>();
 
-    public QuestionResponseAnswer() {
+    public Questionaire() {
         var responsesAndAnswers = new HashMap<Integer, String>();
         responsesAndAnswers.put(1, "Yes!");
         responsesAndAnswers.put(2, "No");
