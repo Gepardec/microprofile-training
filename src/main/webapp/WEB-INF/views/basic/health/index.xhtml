@@ -1,4 +1,5 @@
-<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
@@ -12,32 +13,68 @@
             <div class="text-center">
                 <h1>Microprofile Health</h1>
             </div>
-            <tag:card id="mp-health" title="Find the Health Endpoint">
+
+            <tag:card id="mp-health1" title="Find the Health Endpoint">
                 <ui:define name="body">
                     <p>
                         <h:outputText value="${healthState.question(1)}">
                         </h:outputText>
                     </p>
                     <p>
-                        <h:outputLink value="http://0.0.0.0:8080/health" target="_blank">
+                        <h:outputLink value="http://0.0.0.0:8080/health"
+                                      target="_blank">
                             Show 0.0.0.0:8080/health
                         </h:outputLink>
                     </p>
-                    <h:outputLink value="http://0.0.0.0:9990/health" target="_blank">
+                    <h:outputLink value="http://0.0.0.0:9990/health"
+                                  target="_blank">
                         Show 0.0.0.0:9990/health
                     </h:outputLink>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="q1r1" text="Yes" path="/basic/health/response?question=1&amp;response=1">
+                    <tag:button id="q1r1" text="Yes"
+                                path="/basic/health/response?question=1&amp;response=1">
                     </tag:button>
-                    <tag:button id="q1r2" text="No" path="/basic/health/response?question=1&amp;response=2">
+                    <tag:button id="q1r2" text="No"
+                                path="/basic/health/response?question=1&amp;response=2">
                     </tag:button>
                 </ui:define>
             </tag:card>
-            <tag:card id="answerOne">
-                <ui:define name="body" id="answerOne">
+            <tag:card id="answer1">
+                <ui:define name="body" id="answer1">
                     <div class="col-sm text-center text-sm-left ml-sm-1">
                         <h:outputText value="${healthState.answer(1)}">
+                        </h:outputText>
+                    </div>
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-health2" title="Disable default HeathChecks">
+                <ui:define name="body">
+                    <p>
+                        <h:outputText value="${healthState.question(1)}">
+                        </h:outputText>
+                    </p>
+                    <p>
+                        <h:outputLink value="https://download.eclipse.org/microprofile/microprofile-health-2.1/microprofile-health-spec.html#_disabling_default_vendor_procedures"
+                                      target="_blank">
+                            Disabling default vendor procedures
+                        </h:outputLink>
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="q2r1" text="Yes"
+                                path="/basic/health/response?question=2&amp;response=1">
+                    </tag:button>
+                    <tag:button id="q2r2" text="No"
+                                path="/basic/health/response?question=2&amp;response=2">
+                    </tag:button>
+                </ui:define>
+            </tag:card>
+            <tag:card id="answer2">
+                <ui:define name="body" id="answer2">
+                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                        <h:outputText value="${healthState.answer(2)}">
                         </h:outputText>
                     </div>
                 </ui:define>
