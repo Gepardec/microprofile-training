@@ -3,7 +3,6 @@ package com.gepardec.training.microprofile.basic.health;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
-import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -12,9 +11,6 @@ import javax.ws.rs.QueryParam;
 @RequestScoped
 @Controller
 public class HealthController {
-
-    @Inject
-    Models models;
 
     @Inject
     HealthState healthState;
@@ -32,6 +28,7 @@ public class HealthController {
         return index();
     }
 
+    @Path("/index")
     @GET
     public String index() {
         return "basic/health/index.xhtml";

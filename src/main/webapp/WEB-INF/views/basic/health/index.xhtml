@@ -1,4 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f = "http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
@@ -28,11 +29,11 @@
                     </h:outputLink>
                 </ui:define>
                 <ui:define name="buttons">
-                    <h:form>
-                    <h:commandButton  type="button" value="cmdbuttond" action="#{healthState.respond(1,1)}"/>
-                    <tag:button id="toApplicationHealth"  text="This isn't right" action="#{healthState.respond(1,1)}"/>
-                    <tag:button id="toServerHealth" text="Everything is fine" action="#{HealthState.respond(1,1)}" />
-                    </h:form>
+                    <tag:button id="q1r1" text="Yes" path="/basic/health/response?question=1&amp;response=1">
+                    </tag:button>
+                    <tag:button id="q1r2" text="No" path="/basic/health/response?question=1&amp;response=2">
+                    </tag:button>
+
                 </ui:define>
             </tag:card>
             <tag:card id="answerOne">

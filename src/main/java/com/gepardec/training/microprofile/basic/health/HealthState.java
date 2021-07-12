@@ -3,6 +3,7 @@ package com.gepardec.training.microprofile.basic.health;
 import com.gepardec.training.microprofile.basic.health.questionaire.Questionaire;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,11 +15,11 @@ public class HealthState {
 
      Map<Integer,String> givenResponsesAndTheAnswers= new HashMap<>();
 
-     public String respond(Integer questionKey,Integer response)  {
+     public Response respond(Integer questionKey, Integer response)  {
          givenResponsesAndTheAnswers
-                 .putIfAbsent(questionKey, questionaire
+                 .put(questionKey, questionaire
                          .getAnswerForResponse(questionKey, response));
-         return "index";
+         return Response.noContent().build();
      }
 
      public String question(Integer questionKey) {

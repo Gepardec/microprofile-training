@@ -4,6 +4,4 @@ import javax.enterprise.inject.Model;
 
 @Model
 public class HealthModel {
-
-
 }
