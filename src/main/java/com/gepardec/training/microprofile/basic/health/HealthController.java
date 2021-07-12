@@ -6,6 +6,7 @@ import javax.mvc.Controller;
 import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
 @Path("/basic/health")
 @RequestScoped
@@ -18,16 +19,16 @@ public class HealthController {
     @Inject
     HealthState healthState;
 
-    @Path("/")
+
     @GET
-    public String get() {
-        return index();
+    public String index(){
+        return "basic/health/index.xhtml";
     }
 
-    @Path("/index")
+    @Path("/response")
     @GET
-    public String index() {
-        models.put("healthState",healthState);
+    public String index(@QueryParam("question") Integer questionKey, @QueryParam("response") Integer responseKey) {
+        healthState.respond(questionKey,responseKey);
         return "basic/health/index.xhtml";
     }
 

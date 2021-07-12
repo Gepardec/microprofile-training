@@ -28,9 +28,11 @@
                     </h:outputLink>
                 </ui:define>
                 <ui:define name="buttons">
-                    <h:commandButton text="This isn't right" onclick="alert('h:button1');" action="#{healthState.respond(1,1)}" update="answerOne"/>
-                    <tag:button id="toApplicationHealth" onclick="alert('h:button2');" text="This isn't right" action="#{healthState.respond(1,1)}" update="answerOne"/>
-                    <tag:button id="toServerHealth" onclick="alert('h:button3');" text="Everything is fine" action="#{healthState.respond(1,1)}" />
+                    <h:form>
+                    <h:commandButton  type="button" value="cmdbuttond" action="#{healthState.respond(1,1)}"/>
+                    <tag:button id="toApplicationHealth"  text="This isn't right" action="#{healthState.respond(1,1)}"/>
+                    <tag:button id="toServerHealth" text="Everything is fine" action="#{HealthState.respond(1,1)}" />
+                    </h:form>
                 </ui:define>
             </tag:card>
             <tag:card id="answerOne">

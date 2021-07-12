@@ -2,9 +2,11 @@ package com.gepardec.training.microprofile.basic.health;
 
 import com.gepardec.training.microprofile.basic.health.qra.QuestionResponseAnswer;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import java.util.HashMap;
 import java.util.Map;
 
+@Named
 @ApplicationScoped
 public class HealthState {
 
@@ -12,10 +14,11 @@ public class HealthState {
 
      Map<Integer,String> givenResponsesAndTheAnswers= new HashMap<>();
 
-     public void respond(Integer questionKey,Integer response)  {
+     public String respond(Integer questionKey,Integer response)  {
          givenResponsesAndTheAnswers
                  .putIfAbsent(questionKey, questionaire
                          .getAnswerForResponse(questionKey, response));
+         return "index";
      }
 
      public String question(Integer questionKey) {
