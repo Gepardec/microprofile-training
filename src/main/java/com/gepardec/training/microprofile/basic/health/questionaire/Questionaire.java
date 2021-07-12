@@ -8,10 +8,10 @@ public class Questionaire {
 
     public Questionaire() {
         var responsesAndAnswers = new HashMap<Integer, String>();
-        responsesAndAnswers.put(1, "Yes!");
-        responsesAndAnswers.put(2, "No");
+        responsesAndAnswers.put(1, "Wildfly uses one port for server interactions and another for the deployed application. Per specification the health status is \"DOWN\" when a single HealthCheck fails. So this makes some sense and is actually okay.");
+        responsesAndAnswers.put(2, "Actually everything seems to be working as intended.");
         questions.put(1,
-                      new Question<>("Does this work?",
+                      new Question<>("Is this okay?",
                                      responsesAndAnswers));
 
         responsesAndAnswers = new HashMap<>();
