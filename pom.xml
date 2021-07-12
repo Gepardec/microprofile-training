@@ -121,6 +121,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.microprofile.rest.client</groupId>
+            <artifactId>microprofile-rest-client-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Application Dependencies -->
         <dependency>
             <groupId>org.eclipse.krazo</groupId>
