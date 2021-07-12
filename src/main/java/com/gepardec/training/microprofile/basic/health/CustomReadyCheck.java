@@ -7,12 +7,11 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Readiness
 @ApplicationScoped
-public class PreparedReadinessCheck implements HealthCheck {
+public class CustomReadyCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("someotherdata")
-                                  .withData("data","0815")
-                                  .up()
+        return HealthCheckResponse.named("CustomReadyCheck")
+                                  .down()
                                   .build();
     }
 }
