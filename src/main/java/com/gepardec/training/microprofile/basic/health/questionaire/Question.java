@@ -3,21 +3,20 @@ package com.gepardec.training.microprofile.basic.health.questionaire;
 import java.util.Map;
 
 class Question<R, A> {
-
-    public String getContent() {
-        return content;
-    }
-
-    String content;
+    String questionText;
     Map<R, A> responsesAndAnswers;
 
-    public Question(String content, Map<R, A> responsesAndAnswers) {
-        this.content = content;
+    public Question(String question, Map<R, A> responsesAndAnswers) {
+        this.questionText = question;
         this.responsesAndAnswers = responsesAndAnswers;
     }
 
-    public String answer(R response) {
-        return responsesAndAnswers.get(response).toString();
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public A getAnswer(R response) {
+        return responsesAndAnswers.get(response);
     }
 
 }

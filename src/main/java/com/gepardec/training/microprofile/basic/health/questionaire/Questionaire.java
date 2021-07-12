@@ -22,11 +22,11 @@ public class Questionaire {
                                      responsesAndAnswers));
     }
 
-    public String getAnswerForResponse(Integer questionKey, Integer response) {
-       return questions.get(questionKey).answer(response);
+    public String getQuestion(Integer questionKey) {
+        return questions.get(questionKey).getQuestionText();
     }
 
-    public String getQuestion(Integer questionKey) {
-    return questions.get(questionKey).getContent();
+    public String getAnswerForResponse(Integer questionKey, Integer response) {
+       return questions.get(questionKey).getAnswer(response);
     }
 }
