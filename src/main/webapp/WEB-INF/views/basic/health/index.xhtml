@@ -17,7 +17,7 @@
             <tag:card id="mp-health1" title="Find the Health Endpoint">
                 <ui:define name="body">
                     <p>
-                        <h:outputText value="${healthState.question(1)}">
+                        <h:outputText value="${healthState.questionText(1)}">
                         </h:outputText>
                     </p>
                     <p>
@@ -52,7 +52,7 @@
             <tag:card id="mp-health2" title="Disable default HeathChecks">
                 <ui:define name="body">
                     <p>
-                        <h:outputText value="${healthState.question(1)}">
+                        <h:outputText value="${healthState.questionText(2)}">
                         </h:outputText>
                     </p>
                     <p>
@@ -79,6 +79,39 @@
                     </div>
                 </ui:define>
             </tag:card>
+
+
+            <tag:card id="mp-health3" title="Fix the custom HealthCheck">
+                <ui:define name="body">
+                    <p>
+                        <h:outputText value="${healthState.questionText(3)}">
+                        </h:outputText>
+                    </p>
+                    <p>
+                        <h:outputLink value="https://download.eclipse.org/microprofile/microprofile-health-2.1/microprofile-health-spec.html#_disabling_default_vendor_procedures"
+                                      target="_blank">
+                            Disabling default vendor procedures
+                        </h:outputLink>
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="q2r1" text="Yes"
+                                path="/basic/health/response?question=3&amp;response=1">
+                    </tag:button>
+                    <tag:button id="q2r2" text="No"
+                                path="/basic/health/response?question=3&amp;response=2">
+                    </tag:button>
+                </ui:define>
+            </tag:card>
+            <tag:card id="answer3">
+                <ui:define name="body" id="answer3">
+                    <div class="col-sm text-center text-sm-left ml-sm-1">
+                        <h:outputText value="${healthState.answer(3)}">
+                        </h:outputText>
+                    </div>
+                </ui:define>
+            </tag:card>
+
         </section>
     </ui:define>
 </ui:composition>
