@@ -19,16 +19,21 @@ public class HealthController {
     @Inject
     HealthState healthState;
 
-
+    @Path("/")
     @GET
-    public String index(){
-        return "basic/health/index.xhtml";
+    public String get() {
+        return index();
     }
 
     @Path("/response")
     @GET
-    public String index(@QueryParam("question") Integer questionKey, @QueryParam("response") Integer responseKey) {
-        healthState.respond(questionKey,responseKey);
+    public String response(@QueryParam("question") Integer questionKey, @QueryParam("response") Integer responseKey) {
+        healthState.respond(questionKey, responseKey);
+        return index();
+    }
+
+    @GET
+    public String index() {
         return "basic/health/index.xhtml";
     }
 
