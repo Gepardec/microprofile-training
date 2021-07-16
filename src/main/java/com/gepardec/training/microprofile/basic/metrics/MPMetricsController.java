@@ -21,12 +21,6 @@ public class MPMetricsController {
     @Inject
     private Models model;
 
-    @Path("/enable")
-    @GET
-    public String isEnabled(){
-        return "basic/metrics/enable.xhtml";
-    }
-
     @Path("/counted")
     @GET
     public String getCounted(){
