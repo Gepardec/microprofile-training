@@ -125,6 +125,11 @@
             <artifactId>microprofile-rest-client-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.openapi</groupId>
+            <artifactId>microprofile-openapi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- Application Dependencies -->
         <dependency>

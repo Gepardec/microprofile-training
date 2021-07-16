@@ -1,0 +1,75 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-Config Advanced DropIn Config
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicConfigIndex" path="/basic/config/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="container-lg">
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <p>
+                            The specification for Microprofile
+                            <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                               target="_blank">
+                                Config.
+                            </a>
+                        </p>
+
+                        <p>
+                            A custom ConfigSource can be implemented in its own JAR in order to maintain your configuration separately from your application.
+                        </p>
+
+                        <hr class="mt-3 mb-3" />
+
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value1:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${dropInValue1}" class="font-weight-bold"/>
+                            </div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value2:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${dropInValue2}" class="font-weight-bold"/>
+                            </div>
+                        </div>
+
+                        <hr class="mt-3 mb-3" />
+                    </section>
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <h5>
+                            Your Task:
+                        </h5>
+
+                        <p>
+                            Take a look at the module <code>drop-in-configuration</code>. There, implement and register a custom ConfigSource that retrieves the configuration from <code>com.gepardec.training.microprofile.dropinconfiguration</code>. Finally, provide the drop-in-configuration JAR so that the configuration is present in this application.
+                        </p>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

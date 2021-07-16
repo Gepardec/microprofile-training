@@ -1,0 +1,58 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-OpenAPI Basics Annotations
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicOpenAPIIndex" path="/basic/openapi/index" text="Back"><i class="fas fa-step-backward"/></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>JAX-RS + OpenAPI</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="https://download.eclipse.org/microprofile/microprofile-open-api-1.1.2/microprofile-openapi-spec.html"
+                       target="_blank">
+                        OpenAPI.
+                    </a>
+                </p>
+
+                <p>
+                    JAX-RS annotations are processed by default, you can augment the existing code with OpenAPI annotations.
+                </p>
+
+            </div>
+
+            <hr class="mt-3 mb-3"/>
+
+            <div class="mt-2">
+                <h5>
+                    Your Task:
+                </h5>
+
+                <p>
+                    Take a look at
+                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>
+                    and add the following annotation to get() @Parameter and @Schema and to error() the following:
+                    @Description("Missing description")
+                    @Operation(
+                    description = "Response will be an internal error server or noContent")
+                    @APIResponse(
+                    name = "internalError",
+                    responseCode = "204",
+                    description = "No Cheetah found"
+                    )
+                </p>
+                <p> Than again call <code>http://localhost:8080/openapi</code> an look if the changes are applied</p>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

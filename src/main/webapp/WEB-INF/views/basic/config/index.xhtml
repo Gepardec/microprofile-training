@@ -1,0 +1,85 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-Config Basics
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <tag:card id="mp-config-file" title="Configuration from properties file">
+                <ui:define name="body">
+                    <p>
+                        With this example, you will use a property file to configure this application.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleFile" text="Example" path="/basic/config/file" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-sys-prop" title="Configuration from system properties">
+                <ui:define name="body">
+                    <p>
+                        Here, system properties are used to configure this application.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleSysProp" text="Example" path="/basic/config/sys" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-env" title="Configuration from environment">
+                <ui:define name="body">
+                    <p>
+                        By using environment variables, you will configure this application.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleEnv" text="Example" path="/basic/config/env" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-converter" title="Configuration Converter">
+                <ui:define name="body">
+                    <p>
+                        You will implement a converter for the conversion of the configuration value from String into a
+                        desired targettype.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleConverter" text="Example" path="/basic/config/converter" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-empty" title="Empty Configuration">
+                <ui:define name="body">
+                    <p>
+                        By default, empty configurations lead to Exceptions. Here, you will learn how to handle empty
+                        configurations.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleEmpty" text="Example" path="/basic/config/empty" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-property-class" title="Property class">
+                <ui:define name="body">
+                    <p>
+                        With this example, you will learn how to aggregate related properties into a property class.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExamplePropertyClass" text="Example" path="/basic/config/propertyclass" />
+                </ui:define>
+            </tag:card>
+        </section>
+    </ui:define>
+</ui:composition>
+
