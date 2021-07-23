@@ -25,7 +25,7 @@ IMPORTANT: When running in an IDE the actual port will depend on your configurat
 
 == Running in standalone
 
-Run the application with `./mvnw wildfly:run`.
+Run the application with `mvn wildfly:run`.
 
 IMPORTANT: In this mode you won't be able to hot-code deploy.
 
@@ -33,8 +33,11 @@ IMPORTANT: In this mode you won't be able to hot-code deploy.
 
 Refer to the documentation of the IDE of your choice, which must provide integration for Wildfly/JBoss servers, for how to set up the project.
 
-IMPORTANT: You need to run the server with the `standalone-microprofile.xml` configuration provided in the `infrastructure/wildfly` directory. +
-Copy this file into your wildfly `standalone/configuration` directory and add `-c standalone-microprofile.xml` to the startup script of your wildfly run configuration.
+Configure you wildfly to use microprofile configuration by adding `-c standalone-microprofile.xml` to your startup script in your run configuration.
+
+On first startup you need to run the `scripts.cli` on your wildfly with `jboss-cli` for further configuration (<your-JBOSS_HOME-directory>/bin/jboss-cli.sh --file=infrastructure/wildfly/scripts.cli --connect).
+
+IMPORTANT: You need to run the server with the `standalone-microprofile.xml` otherwise microprofile extensions are not available.
 
 == Starting up the infrastructure
 
