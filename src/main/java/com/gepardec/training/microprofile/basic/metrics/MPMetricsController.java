@@ -21,12 +21,22 @@ public class MPMetricsController {
     @Inject
     private Models model;
 
+    @Inject
+    private Counter counter;
+
     @Path("/counted")
     @GET
     public String getCounted(){
         Counter change = metricRegistry.counter("count-example");
         model.put("count", change.getCount());
         return "basic/metrics/counted.xhtml";
+    }
+
+    @Path("/metric")
+    @GET
+    public String getMetric() {
+        model.put("count", counter.getCount());
+        return "basic/metrics/metric.xhtml";
     }
 
     @Path("/count")
