@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
+import org.eclipse.microprofile.rest.client.RestClientBuilder;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -16,9 +18,9 @@ public class UseRestClientBuilder {
         //URI is already given
         URI apiUri = new URI("http://localhost:8080/mptraining/api/");
         //Not given
-//        cheetahApi = RestClientBuilder.newBuilder()
-//                .baseUri(apiUri)
-//                .build(ClientCheetahApi.class);
+        cheetahApi = RestClientBuilder.newBuilder()
+                .baseUri(apiUri)
+                .build(ClientCheetahApi.class);
 
     }
 
