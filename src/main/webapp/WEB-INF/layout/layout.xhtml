@@ -41,6 +41,8 @@
                             <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
                             <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config" path="/basic/config/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config" path="/advanced/config/index" />
+                            <tag:navLink id="navBasicMetrics" rendered="#{pathHelper.isOnSubpage('/basic/metrics')}" active="#{pathHelper.isOnSubpage('/basic/metrics')}" text="MP-Metrics" path="/basic/metrics/index" />
+                            <tag:navLink id="navAdvancedMetrics" rendered="#{pathHelper.isOnSubpage('/advanced/metrics')}" active="#{pathHelper.isOnSubpage('/advanced/metrics')}" text="MP-Metrics" path="/advanced/metrics/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
