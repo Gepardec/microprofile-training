@@ -1,0 +1,74 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-Metrics Basics @Metered
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicMetricsIndex" path="/basic/metrics/index" text="Back"><i class="fas fa-step-backward"/></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="container-lg">
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <p>
+                            The specification for Microprofile
+                            <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html"
+                               target="_blank">
+                                Metrics.
+                            </a>
+                        </p>
+
+                        <p>
+                            @Metered counts the invocations of the constructor or method and tracks how frequently they are called.
+                        </p>
+
+                        <hr class="mt-3 mb-3"/>
+
+                        <tag:button id="toMetricsExampleMetered" text="Meter" path="/basic/metrics/meter"/>
+                        <h:outputText value="${meter}" class="font-weight-bold" style="padding-left: 30pt"/>
+
+                        <hr class="mt-3 mb-3"/>
+                    </section>
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <h5>
+                            Your Task:
+                        </h5>
+
+                        <p>
+                            Use @Metered Annotation to track how frequently <code>meter()</code> in
+                            <code>com.gepardec.training.microprofile.basic.metrics.MPMetricsController</code> are called.
+                            The name of the metric should be "metered-example".
+                            Make sure that the metric is displayed at
+                            <a href="http://localhost:9990/metrics"
+                               target="_blank">
+                                Wildfly
+                            </a>
+                            and
+                            <a href="http://localhost:19090/"
+                               target="_blank">
+                                Prometheus.
+                            </a>
+
+                        </p>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

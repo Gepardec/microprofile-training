@@ -1,7 +1,9 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
 import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.Meter;
 import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.Timer;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -45,4 +47,31 @@ public class MPMetricsController {
         return getCounted();
     }
 
+    @Path("/metered")
+    @GET
+    public String getMetered(){
+        Meter meter = metricRegistry.meter("metered-example");
+        model.put("meter", meter.getOneMinuteRate());
+        return "basic/metrics/metered.xhtml";
+    }
+
+    @Path("/meter")
+    @GET
+    public String meter(){
+        return getMetered();
+    }
+
+    @Path("/timed")
+    @GET
+    public String getTimed(){
+        Timer timed = metricRegistry.timer("timed-example");
+        model.put("time", timed.getOneMinuteRate());
+        return "basic/metrics/timed.xhtml";
+    }
+
+    @Path("/time")
+    @GET
+    public String time() {
+        return getTimed();
+    }
 }

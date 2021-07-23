@@ -49,6 +49,32 @@
 
             </tag:card>
 
+            <tag:card id="mp-metrics-metered" title="@Metered">
+                <ui:define name="body">
+                    <p>
+                        With @Metered annotation counts the invocations of the constructor or method and tracks
+                        how frequently they are called.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toMetricsExampleMetered" text="Examples" path="/basic/metrics/metered" />
+                </ui:define>
+
+            </tag:card>
+
+            <tag:card id="mp-metrics-timed" title="@Timed">
+                <ui:define name="body">
+                    <p>
+                        If you want to track and sample the duration for a method call, you can make use of timers
+                        ... for example @Timed annotation.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toMetricsExampleTimed" text="Examples" path="/basic/metrics/timed" />
+                </ui:define>
+
+            </tag:card>
+
         </section>
     </ui:define>
 </ui:composition>
