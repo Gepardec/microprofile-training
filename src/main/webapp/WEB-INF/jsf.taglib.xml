@@ -79,7 +79,7 @@
         <attribute>
             <description>The link text</description>
             <name>text</name>
-            <required>true</required>
+            <required>false</required>
             <type>java.lang.String</type>
         </attribute>
         <attribute>
@@ -114,8 +114,14 @@
         <attribute>
             <description>The link text</description>
             <name>text</name>
-            <required>true</required>
+            <required>false</required>
             <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>If true the link is marked active</description>
+            <name>active</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
         </attribute>
         <attribute>
             <description>If true tag is rendered, otherwise not</description>

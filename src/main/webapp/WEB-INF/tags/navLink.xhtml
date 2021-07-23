@@ -8,13 +8,17 @@
     <!--@elvariable id="text" type="java.lang.String"-->
     <!--@elvariable id="target" type="java.lang.String"-->
     <!--@elvariable id="rendered" type="java.lang.Boolean"-->
+    <!--@elvariable id="active" type="java.lang.Boolean"-->
 
-    <h:outputLink id="#{id}"
-        rendered="#{not empty rendered ? rendered : true}"
-        styleClass="nav-link #{pathHelper.isOnPage(path) ? 'active' : ''}"
-        pt:aria-current="#{pathHelper.isOnPage(path) ? 'page' : ''}"
-        value="#{pathHelper.buildPath(path)}"
-        title="#{pathHelper.buildPath(path)}">
-        ${text}
-    </h:outputLink>
+    <div class="nav-item">
+        <h:outputLink id="#{id}"
+            rendered="#{not empty rendered ? rendered : true}"
+            styleClass="nav-link #{active || pathHelper.isOnPage(path) ? 'active' : ''}"
+            pt:aria-current="#{active || pathHelper.isOnPage(path) ? 'page' : ''}"
+            value="#{pathHelper.buildPath(path)}"
+            title="#{pathHelper.buildPath(path)}">
+            <ui:insert />
+            ${text}
+        </h:outputLink>
+    </div>
 </ui:component>

@@ -1,0 +1,75 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-Config Basics Converter
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicConfigIndex" path="/basic/config/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="container-lg">
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <p>
+                            The specification for Microprofile
+                            <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                                target="_blank">
+                                Config.
+                            </a>
+                        </p>
+
+                        <p>
+                            Converters allow the conversion of the configuration value from String into a desired targettype. By default, converters for common classes are provided by the Microprofile Config, such as Boolean, Integer,... . A custom converter can be implemented for a specific target type.
+                        </p>
+
+                        <hr class="mt-3 mb-3" />
+
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${value1}" class="font-weight-bold" />
+                            </div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${value2}" class="font-weight-bold" />
+                            </div>
+                        </div>
+
+                        <hr class="mt-3 mb-3" />
+                    </section>
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <h5>
+                            Your Task:
+                        </h5>
+
+                        <p>
+                            Implement and register a custom converter for the type BigDecimal so that the values are always rounded to two decimal places.
+                        </p>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+
