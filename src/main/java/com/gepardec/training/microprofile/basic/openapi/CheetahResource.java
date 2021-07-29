@@ -2,6 +2,7 @@ package com.gepardec.training.microprofile.basic.openapi;
 
 import jdk.jfr.Description;
 import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
+
 @Path("/cheetahs")
 public class CheetahResource {
 
@@ -25,21 +27,25 @@ public class CheetahResource {
     }
 
     @Produces(MediaType.APPLICATION_JSON)
-    @Schema
-    @APIResponse
     @Parameter
-    @Operation
     @GET
-    public Set<Cheetah> list() {
-        return cheetahs;
-    }
-
-    @Path("/getResponse")
-    @Produces(MediaType.APPLICATION_JSON)
-    @GET
-    public Response listResponse() {
+    @APIResponses(
+            value = {
+                    @APIResponse(responseCode = "404",
+                            description = "Missing description",
+                            content = @Content(mediaType = "text/plain")),
+                    @APIResponse(
+                            responseCode = "200",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(
+                                            type = SchemaType.OBJECT,
+                                            implementation = Cheetah.class)))})
+    @Operation(summary = "List full with cheetahs.")
+    public Response list() {
         return Response.ok(cheetahs).build();
     }
+
 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -55,28 +61,26 @@ public class CheetahResource {
 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @DELETE
-    public Set<Cheetah> delete(Cheetah cheetah) {
-        cheetahs.removeIf(existingCheetah -> existingCheetah.getName().equalsIgnoreCase(cheetah.getName()));
-        return cheetahs;
-    }
-
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Description("Missing description")
     @Operation(
-            description = "Response will be an internal error server or noContent")
-    @APIResponse(
-            name = "internalError",
-            responseCode = "204",
-            description = "Missing description"
-    )
+            description = "Removes a cheetah from the coalition")
+    @APIResponses(value = {
+            @APIResponse(responseCode = "202",
+                    description = "Operation executed successfully"),
+
+            @APIResponse(
+                    name = "NoContent",
+                    responseCode = "204",
+                    description = "Missing description"
+            )})
     @DELETE
-    public Response error(Cheetah cheetah) {
-        if(cheetah == null){
+    public Response delete(Cheetah cheetah) {
+        if (cheetah == null) {
             return Response.noContent().build();
         }
-        return Response.serverError().build();
+
+        cheetahs.removeIf(existingCheetah -> existingCheetah.getName().equalsIgnoreCase(cheetah.getName()));
+        return Response.accepted(cheetahs).build();
     }
 
 }

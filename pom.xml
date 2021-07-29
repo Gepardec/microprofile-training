@@ -130,6 +130,13 @@
             <artifactId>microprofile-openapi-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
+            <version>3.2.4</version>
+            <scope>provided</scope>
+
+        </dependency>
 
         <!-- Application Dependencies -->
         <dependency>
@@ -196,6 +203,16 @@
             <artifactId>javax.json.bind-api</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-maven-plugin</artifactId>
+            <version>5.2.0</version>
+        </dependency>
 
     </dependencies>
 
@@ -249,6 +266,30 @@
                 <configuration>
                     <skip>true</skip>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <!-- RELEASE_VERSION -->
+                <version>5.1.0</version>
+                <!-- /RELEASE_VERSION -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <library>microprofile</library>
+                            <inputSpec>${project.basedir}/src/main/webapp/META-INF/openapi.yaml</inputSpec>
+                            <generatorName>java</generatorName>
+                            <apiPackage>api</apiPackage>
+                            <modelPackage>model</modelPackage>
+                            <configOptions>
+                                <sourceFolder>src/gen/java/main</sourceFolder>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
