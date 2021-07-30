@@ -10,7 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class CustomReadyCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("CustomReadyCheck")
+        return HealthCheckResponse.named("This one is down.")
                                   .down()
                                   .build();
     }
