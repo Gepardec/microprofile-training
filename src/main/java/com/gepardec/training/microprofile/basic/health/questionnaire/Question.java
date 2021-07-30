@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.health.questionaire;
+package com.gepardec.training.microprofile.basic.health.questionnaire;
 
 import java.util.Map;
 
