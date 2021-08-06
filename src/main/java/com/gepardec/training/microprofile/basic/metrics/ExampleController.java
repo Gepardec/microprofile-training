@@ -1,9 +1,7 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
-import org.eclipse.microprofile.metrics.Counter;
-import org.eclipse.microprofile.metrics.Meter;
-import org.eclipse.microprofile.metrics.MetricRegistry;
-import org.eclipse.microprofile.metrics.Timer;
+import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.eclipse.microprofile.metrics.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,7 +13,7 @@ import javax.ws.rs.Path;
 @Path("/basic/metrics")
 @RequestScoped
 @Controller
-public class MPMetricsController {
+public class ExampleController {
 
     @Inject
     private MetricRegistry metricRegistry;
@@ -73,5 +71,20 @@ public class MPMetricsController {
     @GET
     public String time() {
         return getTimed();
+    }
+
+    @Path("/simply-timed")
+    @GET
+    public String getSimplyTimed(){
+        SimpleTimer timed = metricRegistry.simpleTimer("simply-timed-example");
+        model.put("count", timed.getCount());
+        model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
+        return "basic/metrics/simply-timed.xhtml";
+    }
+
+    @Path("/simple-time")
+    @GET
+    public String simpleTime() {
+        return getSimplyTimed();
     }
 }

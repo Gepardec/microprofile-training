@@ -4,7 +4,7 @@
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="headerText">
-        Microprofile-Metrics Basics @Metered
+        Microprofile-Metrics Basics @SimplyTimed
     </ui:define>
 
     <ui:define name="additionalNavLink">
@@ -26,14 +26,31 @@
                         </p>
 
                         <p>
-                            @Metered counts the invocations of the constructor or method and tracks how frequently they are called.
+                            With @SimplyTimed you are able to measure the duration and invocations of the annotated object.
                         </p>
 
                         <hr class="mt-3 mb-3"/>
 
-                        <tag:button id="toMetricsExampleMetered" text="Meter" path="/basic/metrics/meter"/>
-                        <h:outputText value="${meter}" class="font-weight-bold" style="padding-left: 30pt"/>
-
+                        <div style="padding-bottom: 10pt">
+                            <tag:button id="toMetricsExampleSimplyTimed" text="Refresh"
+                                        path="/basic/metrics/simple-time"/>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm text-lg-start text-sm-right mr-sm-1">
+                                Count:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${count}" class="font-weight-bold"/>
+                            </div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm text-lg-start text-sm-right mr-sm-1">
+                                Duration (in seconds):
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${time}" class="font-weight-bold"/>
+                            </div>
+                        </div>
                         <hr class="mt-3 mb-3"/>
                     </section>
                 </div>
@@ -47,9 +64,8 @@
                         </h5>
 
                         <p>
-                            Use @Metered Annotation to track how frequently <code>meter()</code> in
-                            <code>com.gepardec.training.microprofile.basic.metrics.ExampleController</code> are called.
-                            The name of the metric should be "metered-example".
+                            Use <code>@SimplyTimed</code> to measure the duration and how often the method <code>simpleTime()</code>
+                            in <code>com.gepardec.training.microprofile.basic.metrics.ExampleController</code>was called. The name fo the metric should be <code>"simply-timed-example"</code>.
                             Make sure that the metric is displayed at
                             <a href="http://localhost:9990/metrics"
                                target="_blank">
