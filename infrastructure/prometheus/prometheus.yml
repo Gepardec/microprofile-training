@@ -17,7 +17,7 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - 'prometheus:19090'
+          - 'prometheus:9090'
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: 'wildfly'
 
@@ -26,4 +26,4 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - 'host.docker.internal:19990'
+          - 'host.docker.internal:9990'
