@@ -1,0 +1,58 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-Config Basics Fault-Tolerance
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicFaulttoleranceIndex" path="/basic/faulttolerance/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>Asynchronous invocations</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.faultToleranceUri}#asynchronous"
+                        target="_blank">
+                        Fault Tolerance (Asnychrnous)
+                    </a>
+                </p>
+            </div>
+
+            <div id="myModal" class="modal" tabindex="-1">
+                <div id="myModalDialog" class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="d-flex flex-row justify-content-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden m-auto">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <tag:button id="callAsynchronousEndpoint" text="Asynchrnous Call" />
+            <script>
+                const callFutureEndpoint = () => {
+                    const modal = mdb.Modal.getInstance(document.getElementById('myModal'))
+                    modal.show()
+                    fetch("#{pathHelper.buildPath('/basic/faulttolerance/asynchronous/future')}", {
+                        method: "POST",
+                    }).finally(() => modal.hide());
+                };
+                document.addEventListener("DOMContentLoaded", (event) => {
+                    new mdb.Modal(document.getElementById('myModal'));
+                    document.getElementById("callAsynchronousEndpoint").addEventListener("click", callFutureEndpoint);
+                })
+            </script>
+        </section>
+    </ui:define>
+</ui:composition>

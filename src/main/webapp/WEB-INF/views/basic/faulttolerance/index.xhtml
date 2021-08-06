@@ -1,0 +1,28 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile-Config Basics
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <tag:card id="mp-config-file" title="Asynchronous invocations">
+                <ui:define name="body">
+                    <p>
+                        Asynchronous invocations are used to invoke a method on another Thread, where the caller gets a <code>Future&lt;?&gt;</code> as a result.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toFaulttoleranceAsynchronous" text="Example" path="/basic/faulttolerance/asynchronous" />
+                </ui:define>
+            </tag:card>
+        </section>
+    </ui:define>
+</ui:composition>
+
