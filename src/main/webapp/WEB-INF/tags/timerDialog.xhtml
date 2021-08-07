@@ -44,16 +44,14 @@
             const timerTextElement = document.getElementById('#{id}Seconds');
             new mdb.Modal(modalDialogElement);
             let timer;
-            modalDialogElement.addEventListener("shown.mdb.modal", () => {
+            modalDialogElement.addEventListener("show.mdb.modal", () => {
+                timerTextElement.innerText = '0';
                 let seconds = 0;
                 timer = setInterval(() => {
                     timerTextElement.innerText = (seconds++).toString();
                 }, 1000);
             });
-            modalDialogElement.addEventListener("hidden.mdb.modal", () => {
-                clearInterval(timer);
-                timerTextElement.innerText = '0';
-            });
+            modalDialogElement.addEventListener("hide.mdb.modal", () => clearInterval(timer));
         });
     </script>
 </ui:component>

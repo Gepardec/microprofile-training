@@ -1,0 +1,91 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile Fault-Tolerance Basics (Timeout)
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicFaulttoleranceIndex" path="/basic/faulttolerance/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>Timeout</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.faultToleranceUri}#timeout"
+                        target="_blank">
+                        Fault Tolerance (Timeout)
+                    </a>
+                </p>
+
+                <p>
+                    Timeout limit method invocation durations and terminate them with a ?? exception.
+                    Timeout behaviour prevents the service to become unresponsive if a method invocation hungs or takes longer as expected.
+                    The service is meant to skip the invocation in case of a hung or unexpected long run method invocation to keep the service
+                    responsive for other calls.
+                </p>
+            </div>
+
+            <div class="row my-2 text-start font-weight-bold">
+                <hr class="my-3" />
+
+                <div class="col-sm me-sm-1">
+                    Server Response:
+                </div>
+                <div class="col-sm ms-sm-1">
+                    <span id="serverResponse" />
+                </div>
+
+                <hr class="my-3" />
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        Click the button below and you will see that the call takes up to 4 seconds to complete but it should only take 1 second.
+                        Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.TimeoutController#timedout</code>
+                        and follow the instructions you see there.
+                    </p>
+
+                    <div class="text-center">
+                        <tag:button id="callTimedoutEndpoint" path="/basic/faulttolerance/timeout/timedout" text="Timedout call" />
+                    </div>
+                </div>
+            </div>
+
+            <ui:insert name="bottom">
+                <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", (event) => {
+                        document.getElementById("callTimedoutEndpoint").addEventListener("click", (event) => {
+                            event.preventDefault();
+                            const serverResponse = document.getElementById("serverResponse");
+                            serverResponse.innerText = "";
+                            const modal = mdb.Modal.getInstance(document.getElementById('timer'))
+                            modal.show();
+                            fetch(event.target.href, {
+                                method: "POST",
+                            }).then((response) => {
+                                let serverResponseText = `HTTP-Status: \${response.status}`;
+                                response.text()
+                                    .then((text) => serverResponseText += `, Content: \${text}`)
+                                    .finally(() => serverResponse.innerText = serverResponseText);
+                            }).finally(() => modal.hide());
+                        });
+                    });
+                </script>
+            </ui:insert>
+        </section>
+    </ui:define>
+</ui:composition>

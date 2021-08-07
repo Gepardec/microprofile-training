@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="headerText">
-        Microprofile-Config Basics Fault-Tolerance
+        Microprofile Fault-Tolerance Basics (Asynchronous)
     </ui:define>
 
     <ui:define name="additionalNavLink">
@@ -13,7 +13,7 @@
     <ui:define name="body">
         <section>
             <div class="text-center">
-                <h1>Asynchronous invocations</h1>
+                <h1>Asynchronous</h1>
             </div>
             <div class="mt-3">
                 <p>
@@ -23,24 +23,55 @@
                         Fault Tolerance (Asnychrnous)
                     </a>
                 </p>
+
+                <p>
+                    Asynchronous method invocations allow concurrent invocations of methods where the caller can
+                </p>
+
+                <ol>
+                    <li>proceed instead of waiting for a long running invocation to finish,</li>
+                    <li>and/or to reduce response times by concurrently running long running methods.</li>
+                </ol>
+
+                <hr class="my-3" />
             </div>
 
-            <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
+            <div class="row my-2">
+                <div class="col">
+                    <section>
+                        <h4>
+                            Your Task:
+                        </h4>
 
-            <tag:button id="callAsynchronousEndpoint" path="/basic/faulttolerance/asynchronous/async" text="Asynchrnous Call" />
+                        <p>
+                            Click the button below and you will see that the call takes up to 4 seconds to complete but it should only take 1 second.
+                            Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.AsynchronousController#async</code>
+                            and follow the instructions you see there.
+                        </p>
 
-            <script>
-                document.addEventListener("DOMContentLoaded", (event) => {
-                    document.getElementById("callAsynchronousEndpoint").addEventListener("click", (event) => {
-                        event.preventDefault();
-                        const modal = mdb.Modal.getInstance(document.getElementById('timer'))
-                        modal.show();
-                        fetch(event.target.href, {
-                            method: "POST",
-                        }).finally(() => modal.hide());
+                        <div class="text-center">
+                            <tag:button id="callAsynchronousEndpoint" path="/basic/faulttolerance/asynchronous/async" text="Asynchrnous call" />
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <ui:insert name="bottom">
+                <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", (event) => {
+                        document.getElementById("callAsynchronousEndpoint").addEventListener("click", (event) => {
+                            event.preventDefault();
+                            const modal = mdb.Modal.getInstance(document.getElementById('timer'))
+                            modal.show();
+                            fetch(event.target.href, {
+                                method: "POST",
+                            }).finally(() => modal.hide());
+                        });
                     });
-                });
-            </script>
+                </script>
+            </ui:insert>
         </section>
     </ui:define>
 </ui:composition>

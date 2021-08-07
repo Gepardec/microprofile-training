@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
 import org.apache.commons.lang3.concurrent.ConcurrentUtils;
+import org.eclipse.microprofile.faulttolerance.Asynchronous;
 import org.slf4j.Logger;
 
 import javax.enterprise.context.Dependent;
