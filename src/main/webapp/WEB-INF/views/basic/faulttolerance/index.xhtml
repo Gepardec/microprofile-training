@@ -25,6 +25,19 @@
         </section>
 
         <section>
+            <tag:card id="mp-fallback-asynchronous" title="Fallback">
+                <ui:define name="body">
+                    <p>
+                        Fallback defines a fallback result for a method invocation which fails, so that the caller always gets a result and doesn't have to deal with exceptions.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toFaulttoleranceFallback" text="Example" path="/basic/faulttolerance/fallback" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
             <tag:card id="mp-faulttolerance-timeout" title="Timeout">
                 <ui:define name="body">
                     <p>
