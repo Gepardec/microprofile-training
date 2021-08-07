@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="headerText">
-        Microprofile Fault-Tolerance Basics (Timeout)
+        Microprofile Fault-Tolerance Basics (Retry)
     </ui:define>
 
     <ui:define name="additionalNavLink">
@@ -13,22 +13,20 @@
     <ui:define name="body">
         <section>
             <div class="text-center">
-                <h1>Timeout</h1>
+                <h1>Retry</h1>
             </div>
             <div class="mt-3">
                 <p>
                     The specification for Microprofile
-                    <a href="#{mpUri.faultToleranceUri}#timeout"
+                    <a href="#{mpUri.faultToleranceUri}#retry"
                         target="_blank">
-                        Fault Tolerance (Timeout)
+                        Fault Tolerance (Retry)
                     </a>
                 </p>
 
                 <p>
-                    Timeout limit method invocation durations and terminate them with a ?? exception.
-                    Timeout behaviour prevents the service to become unresponsive if a method invocation hungs or takes longer as expected.
-                    The service is meant to skip the invocation in case of a hung or unexpected long run method invocation to keep the service
-                    responsive for other calls.
+                    Retry commonly is used to avoid errors on brief network glitches when either the network briefly is down, or a service redployment occurs.
+                    The caller gets an increased latency because of the retries but no errors.
                 </p>
             </div>
 
@@ -52,23 +50,23 @@
                     </h4>
 
                     <p>
-                        Click the button below and you will see that the call takes up to 4 seconds to complete but it should only take 1 second.
-                        Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.TimeoutController#timedout</code>
+                        Click the button below to trigger the call for retry and if the retry behaviours works as expected, then you see a increased latency because of the retries.
+                        Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.RetryController#retried</code>
                         and follow the instructions you see there.
                     </p>
 
                     <div class="text-center">
-                        <tag:button id="callTimedoutEndpoint" path="/basic/faulttolerance/timeout/timedout" text="Timeout call" />
+                        <tag:button id="callRetriedEndpoint" path="/basic/faulttolerance/retry/retried" text="Retry call" />
                     </div>
                 </div>
             </div>
 
             <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
+                <tag:timerDialog id="timer" title="Waiting for response..." text="Takes a little bit longer because of the retries" />
 
                 <script>
                     document.addEventListener("DOMContentLoaded", (event) => {
-                        document.getElementById("callTimedoutEndpoint").addEventListener("click", (event) => {
+                        document.getElementById("callRetriedEndpoint").addEventListener("click", (event) => {
                             event.preventDefault();
                             const serverResponse = document.getElementById("serverResponse");
                             serverResponse.innerText = "";

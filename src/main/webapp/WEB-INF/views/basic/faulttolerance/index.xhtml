@@ -25,7 +25,7 @@
         </section>
 
         <section>
-            <tag:card id="mp-fallback-asynchronous" title="Fallback">
+            <tag:card id="mp-faulttolerance-fallback" title="Fallback">
                 <ui:define name="body">
                     <p>
                         Fallback defines a fallback result for a method invocation which fails, so that the caller always gets a result and doesn't have to deal with exceptions.
@@ -49,6 +49,20 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaulttoleranceTimeout" text="Example" path="/basic/faulttolerance/timeout" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-faulttolerance-retry" title="Retry">
+                <ui:define name="body">
+                    <p>
+                        Retry behaviour ensures that brief errors such as brief network glitches don't cause an error for the caller, which is very important in
+                        a distributed service environment where brief network glitches can occur.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toFaulttoleranceRetry" text="Example" path="/basic/faulttolerance/retry" />
                 </ui:define>
             </tag:card>
         </section>
