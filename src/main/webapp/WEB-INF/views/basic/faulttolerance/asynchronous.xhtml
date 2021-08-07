@@ -25,33 +25,21 @@
                 </p>
             </div>
 
-            <div id="myModal" class="modal" tabindex="-1">
-                <div id="myModalDialog" class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="d-flex flex-row justify-content-center">
-                                <div class="spinner-border" role="status">
-                                    <span class="visually-hidden m-auto">Loading...</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
 
-            <tag:button id="callAsynchronousEndpoint" text="Asynchrnous Call" />
+            <tag:button id="callAsynchronousEndpoint" path="/basic/faulttolerance/asynchronous/async" text="Asynchrnous Call" />
+
             <script>
-                const callFutureEndpoint = () => {
-                    const modal = mdb.Modal.getInstance(document.getElementById('myModal'))
-                    modal.show()
-                    fetch("#{pathHelper.buildPath('/basic/faulttolerance/asynchronous/future')}", {
-                        method: "POST",
-                    }).finally(() => modal.hide());
-                };
                 document.addEventListener("DOMContentLoaded", (event) => {
-                    new mdb.Modal(document.getElementById('myModal'));
-                    document.getElementById("callAsynchronousEndpoint").addEventListener("click", callFutureEndpoint);
-                })
+                    document.getElementById("callAsynchronousEndpoint").addEventListener("click", (event) => {
+                        event.preventDefault();
+                        const modal = mdb.Modal.getInstance(document.getElementById('timer'))
+                        modal.show();
+                        fetch(event.target.href, {
+                            method: "POST",
+                        }).finally(() => modal.hide());
+                    });
+                });
             </script>
         </section>
     </ui:define>

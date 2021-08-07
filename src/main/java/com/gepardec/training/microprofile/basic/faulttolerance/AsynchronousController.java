@@ -6,18 +6,18 @@ import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @Path("/basic/faulttolerance/asynchronous")
 @RequestScoped
-@Controller
 public class AsynchronousController {
 
     @Inject
     private AsynchronousService asynchronousService;
 
+    @Controller
     @GET
     @Path("/")
     public String get() {
@@ -25,23 +25,23 @@ public class AsynchronousController {
     }
 
     @POST
-    @Path("/future")
-    public String future() {
-        // TODO: Go to 'AsynchronousService#invoke' and make the invocations asynchronous
+    @Path("/async")
+    public Response async() {
+        // TODO: Go to 'AsynchronousService#invoke' and make the invocations really asynchronous
+        // TODO: The logs will tell you if the invocations were asynchronous
         final List<Future<Void>> futures = List.of(
                 asynchronousService.invoke(),
                 asynchronousService.invoke(),
                 asynchronousService.invoke(),
+                asynchronousService.invoke(),
                 asynchronousService.invoke());
-        for (final Future<Void> future : futures) {
-            try {
-                future.get();
-            } catch (InterruptedException | ExecutionException e) {
-                throw new IllegalStateException("Could not wait for futures", e);
-            }
+        // We have Futures, so we need to wait for all of them before we return the result
+        boolean run = true;
+        while (run) {
+            Thread.onSpinWait();
+            run = !futures.stream().allMatch(Future::isDone);
         }
 
-        return get();
+        return Response.ok().build();
     }
-
 }

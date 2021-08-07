@@ -1,22 +1,24 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
 import org.apache.commons.lang3.concurrent.ConcurrentUtils;
-import org.eclipse.microprofile.faulttolerance.Asynchronous;
+import org.slf4j.Logger;
 
 import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import java.util.concurrent.Future;
 
 @Dependent
 public class AsynchronousService {
 
-    @Asynchronous
+    @Inject
+    private Logger log;
+
     public Future<Void> invoke() {
-        double value = 10.0;
-        for (long i = 1; i <= 100_000_000L; i++) {
-            if (Thread.interrupted()) {
-                break;
-            }
-            value = (value * i * 100) / 10;
+        try {
+            Thread.sleep(1000);
+            log.info("Invoked asynchronous method");
+        } catch (InterruptedException e) {
+            throw new IllegalStateException("Could not sleep", e);
         }
         return ConcurrentUtils.constantFuture(null);
     }
