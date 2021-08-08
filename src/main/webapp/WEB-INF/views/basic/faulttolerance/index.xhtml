@@ -41,7 +41,7 @@
             <tag:card id="mp-faulttolerance-timeout" title="Timeout">
                 <ui:define name="body">
                     <p>
-                        Timeout restricts method invocations to a defined time limit which avoids that hung processes reduce responsibility of the service.
+                        Timeout prevents from the execution from waiting forever. It is recommended that a microservice invocation should have timeout associated with.
                     </p>
                     <div class="alert alert-danger" role="alert">
                         Timeout behaviour doesn't replace SOAP/REST client timeout settings, which comonly default to indefiniete!!!
@@ -63,6 +63,21 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaulttoleranceRetry" text="Example" path="/basic/faulttolerance/retry" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-faulttolerance-bulkhead" title="Bullkhead">
+                <ui:define name="body">
+                    <p>
+                        The Bulkhead pattern is to prevent faults in one part of the system from cascading to the entire system, which might bring down the whole system.
+                        The implementation is to limit the number of concurrent requests accessing an instance.
+                        Therefore, Bulkhead pattern is only effective when applying <code>@Bulkhead</code> to a component that can be accessed from multiple contexts.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toBulkheadRetry" text="Example" path="/basic/faulttolerance/bulkhead" />
                 </ui:define>
             </tag:card>
         </section>

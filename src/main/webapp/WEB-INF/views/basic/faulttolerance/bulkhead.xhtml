@@ -1,0 +1,76 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="headerText">
+        Microprofile Fault-Tolerance Basics (Bulkhead)
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicFaulttoleranceIndex" path="/basic/faulttolerance/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>CircuitBreaker</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.faultToleranceUri}#bulkhead"
+                        target="_blank">
+                        Fault Tolerance (Bulkhead)
+                    </a>
+                </p>
+
+                <p>
+                    TODO
+                </p>
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        Click the button below to trigger 10 parallel request.
+                    </p>
+
+                    <div class="text-center">
+                        <tag:button id="callBulkheadedEndpoint" path="/basic/faulttolerance/bulkhead/bulkheaded" text="Bulkhead call" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2 text-start">
+                <hr class="my-3" />
+
+                <div class="col-sm me-sm-1 font-weight-bold">
+                    Server Response:
+                </div>
+                <div id="serverResponse" class="col-sm ms-sm-1" style="word-wrap: break-word;">
+                </div>
+
+                <hr class="my-3" />
+            </div>
+
+            <ui:insert name="bottom">
+                <tag:timerDialog id="timer" title="Waiting for responses..."/>
+
+                <script type="module">
+                    import circuitbreaker from '#{pathHelper.buildResourcePath("/js/faulttolerance/bulkhead.js")}'
+
+                    circuitbreaker.init(
+                        document.getElementById("callBulkheadedEndpoint"),
+                        document.getElementById("serverResponse"),
+                        10,
+                        () => mdb.Modal.getInstance(document.getElementById('timer')).show(),
+                        () => mdb.Modal.getInstance(document.getElementById('timer')).hide());
+                </script>
+            </ui:insert>
+        </section>
+    </ui:define>
+</ui:composition>
