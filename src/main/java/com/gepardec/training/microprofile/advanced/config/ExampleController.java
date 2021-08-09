@@ -46,6 +46,6 @@ public class ExampleController {
     public String getDropInConfiguration() {
         model.put("dropInValue1", dropInValue1);
         model.put("dropInValue2", dropInValue2);
-        return "advanced/config/drop-in.xhtml";
+        return "advanced/config/drop_in.xhtml";
     }
 }
