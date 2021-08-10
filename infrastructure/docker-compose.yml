@@ -37,7 +37,8 @@ services:
     ports:
       - 15432:5432
     volumes:
-      - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
+      - ./postgres/01_init-user-db.sh:/docker-entrypoint-initdb.d/01_init-user-db.sh
+      - ./postgres/02_init-mptraining.sh:/docker-entrypoint-initdb.d/02_init-mptraining.sh
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: admin
