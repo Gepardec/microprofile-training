@@ -35,6 +35,7 @@
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
                             <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
                             <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
+                            <tag:navLink id="navBasicFaultTolerance" rendered="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" active="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" text="MP-Fault-Tolerance Basic" path="/basic/faulttolerance/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
