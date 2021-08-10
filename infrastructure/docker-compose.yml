@@ -34,10 +34,12 @@ services:
 
   postgres:
     image: postgres:latest
+    ports:
+      - 15432:5432
     volumes:
+      - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: keycloak
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 'admin@123'
 
