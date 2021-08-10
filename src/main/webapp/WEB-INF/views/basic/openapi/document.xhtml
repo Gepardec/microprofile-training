@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com" xmlns:c="http://java.sun.com/jstl/core">
 
     <ui:define name="headerText">
         Microprofile-OpenAPI Basics Document
@@ -25,8 +25,8 @@
                 </p>
 
                 <p>
-                    A basic JAX-RS interface does also provide sufficient information for an openAPI document.
-                    Try out <code>http://localhost:8080/openapi</code> and analyse it.
+                    A basic JAX-RS interface does already provide sufficient information for an openAPI document.
+                    Try out <a href="http://localhost:8080/openapi"> OpenApi</a> and analyse it.
                 </p>
 
             </div>
@@ -39,9 +39,13 @@
                 </h5>
 
                 <p>
-                    We only want the documentation for our REST resource :
-                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>
-                    set mp.openapi.scan.classes to an package to achieve this.
+                    We only want the documentation for our REST resource and not for the whole MVC.
+                    Try to find a way to only generate the document for
+                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>.
+
+                    In the MP configuration file you can configure something like this <code>mp.openapi.scan.classes </code>
+                    Multiple solution are valid for this task. Check again <a href="http://localhost:8080/openapi"> OpenApi</a>
+                    if your filter worked.
 
                 </p>
             </div>

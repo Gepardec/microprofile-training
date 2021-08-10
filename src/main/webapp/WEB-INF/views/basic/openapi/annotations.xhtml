@@ -1,6 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="headerText">
@@ -39,19 +38,54 @@
                 </h5>
 
                 <p>
-                    Take a look at
-                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>
-                    and add the following annotation to get() @Parameter and @Schema and to error() the following:
-                    @Description("Missing description")
-                    @Operation(
-                    description = "Response will be an internal error server or noContent")
-                    @APIResponse(
-                    name = "internalError",
-                    responseCode = "204",
-                    description = "No Cheetah found"
-                    )
+                    At first we will define a schema for our data. Go to
+                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/Cheetah.java</code>
+                    and add the following annotation
+                    <code> @Schema(name="Cheetah", description="POJO that represents a cheetah") </code> to the class
+                    and <code> @Schema(required = true)</code> to the <code> name</code> variable.
                 </p>
-                <p> Than again call <code>http://localhost:8080/openapi</code> an look if the changes are applied</p>
+
+                <p>
+                    Now we will add some information to our operations.
+                    Add the following annotation to <code>@GET list()</code> method:
+                </p>
+                <ul>
+                    <li><code>@Parameter</code></li>
+                    <li><code> @APIResponses(
+                        value = {
+                        @APIResponse(responseCode = "404",
+                        description = "Missing description",
+                        content = @Content(mediaType = "text/plain")),
+                        @APIResponse(
+                        responseCode = "200",
+                        content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(
+                        type = SchemaType.OBJECT,
+                        implementation = Cheetah.class)))})</code></li>
+                    <li><code>@Operation(summary = "List full with cheetahs.")</code></li>
+                </ul>
+
+                <p>
+                    And For the @Delete add:
+                </p>
+                <ul>
+                    <li><code>@Description("Missing description")</code></li>
+                    <li><code> @Operation(
+                        description = "Removes a cheetah from the coalition")</code></li>
+                    <li><code>@APIResponses(value = {
+                        @APIResponse(responseCode = "202",
+                        description = "Operation executed successfully"),
+
+                        @APIResponse(
+                        name = "NoContent",
+                        responseCode = "204",
+                        description = "Missing description"
+                        )})</code></li>
+                </ul>
+                <p> Than again call <a
+                        href="http://localhost:8080/openapi"> OpenApi</a> and look if the changes are applied as intended
+                </p>
             </div>
         </section>
     </ui:define>

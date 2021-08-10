@@ -60,4 +60,10 @@ public class RestClientController {
             model.put("value", restClientCdi.welcomeMessage());
         return "basic/restclient/headersFactory.xhtml";
     }
+
+    @Path("/generate")
+    @GET
+    public String generate() {
+        return "basic/restclient/generate.xhtml";
+    }
 }

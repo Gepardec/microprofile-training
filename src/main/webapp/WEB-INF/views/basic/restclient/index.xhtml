@@ -46,14 +46,16 @@
             </ui:define>
         </tag:card>
 
-        <tag:card id="example3" title="example 3">
+        <tag:card id="example3" title="Generate RestClient from OpenAPI">
             <ui:define name="body">
                 <p>
-                    ...
+                    Generate resource from OpenAPI document with the OpenAPI Generator which
+                    allows generation of API client libraries (SDK generation), server stubs,
+                    documentation and configuration automatically given an OpenAPI Spec.
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button text="Go to example" path="/basic/index"/>
+                <tag:button id="generateSources" text="Generate" path="/basic/restclient/generate" />
             </ui:define>
         </tag:card>
     </ui:define>

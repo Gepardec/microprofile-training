@@ -1,71 +1,71 @@
----
-openapi: 3.0.3
-info:
-  title: microprofile-training-1.0.0-SNAPSHOT.war
-  version: "1.0"
-servers:
-  - url: /mptraining
-paths:
-  /cheetahs:
-    get:
-      summary: List full with cheetahs.
-      responses:
-        "404":
-          description: No Cheetah found
-          content:
-            text/plain: {}
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                description: POJO that represents a cheetah
-                required:
-                  - name
-                type: object
-                properties:
-                  age:
-                    format: int32
-                    type: integer
-                  name:
-                    type: string
-                  weight:
-                    format: double
-                    type: number
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Cheetah'
-      responses:
-        "201":
-          description: Cheetah created
-    delete:
-      description: Removes a cheetah from the coalition
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Cheetah'
-      responses:
-        "202":
-          description: Operation executed successfully
-        "204":
-          description: No Cheetah found
-components:
-  schemas:
-    Cheetah:
-      description: POJO that represents a cheetah
-      required:
-        - name
-      type: object
-      properties:
-        age:
-          format: int32
-          type: integer
-        name:
-          type: string
-        weight:
-          format: double
-          type: number
+#---
+#openapi: 3.0.3
+#info:
+#  title: microprofile-training-1.0.0-SNAPSHOT.war
+#  version: "1.0"
+#servers:
+#  - url: /mptraining
+#paths:
+#  /cheetahs:
+#    get:
+#      summary: List full with cheetahs.
+#      responses:
+#        "404":
+#          description: No Cheetah found
+#          content:
+#            text/plain: {}
+#        "200":
+#          description: OK
+#          content:
+#            application/json:
+#              schema:
+#                description: POJO that represents a cheetah
+#                required:
+#                  - name
+#                type: object
+#                properties:
+#                  age:
+#                    format: int32
+#                    type: integer
+#                  name:
+#                    type: string
+#                  weight:
+#                    format: double
+#                    type: number
+#    post:
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/Cheetah'
+#      responses:
+#        "201":
+#          description: Cheetah created
+#    delete:
+#      description: Removes a cheetah from the coalition
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/Cheetah'
+#      responses:
+#        "202":
+#          description: Operation executed successfully
+#        "204":
+#          description: No Cheetah found
+#components:
+#  schemas:
+#    Cheetah:
+#      description: POJO that represents a cheetah
+#      required:
+#        - name
+#      type: object
+#      properties:
+#        age:
+#          format: int32
+#          type: integer
+#        name:
+#          type: string
+#        weight:
+#          format: double
+#          type: number
