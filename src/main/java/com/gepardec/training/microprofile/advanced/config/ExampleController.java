@@ -18,11 +18,11 @@ public class ExampleController {
     private Models model;
 
     @Inject
-    @ConfigProperty(name = "custom.value1", defaultValue = "Missing value from custom ConfigSource")
+    @ConfigProperty(name = "db.key1", defaultValue = "Missing value from custom ConfigSource")
     private String customValue1;
 
     @Inject
-    @ConfigProperty(name = "custom.value2", defaultValue = "Missing value from custom ConfigSource")
+    @ConfigProperty(name = "db.key2", defaultValue = "Missing value from custom ConfigSource")
     private String customValue2;
 
     @Inject
