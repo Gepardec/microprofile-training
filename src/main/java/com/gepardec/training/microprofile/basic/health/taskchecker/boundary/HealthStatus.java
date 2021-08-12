@@ -1,3 +1,4 @@
+/*
 package com.gepardec.training.microprofile.basic.health.taskchecker.boundary;
 
 import javax.json.bind.annotation.JsonbProperty;
@@ -32,3 +33,4 @@ class Check {
 
 class Data {
 }
+*/

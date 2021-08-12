@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 
-public class HealthQuery {
+/*public class HealthQuery {
 
     @Inject
     @RestClient
@@ -15,4 +15,4 @@ public class HealthQuery {
         Jsonb jb = JsonbBuilder.create();
         return jb.fromJson(healthResourceCLient.healthStatus(),HealthStatus.class);
     }
-}
+}*/

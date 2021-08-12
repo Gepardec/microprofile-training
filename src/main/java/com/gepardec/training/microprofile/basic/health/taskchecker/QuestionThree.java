@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.health.taskchecker;
+/*package com.gepardec.training.microprofile.basic.health.taskchecker;
 
 import com.gepardec.training.microprofile.basic.health.taskchecker.boundary.HealthQuery;
 import com.gepardec.training.microprofile.basic.health.taskchecker.boundary.HealthStatus;
@@ -16,4 +16,4 @@ public class QuestionThree implements TaskChecker{
         if (works) {return 1;}
         return 2;
     }
-}
+}*/
