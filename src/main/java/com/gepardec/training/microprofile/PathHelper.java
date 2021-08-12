@@ -18,6 +18,10 @@ public class PathHelper {
         return servletRequest.getPathInfo().endsWith(page);
     }
 
+    public boolean isOnSubpage(String page) {
+        return servletRequest.getPathInfo().contains(page);
+    }
+
     public String basePath() {
         return servletRequest.getServletContext().getContextPath() + "/api";
     }

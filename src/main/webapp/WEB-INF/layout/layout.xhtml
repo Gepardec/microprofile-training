@@ -16,14 +16,13 @@
         <h:outputStylesheet library="mdb5-3.6.0" name="css/mdb.min.css" />
         <h:outputStylesheet name="webjars/font-awesome/5.15.2/css/all.min.css" />
         <h:outputStylesheet library="css" name="style.css" />
-        <ui:insert name="header" />
+        <title><ui:insert name="title" /></title>
     </h:head>
 
     <h:body lang="en">
         <f:view contentType="text/html">
-
             <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
-                <div class="container-fluid">
+                <div class="container-fluid d-flex justify-content-between">
                     <div class="navbar-brand">
                         <a href="https://microprofile.io/" target="_blank">
                             <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="50" alt="MP-Logo" title="https://microprofile.io/" />
@@ -32,17 +31,15 @@
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fas fa-align-justify" />
                     </button>
-                    <div class="collapse navbar-collapse" id="navLinkContent">
+                    <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navLinkContent">
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
-                            <div class="nav-item">
-                                <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
-                            </div>
-                            <div class="nav-item">
-                                <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
-                            </div>
-                            <div class="nav-item">
-                                <tag:navLink id="navAdvancedLink" text="Advanced" path="/advanced/index" />
-                            </div>
+                            <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
+                            <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
+                            <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
+                            <!-- All static nav links to the welcome and main index pages -->
+                            <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
+                            <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
+                            <tag:navLink id="navAdvancedLink" text="Advanced" path="/advanced/index" />
                         </div>
                     </div>
                 </div>
@@ -59,7 +56,7 @@
             </main>
 
             <footer class="bg-light d-flex justify-content-center align-items-center shadow-inverted">
-                &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1 text-muted" title="https://www.gepardec.com/">2021 Gepardec IT Services</a>
+                &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1" title="https://www.gepardec.com/">2021 Gepardec IT Services</a>
             </footer>
             <h:outputScript library="mdb5-3.6.0" name="js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />

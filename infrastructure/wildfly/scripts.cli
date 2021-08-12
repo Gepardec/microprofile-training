@@ -1,0 +1,14 @@
+if (outcome != success) of /system-property=mptraining_configured:query()
+    echo configuring wildfly
+
+    /extension=org.jboss.as.jsf:add()
+    /subsystem=jsf:add()
+    module add --name=org.postgres --resources=target/dependency/postgresql-42.2.23.jar --dependencies=javax.api,javax.transaction.api
+    /subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql, driver-module-name=org.postgres, driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
+    /subsystem=datasources/data-source=PostgresDS:add(driver-name=postgresql, jndi-name=java:/PostgresDS, connection-url=jdbc:postgresql://localhost:15432/mptraining, user-name=admin, password=admin@123)
+    /system-property=mptraining_configured:add(value=true)
+
+    reload
+else
+    echo wildfly already configured
+end-if

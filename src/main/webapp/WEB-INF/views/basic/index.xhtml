@@ -2,15 +2,16 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
-    <ui:define name="header">
-        <title>Basic Index</title>
+    <ui:define name="title">
+        Microprofile Basics
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toWelcome" path="/welcome" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
         <section>
-            <div class="text-center">
-                <h1>Basic Examples</h1>
-            </div>
             <tag:card id="mp-config" title="Microprofile Config">
                 <ui:define name="body">
                     <p>
@@ -26,87 +27,20 @@
                 <ui:define name="body">
                     <p>
                         Provide application health info for container orchestration and more.
+                        Microprofile Config facilitates the configuration of an application. With the following
+                        examples, you will configure this application in several ways and see how you can use the
+                        configured values. In two examples, these configured values will be mapped and converted into
+                        specific target types or even aggregated into a property class. Furthermore, you will handle
+                        empty configurations which, by default, lead to exceptions.
                     </p>
+                    The specification for Microprofile
+                    <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                        target="_blank">
+                        Config.
+                    </a>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toExampleHealth" text="Examples" path="/basic/health/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-1" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample1" text="Go to example" path="/basic/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-2" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample2" text="Go to example" path="/basic/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-3" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample3" text="Go to example" path="/basic/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-4" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample4" text="Go to example" path="/basic/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-5" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample5" text="Go to example" path="/basic/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-6" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample6" text="Go to example" path="/basic/index" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-7" title="Microprofile RestClient">
-                <ui:define name="body">
-                    <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExample7" text="Go to example" path="/basic/index" />
+                    <tag:button id="toConfigExamples" text="Examples" path="/basic/config/index" />
                 </ui:define>
             </tag:card>
         </section>

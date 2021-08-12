@@ -2,7 +2,7 @@ html {
     height: 100%;
 }
 
-nav {
+html > nav {
     min-height: 75px;
 }
 
@@ -10,7 +10,7 @@ body {
     padding-top: 75px;
     padding-bottom: 75px;
     height: 100%;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
 footer {
@@ -44,7 +44,7 @@ section {
 
 .main-article {
     background-color: rgba(255, 255, 255, 0.7);
-    padding: 0 10px 0 10px;
+    padding: 20px;
     overflow: auto;
     background-attachment: local;
 }

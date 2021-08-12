@@ -1,0 +1,68 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Microprofile-Config System-Property Config
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="container-lg">
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <p>
+                            The specification for Microprofile
+                            <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                                target="_blank">
+                                Config.
+                            </a>
+                        </p>
+
+                        <p>
+                            Configuration can be provided by property file, environment variable, system property or a custom ConfigSource.
+                        </p>
+                        <p>System properties are set outside of the application and therefore the application does not need to be rebuilt after changing the configuration.
+                            System properties can be altered at runtime, a system restart is not required.
+                        </p>
+
+                        <hr class="my-3" />
+
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Application name:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${sysApplicationName}" class="font-weight-bold" />
+                            </div>
+                            <div><h:outputText value="${sysMessage}" class="alert-warning" /></div>
+                        </div>
+
+                        <hr class="my-3" />
+                    </section>
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <h5>
+                            Your Task:
+                        </h5>
+
+                        <p>
+                            Provide the application name via a system property. Also take a look at the controller class
+                            <code>com.gepardec.training.microprofile.basic.config.ExampleController</code>.
+                        </p>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

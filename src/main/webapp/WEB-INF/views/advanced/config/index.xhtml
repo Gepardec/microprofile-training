@@ -1,0 +1,40 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Microprofile-Config Advanced
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toAdvancedIndex" path="/advanced/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <tag:card id="mp-config-custom-config-source" title="Configuration from custom ConfigSource">
+                <ui:define name="body">
+                    <p>
+                        With this example, you will implement a custom ConfigSource.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigCustomConfigSource" text="Example" path="/advanced/config/customconfigsource" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-config-drop-in" title="Configuration from drop-in configuration">
+                <ui:define name="body">
+                    <p>
+                        By providing the configuration in a JAR, you will implement a drop-in configuration for this application.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleDropIn" text="Example" path="/advanced/config/dropinconfiguration" />
+                </ui:define>
+            </tag:card>
+
+        </section>
+    </ui:define>
+</ui:composition>
+
