@@ -1,9 +1,6 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
-import org.eclipse.microprofile.faulttolerance.Retry;
-
 import javax.enterprise.context.Dependent;
-import java.time.temporal.ChronoUnit;
 
 @Dependent
 public class RetryService {
@@ -13,7 +10,7 @@ public class RetryService {
     public int retried() {
         counter++;
         if (counter < 3) {
-            throw new IllegalStateException("Hve to fail because counter is still to low");
+            throw new IllegalStateException("Failed because you haven't defined a retry behaviour");
         }
 
         return counter;

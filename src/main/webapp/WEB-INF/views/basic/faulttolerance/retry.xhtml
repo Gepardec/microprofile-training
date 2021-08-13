@@ -24,6 +24,25 @@
                     Retry commonly is used to avoid errors on brief network glitches when either the network briefly is down, or a service redployment occurs.
                     The caller gets an increased latency because of the retries but no errors.
                 </p>
+
+                <hr class="my-3" />
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        Click the button below to trigger the call for retry and if the retry behaviours works as expected, then you see a increased latency because of the retries.
+                        Define a retry behaviour as described in the class <code>com.gepardec.training.microprofile.basic.faulttolerance.RetryController#retried</code>.
+                    </p>
+
+                    <div class="text-center">
+                        <tag:button id="callRetriedEndpoint" path="/basic/faulttolerance/retry/retried" text="Retry call" />
+                    </div>
+                </div>
             </div>
 
             <div class="row my-2 text-start font-weight-bold">
@@ -37,24 +56,6 @@
                 </div>
 
                 <hr class="my-3" />
-            </div>
-
-            <div class="row my-2">
-                <div class="col">
-                    <h4>
-                        Your Task:
-                    </h4>
-
-                    <p>
-                        Click the button below to trigger the call for retry and if the retry behaviours works as expected, then you see a increased latency because of the retries.
-                        Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.RetryController#retried</code>
-                        and follow the instructions you see there.
-                    </p>
-
-                    <div class="text-center">
-                        <tag:button id="callRetriedEndpoint" path="/basic/faulttolerance/retry/retried" text="Retry call" />
-                    </div>
-                </div>
             </div>
 
             <ui:insert name="bottom">

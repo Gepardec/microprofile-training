@@ -26,17 +26,6 @@
                     The service is meant to skip the invocation in case of a hung or unexpected long run method invocation to keep the service
                     responsive for other calls.
                 </p>
-            </div>
-
-            <div class="row my-2 text-start font-weight-bold">
-                <hr class="my-3" />
-
-                <div class="col-sm me-sm-1">
-                    Server Response:
-                </div>
-                <div class="col-sm ms-sm-1">
-                    <span id="serverResponse" />
-                </div>
 
                 <hr class="my-3" />
             </div>
@@ -56,7 +45,20 @@
                     <div class="text-center">
                         <tag:button id="callTimedoutEndpoint" path="/basic/faulttolerance/timeout/timedout" text="Timeout call" />
                     </div>
+
+                    <hr class="my-3" />
                 </div>
+            </div>
+
+            <div class="row my-2 text-start font-weight-bold">
+                <div class="col-sm me-sm-1">
+                    Server Response:
+                </div>
+                <div class="col-sm ms-sm-1">
+                    <span id="serverResponse" />
+                </div>
+
+                <hr class="my-3" />
             </div>
 
             <ui:insert name="bottom">
