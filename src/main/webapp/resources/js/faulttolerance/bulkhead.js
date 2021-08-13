@@ -30,12 +30,29 @@ const displayData = (responseContainer, data) => {
     data.map((item) => responseContainer.append(createResponseElement(item)));
 }
 
-const init = (callerElement, responseContainer, callCount, beforeCallback = () => {}, afterCallback = () => {}) => {
+const init = (options) => {
+    const {
+        callerElement,
+        countElement,
+        responseContainer,
+        beforeCallback = () => {
+        },
+        afterCallback = () => {
+        }
+    } = options;
     callerElement.addEventListener("click", async (event) => {
         event.preventDefault();
+        const countInputElement = countElement.querySelector('input');
+        const parallelCount = parseInt(countInputElement.value) || -1;
+        if (parallelCount <= 0) {
+            countInputElement.focus();
+            alert(`Your parallel Count is invalid. parallelCount: '${countInputElement.value}'`);
+            countInputElement.value = 2;
+            return;
+        }
         responseContainer.innerHTML = null;
         beforeCallback();
-        const data = await callApiNTimes(event.target.href, callCount);
+        const data = await callApiNTimes(event.target.href, parallelCount);
         displayData(responseContainer, data)
         afterCallback();
     });

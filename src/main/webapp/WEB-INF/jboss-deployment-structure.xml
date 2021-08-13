@@ -1,0 +1,8 @@
+<jboss-deployment-structure>
+    <deployment>
+        <!-- Necessary because if we don't use any annotation then we cannot access other classes as well such as BulkHeadException!!! -->
+        <dependencies>
+            <module name="org.eclipse.microprofile.fault-tolerance.api" export="TRUE" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
