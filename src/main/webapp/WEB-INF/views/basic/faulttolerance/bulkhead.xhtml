@@ -5,7 +5,7 @@
     <ui:param name="verticallyCentered" value="false" />
 
     <ui:define name="title">
-        Microprofile Fault-Tolerance Basics (Bulkhead)
+        Basics Fault-Tolerance (Bulkhead)
     </ui:define>
 
     <ui:define name="body">
@@ -71,9 +71,9 @@
                 <tag:timerDialog id="timer" title="Waiting for responses..." />
 
                 <script type="module">
-                    import circuitbreaker from '#{pathHelper.buildResourcePath("/js/faulttolerance/bulkhead.js")}'
+                    import bulkhead from '#{pathHelper.buildResourcePath("/js/faulttolerance/bulkhead.js")}'
 
-                    circuitbreaker.init({
+                    bulkhead.init({
                         callerElement: document.getElementById("callBulkheadedEndpoint"),
                         countElement: document.getElementById("parallelCountOutline"),
                         responseContainer: document.getElementById("serverResponse"),

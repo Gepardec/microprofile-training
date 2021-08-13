@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Microprofile Fault-Tolerance Basics
+        Basics Fault-Tolerance
     </ui:define>
 
     <ui:define name="additionalNavLink">
@@ -77,7 +77,21 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toBulkheadRetry" text="Example" path="/basic/faulttolerance/bulkhead" />
+                    <tag:button id="toFaulttoleranceBulkhead" text="Example" path="/basic/faulttolerance/bulkhead" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-faulttolerance-circuitbreaker" title="CircuitBraker">
+                <ui:define name="body">
+                    <p>
+                        A Circuit Breaker prevents repeated failures, so that dysfunctional services or APIs fail fast.
+                        If a service is failing frequently, the circuit breaker opens and no more calls to that service are attempted until a period of time has passed.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toFaulttoleranceCircuitBreaker" text="Example" path="/basic/faulttolerance/circuitbreaker" />
                 </ui:define>
             </tag:card>
         </section>
