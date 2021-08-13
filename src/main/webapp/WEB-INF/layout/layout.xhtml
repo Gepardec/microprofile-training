@@ -4,12 +4,13 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com"
->
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
+    <!--@elvariable id="verticallyCentered" type="java.lang.Boolean"-->
     <!--@elvariable id="onWelcomePage" type="java.lang.Boolean"-->
     <!--@elvariable id="onBasicIndexPage" type="java.lang.Boolean"-->
     <!--@elvariable id="onAdvancedIndexPage" type="java.lang.Boolean"-->
+
 
     <h:head>
         <meta charset="UTF-8" />
@@ -52,7 +53,7 @@
 
             <main class="bg-image">
                 <article class="main-article">
-                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center w-100 h-100">
+                    <div class="d-flex flex-row flex-wrap justify-content-center #{empty verticallyCentered or verticallyCentered ? 'align-items-center' : ''} w-100 h-100">
                         <div class="main-container">
                             <ui:insert name="body" />
                         </div>

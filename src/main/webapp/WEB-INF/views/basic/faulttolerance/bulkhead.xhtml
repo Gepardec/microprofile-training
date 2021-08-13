@@ -2,6 +2,8 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
+    <ui:param name="verticallyCentered" value="false"/>
+
     <ui:define name="headerText">
         Microprofile Fault-Tolerance Basics (Bulkhead)
     </ui:define>
@@ -13,7 +15,7 @@
     <ui:define name="body">
         <section>
             <div class="text-center">
-                <h1>CircuitBreaker</h1>
+                <h1>Bulkhead</h1>
             </div>
             <div class="mt-3">
                 <p>
@@ -66,7 +68,7 @@
                     circuitbreaker.init(
                         document.getElementById("callBulkheadedEndpoint"),
                         document.getElementById("serverResponse"),
-                        10,
+                        5,
                         () => mdb.Modal.getInstance(document.getElementById('timer')).show(),
                         () => mdb.Modal.getInstance(document.getElementById('timer')).hide());
                 </script>
