@@ -17,7 +17,7 @@
         <h:outputStylesheet library="mdb5-3.6.0" name="css/mdb.min.css" />
         <h:outputStylesheet name="webjars/font-awesome/5.15.2/css/all.min.css" />
         <h:outputStylesheet library="css" name="style.css" />
-        <title><ui:insert name="headerText" /></title>
+        <title><ui:insert name="title" /></title>
     </h:head>
 
     <h:body lang="en">
@@ -29,19 +29,15 @@
                             <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="50" alt="MP-Logo" title="https://microprofile.io/" />
                         </a>
                     </div>
-                    <div class="fs-2">
-                        <ui:insert name="headerText" />
-                    </div>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fas fa-align-justify" />
                     </button>
                     <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navLinkContent">
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
-                            <!-- Additional nav link to display -->
-                            <ui:insert name="additionalNavLink" />
                             <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
-                            <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config" path="/basic/config/index" />
-                            <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config" path="/advanced/config/index" />
+                            <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
+                            <tag:navLink id="navBasicFaultTolerance" rendered="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" active="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" text="MP-Fault-Tolerance Basic" path="/basic/faulttolerance/index" />
+                            <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
