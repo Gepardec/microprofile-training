@@ -46,8 +46,9 @@ const init = (options) => {
         const parallelCount = parseInt(countInputElement.value) || -1;
         if (parallelCount <= 0) {
             countInputElement.focus();
+            countInputElement.value = "";
             alert(`Your parallel Count is invalid. parallelCount: '${countInputElement.value}'`);
-            countInputElement.value = 2;
+            countInputElement.value = "2";
             return;
         }
         responseContainer.innerHTML = null;

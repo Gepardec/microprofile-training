@@ -8,24 +8,38 @@ import java.io.Serializable;
 @SessionScoped
 public class CircuitBreakerCallState implements Serializable {
 
-    private long count = 0;
+    private int failEachCount = 2;
 
-    private int failureCount = -1;
+    private int failAfterEachCount = 2;
+
+    private long callCount = 0;
+
+    private long count = 1;
+
+    private int failureCount = 0;
+
+    public synchronized void init(final int failEachCount, final int failAfterEachCount) {
+        this.failEachCount = failEachCount;
+        this.failAfterEachCount = failAfterEachCount;
+    }
 
     public synchronized void failIfSupposedTo() {
-        count++;
-        if (count % 10 == 0) {
+        callCount++;
+        if (count % failEachCount == 0) {
+            count = 1;
             failureCount++;
-        } else if (failureCount >= 0 && failureCount <= 5) {
+        } else if (failureCount > 0 && failureCount <= failAfterEachCount) {
             failureCount++;
-            throw new CallFailedException("CircuitBreaker error on call-count: '" + count + "', failureCount: '" + failureCount + "'");
+            throw new CallFailedException("CircuitBreaker error on calls: '" + callCount + "', failureCount: '" + (failureCount - 1) + "'");
         } else {
-            failureCount = -1;
+            count++;
+            failureCount = 0;
         }
     }
 
     public synchronized void reset() {
-        count = 0;
-        failureCount = -1;
+        callCount = 0;
+        count = 1;
+        failureCount = 0;
     }
 }

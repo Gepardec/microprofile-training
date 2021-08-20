@@ -1,4 +1,6 @@
 const state = {
+    failEachCount: 1,
+    failAfterEachCount: 1,
     timerReference: null,
     count: 0,
     intentionalFailedCount: 0,
@@ -17,16 +19,21 @@ const resetState = () => {
     state.count = 0;
     state.intentionalFailedCount = 0;
     state.successCount = 0;
+    state.circuitOpenFailedCount = 0;
+    state.failEachCount = 1;
+    state.failAfterEachCount = 1;
 }
 
-const displayState = (responseContainer) => {
+const displayState = (options) => {
+    const {
+        responseContainer,
+    } = options;
     responseContainer.innerHTML = `Call: ${state.count} </br> Success: ${state.successCount} </br> IntentionalFail: ${state.intentionalFailedCount} </br> CircuitOpenFail: ${state.circuitOpenFailedCount} </br> otherFail: ${state.otherFailedCount}`;
 }
 
 const run = async (options) => {
     const {
         href,
-        responseContainer,
     } = options;
     const response = await fetch(href, {
         method: "POST",
@@ -44,7 +51,7 @@ const run = async (options) => {
             }
             console.log(state);
         }).finally(() => {
-            displayState(responseContainer);
+            displayState(options);
         }).catch((error) => {
             state.intentionalFailedCount += 1;
             console.log(error);
@@ -72,6 +79,54 @@ const start = async (options) => {
     state.timerReference = setInterval(run, delayMillis, options);
 };
 
+const extractAndValidateInputNumber = (element, min) => {
+    const inputElement = element.querySelector('input');
+    const stringValue = inputElement.value;
+    const value = parseInt(stringValue) || -1;
+    if (value <= 0 || value < min) {
+        element.focus();
+        inputElement.value = "";
+        alert(`Your ${inputElement.id} value is invalid. value: '${stringValue}', min: '${min}'`);
+        inputElement.value = min;
+        return false;
+    }
+
+    return true;
+};
+
+const registerInitElementClickEventListener = (options) => {
+    const {
+        failEachCountElement,
+        failAfterEachCountElement,
+        initElement,
+        failEachCountMin,
+        failAfterEachCountMin,
+    } = options;
+    initElement.addEventListener('click', async (event) => {
+            event.preventDefault();
+            if (state.timerReference) {
+                alert('Cannot initialize while running, please stop first');
+                return;
+            }
+            if (extractAndValidateInputNumber(failEachCountElement, failEachCountMin) && extractAndValidateInputNumber(failAfterEachCountElement, failAfterEachCountMin)) {
+                const failEachCountInputElement = failEachCountElement.querySelector('input');
+                const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
+                const searchParams = new URLSearchParams();
+                searchParams.append(failEachCountInputElement.id, failEachCountInputElement.value);
+                searchParams.append(failAfterEachCountInputElement.id, failAfterEachCountInputElement.value);
+                await fetch(`${event.target.href}?` + searchParams, {
+                    method: "POST"
+                }).then((result) => {
+                    if (!result.ok) {
+                        alert('Endpoint initialization failed');
+                    }
+                });
+                alert(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`);
+            }
+        }
+    );
+};
+
 const registerStopElementClickEventListener = (options) => {
     const {
         stopElement,
@@ -86,8 +141,9 @@ const registerCallElementClickEventListener = (options) => {
     const {
         callerElement
     } = options;
-    callerElement.addEventListener('click', (event) => {
+    callerElement.addEventListener('click', async (event) => {
         event.preventDefault();
+        await stop(options);
         start({
             href: event.target.href,
             ...options,
@@ -96,8 +152,10 @@ const registerCallElementClickEventListener = (options) => {
 };
 
 const init = (options) => {
+    displayState(options);
     registerStopElementClickEventListener(options);
     registerCallElementClickEventListener(options);
+    registerInitElementClickEventListener(options);
 };
 
 export default {
