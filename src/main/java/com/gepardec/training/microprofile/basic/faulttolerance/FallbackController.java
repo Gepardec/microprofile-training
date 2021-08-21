@@ -25,10 +25,9 @@ public class FallbackController {
     @POST
     @Path("/fallbacked")
     public Response fallbacked() {
-        // TODO: Go to 'FallbackService#failsWithFallback' and provide a fallback via '@Fallback'
         String result = null;
         try {
-            return Response.ok(fallbackService.failsWithFallback()).build();
+            return Response.ok(fallbackService.fails()).build();
         } catch (Exception e) {
             return Response.serverError().entity(e.getMessage()).build();
         }

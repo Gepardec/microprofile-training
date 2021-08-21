@@ -27,14 +27,12 @@ public class AsynchronousController {
     @POST
     @Path("/async")
     public Response async() {
-        // TODO: Go to 'AsynchronousService#invoke' and make the invocations really asynchronous
-        // TODO: The logs will tell you on which Thread the invocations are performed
         final List<Future<Void>> futures = List.of(
-                asynchronousService.invoke(),
-                asynchronousService.invoke(),
-                asynchronousService.invoke(),
-                asynchronousService.invoke(),
-                asynchronousService.invoke());
+                asynchronousService.longRunning(),
+                asynchronousService.longRunning(),
+                asynchronousService.longRunning(),
+                asynchronousService.longRunning(),
+                asynchronousService.longRunning());
         boolean run = true;
         while (run) {
             Thread.onSpinWait();

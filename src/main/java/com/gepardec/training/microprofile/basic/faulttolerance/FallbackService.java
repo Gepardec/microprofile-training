@@ -5,7 +5,7 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class FallbackService {
 
-    public String failsWithFallback() {
-        throw new IllegalStateException("I always fail, so fix me with a fallback");
+    public String fails() {
+        throw new IllegalStateException("I always fail, sorry :(");
     }
 }

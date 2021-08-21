@@ -1,6 +1,6 @@
 <ui:component xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+>
 
     <!--@elvariable id="id" type="java.lang.String"-->
     <!--@elvariable id="title" type="java.lang.String"-->
@@ -34,20 +34,14 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", (event) => {
-            const modalDialogElement = document.getElementById('#{id}');
-            const timerTextElement = document.getElementById('#{id}Seconds');
-            new mdb.Modal(modalDialogElement);
-            let timer;
-            modalDialogElement.addEventListener("show.mdb.modal", () => {
-                timerTextElement.innerText = '0';
-                let seconds = 0;
-                timer = setInterval(() => {
-                    timerTextElement.innerText = (seconds++).toString();
-                }, 1000);
-            });
-            modalDialogElement.addEventListener("hide.mdb.modal", () => clearInterval(timer));
-        });
+    <script type="module">
+        import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+        import timerDialog from '#{pathHelper.buildResourcePath("/js/tags/timerDialog.js")}'
+
+        mp.registerOnLoad(() => timerDialog.init({
+            modalDialogElement: document.getElementById('#{id}'),
+            timerTextElement: document.getElementById('#{id}Seconds'),
+            delayMillis: 1000,
+        }));
     </script>
 </ui:component>

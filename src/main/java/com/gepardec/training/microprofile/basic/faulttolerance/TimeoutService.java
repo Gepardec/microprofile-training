@@ -11,7 +11,7 @@ public class TimeoutService {
     @Inject
     private Logger log;
 
-    public void timedout() {
+    public void fails() {
         try {
             Thread.sleep(4000);
             log.warn("Should not have got that far :(");

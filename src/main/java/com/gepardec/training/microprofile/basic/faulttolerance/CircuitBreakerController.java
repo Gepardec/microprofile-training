@@ -3,6 +3,7 @@ package com.gepardec.training.microprofile.basic.faulttolerance;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
+import javax.mvc.Models;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
@@ -18,14 +19,27 @@ public class CircuitBreakerController {
     @Inject
     private CircuitBreakerCallState callState;
 
+    @Inject
+    private Models models;
+
     @Controller
     @GET
     @Path("/")
     public String get() {
-        callState.reset();
+        callState.resetState();
+        callState.resetConfiguration();
+        models.put("failEachCount", callState.getFailEachCount());
+        models.put("failAfterEachCount", callState.getFailAfterEachCount());
         return "basic/faulttolerance/circuitbreaker.xhtml";
     }
 
+    /**
+     * Initializes the call state for the example, so we can simulate errors as intended
+     *
+     * @param failEachCount      successful request before failing
+     * @param failAfterEachCount failing request after the successful request
+     * @return the response
+     */
     @POST
     @Path("/init")
     public Response init(@QueryParam("failEachCount") @NotNull @Min(2) int failEachCount,
@@ -36,16 +50,20 @@ public class CircuitBreakerController {
 
     @POST
     @Path("/circuitbreaked")
-    //    @CircuitBreaker(failureRatio = 0.2, requestVolumeThreshold = 10, delay = 2000L, delayUnit = ChronoUnit.MILLIS, successThreshold = 1)
     public Response circuitbreaked() {
         callState.failIfSupposedTo();
         return Response.ok().build();
     }
 
+    /**
+     * Resets the call state to it's initial values by keeping the client provided settings.
+     *
+     * @return the response
+     */
     @POST
     @Path("/reset")
     public Response reset() {
-        callState.reset();
+        callState.resetState();
         return Response.ok("Reset the call state").build();
     }
 }

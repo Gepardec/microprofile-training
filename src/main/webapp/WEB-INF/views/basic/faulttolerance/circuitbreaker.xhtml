@@ -2,6 +2,11 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
+    <!--@elvariable id="failEachCount" type="java.lang.Integer"-->
+    <!--@elvariable id="failAfterEachCount" type="java.lang.Integer"-->
+
+    <ui:param name="verticallyCentered" value="false" />
+
     <ui:define name="title">
         Basics Fault-Tolerance (CircuitBreaker)
     </ui:define>
@@ -26,7 +31,6 @@
                     The circuit breaker mechanism has three states which the spec explains as follows.
                 </p>
 
-                <u>There are three circuit states:</u>
                 <ol>
                     <li>
                         <b>Closed:</b>
@@ -57,19 +61,27 @@
                         </h4>
 
                         <p>
-                            Click the button below and you will see that the call takes up to 4 seconds to complete but it should only take 1 second.
-                            Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.AsynchronousController#async</code>
-                            and follow the instructions you see there.
+                            Click <b>Start</b> to execute indefinite request with a 1 second delay which will stop when you click <b>Stop</b>.
+                            Below you see the server response which tells you how many request have been executed, were successfully processed or failed.
+                            <br />
+                            The defined <b>Successfull Request</b> count will be processed successfully before the defined <b>Failing Request</b> count will fail.
+                            <br />
+                            You can change the configuration by defining new values for <b>Successfull Request</b> and <b>Failing Request</b> and click <b>Init</b>
+                            which will set the configuration on the service.
+
+                            Define a circuit-breaker behaviour on the endpoint method
+                            <code>com.gepardec.training.microprofile.basic.faulttolerance.CircuitBreakerController#circuitbreaked</code>
+                            and play around with the configuration of the circuit-breaker behaviour and the configuration on this page and see what happens.
                         </p>
 
                         <div class="d-flex justify-content-center flex-row  my-2">
                             <div id="failEachCountOutline" class="form-outline me-2">
-                                <input id="failEachCount" type="number" class="form-control form-control-lg" value="5" min="2" />
-                                <label class="form-label" for="failEachCount">Fail Each</label>
+                                <input id="failEachCount" type="number" class="form-control form-control-lg" value="#{failEachCount}" min="2" />
+                                <label class="form-label" for="failEachCount">Successfull Requests</label>
                             </div>
                             <div id="failAfterEachCountOutline" class="form-outline me-2">
-                                <input id="failAfterEachCount" type="number" class="form-control form-control-lg" value="5" min="1" />
-                                <label class="form-label" for="failAfterEachCount">Fail After Each</label>
+                                <input id="failAfterEachCount" type="number" class="form-control form-control-lg" value="#{failAfterEachCount}" min="1" />
+                                <label class="form-label" for="failAfterEachCount">Failing Requests</label>
                             </div>
                             <div class="ms-2 d-flex align-items-center">
                                 <tag:button id="initCallsCircuitbreakerEndpoint" path="/basic/faulttolerance/circuitbreaker/init" text="Init" />
@@ -104,7 +116,7 @@
                 <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
 
                 <script type="module">
-                    import circuitbreaker from '#{pathHelper.buildResourcePath("/js/faulttolerance/circuitbreaker.js")}'
+                    import circuitbreaker from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/circuitbreaker.js")}'
 
                     circuitbreaker.init({
                         delayMillis: 500,

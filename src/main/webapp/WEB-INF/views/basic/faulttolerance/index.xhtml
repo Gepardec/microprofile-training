@@ -15,7 +15,8 @@
             <tag:card id="mp-faulttolerance-asynchronous" title="Asynchronous">
                 <ui:define name="body">
                     <p>
-                        Asynchronous invocations are used to invoke a method on another Thread, where the caller gets a <code>Future&lt;?&gt;</code> as a result.
+                        Asynchronous method invocations are executed on another Thread, where the caller gets a <code>Future&lt;?&gt;</code> as a result
+                        so that processing can proceed while waiting for the asynchronous method invocation to finish.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
@@ -28,7 +29,7 @@
             <tag:card id="mp-faulttolerance-fallback" title="Fallback">
                 <ui:define name="body">
                     <p>
-                        Fallback defines a fallback result for a method invocation which fails, so that the caller always gets a result and doesn't have to deal with exceptions.
+                        Fallbacks are used for method invocations which fail for any reason, so that the caller always gets a fallback result instead of an error.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
@@ -44,7 +45,7 @@
                         Timeout prevents from the execution from waiting forever. It is recommended that a microservice invocation should have timeout associated with.
                     </p>
                     <div class="alert alert-danger" role="alert">
-                        Timeout behaviour doesn't replace SOAP/REST client timeout settings, which comonly default to indefiniete!!!
+                        Timeout behaviour doesn't replace SOAP/REST client timeout settings, which comonly default to indefinite!!!
                     </div>
                 </ui:define>
                 <ui:define name="buttons">

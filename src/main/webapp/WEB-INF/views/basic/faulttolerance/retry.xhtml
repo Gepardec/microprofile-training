@@ -21,8 +21,8 @@
                 </p>
 
                 <p>
-                    Retry commonly is used to avoid errors on brief network glitches when either the network briefly is down, or a service redployment occurs.
-                    The caller gets an increased latency because of the retries but no errors.
+                    Retry is used to avoid brief errors on method invocations, if for instance the netowrok or a service is temporarly not available.
+                    The caller will experience an increased latency because of the retries but will not experience failures because of a brief glitch.
                 </p>
 
                 <hr class="my-3" />
@@ -35,8 +35,11 @@
                     </h4>
 
                     <p>
-                        Click the button below to trigger the call for retry and if the retry behaviours works as expected, then you see a increased latency because of the retries.
-                        Define a retry behaviour as described in the class <code>com.gepardec.training.microprofile.basic.faulttolerance.RetryController#retried</code>.
+                        Click the button below and you see the request is failing becuase there is no retry behaviour.
+                        Fix that problem by appliying a fitting retry behvaiour on the method
+                        <code>com.gepardec.training.microprofile.basic.faulttolerance.RetryService#retried</code>.
+                        <br />
+                        When your fix works, then the request will not fail anymore and you should experience a latency because of the retries.
                     </p>
 
                     <div class="text-center">
@@ -59,24 +62,17 @@
             </div>
 
             <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for response..." text="Takes a little bit longer because of the retries" />
+                <tag:timerDialog id="timer" title="Waiting for response..." />
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", (event) => {
-                        document.getElementById("callRetriedEndpoint").addEventListener("click", (event) => {
-                            event.preventDefault();
-                            const serverResponse = document.getElementById("serverResponse");
-                            serverResponse.innerText = "";
-                            const modal = mdb.Modal.getInstance(document.getElementById('timer'))
-                            modal.show();
-                            fetch(event.target.href, {
-                                method: "POST",
-                            }).then((response) => {
-                                let serverResponseText = `HTTP-Status: \${response.status}`;
-                                response.text()
-                                    .then((text) => serverResponseText += `, Content: \${text}`)
-                                    .finally(() => serverResponse.innerText = serverResponseText);
-                            }).finally(() => modal.hide());
+                <script type="module">
+                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+                    import retry from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/retry.js")}'
+
+                    mp.registerOnLoad(() => {
+                        retry.init({
+                            callElement: document.getElementById("callRetriedEndpoint"),
+                            responseElement: document.getElementById("serverResponse"),
+                            timerElement: document.getElementById('timer'),
                         });
                     });
                 </script>

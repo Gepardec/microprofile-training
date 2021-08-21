@@ -25,7 +25,6 @@ public class RetryController {
     @POST
     @Path("/retried")
     public Response retried() {
-        // TODO: Go to 'RetryService#retried' and define the retry behaviour with 3 maximum retries with a delay of 1.5 seconds.
         try {
             return Response.ok("Call worked with " + (retryService.retried() - 1) + " retries").build();
         } catch (Exception e) {

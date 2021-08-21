@@ -30,33 +30,44 @@ const displayData = (responseContainer, data) => {
     data.map((item) => responseContainer.append(createResponseElement(item)));
 }
 
-const init = (options) => {
+const extractAndValidateInputNumber = (element, min) => {
+    const inputElement = element.querySelector('input');
+    const stringValue = inputElement.value;
+    const value = parseInt(stringValue) || -1;
+    if (value <= 0 || value < min) {
+        element.focus();
+        inputElement.value = "";
+        alert(`Your ${inputElement.id} value is invalid. value: '${stringValue}', min: '${min}'`);
+        inputElement.value = min;
+        return -1;
+    }
+
+    return value;
+};
+
+const registerCallElementClickEventListener = (options) => {
     const {
         callerElement,
         countElement,
+        timerElement,
         responseContainer,
-        beforeCallback = () => {
-        },
-        afterCallback = () => {
-        }
+        countMin,
     } = options;
     callerElement.addEventListener("click", async (event) => {
         event.preventDefault();
-        const countInputElement = countElement.querySelector('input');
-        const parallelCount = parseInt(countInputElement.value) || -1;
-        if (parallelCount <= 0) {
-            countInputElement.focus();
-            countInputElement.value = "";
-            alert(`Your parallel Count is invalid. parallelCount: '${countInputElement.value}'`);
-            countInputElement.value = "2";
-            return;
+        const parallelCount = extractAndValidateInputNumber(countElement, countMin);
+        if (parallelCount !== -1) {
+            responseContainer.innerHTML = null;
+            mdb.Modal.getInstance(timerElement).show();
+            const data = await callApiNTimes(event.target.href, parallelCount);
+            displayData(responseContainer, data)
+            mdb.Modal.getInstance(timerElement).hide();
         }
-        responseContainer.innerHTML = null;
-        beforeCallback();
-        const data = await callApiNTimes(event.target.href, parallelCount);
-        displayData(responseContainer, data)
-        afterCallback();
     });
+}
+
+const init = (options) => {
+    registerCallElementClickEventListener(options);
 }
 
 export default {

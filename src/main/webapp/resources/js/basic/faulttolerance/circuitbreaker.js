@@ -79,7 +79,7 @@ const start = async (options) => {
     state.timerReference = setInterval(run, delayMillis, options);
 };
 
-const extractAndValidateInputNumber = (element, min) => {
+const validateInputNumber = (element, min) => {
     const inputElement = element.querySelector('input');
     const stringValue = inputElement.value;
     const value = parseInt(stringValue) || -1;
@@ -108,7 +108,7 @@ const registerInitElementClickEventListener = (options) => {
                 alert('Cannot initialize while running, please stop first');
                 return;
             }
-            if (extractAndValidateInputNumber(failEachCountElement, failEachCountMin) && extractAndValidateInputNumber(failAfterEachCountElement, failAfterEachCountMin)) {
+            if (validateInputNumber(failEachCountElement, failEachCountMin) && validateInputNumber(failAfterEachCountElement, failAfterEachCountMin)) {
                 const failEachCountInputElement = failEachCountElement.querySelector('input');
                 const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
                 const searchParams = new URLSearchParams();

@@ -28,9 +28,8 @@ public class TimeoutController {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/timedout")
     public Response timedout() {
-        // TODO: Go to 'TimeoutService#timedout' and make this method call fail after one second via @Timeout.
         try {
-            timeoutService.timedout();
+            timeoutService.fails();
             return Response.serverError().entity("Call didn't time out").build();
         } catch (Exception e) {
             return Response.ok(e.getMessage()).build();

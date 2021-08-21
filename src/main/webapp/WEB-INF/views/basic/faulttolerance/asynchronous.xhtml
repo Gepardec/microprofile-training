@@ -40,9 +40,14 @@
                         </h4>
 
                         <p>
-                            Click the button below and you will see that the call takes up to 4 seconds to complete but it should only take 1 second.
-                            Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.AsynchronousController#async</code>
-                            and follow the instructions you see there.
+                            Click the button below and you will see that the request takes up to <b>4 seconds</b> to complete which should be way faster.
+                        </p>
+
+                        <p>
+                            Fix the problem by using <code>@Asynchronous</code> on the method
+                            <code>com.gepardec.training.microprofile.basic.faulttolerance.AsynchronousService#longRunning</code>.
+                            <br />
+                            When your fix works, then the request should take only <b>1 second</b>.
                         </p>
 
                         <div class="text-center">
@@ -55,19 +60,16 @@
             </div>
 
             <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
+                <tag:timerDialog id="timer" title="Waiting for response..." />
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", (event) => {
-                        document.getElementById("callAsynchronousEndpoint").addEventListener("click", (event) => {
-                            event.preventDefault();
-                            const modal = mdb.Modal.getInstance(document.getElementById('timer'))
-                            modal.show();
-                            fetch(event.target.href, {
-                                method: "POST",
-                            }).finally(() => modal.hide());
-                        });
-                    });
+                <script type="module">
+                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+                    import asynchronous from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/asynchronous.js")}'
+
+                    mp.registerOnLoad(() => asynchronous.init({
+                        clickElement: document.getElementById("callAsynchronousEndpoint"),
+                        timeDialogElement: document.getElementById('timer'),
+                    }));
                 </script>
             </ui:insert>
         </section>

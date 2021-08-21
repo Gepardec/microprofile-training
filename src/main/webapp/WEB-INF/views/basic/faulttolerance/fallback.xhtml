@@ -11,6 +11,7 @@
             <div class="text-center">
                 <h1>Fallback</h1>
             </div>
+
             <div class="mt-3">
                 <p>
                     The specification for Microprofile
@@ -21,9 +22,9 @@
                 </p>
 
                 <p>
-                    Fallbacks are used to provide a default result for the caller, which actually can disguise the error from the caller.
-                    The caller doesn't necessarily knows that the result is a default result. Of course the fallback must make sense, and canot be used for all
-                    method invocations.
+                    Fallbacks are used to provide a fallback result for failing method invocations which the caller can work with.
+                    Of course, the fallback must match the result type of the failed method invocation and should provide a meaningful
+                    result for the caller. Fallbacks can be applied to exception types for different fallback results for different kind of exceptions.
                 </p>
 
                 <hr class="my-3" />
@@ -36,9 +37,9 @@
                     </h4>
 
                     <p>
-                        Click the button below and you will see the server response above.
-                        Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.FallbackController#fallbacked</code>
-                        and follow the instructions you see there.
+                        Click the button below and you will see that the request always fails.
+                        Fixed the failing requests by applying a fallback for the method <code>com.gepardec.training.microprofile.basic.faulttolerance.FallbackService#fails</code>
+                        you see fit.
                     </p>
 
                     <div class="text-center">
@@ -61,20 +62,14 @@
             </div>
 
             <ui:insert name="bottom">
-                <script>
-                    document.addEventListener("DOMContentLoaded", (event) => {
-                        document.getElementById("callFallbackedEndpoint").addEventListener("click", (event) => {
-                            event.preventDefault();
-                            const serverResponse = document.getElementById("serverResponse");
-                            serverResponse.innerText = "";
-                            fetch(event.target.href, {
-                                method: "POST",
-                            }).then((response) => {
-                                let serverResponseText = `HTTP-Status: \${response.status}`;
-                                response.text()
-                                    .then((text) => serverResponseText += `, Content: \${text}`)
-                                    .finally(() => serverResponse.innerText = serverResponseText);
-                            });
+                <script type="module">
+                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+                    import fallback from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/fallback.js")}'
+
+                    mp.registerOnLoad(() => {
+                        fallback.init({
+                            callElement: document.getElementById("callFallbackedEndpoint"),
+                            responseElement: document.getElementById("serverResponse"),
                         });
                     });
                 </script>

@@ -37,9 +37,22 @@ public class CircuitBreakerCallState implements Serializable {
         }
     }
 
-    public synchronized void reset() {
+    public synchronized void resetState() {
         callCount = 0;
         count = 1;
         failureCount = 0;
+    }
+
+    public synchronized void resetConfiguration() {
+        failAfterEachCount = 5;
+        failEachCount = 5;
+    }
+
+    public int getFailEachCount() {
+        return failEachCount;
+    }
+
+    public int getFailAfterEachCount() {
+        return failAfterEachCount;
     }
 }

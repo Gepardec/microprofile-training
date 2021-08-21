@@ -10,7 +10,7 @@ public class RetryService {
     public int retried() {
         counter++;
         if (counter < 3) {
-            throw new IllegalStateException("Failed because you haven't defined a retry behaviour");
+            throw new IllegalStateException("Failed, no retry :(");
         }
 
         return counter;

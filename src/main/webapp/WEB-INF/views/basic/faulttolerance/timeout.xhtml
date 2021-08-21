@@ -21,10 +21,10 @@
                 </p>
 
                 <p>
-                    Timeout limit method invocation durations and terminate them with a ?? exception.
+                    Timeout limit method invocation durations and terminate them with a <code>TimeoutException</code>.
                     Timeout behaviour prevents the service to become unresponsive if a method invocation hungs or takes longer as expected.
                     The service is meant to skip the invocation in case of a hung or unexpected long run method invocation to keep the service
-                    responsive for other calls.
+                    responsive for other requests.
                 </p>
 
                 <hr class="my-3" />
@@ -37,9 +37,14 @@
                     </h4>
 
                     <p>
-                        Click the button below and you will see that the call takes up to 4 seconds to complete but it should only take 1 second.
-                        Take a look at <code>com.gepardec.training.microprofile.basic.faulttolerance.TimeoutController#timedout</code>
-                        and follow the instructions you see there.
+                        Click the button below and you will see that the request takes up to <b>4 seconds</b> to complete which should be way faster.
+                    </p>
+
+                    <p>
+                        Fix the problem by applying a timeout behaviour on the method
+                        <code>com.gepardec.training.microprofile.basic.faulttolerance.TimeoutService#fails</code> which skips the method invocation after <b>1 second</b>.
+                        <br />
+                        When your fix works, then the request should take only <b>1 second</b>.
                     </p>
 
                     <div class="text-center">
@@ -62,24 +67,17 @@
             </div>
 
             <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
+                <tag:timerDialog id="timer" title="Waiting for response..." />
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", (event) => {
-                        document.getElementById("callTimedoutEndpoint").addEventListener("click", (event) => {
-                            event.preventDefault();
-                            const serverResponse = document.getElementById("serverResponse");
-                            serverResponse.innerText = "";
-                            const modal = mdb.Modal.getInstance(document.getElementById('timer'))
-                            modal.show();
-                            fetch(event.target.href, {
-                                method: "POST",
-                            }).then((response) => {
-                                let serverResponseText = `HTTP-Status: \${response.status}`;
-                                response.text()
-                                    .then((text) => serverResponseText += `, Content: \${text}`)
-                                    .finally(() => serverResponse.innerText = serverResponseText);
-                            }).finally(() => modal.hide());
+                <script type="module">
+                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+                    import timeout from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/timeout.js")}'
+
+                    mp.registerOnLoad(() => {
+                        timeout.init({
+                            callElement: document.getElementById("callTimedoutEndpoint"),
+                            responseElement: document.getElementById("serverResponse"),
+                            timerElement: document.getElementById('timer'),
                         });
                     });
                 </script>

@@ -38,7 +38,7 @@
                 <ui:define name="body">
                     <p>
                         The Microprofile Fault Tolerance specification emerged from the Netflix-Hystrixs project and facilitates the resilience of a service.
-                        The Microprofile Fault Tolerance specification contains multiple functionalities for handling common problems in a distributed service environment. such as:
+                        The Microprofile Fault Tolerance specification contains multiple functionalities for handling common problems in a distributed service environment such as:
                     </p>
 
                     <ul>
@@ -46,8 +46,8 @@
                         <li><code>@Fallback</code> for fallback results of methods which invocations fail</li>
                         <li><code>@Timeout</code> for limiting method invocation durations</li>
                         <li><code>@Retry</code> for retry behaviour of methods temporarly failing</li>
-                        <li><code>@CircuitBreaker</code> for disallowing invocations of method frequently failing</li>
-                        <li><code>@Bulkhead</code> for limiting concurrrent invocations on methods</li>
+                        <li><code>@Bulkhead</code> for limiting concurrrent method invocations</li>
+                        <li><code>@CircuitBreaker</code> for preventing method invocations of method frequently failing</li>
                     </ul>
                     The specification for Microprofile
                     <a href="#{mpUri.faultToleranceUri}"

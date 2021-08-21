@@ -22,7 +22,7 @@ public class CircuitBreakerOpenExceptionMapper implements ExceptionMapper<Circui
 
     @Override
     public Response toResponse(CircuitBreakerOpenException exception) {
-        callState.reset();
+        callState.resetState();
         log.warn("Call failed because circuit has been opened: " + exception.getMessage());
         return Response.status(ApplicationHttpStatusCode.CIRCUIT_OPEN).entity("CircuitBreaker opened endpoint").build();
     }
