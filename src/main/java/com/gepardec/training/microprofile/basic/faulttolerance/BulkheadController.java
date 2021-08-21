@@ -24,7 +24,6 @@ public class BulkheadController {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/bulkheaded")
     public Response bulkheaded() throws InterruptedException {
-        // TODO: Use the @Bulkhead annotation on this method to limit parallel request to 4
         Thread.sleep(250);
         return Response.ok("Call worked").build();
     }
