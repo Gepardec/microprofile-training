@@ -25,7 +25,6 @@ public class FallbackController {
     @POST
     @Path("/fallbacked")
     public Response fallbacked() {
-        String result = null;
         try {
             return Response.ok(fallbackService.fails()).build();
         } catch (Exception e) {

@@ -26,7 +26,7 @@ public class RetryController {
     @Path("/retried")
     public Response retried() {
         try {
-            return Response.ok("Call worked with " + (retryService.retried() - 1) + " retries").build();
+            return Response.ok("Call worked with " + retryService.retried() + " retries").build();
         } catch (Exception e) {
             return Response.serverError().entity(e.getMessage()).build();
         }

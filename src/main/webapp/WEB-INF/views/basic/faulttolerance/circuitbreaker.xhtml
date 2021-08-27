@@ -116,18 +116,21 @@
                 <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
 
                 <script type="module">
+                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
                     import circuitbreaker from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/circuitbreaker.js")}'
 
-                    circuitbreaker.init({
-                        delayMillis: 500,
-                        failEachCountElement: document.getElementById("failEachCountOutline"),
-                        failAfterEachCountElement: document.getElementById("failAfterEachCountOutline"),
-                        initElement: document.getElementById("initCallsCircuitbreakerEndpoint"),
-                        callerElement: document.getElementById("startCallsCircuitbreakerEndpoint"),
-                        stopElement: document.getElementById("stopCallsCircuitbreakerEndpoint"),
-                        responseContainer: document.getElementById("serverResponse"),
-                        failEachCountMin: 2,
-                        failAfterEachCountMin: 1
+                    mp.registerOnLoad(() => {
+                        circuitbreaker.init({
+                            delayMillis: 500,
+                            failEachCountElement: document.getElementById("failEachCountOutline"),
+                            failAfterEachCountElement: document.getElementById("failAfterEachCountOutline"),
+                            initElement: document.getElementById("initCallsCircuitbreakerEndpoint"),
+                            callerElement: document.getElementById("startCallsCircuitbreakerEndpoint"),
+                            stopElement: document.getElementById("stopCallsCircuitbreakerEndpoint"),
+                            responseContainer: document.getElementById("serverResponse"),
+                            failEachCountMin: 2,
+                            failAfterEachCountMin: 1
+                        });
                     });
                 </script>
             </ui:insert>
