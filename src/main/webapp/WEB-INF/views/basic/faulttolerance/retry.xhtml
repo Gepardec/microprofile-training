@@ -60,23 +60,23 @@
 
                 <hr class="my-3" />
             </div>
-
-            <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for response..." />
-
-                <script type="module">
-                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-                    import retry from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/retry.js")}'
-
-                    mp.registerOnLoad(() => {
-                        retry.init({
-                            callElement: document.getElementById("callRetriedEndpoint"),
-                            responseElement: document.getElementById("serverResponse"),
-                            timerElement: document.getElementById('timer'),
-                        });
-                    });
-                </script>
-            </ui:insert>
         </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <tag:timerDialog id="timer" title="Waiting for response..." />
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import retry from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/retry.js")}'
+
+            mp.registerOnLoad(() => {
+                retry.init({
+                    callElement: document.getElementById("callRetriedEndpoint"),
+                    responseElement: document.getElementById("serverResponse"),
+                    timerElement: document.getElementById('timer'),
+                });
+            });
+        </script>
     </ui:define>
 </ui:composition>

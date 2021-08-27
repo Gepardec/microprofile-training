@@ -60,20 +60,20 @@
 
                 <hr class="my-3" />
             </div>
-
-            <ui:insert name="bottom">
-                <script type="module">
-                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-                    import fallback from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/fallback.js")}'
-
-                    mp.registerOnLoad(() => {
-                        fallback.init({
-                            callElement: document.getElementById("callFallbackedEndpoint"),
-                            responseElement: document.getElementById("serverResponse"),
-                        });
-                    });
-                </script>
-            </ui:insert>
         </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import fallback from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/fallback.js")}'
+
+            mp.registerOnLoad(() => {
+                fallback.init({
+                    callElement: document.getElementById("callFallbackedEndpoint"),
+                    responseElement: document.getElementById("serverResponse"),
+                });
+            });
+        </script>
     </ui:define>
 </ui:composition>

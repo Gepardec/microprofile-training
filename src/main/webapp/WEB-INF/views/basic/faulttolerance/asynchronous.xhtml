@@ -58,20 +58,21 @@
                     </section>
                 </div>
             </div>
-
-            <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for response..." />
-
-                <script type="module">
-                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-                    import asynchronous from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/asynchronous.js")}'
-
-                    mp.registerOnLoad(() => asynchronous.init({
-                        clickElement: document.getElementById("callAsynchronousEndpoint"),
-                        timeDialogElement: document.getElementById('timer'),
-                    }));
-                </script>
-            </ui:insert>
         </section>
+    </ui:define>
+
+
+    <ui:define name="bottom">
+        <tag:timerDialog id="timer" title="Waiting for response..." />
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import asynchronous from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/asynchronous.js")}'
+
+            mp.registerOnLoad(() => asynchronous.init({
+                clickElement: document.getElementById("callAsynchronousEndpoint"),
+                timeDialogElement: document.getElementById('timer'),
+            }));
+        </script>
     </ui:define>
 </ui:composition>

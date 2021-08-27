@@ -70,23 +70,23 @@
 
                 <hr class="my-3" />
             </div>
-
-            <ui:insert name="bottom">
-                <tag:timerDialog id="timer" title="Waiting for responses..." />
-
-                <script type="module">
-                    import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-                    import bulkhead from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/bulkhead.js")}'
-
-                    mp.registerOnLoad(() => bulkhead.init({
-                        callerElement: document.getElementById("callBulkheadedEndpoint"),
-                        countElement: document.getElementById("parallelCountOutline"),
-                        timerElement: document.getElementById("timer"),
-                        responseContainer: document.getElementById("serverResponse"),
-                        countMin: 2
-                    }));
-                </script>
-            </ui:insert>
         </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <tag:timerDialog id="timer" title="Waiting for responses..." />
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import bulkhead from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/bulkhead.js")}'
+
+            mp.registerOnLoad(() => bulkhead.init({
+                callerElement: document.getElementById("callBulkheadedEndpoint"),
+                countElement: document.getElementById("parallelCountOutline"),
+                timerElement: document.getElementById("timer"),
+                responseContainer: document.getElementById("serverResponse"),
+                countMin: 2
+            }));
+        </script>
     </ui:define>
 </ui:composition>

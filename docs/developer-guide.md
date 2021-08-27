@@ -167,3 +167,23 @@ export default {
 Parameters for the javascript module are always provided as an options object. If html elements are used in any ways, then the html element instance itself is
 provided and never ids.
 
+Javascript modules are used in a xhtml page the following way.
+
+```
+<!-- Inserts the contained tags at the end of the HTML page -->
+<ui:define name="bottom"> 
+    <!-- The used javascript is a javascript module -->
+    <script type="module">
+        // '#{pathHelper.buildResourcePath("/js/mp.js")}' is a EL-Expression which gets resolved to ''/mptraining/resources/js/mp.js''
+        // Imports your modules
+        import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+        import myModule from '#{pathHelper.buildResourcePath("/js/basic/<MP_SPEC>/myModule.js")}'
+
+        // Initializes your javascript module once per page load
+        mp.registerOnLoad(() => myModule.init({
+            ...
+        }));
+    </script>
+</ui:define>
+```
+
