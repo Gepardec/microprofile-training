@@ -4,7 +4,7 @@
 
 The custom JSF tags implement GUI components which are used globally.
 
-`xmlns:tag="http://tags.microprofile.training.gepardec.com"` 
+`xmlns:tag="http://tags.microprofile.training.gepardec.com"`
 
 ### Button
 
@@ -13,13 +13,13 @@ Renders a link acting as a button, for executing GET requests like with a link.
 Attributes:
 
 1. `id`  
-The page unique id
+   The page unique id
 2. `text`  
-The text for the button
+   The text for the button
 3. `path` (Optional, Default='#')  
-The relative path from the rest application path on, or a in-page references via '#'
+   The relative path from the rest application path on, or a in-page references via '#'
 4. `rendered` (Optional, Default=true)  
-The rendered flag
+   The rendered flag
 
 ```
 <tag:button id="toMyActionOrResource" text="Go to example"/>
@@ -35,15 +35,15 @@ The component accepts children, for instance an icon.
 Attributes:
 
 1. `id`  
-The page unique id
+   The page unique id
 2. `text` (Optional)    
-The text for the link
+   The text for the link
 3. `path` (Optional, Default='#')  
-The relative path from the rest application path on, or a in-page references via '#'.
+   The relative path from the rest application path on, or a in-page references via '#'.
 4. `target` (Optional, Default='_self')  
-The link target
+   The link target
 5. `rendered` (Optional, Default=true)  
-The rendered flag
+   The rendered flag
 
 ```
 <tag:link id="toMyActionOrResource" text="Go to example"/>
@@ -63,15 +63,15 @@ The component accepts children, for instance an icon.
 Attributes:
 
 1. `id`  
-The page unique id
+   The page unique id
 2. `path`  
-The relative path from the rest application path on
+   The relative path from the rest application path on
 3. `text` (Optional)
-The text for the link
+   The text for the link
 4. `rendered` (Optional, Default=true)  
-The rendered flag
+   The rendered flag
 5. `active` (Optional, Default=false)  
-The active flag marking the nav link active
+   The active flag marking the nav link active
 
 ```
 <tag:navLink id="toMyResource" path="/basic/index" text="Go to example"/>
@@ -87,11 +87,11 @@ Renders a card with a header and button section used for an element in teh index
 Attributes:
 
 1. `id`  
-The unique card id within a view
+   The unique card id within a view
 2. `title`   
-The card title
+   The card title
 3. `rendered` (Optional, default true)  
-The rendered flag
+   The rendered flag
 
 ```
 <tag:card id="indexExampleMpHealth" title="First part">
@@ -102,4 +102,24 @@ The rendered flag
         <tag:button id="toMpHealthExample" text="Go to example" path="/basic/health"/>
     </ui:define>
 </tag:card>
+```
+
+### TimerDialog
+
+Renders a timer modal dialog which displays a spinner and the duration seconds the dialog is displayed.   
+This component is useful when one wants to display the duration of a rest-api call.
+
+Attributes:
+
+1. `id`  
+   The page unique id 
+2. `title` (Optional)
+   The title of the timer dialog
+3. `text` (Optional)
+   The text of the timer dialog
+
+```
+<tag:timerDialog id="timer" />
+<tag:timerDialog id="timer" title="Waiting for response..." />
+<tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second"/>
 ```

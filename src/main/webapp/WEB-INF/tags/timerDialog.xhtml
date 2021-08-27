@@ -1,0 +1,47 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+    <!--@elvariable id="id" type="java.lang.String"-->
+    <!--@elvariable id="title" type="java.lang.String"-->
+    <!--@elvariable id="text" type="java.lang.String"-->
+
+    <div id="#{id}" class="modal" tabindex="-1"
+        data-mdb-backdrop="static"
+        data-mdb-keyboard="false">
+        <div id="#{id}Dialog" class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <ui:fragment rendered="#{not empty title}">
+                    <div class="modal-header">
+                        <h5 class="modal-title">#{title}</h5>
+                    </div>
+                </ui:fragment>
+                <div class="modal-body">
+                    <div class="d-flex flex-row justify-content-center mt-2">
+                        <div>
+                            <span id="#{id}Seconds" class="fs-4">0</span>
+                            <span class="fs-4">seconds</span>
+                        </div>
+                    </div>
+                    <ui:fragment rendered="#{not empty text}">
+                        <div class="fs-5">
+                            <hr />
+                            #{text}
+                        </div>
+                    </ui:fragment>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+        import timerDialog from '#{pathHelper.buildResourcePath("/js/tags/timerDialog.js")}'
+
+        mp.registerOnLoad(() => timerDialog.init({
+            modalDialogElement: document.getElementById('#{id}'),
+            timerTextElement: document.getElementById('#{id}Seconds'),
+            delayMillis: 1000,
+        }));
+    </script>
+</ui:component>
