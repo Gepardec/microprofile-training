@@ -9,9 +9,10 @@ import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.net.Socket;
 
+/*
 @Liveness
 @ApplicationScoped
-public class DatabaseLiveCheck implements HealthCheck {
+public class DosDatabaseLiveCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("Database");
@@ -19,7 +20,9 @@ public class DatabaseLiveCheck implements HealthCheck {
         String hostName = "localhost";
         Integer port = 19090;
         try {
-            pingServer(hostName, port);
+            for (int i = 0; i < 1000000000; i++) {
+                pingServer(hostName, port);
+            }
             responseBuilder.up();
         } catch (Exception e) {
             responseBuilder.down()
@@ -34,3 +37,4 @@ public class DatabaseLiveCheck implements HealthCheck {
     }
 }
 
+*/
