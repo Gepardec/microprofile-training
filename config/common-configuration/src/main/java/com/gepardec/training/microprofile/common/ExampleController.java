@@ -21,11 +21,11 @@ public class ExampleController {
     @ConfigProperty(name = "common.key")
     private String commonConfigurationValue;
 
-    @Path("/commonconfiguration")
+    @Path("/commonconfigurationexternal")
     @GET
     public String getConfigFromPropertyFile() {
         model.put("value", commonConfigurationValue);
-        return "advanced/config/common_configuration.xhtml";
+        return "advanced/config/common_configuration_result.xhtml";
     }
 
 }

@@ -48,4 +48,10 @@ public class ExampleController {
         model.put("dropInValue2", dropInValue2);
         return "advanced/config/drop_in.xhtml";
     }
+
+    @Path("/commonconfiguration")
+    @GET
+    public String getCommonConfiguration() {
+        return "advanced/config/common_configuration.xhtml";
+    }
 }

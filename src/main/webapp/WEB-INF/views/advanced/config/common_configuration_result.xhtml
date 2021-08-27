@@ -1,0 +1,40 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="header">
+        Microprofile-Config Advanced ConfigSource
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toAdvancedConfigIndex" path="/advanced/config/index" text="Back"><i
+                class="fas fa-step-backward"/></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="container-lg">
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <b>
+                            Result
+                        </b>
+                        <div class="row my-1">
+                            <div class="col-sm text-start text-sm-right mr-sm-1">
+                                Value:
+                            </div>
+                            <div class="col-sm text-start text-sm-left ml-sm-1">
+                                <h:outputText value="${value}" class="font-weight-bold"/>
+                            </div>
+                        </div>
+                        <tag:button id="toCommonConfigExternal" text="Back"
+                                    path="/advanced/config/commonconfiguration"/>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
