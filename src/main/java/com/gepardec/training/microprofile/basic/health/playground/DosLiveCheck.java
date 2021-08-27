@@ -3,13 +3,10 @@ package com.gepardec.training.microprofile.basic.health.playground;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
-import org.eclipse.microprofile.health.Readiness;
+import org.eclipse.microprofile.health.Liveness;
 import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.Socket;
 import java.net.URL;
 /*
 @Liveness
@@ -37,7 +34,7 @@ public class DosLiveCheck implements HealthCheck {
         URL url = new URL("http://localhost:9990/health");
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
-        int result = con.getResponseCode();
     }
 }
-*/
+
+ */
