@@ -1,13 +1,15 @@
-<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Microprofile Basics
     </ui:define>
 
     <ui:define name="additionalNavLink">
-        <tag:navLink id="toWelcome" path="/welcome" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+        <tag:navLink id="toWelcome" path="/welcome" text="Back"><i
+                class="fas fa-step-backward"/></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -15,32 +17,66 @@
             <tag:card id="mp-config" title="Microprofile Config">
                 <ui:define name="body">
                     <p>
-                        ...
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toExampleConfig" text="Go to example" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-health" title="Microprofile Health">
-                <ui:define name="body">
-                    <p>
-                        Provide application health info for container orchestration and more.
-                        Microprofile Config facilitates the configuration of an application. With the following
-                        examples, you will configure this application in several ways and see how you can use the
-                        configured values. In two examples, these configured values will be mapped and converted into
-                        specific target types or even aggregated into a property class. Furthermore, you will handle
-                        empty configurations which, by default, lead to exceptions.
+                        Microprofile Config facilitates the configuration of an
+                        application. With the following
+                        examples, you will configure this application in several
+                        ways and see how you can use the
+                        configured values. In two examples, these configured
+                        values will be mapped and converted into
+                        specific target types or even aggregated into a property
+                        class. Furthermore, you will handle
+                        empty configurations which, by default, lead to
+                        exceptions.
                     </p>
                     The specification for Microprofile
                     <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
-                        target="_blank">
+                       target="_blank">
                         Config.
                     </a>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples" path="/basic/config/index" />
+                    <tag:button id="toConfigExamples" text="Examples"
+                                path="/basic/config/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
+        <section>
+            <tag:card id="mp-health" title="Microprofile Health 3.0">
+                <ui:define name="body">
+                    <p>
+                        Microprofile Health aims to provide a standardized way
+                        to expose information about the applications current
+                        liveness and readiness conditions cumulated as a health
+                        status.
+                        This Information is predicated to be utilized in
+                        container and cloud environments for orchestration, as
+                        well as for monitoring and alerting purposes independent of
+                        the environment.
+                    </p>
+                    <p>
+                        TL;DR:
+                        /health endpoint so k8s can detect unhealthy pods
+                    </p>
+                    In the examples you will:
+                    <ul>
+                        <li>
+                            take a look at at the /health endpoint
+                        </li>
+                        <li>
+                            correct faulty healthchecks
+                        </li>
+                        <li>
+                            break working healthchecks
+                        </li>
+                    </ul>
+                    The specification for
+                    <a href="https://download.eclipse.org/microprofile/microprofile-health-3.0/microprofile-health-spec-3.0.html"
+                       target="_blank">
+                        Microprofile Health 3.0</a>.
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExamples" text="Examples"
+                                path="/basic/health/index"/>
                 </ui:define>
             </tag:card>
         </section>

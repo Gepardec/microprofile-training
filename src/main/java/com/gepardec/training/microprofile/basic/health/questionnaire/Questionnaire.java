@@ -9,15 +9,16 @@ public class Questionnaire {
     public Questionnaire() {
         var responsesAndAnswers = new HashMap<Integer, String>();
         responsesAndAnswers
-                .put(1, "There are different philosophies where the /health endpoint should live. " +
-                        "Some Applications Servers expose it on the application port; " +
+                .put(1, "Actually only the REST endpoints are specified. " +
+                        "They can be served on any port. " +
+                        "Some Applications Servers expose them on the application port; " +
                         "some can be configured; " +
-                        "wildfly exposes it on the management port.");
+                        "and wildfly exposes them on the management port. ");
         responsesAndAnswers
-                .put(2, "Actually everything seems to be working as intended.");
+                .put(2, "Try the other answer. ");
         questions.put(1,
                       new Question<>("Look for the /health endpoint at the application port and the wildfly management port. " +
-                                             "Is this okay?",
+                                             "Is this within the specification?",
 
                                      responsesAndAnswers));
 
@@ -34,10 +35,10 @@ public class Questionnaire {
                                      responsesAndAnswers));
 
         responsesAndAnswers = new HashMap<>();
-        responsesAndAnswers.put(1, "Works");
+        responsesAndAnswers.put(1, "Well done!");
         responsesAndAnswers.put(2, "Still \"DOWN\"");
         questions.put(3,
-                      new Question<>("One HealthCheck is \"DOWN\" fix it.",
+                      new Question<>("Two HealthChecks are \"DOWN\" fix it.",
                                      responsesAndAnswers));
     }
 

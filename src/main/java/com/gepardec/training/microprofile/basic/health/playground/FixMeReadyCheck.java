@@ -7,10 +7,11 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Readiness
 @ApplicationScoped
-public class CustomLiveCheck implements HealthCheck {
+public class FixMeReadyCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("This one is down")
+
+        return HealthCheckResponse.named("FixMeReady")
                                   .down()
                                   .build();
     }

@@ -1,19 +1,27 @@
-/*package com.gepardec.training.microprofile.basic.health.taskchecker;
+package com.gepardec.training.microprofile.basic.health.taskchecker;
 
-import com.gepardec.training.microprofile.basic.health.taskchecker.boundary.HealthQuery;
-import com.gepardec.training.microprofile.basic.health.taskchecker.boundary.HealthStatus;
+import org.eclipse.microprofile.health.HealthCheck;
+import org.eclipse.microprofile.health.HealthCheckResponse;
+import javax.enterprise.inject.Instance;
 
-public class QuestionThree implements TaskChecker{
+public class QuestionThree implements TaskChecker {
+
     @Override
-    public Integer check(Integer questionKey) {
-        boolean works = false;
+    public Integer check(Integer questionKey, Object object) {
+        boolean allUp = false;
 
-        HealthQuery healthQuery = new HealthQuery();
-        HealthStatus healthStatus = healthQuery.query();
-        
-        works = Boolean.getBoolean(healthStatus.status);
+        if(object != null) {
 
-        if (works) {return 1;}
-        return 2;
+            Instance<HealthCheck> healthChecks = (Instance<HealthCheck>) object;
+
+            allUp = healthChecks
+                    .stream().allMatch(check -> check.call().getStatus()
+                                                     .equals(HealthCheckResponse.Status.UP));
+        }
+        if (allUp) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
-}*/
+}

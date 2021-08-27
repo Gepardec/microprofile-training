@@ -4,8 +4,12 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
-    <ui:define name="header">
-        <title>Basic Index</title>
+    <ui:define name="title">
+        Microprofile-Health Basics
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -13,7 +17,7 @@
             <div class="text-center">
                 <h1>Microprofile Health</h1>
             </div>
-            <tag:card id="mp-health1" title="Find the Health Endpoint">
+            <tag:card id="mp-health1" title="Take a look at the /health endpoint">
                 <ui:define name="body">
                     <p>
                         <h:outputText value="${healthState.questionText(1)}">
@@ -22,12 +26,12 @@
                     <p>
                         <h:outputLink value="http://0.0.0.0:8080/health"
                                       target="_blank">
-                            Show 0.0.0.0:8080/health
+                            Show /health on port 8080
                         </h:outputLink>
                     </p>
                     <h:outputLink value="http://0.0.0.0:9990/health"
                                   target="_blank">
-                        Show 0.0.0.0:9990/health
+                        Show /health on port 9990
                     </h:outputLink>
                 </ui:define>
                 <ui:define name="buttons">
@@ -89,10 +93,7 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="q2r1" text="Yes"
-                                path="/basic/health/response?question=3&amp;response=1">
-                    </tag:button>
-                    <tag:button id="q2r2" text="No"
-                                path="/basic/health/response?question=3&amp;response=2">
+                                path="/basic/health/check?question=3">
                     </tag:button>
                 </ui:define>
             </tag:card>
