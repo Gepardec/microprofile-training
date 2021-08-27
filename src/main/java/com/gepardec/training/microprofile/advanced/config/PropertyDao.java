@@ -53,7 +53,7 @@ public class PropertyDao {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("Unable to find class org.postgresql.Driver");
         }
         Properties connectionProps = new Properties();
         connectionProps.put("user", USER);
