@@ -130,4 +130,27 @@
             <type>java.lang.Boolean</type>
         </attribute>
     </tag>
+
+    <tag>
+        <tag-name>timerDialog</tag-name>
+        <source>tags/timerDialog.xhtml</source>
+        <attribute>
+            <description>The page unique id</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The title of the timer dialog</description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The text of the timer dialog</description>
+            <name>text</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+    </tag>
 </facelet-taglib>

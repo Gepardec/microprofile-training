@@ -1,0 +1,92 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:param name="verticallyCentered" value="false" />
+
+    <ui:define name="title">
+        Basics Fault-Tolerance (Bulkhead)
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>Bulkhead</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.faultToleranceUri}#bulkhead"
+                        target="_blank">
+                        Fault Tolerance (Bulkhead)
+                    </a>
+                </p>
+
+                <p>
+                    <code>@Bulkhead</code> prevents a service, in particular a service endpoint, to process to many parallel requests which could overload the service.
+                    All calls to an endpoint which cannot be processed will fail with a <code>BulkheadException</code> exception which in our case gets handled by an
+                    <code>ExceptionMapper</code> which returns a specific response for that case.
+                </p>
+
+                <p>
+                    Bulkhead behaviour can be applied to any CDI bean method invocation but makes the most sense when applied to a <code>JAX-RS</code> endpoint.
+                </p>
+
+                <hr class="my-3" />
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        Define a parallel count and click the button below to trigger the parallel requests and you will see that no one of the request fails.
+                        Apply a bulkhead behaviour on the endpoint method <code>com.gepardec.training.microprofile.basic.faulttolerance.BulkheadController#bulkheaded</code>
+                        and try again with a parallel count greater than the defined bulkhead value.
+                    </p>
+
+                    <div class="d-flex flex-row justify-content-center">
+                        <div id="parallelCountOutline" class="form-outline me-2">
+                            <input id="parallelCount" type="number" class="form-control form-control-lg" value="2" min="2" />
+                            <label class="form-label" for="parallelCount">Parallel Count</label>
+                        </div>
+                        <div class="ms-2 d-flex align-items-center">
+                            <tag:button id="callBulkheadedEndpoint" path="/basic/faulttolerance/bulkhead/bulkheaded" text="Bulkhead call" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2 text-start">
+                <hr class="my-3" />
+
+                <div class="col-sm me-sm-1 font-weight-bold">
+                    Server Response:
+                </div>
+                <div id="serverResponse" class="col-sm ms-sm-1" style="word-wrap: break-word;">
+                </div>
+
+                <hr class="my-3" />
+            </div>
+        </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <tag:timerDialog id="timer" title="Waiting for responses..." />
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import bulkhead from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/bulkhead.js")}'
+
+            mp.registerOnLoad(() => bulkhead.init({
+                callerElement: document.getElementById("callBulkheadedEndpoint"),
+                countElement: document.getElementById("parallelCountOutline"),
+                timerElement: document.getElementById("timer"),
+                responseContainer: document.getElementById("serverResponse"),
+                countMin: 2
+            }));
+        </script>
+    </ui:define>
+</ui:composition>
