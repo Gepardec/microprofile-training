@@ -1,0 +1,73 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="header">
+        Microprofile-Config Advanced ConfigSource
+    </ui:define>
+
+    <ui:define name="additionalNavLink">
+        <tag:navLink id="toAdvancedConfigIndex" path="/advanced/config/index" text="Back"><i
+                class="fas fa-step-backward"/></tag:navLink>
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="container-lg">
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <p>
+                            The specification for Microprofile
+                            <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                               target="_blank">
+                                Config.
+                            </a>
+                        </p>
+
+                        <p>
+                            Within your application, you can provide the configuration to a seperate JAR.
+                        </p>
+
+                        <hr class="mt-3 mb-3"/>
+
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${value}" class="font-weight-bold"/>
+                            </div>
+                        </div>
+
+                        <hr class="mt-3 mb-3"/>
+                    </section>
+                </div>
+            </div>
+
+            <div class="row m-2">
+                <div class="col">
+                    <section>
+                        <h5>
+                            Your Task:
+                        </h5>
+
+                        <p>
+                            Take a look at the module
+                            <code>config/common-configuration</code>. There, the class
+                            <code>com.gepardec.training.microprofile.common.ExampleController</code> uses the ConfigProperty
+                            <code>common.key</code>. <code>common.key</code> is provided by the config-file
+                            <code>config\common-configuration\src\main\resources\META-INF\microprofile-config.properties</code>.
+                            <br/>
+                            However, in this example we want to override the value from <code>config/common-configuration</code>
+                            with a configuration value from our application. Therefore, provide the value of <code>common.key</code>
+                            in another way than in <code>config/common-configuration</code>.
+                        </p>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
