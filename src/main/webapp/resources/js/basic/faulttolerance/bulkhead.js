@@ -1,4 +1,5 @@
 import httpClient from '../../httpClient.js'
+import mp from "../../mp.js";
 
 const extractResponseData = (response, count) => {
     return response.text()
@@ -48,14 +49,13 @@ const registerCallElementClickEventListener = (options) => {
         responseContainer,
         countMin,
     } = options;
-    callerElement.addEventListener("click", (event) => {
-        event.preventDefault();
+    mp.registerClickListenerPreventDefault(callerElement, (event) => {
         const parallelCount = extractAndValidateInputNumber(countElement, countMin);
         if (parallelCount !== -1) {
             responseContainer.innerHTML = null;
             const dialog = mdb.Modal.getInstance(timerElement);
             dialog.show();
-            httpClient.postNTimes({
+            httpClient.postBatch({
                 uri: event.target.href,
                 count: parallelCount,
                 successCallback: (response, count) => extractResponseData(response, count),

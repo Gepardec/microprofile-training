@@ -1,9 +1,10 @@
 import httpClient from '../../httpClient.js'
+import timer from "../../timer.js";
+import mp from "../../mp.js";
 
 const state = {
     failEachCount: 1,
     failAfterEachCount: 1,
-    timerReference: null,
     count: 0,
     intentionalFailedCount: 0,
     circuitOpenFailedCount: 0,
@@ -17,7 +18,6 @@ const statusCodes = {
 }
 
 const resetState = () => {
-    state.timerReference = null;
     state.count = 0;
     state.intentionalFailedCount = 0;
     state.successCount = 0;
@@ -55,26 +55,12 @@ const run = (options) => {
     });
 };
 
-const stop = async (options) => {
-    if (state.timerReference) {
-        clearInterval(state.timerReference);
-        resetState();
-        const {
-            stopElement,
-        } = options;
-        await httpClient.post({
-            uri: stopElement.href,
-            failureCallback: () => alert('Endpoint reset failed'),
-        });
-    }
-};
-
-const start = async (options) => {
-    const { delayMillis } = options;
-    if (state.timerReference) {
-        await stop(options);
-    }
-    state.timerReference = setInterval(run, delayMillis, options);
+const timerStopCallback = async (options) => {
+    const { stopElement } = options;
+    await httpClient.post({
+        uri: stopElement.href,
+        failureCallback: () => alert('Endpoint reset failed'),
+    });
 };
 
 const validateInputNumber = (element, min) => {
@@ -100,9 +86,8 @@ const registerInitElementClickEventListener = (options) => {
         failEachCountMin,
         failAfterEachCountMin,
     } = options;
-    initElement.addEventListener('click', (event) => {
-            event.preventDefault();
-            if (state.timerReference) {
+    mp.registerClickListenerPreventDefault(initElement, (event) => {
+            if (timer.isRunning()) {
                 alert('Cannot initialize while running, please stop first');
                 return;
             }
@@ -127,27 +112,28 @@ const registerStopElementClickEventListener = (options) => {
     const {
         stopElement,
     } = options;
-    stopElement.addEventListener('click', (event) => {
-        event.preventDefault();
-        stop(options);
-    });
+    mp.registerClickListenerPreventDefault(stopElement, (event) => timer.stop());
 };
 
 const registerCallElementClickEventListener = (options) => {
     const {
         callerElement
     } = options;
-    callerElement.addEventListener('click', async (event) => {
-        event.preventDefault();
-        stop(options).then(() =>
-            start({
-                href: event.target.href,
-                ...options,
-            }));
-    });
+    mp.registerClickListenerPreventDefault(callerElement, async (event) => timer.start());
 };
 
 const init = (options) => {
+    const { delayMillis, callerElement } = options;
+    timer.init({
+        delayMillis: delayMillis,
+        runFunction: run,
+        runData: {
+            href: callerElement.href,
+            ...options
+        },
+        startCallback: resetState,
+        stopCallback: () => timerStopCallback(options),
+    });
     displayState(options);
     registerStopElementClickEventListener(options);
     registerCallElementClickEventListener(options);

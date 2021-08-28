@@ -1,3 +1,4 @@
+import mp from "../../mp.js";
 import httpClient from '../../httpClient.js'
 
 const displayData = (options, response) => {
@@ -16,8 +17,7 @@ const registerCallElementClickEventListener = (options) => {
         responseElement,
         timerElement,
     } = options;
-    callElement.addEventListener("click", (event) => {
-        event.preventDefault();
+    mp.registerClickListenerPreventDefault(callElement, (event) => {
         responseElement.innerText = "";
         const modal = mdb.Modal.getInstance(timerElement)
         modal.show();

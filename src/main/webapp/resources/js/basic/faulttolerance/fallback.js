@@ -1,4 +1,5 @@
 import httpClient from '../../httpClient.js'
+import mp from "../../mp.js";
 
 const displayData = (options, response) => {
     const {
@@ -15,8 +16,7 @@ const registerCallElementClickEventListener = (options) => {
         callElement,
         responseElement,
     } = options;
-    callElement.addEventListener("click", (event) => {
-        event.preventDefault();
+    mp.registerClickListenerPreventDefault(callElement, (event) => {
         responseElement.innerText = "";
         httpClient.post({
             uri: event.target.href,

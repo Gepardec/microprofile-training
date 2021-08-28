@@ -55,7 +55,7 @@ const callNTimesAsync = (options) => {
     }));
 };
 
-const postNTimes = (options) => {
+const postBatch = (options) => {
     return callNTimesAsync({
         method: 'POST',
         ...options,
@@ -70,6 +70,6 @@ const post = (options) => {
 };
 
 export default {
-    postNTimes,
+    postBatch,
     post,
 }
