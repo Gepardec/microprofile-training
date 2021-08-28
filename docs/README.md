@@ -6,7 +6,7 @@ This project will be developed under the umbrella of a [Gepardec Learning Friday
 * [Developer Guide](#developer-guide)
 * [Infrastructure Guide](#infrastructure-guide)
 * [JSF Components](#jsf-components)
-* [JS Modules](#js-modules)
+* [JS Modules](#javascript-components)
 
 {% include_relative developer-guide.md %}
 
