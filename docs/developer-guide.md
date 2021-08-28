@@ -62,7 +62,7 @@ The endpoints either return
 
 See the following snippet for an example controller implementation.
 
-```
+```java
 @Path("/path")
 @RequestScoped
 @Controller
@@ -169,7 +169,7 @@ provided and never ids.
 
 Javascript modules are used in a xhtml page the following way.
 
-```xhtml
+```xml
 <!-- Inserts the contained tags at the end of the HTML page -->
 <ui:define name="bottom"> 
     <!-- The used javascript is a javascript module -->
