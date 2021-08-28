@@ -53,7 +53,8 @@ const registerCallElementClickEventListener = (options) => {
         const parallelCount = extractAndValidateInputNumber(countElement, countMin);
         if (parallelCount !== -1) {
             responseContainer.innerHTML = null;
-            mdb.Modal.getInstance(timerElement).show();
+            const dialog = mdb.Modal.getInstance(timerElement);
+            dialog.show();
             httpClient.postNTimes({
                 uri: event.target.href,
                 count: parallelCount,
@@ -61,7 +62,7 @@ const registerCallElementClickEventListener = (options) => {
                 errorCallback: (response, count) => extractResponseData(response, count),
             }).then((data) => {
                 displayData(responseContainer, data)
-                mdb.Modal.getInstance(timerElement).hide()
+                dialog.hide()
             });
         }
     });

@@ -11,7 +11,7 @@ const registerCallElementClickEventListener = (options) => {
         modal.show();
         httpClient.post({
             uri: event.target.href,
-        }).finally(() => modal.hide()).finally(()=> console.log('Call is done'));
+        }).finally(() => modal.hide());
     });
 }
 
