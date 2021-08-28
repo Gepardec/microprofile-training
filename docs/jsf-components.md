@@ -21,7 +21,7 @@ Attributes:
 4. `rendered` (Optional, Default=true)  
    The rendered flag
 
-```xhtml
+```xml
 <tag:button id="toMyActionOrResource" text="Go to example"/>
 <tag:button id="toMyActionOrResource" text="Go to example" path="#otherId"/>
 <tag:button id="toMyActionOrResource" text="Go to example" path="/basic/index"/>
@@ -45,7 +45,7 @@ Attributes:
 5. `rendered` (Optional, Default=true)  
    The rendered flag
 
-```xhtml
+```xml
 <tag:link id="toMyActionOrResource" text="Go to example"/>
 <tag:link id="toMyActionOrResource" text="Go to example" path="#otherId"/>
 <tag:link id="toMyActionOrResource" text="Go to example" path="/basic/index" target="_blank"/>
@@ -73,7 +73,7 @@ Attributes:
 5. `active` (Optional, Default=false)  
    The active flag marking the nav link active
 
-```xhtml
+```xml
 <tag:navLink id="toMyResource" path="/basic/index" text="Go to example"/>
 <tag:navLink id="toMyResource" text="Go to example" path="/basic/index" active="#{pathHelper.isOnSubpage('/basic/config')}">
     <i class="fas fa-arrow"/>
@@ -93,7 +93,7 @@ Attributes:
 3. `rendered` (Optional, default true)  
    The rendered flag
 
-```xhtml
+```xml
 <tag:card id="indexExampleMpHealth" title="First part">
     <ui:define name="body">
         <p>...</p>
@@ -118,7 +118,7 @@ Attributes:
 3. `text` (Optional)
    The text of the timer dialog
 
-```xhtml
+```xml
 <tag:timerDialog id="timer" />
 <tag:timerDialog id="timer" title="Waiting for response..." />
 <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second"/>
