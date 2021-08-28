@@ -1,3 +1,5 @@
+import httpClient from '../../httpClient.js'
+
 const extractResponseData = (response, count) => {
     return response.text()
         .then((text) => {
@@ -10,13 +12,6 @@ const extractResponseData = (response, count) => {
         ).catch(() => {
             return {}
         });
-}
-
-const callApiNTimes = async (uri, callCount) => {
-    const responses = await Promise.all([...Array(callCount).keys()].map(count => fetch(uri, {
-        method: "POST",
-    })));
-    return await Promise.all(responses.map((response, index) => extractResponseData(response, index)));
 }
 
 const createResponseElement = (item) => {
@@ -53,15 +48,21 @@ const registerCallElementClickEventListener = (options) => {
         responseContainer,
         countMin,
     } = options;
-    callerElement.addEventListener("click", async (event) => {
+    callerElement.addEventListener("click", (event) => {
         event.preventDefault();
         const parallelCount = extractAndValidateInputNumber(countElement, countMin);
         if (parallelCount !== -1) {
             responseContainer.innerHTML = null;
             mdb.Modal.getInstance(timerElement).show();
-            const data = await callApiNTimes(event.target.href, parallelCount);
-            displayData(responseContainer, data)
-            mdb.Modal.getInstance(timerElement).hide();
+            httpClient.postNTimes({
+                uri: event.target.href,
+                count: parallelCount,
+                successCallback: (response, count) => extractResponseData(response, count),
+                errorCallback: (response, count) => extractResponseData(response, count),
+            }).then((data) => {
+                displayData(responseContainer, data)
+                mdb.Modal.getInstance(timerElement).hide()
+            });
         }
     });
 }

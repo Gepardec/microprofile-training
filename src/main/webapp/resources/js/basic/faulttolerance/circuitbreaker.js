@@ -1,3 +1,5 @@
+import httpClient from '../../httpClient.js'
+
 const state = {
     failEachCount: 1,
     failAfterEachCount: 1,
@@ -31,31 +33,26 @@ const displayState = (options) => {
     responseContainer.innerHTML = `Call: ${state.count} </br> Success: ${state.successCount} </br> IntentionalFail: ${state.intentionalFailedCount} </br> CircuitOpenFail: ${state.circuitOpenFailedCount} </br> otherFail: ${state.otherFailedCount}`;
 }
 
-const run = async (options) => {
+const run = (options) => {
     const {
         href,
     } = options;
-    const response = await fetch(href, {
-        method: "POST",
-    }).finally(() => state.count += 1);
-    await response.text()
-        .then((text) => {
+    httpClient.post({
+        uri: href,
+        successCallback: () => state.successCount += 1,
+        failureCallback: (response) => {
             if (response.status === statusCodes.intentionalFail) {
                 state.intentionalFailedCount += 1;
             } else if (response.status === statusCodes.circuitOpen) {
                 state.circuitOpenFailedCount += 1;
-            } else if (response.status === 200) {
-                state.successCount += 1;
             } else {
                 state.otherFailedCount += 1;
             }
-            console.log(state);
-        }).finally(() => {
-            displayState(options);
-        }).catch((error) => {
-            state.intentionalFailedCount += 1;
-            console.log(error);
-        });
+        },
+    }).finally(() => {
+        state.count += 1;
+        displayState(options);
+    });
 };
 
 const stop = async (options) => {
@@ -65,9 +62,10 @@ const stop = async (options) => {
         const {
             stopElement,
         } = options;
-        await fetch(stopElement.href, {
-            method: "POST",
-        }).finally(() => console.log('Reset call state on server'))
+        await httpClient.post({
+            uri: stopElement.href,
+            failureCallback: () => alert('Endpoint reset failed'),
+        });
     }
 };
 
@@ -102,7 +100,7 @@ const registerInitElementClickEventListener = (options) => {
         failEachCountMin,
         failAfterEachCountMin,
     } = options;
-    initElement.addEventListener('click', async (event) => {
+    initElement.addEventListener('click', (event) => {
             event.preventDefault();
             if (state.timerReference) {
                 alert('Cannot initialize while running, please stop first');
@@ -111,17 +109,15 @@ const registerInitElementClickEventListener = (options) => {
             if (validateInputNumber(failEachCountElement, failEachCountMin) && validateInputNumber(failAfterEachCountElement, failAfterEachCountMin)) {
                 const failEachCountInputElement = failEachCountElement.querySelector('input');
                 const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
-                const searchParams = new URLSearchParams();
-                searchParams.append(failEachCountInputElement.id, failEachCountInputElement.value);
-                searchParams.append(failAfterEachCountInputElement.id, failAfterEachCountInputElement.value);
-                await fetch(`${event.target.href}?` + searchParams, {
-                    method: "POST"
-                }).then((result) => {
-                    if (!result.ok) {
-                        alert('Endpoint initialization failed');
-                    }
+                httpClient.post({
+                    uri: event.target.href,
+                    queryParameters: new Map([
+                        [failEachCountInputElement.id, failEachCountInputElement.value],
+                        [failAfterEachCountInputElement.id, failAfterEachCountInputElement.value]
+                    ]),
+                    successCallback: () => alert(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`),
+                    failureCallback: () => alert('Endpoint initialization failed')
                 });
-                alert(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`);
             }
         }
     );
@@ -131,9 +127,9 @@ const registerStopElementClickEventListener = (options) => {
     const {
         stopElement,
     } = options;
-    stopElement.addEventListener('click', async (event) => {
+    stopElement.addEventListener('click', (event) => {
         event.preventDefault();
-        await stop(options);
+        stop(options);
     });
 };
 
@@ -143,11 +139,11 @@ const registerCallElementClickEventListener = (options) => {
     } = options;
     callerElement.addEventListener('click', async (event) => {
         event.preventDefault();
-        await stop(options);
-        start({
-            href: event.target.href,
-            ...options,
-        });
+        stop(options).then(() =>
+            start({
+                href: event.target.href,
+                ...options,
+            }));
     });
 };
 

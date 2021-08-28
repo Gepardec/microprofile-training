@@ -142,7 +142,7 @@ context they are used for.
 
 Javascript modules are implement at least in the following way.
 
-```
+```javascript
 // Optional state object
 const state = {
     attribute: value,
@@ -169,7 +169,7 @@ provided and never ids.
 
 Javascript modules are used in a xhtml page the following way.
 
-```
+```xhtml
 <!-- Inserts the contained tags at the end of the HTML page -->
 <ui:define name="bottom"> 
     <!-- The used javascript is a javascript module -->

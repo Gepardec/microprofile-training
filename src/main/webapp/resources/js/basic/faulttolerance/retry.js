@@ -1,3 +1,15 @@
+import httpClient from '../../httpClient.js'
+
+const displayData = (options, response) => {
+    const {
+        responseElement,
+    } = options;
+    let serverResponseText = `HTTP-Status: ${response.status}`;
+    response.text()
+        .then((text) => serverResponseText += `, Content: ${text}`)
+        .finally(() => responseElement.innerText = serverResponseText);
+};
+
 const registerCallElementClickEventListener = (options) => {
     const {
         callElement,
@@ -9,13 +21,10 @@ const registerCallElementClickEventListener = (options) => {
         responseElement.innerText = "";
         const modal = mdb.Modal.getInstance(timerElement)
         modal.show();
-        fetch(event.target.href, {
-            method: "POST",
-        }).then((response) => {
-            let serverResponseText = `HTTP-Status: ${response.status}`;
-            response.text()
-                .then((text) => serverResponseText += `, Content: ${text}`)
-                .finally(() => responseElement.innerText = serverResponseText);
+        httpClient.post({
+            uri: event.target.href,
+            successCallback: (response) => displayData(options, response),
+            failureCallback: (response) => displayData(options, response),
         }).finally(() => modal.hide());
     });
 };
