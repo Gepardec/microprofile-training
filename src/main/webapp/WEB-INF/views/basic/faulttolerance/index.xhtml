@@ -1,13 +1,13 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Basics Fault-Tolerance
     </ui:define>
 
     <ui:define name="additionalNavLink">
-        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward"/></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -15,12 +15,14 @@
             <tag:card id="mp-faulttolerance-asynchronous" title="Asynchronous">
                 <ui:define name="body">
                     <p>
-                        Asynchronous method invocations are executed on another Thread, where the caller gets a <code>Future&lt;?&gt;</code> as a result
+                        Asynchronous method invocations are executed on another Thread, where the caller gets a
+                        <code>Future&lt;?&gt;</code> as a result
                         so that processing can proceed while waiting for the asynchronous method invocation to finish.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceAsynchronous" text="Example" path="/basic/faulttolerance/asynchronous" />
+                    <tag:button id="toFaulttoleranceAsynchronous" text="Example"
+                                path="/basic/faulttolerance/asynchronous"/>
                 </ui:define>
             </tag:card>
         </section>
@@ -33,7 +35,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceFallback" text="Example" path="/basic/faulttolerance/fallback" />
+                    <tag:button id="toFaulttoleranceFallback" text="Example" path="/basic/faulttolerance/fallback"/>
                 </ui:define>
             </tag:card>
         </section>
@@ -42,14 +44,22 @@
             <tag:card id="mp-faulttolerance-timeout" title="Timeout">
                 <ui:define name="body">
                     <p>
-                        Timeout prevents from the execution from waiting forever. It is recommended that a microservice invocation should have timeout associated with.
+                        <cite>
+                            Timeout prevents from the execution from waiting forever. It is recommended that a microservice invocation should have timeout associated with.
+                        </cite>
                     </p>
-                    <div class="alert alert-danger" role="alert">
+                    from the
+                    <a href="#{mpUri.faultToleranceUri}#timeout"
+                       target="_blank">
+                        Microprofile Fault Tolerance (Timeout)
+                    </a>
+                    specification
+                    <div class="alert alert-danger mt-2" role="alert">
                         Timeout behaviour doesn't replace SOAP/REST client timeout settings, which comonly default to indefinite!!!
                     </div>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceTimeout" text="Example" path="/basic/faulttolerance/timeout" />
+                    <tag:button id="toFaulttoleranceTimeout" text="Example" path="/basic/faulttolerance/timeout"/>
                 </ui:define>
             </tag:card>
         </section>
@@ -63,7 +73,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceRetry" text="Example" path="/basic/faulttolerance/retry" />
+                    <tag:button id="toFaulttoleranceRetry" text="Example" path="/basic/faulttolerance/retry"/>
                 </ui:define>
             </tag:card>
         </section>
@@ -72,13 +82,22 @@
             <tag:card id="mp-faulttolerance-bulkhead" title="Bullkhead">
                 <ui:define name="body">
                     <p>
-                        The Bulkhead pattern is to prevent faults in one part of the system from cascading to the entire system, which might bring down the whole system.
-                        The implementation is to limit the number of concurrent requests accessing an instance.
-                        Therefore, Bulkhead pattern is only effective when applying <code>@Bulkhead</code> to a component that can be accessed from multiple contexts.
+                        <cite>
+                            The Bulkhead pattern is to prevent faults in one part of the system from cascading to the entire system, which might bring down the whole system.
+                            The implementation is to limit the number of concurrent requests accessing an instance.
+                            Therefore, Bulkhead pattern is only effective when applying
+                            <code>@Bulkhead</code> to a component that can be accessed from multiple contexts.
+                        </cite>
                     </p>
+                    from the
+                    <a href="#{mpUri.faultToleranceUri}#bulkhead"
+                       target="_blank">
+                        Microprofile Fault Tolerance (Bulkhead)
+                    </a>
+                    specification
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceBulkhead" text="Example" path="/basic/faulttolerance/bulkhead" />
+                    <tag:button id="toFaulttoleranceBulkhead" text="Example" path="/basic/faulttolerance/bulkhead"/>
                 </ui:define>
             </tag:card>
         </section>
@@ -87,12 +106,21 @@
             <tag:card id="mp-faulttolerance-circuitbreaker" title="CircuitBreaker">
                 <ui:define name="body">
                     <p>
-                        A Circuit Breaker prevents repeated failures, so that dysfunctional services or APIs fail fast.
-                        If a service is failing frequently, the circuit breaker opens and no more calls to that service are attempted until a period of time has passed.
+                        <cite>
+                            A Circuit Breaker prevents repeated failures, so that dysfunctional services or APIs fail fast.
+                            If a service is failing frequently, the circuit breaker opens and no more calls to that service are attempted until a period of time has passed.
+                        </cite>
                     </p>
+                    from the
+                    <a href="#{mpUri.faultToleranceUri}#circuitbreaker"
+                       target="_blank">
+                        Microprofile Fault Tolerance (Circuitbreaker)
+                    </a>
+                    specification
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceCircuitBreaker" text="Example" path="/basic/faulttolerance/circuitbreaker" />
+                    <tag:button id="toFaulttoleranceCircuitBreaker" text="Example"
+                                path="/basic/faulttolerance/circuitbreaker"/>
                 </ui:define>
             </tag:card>
         </section>
