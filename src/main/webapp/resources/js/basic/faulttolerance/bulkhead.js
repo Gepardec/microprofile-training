@@ -1,5 +1,13 @@
 import httpClient from '../../httpClient.js'
 import mp from "../../mp.js";
+import modalDialog from "../../modalDialog.js";
+import inputNumber from "../../inputNumber.js";
+
+const state = {
+    timerDialog: null,
+    initDialog: null,
+    options: null,
+};
 
 const extractResponseData = (response, count) => {
     return response.text()
@@ -22,54 +30,50 @@ const createResponseElement = (item) => {
     return element;
 }
 
-const displayData = (responseContainer, data) => {
+const displayData = (data) => {
+    const {
+        responseContainer,
+    } = state.options;
     data.map((item) => responseContainer.append(createResponseElement(item)));
 }
 
-const extractAndValidateInputNumber = (element, min) => {
-    const inputElement = element.querySelector('input');
-    const stringValue = inputElement.value;
-    const value = parseInt(stringValue) || -1;
-    if (value <= 0 || value < min) {
-        element.focus();
-        inputElement.value = "";
-        alert(`Your ${inputElement.id} value is invalid. value: '${stringValue}', min: '${min}'`);
-        inputElement.value = min;
-        return -1;
-    }
-
-    return value;
-};
-
-const registerCallElementClickEventListener = (options) => {
+const registerCallElementClickEventListener = () => {
     const {
         callerElement,
-        countElement,
-        timerElement,
         responseContainer,
-        countMin,
-    } = options;
+        countElement,
+    } = state.options;
     mp.registerClickListenerPreventDefault(callerElement, (event) => {
-        const parallelCount = extractAndValidateInputNumber(countElement, countMin);
-        if (parallelCount !== -1) {
-            responseContainer.innerHTML = null;
-            const dialog = mdb.Modal.getInstance(timerElement);
-            dialog.show();
-            httpClient.postBatch({
-                uri: event.target.href,
-                count: parallelCount,
-                successCallback: (response, count) => extractResponseData(response, count),
-                errorCallback: (response, count) => extractResponseData(response, count),
-            }).then((data) => {
-                displayData(responseContainer, data)
-                dialog.hide()
-            });
-        }
+        const parallelCount = parseInt(countElement.querySelector('input').value);
+        responseContainer.innerHTML = null;
+        state.timerDialog.show();
+        httpClient.postBatch({
+            uri: event.target.href,
+            count: parallelCount,
+            successCallback: (response, count) => extractResponseData(response, count),
+            errorCallback: (response, count) => extractResponseData(response, count),
+        }).then((data) => {
+            displayData(data)
+            state.timerDialog.hide()
+        });
     });
 }
 
 const init = (options) => {
-    registerCallElementClickEventListener(options);
+    const {
+        timerElement,
+        initDialogElement,
+        countElement,
+    } = options;
+    state.options = options;
+    state.timerDialog = modalDialog.create({
+        element: timerElement,
+    })
+    state.initDialog = modalDialog.create({
+        element: initDialogElement,
+    })
+    inputNumber.init(countElement);
+    registerCallElementClickEventListener();
 }
 
 export default {

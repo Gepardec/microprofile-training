@@ -1,8 +1,13 @@
 import httpClient from '../../httpClient.js'
 import timer from "../../timer.js";
 import mp from "../../mp.js";
+import modalDialog from "../../modalDialog.js";
+import inputNumber from "../../inputNumber.js";
 
 const state = {
+    timer: null,
+    initDialog: null,
+    options: null,
     failEachCount: 1,
     failAfterEachCount: 1,
     count: 0,
@@ -17,6 +22,12 @@ const statusCodes = {
     circuitOpen: 490,
 }
 
+const showInitDialog = (message) => {
+    const { initDialogContentElement } = state.options;
+    initDialogContentElement.innerText = message;
+    state.initDialog.show();
+}
+
 const resetState = () => {
     state.count = 0;
     state.intentionalFailedCount = 0;
@@ -26,19 +37,19 @@ const resetState = () => {
     state.failAfterEachCount = 1;
 }
 
-const displayState = (options) => {
+const displayState = () => {
     const {
         responseContainer,
-    } = options;
+    } = state.options;
     responseContainer.innerHTML = `Call: ${state.count} </br> Success: ${state.successCount} </br> IntentionalFail: ${state.intentionalFailedCount} </br> CircuitOpenFail: ${state.circuitOpenFailedCount} </br> otherFail: ${state.otherFailedCount}`;
 }
 
-const run = (options) => {
+const run = () => {
     const {
-        href,
-    } = options;
+        callerElement,
+    } = state.options;
     httpClient.post({
-        uri: href,
+        uri: callerElement.href,
         successCallback: () => state.successCount += 1,
         failureCallback: (response) => {
             if (response.status === statusCodes.intentionalFail) {
@@ -51,80 +62,71 @@ const run = (options) => {
         },
     }).finally(() => {
         state.count += 1;
-        displayState(options);
+        displayState();
     });
 };
 
-const timerStopCallback = async (options) => {
-    const { stopElement } = options;
+const timerStopCallback = async () => {
+    const { stopElement } = state.options;
     await httpClient.post({
         uri: stopElement.href,
         failureCallback: () => alert('Endpoint reset failed'),
     });
 };
 
-const validateInputNumber = (element, min) => {
-    const inputElement = element.querySelector('input');
-    const stringValue = inputElement.value;
-    const value = parseInt(stringValue) || -1;
-    if (value <= 0 || value < min) {
-        element.focus();
-        inputElement.value = "";
-        alert(`Your ${inputElement.id} value is invalid. value: '${stringValue}', min: '${min}'`);
-        inputElement.value = min;
-        return false;
-    }
-
-    return true;
-};
-
-const registerInitElementClickEventListener = (options) => {
+const registerInitElementClickEventListener = () => {
     const {
         failEachCountElement,
         failAfterEachCountElement,
         initElement,
-        failEachCountMin,
-        failAfterEachCountMin,
-    } = options;
+    } = state.options;
     mp.registerClickListenerPreventDefault(initElement, (event) => {
-            if (timer.isRunning()) {
-                alert('Cannot initialize while running, please stop first');
+            if (state.timer.isRunning()) {
+                showInitDialog('Cannot initialize while running, please stop first');
                 return;
             }
-            if (validateInputNumber(failEachCountElement, failEachCountMin) && validateInputNumber(failAfterEachCountElement, failAfterEachCountMin)) {
-                const failEachCountInputElement = failEachCountElement.querySelector('input');
-                const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
-                httpClient.post({
-                    uri: event.target.href,
-                    queryParameters: new Map([
-                        [failEachCountInputElement.id, failEachCountInputElement.value],
-                        [failAfterEachCountInputElement.id, failAfterEachCountInputElement.value]
-                    ]),
-                    successCallback: () => alert(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`),
-                    failureCallback: () => alert('Endpoint initialization failed')
-                });
-            }
+            const failEachCountInputElement = failEachCountElement.querySelector('input');
+            const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
+            httpClient.post({
+                uri: event.target.href,
+                queryParameters: new Map([
+                    [failEachCountInputElement.id, failEachCountInputElement.value],
+                    [failAfterEachCountInputElement.id, failAfterEachCountInputElement.value]
+                ]),
+                successCallback: () => showInitDialog(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`),
+                failureCallback: () => showInitDialog('Endpoint initialization failed'),
+            });
         }
     );
 };
 
-const registerStopElementClickEventListener = (options) => {
+const registerStopElementClickEventListener = () => {
     const {
         stopElement,
-    } = options;
-    mp.registerClickListenerPreventDefault(stopElement, (event) => timer.stop());
+    } = state.options;
+    mp.registerClickListenerPreventDefault(stopElement, state.timer.stop);
 };
 
-const registerCallElementClickEventListener = (options) => {
+const registerCallElementClickEventListener = () => {
     const {
         callerElement
-    } = options;
-    mp.registerClickListenerPreventDefault(callerElement, async (event) => timer.start());
+    } = state.options;
+    mp.registerClickListenerPreventDefault(callerElement, state.timer.start);
 };
 
 const init = (options) => {
-    const { delayMillis, callerElement } = options;
-    timer.init({
+    const {
+        initDialogElement,
+        delayMillis,
+        callerElement,
+        failEachCountElement,
+        failAfterEachCountElement,
+    } = options;
+    state.options = options;
+    state.initDialog = modalDialog.create({
+        element: initDialogElement,
+    })
+    state.timer = timer.create({
         delayMillis: delayMillis,
         runFunction: run,
         runData: {
@@ -132,12 +134,14 @@ const init = (options) => {
             ...options
         },
         startCallback: resetState,
-        stopCallback: () => timerStopCallback(options),
+        stopCallback: timerStopCallback,
     });
-    displayState(options);
-    registerStopElementClickEventListener(options);
-    registerCallElementClickEventListener(options);
-    registerInitElementClickEventListener(options);
+    inputNumber.init(failEachCountElement);
+    inputNumber.init(failAfterEachCountElement);
+    displayState();
+    registerStopElementClickEventListener();
+    registerCallElementClickEventListener();
+    registerInitElementClickEventListener();
 };
 
 export default {

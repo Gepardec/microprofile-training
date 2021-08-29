@@ -2,7 +2,7 @@
 
 ## Modules
 
-There are several global javascript modules which are used by developers in page related javascript modules and/or in JSF pages.
+There are several global Javascript modules which are used by developers in page related Javascript modules and/or in JSF pages.
 
 The global javascript modules are located at the root level of `src/main/webapp/resources/js/` and are imported in the page related javascript modules via a
 relative reference.
@@ -20,8 +20,6 @@ A simple utility module.
 `registerOnLoad`  
 registers a function to the `DOMContentLoaded` event which guarantees that the page has been fully loaded and that the DOM is ready.
 
-Usage
-
 ````javascript
 mp.registerOnLoad((event) => myModule.init({ ... }));
 ````
@@ -29,15 +27,13 @@ mp.registerOnLoad((event) => myModule.init({ ... }));
 `registerClickListenerPreventDefault`  
 registers a function to the `click` event on a DOM element and prevents the default event invocation.
 
-Usage
-
 ````javascript
 mp.registerClickListenerPreventDefault(myElement, (event) => onClick());
 ````
 
 ### httpClient
 
-A simple http client wrapping the javascript fetch api.
+A simple http client wrapping the Javascript fetch api.
 
 Take a look at [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to learn how to work with promises.
 
@@ -49,8 +45,6 @@ again a promise.
 `post`  
 executes a post request and returns a promise with the return value of the provided callback function. If no callback is defined, then the fetch-api response is
 the return value.
-
-Usage:
 
 ````javascript
 httpClient.post({
@@ -69,8 +63,6 @@ fetch-api response is the return value.
 Be aware that there is a limitation of how many parallel request a browser can send with HTTP/1 protocol. Read the
 doc [MDN Domain Sharding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x#domain_sharding) for more information.
 
-Usage:
-
 ````javascript
 httpClient.postBatch({
     uri: 'http://localhost:8080/api/endpoint',
@@ -88,11 +80,11 @@ The timer module is used for invoking a function continuously with a specified d
 
 #### Functions
 
-`init`  
-initializes the timer with options which are set as the state of the module.
+`create`  
+creates a timer instance initialized with the options.
 
 ````javascript
-timer.init({
+const timer = timer.create({
     delayMillis: 5000,
     runFunction: runFunc,
     runData: runDataObj,
@@ -100,6 +92,14 @@ timer.init({
     stopCallback: afterStop,
 });
 ````
+
+#### Classes
+
+##### Timer
+
+The Timer which handles the intervals and provides functions for controlling the underlying interval.
+
+###### Functions
 
 `start`  
 invokes the `options.startCallback` function and starts the timer only if not already started. The `options.runData` is set as the input parameter for the
@@ -128,4 +128,77 @@ Answers the question if the timer is running.
 
 ````javascript
 timer.isRunning();
+````
+
+### modalDialog
+
+A wrapper for interacting with an MDB modal dialog.  
+If the Javascript object for the dialog doesn't exist for the provided html element, then it is created, otherwise the existing Javascript object is used.
+
+#### Functions
+
+`init`  
+registers the show and hide callbacks on the html element if provided.
+
+````javascript
+modalDialog.init({
+    element: element,
+    showCallback: onShow,
+    hideCallback: onHide,
+})
+````
+
+`create`  
+calls `init` for the callback registration and creates a ModalDialog instance.
+
+````javascript
+const dialog = modalDialog.init({
+    element: element,
+    showCallback: onShow,
+    hideCallback: onHide,
+})
+````
+
+#### Classes
+
+##### ModalDialog
+
+A wrapper for the MDB modal dialog for interacting with the underlying dialog.
+
+###### Functions
+
+`show`  
+shows the modal dialog.
+
+````javascript
+dialog.show();
+````
+
+`hide`  
+hide the modal dialog.
+
+````javascript
+dialog.hide();
+````
+
+### inputNumber
+
+InputNumber is a wrapper for the MDB input number which clears an invalid content onblur and sets the defined min attribute if defined.
+
+#### Functions
+
+`init`  
+register an onblur event listener creates the MDB input instance if not already instantiated.
+
+````javascript
+inputNumber.init(outlineDiv);
+````
+
+`update`  
+updates the MDB input for recalculation of the outline label if MDB input is available.
+
+Usage:
+
+````javascript
+inputNumber.update(outlineDiv);
 ````

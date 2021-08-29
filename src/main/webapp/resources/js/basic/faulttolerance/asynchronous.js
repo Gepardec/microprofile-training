@@ -1,24 +1,33 @@
 import httpClient from '../../httpClient.js'
 import mp from "../../mp.js";
+import modalDialog from "../../modalDialog.js";
 
-const registerCallElementClickEventListener = (options) => {
+const state = {
+    timerDialog: null,
+    options: null,
+};
+
+const registerCallElementClickEventListener = () => {
     const {
         clickElement,
-        timeDialogElement,
-    } = options;
+    } = state.options;
     mp.registerClickListenerPreventDefault(clickElement, (event) => {
-        const modal = mdb.Modal.getInstance(timeDialogElement)
-        modal.show();
+        state.timerDialog.show();
         httpClient.post({
             uri: event.target.href,
-        }).finally(() => modal.hide());
+        }).finally(() => state.timerDialog.hide());
     });
-}
+};
 
 const init = (options) => {
-    registerCallElementClickEventListener(options);
-}
+    const { timeDialogElement } = options;
+    state.options = options;
+    state.timerDialog = modalDialog.create({
+        element: timeDialogElement,
+    })
+    registerCallElementClickEventListener();
+};
 
 export default {
     init
-}
+};

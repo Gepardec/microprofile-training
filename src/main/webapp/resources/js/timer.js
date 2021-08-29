@@ -1,52 +1,51 @@
 const emptyFunction = () => {
 };
 
-const state = {
-    timer: null,
-    options: null,
-};
+class Timer {
 
-const isRunning = () => {
-    return state.timer != null;
-};
-
-const start = () => {
-    const {
-        delayMillis,
-        startCallback = emptyFunction,
-        runFunction = emptyFunction,
-        runData = {},
-    } = state.options;
-    if (!state.timer) {
-        startCallback();
-        state.timer = setInterval(runFunction, delayMillis, runData);
+    constructor(options) {
+        this.timer = null;
+        this.options = options;
     }
-};
 
-const stop = () => {
-    const {
-        stopCallback = emptyFunction,
-    } = state.options;
-    if (state.timer) {
-        clearInterval(state.timer);
-        state.timer = null;
-        stopCallback();
+    isRunning = () => {
+        return this.timer != null;
+    };
+
+    start = () => {
+        const {
+            delayMillis,
+            startCallback = emptyFunction,
+            runFunction = emptyFunction,
+            runData = {},
+        } = this.options;
+        if (!this.isRunning()) {
+            startCallback();
+            this.timer = setInterval(runFunction, delayMillis, runData);
+        }
+    };
+
+    stop = () => {
+        const {
+            stopCallback = emptyFunction,
+        } = this.options;
+        if (this.isRunning()) {
+            clearInterval(this.timer);
+            this.timer = null;
+            stopCallback();
+        }
+    };
+
+    restart = () => {
+        this.stop();
+        this.start();
     }
-};
-
-const restart = () => {
-    stop();
-    start();
 }
 
-const init = (options) => {
-    state.options = options;
+const create = (options) => {
+    return new Timer(options);
 };
 
 export default {
-    init,
-    start,
-    stop,
-    restart,
-    isRunning,
+    create,
 }

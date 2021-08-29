@@ -104,10 +104,36 @@ Attributes:
 </tag:card>
 ```
 
+### ModalDialog
+
+Renders a modal dialog which displays the content provided.   
+This component is useful when one wants to display a message to the user.
+
+Attributes:
+
+1. `id`  
+   The page unique id
+2. `title` (Optional)
+   The title of the timer dialog
+3. `text` (Optional)
+   The text of the timer dialog
+4. `closable` (Optional)
+   The flag indicating the user can close the dialog
+
+```xml
+<tag:modalDialog id="message" />
+<tag:modalDialog id="message" title="Information" />
+<tag:modalDialog id="message" title="Information" text="Informative message"/>
+```
+
+The timer dialog can be controlled in Javascript via the [Javascript Component](#modalDialog) where the html element to provide has the id you provided for the tag.
+
+
 ### TimerDialog
 
 Renders a timer modal dialog which displays a spinner and the duration seconds the dialog is displayed.   
-This component is useful when one wants to display the duration of a rest-api call.
+This component is useful when one wants to display the duration of a rest-api call.  
+This component is based on the Modal Dialog Component.
 
 Attributes:
 
@@ -117,9 +143,13 @@ Attributes:
    The title of the timer dialog
 3. `text` (Optional)
    The text of the timer dialog
+4. `closable` (Optional)
+   The flag indicating the user can close the dialog
 
 ```xml
 <tag:timerDialog id="timer" />
 <tag:timerDialog id="timer" title="Waiting for response..." />
 <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second"/>
 ```
+
+The timer dialog can be controlled in Javascript via the [Javascript Component](#modalDialog) where the html element to provide has the id you provided for the tag.
