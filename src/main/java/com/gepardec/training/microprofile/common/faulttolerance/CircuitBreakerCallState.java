@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.faulttolerance;
+package com.gepardec.training.microprofile.common.faulttolerance;
 
 import com.gepardec.training.microprofile.CallFailedException;
 
