@@ -1,0 +1,31 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <!--@elvariable id="id" type="java.lang.String"-->
+    <!--@elvariable id="title" type="java.lang.String"-->
+    <!--@elvariable id="closable" type="java.lang.Boolean"-->
+
+    <div id="#{id}" class="modal" tabindex="-1"
+        data-mdb-backdrop="static"
+        data-mdb-keyboard="false">
+        <div id="#{id}Dialog" class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <ui:fragment rendered="#{not empty title}">
+                    <div class="modal-header">
+                        <h5 class="modal-title">#{title}</h5>
+                        <ui:fragment rendered="#{closable}">
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-mdb-dismiss="modal"
+                                aria-label="Close" />
+                        </ui:fragment>
+                    </div>
+                </ui:fragment>
+                <div class="modal-body">
+                    <ui:insert name="content" />
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:component>
