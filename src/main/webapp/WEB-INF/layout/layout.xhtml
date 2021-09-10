@@ -4,12 +4,13 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com"
->
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
+    <!--@elvariable id="verticallyCentered" type="java.lang.Boolean"-->
     <!--@elvariable id="onWelcomePage" type="java.lang.Boolean"-->
     <!--@elvariable id="onBasicIndexPage" type="java.lang.Boolean"-->
     <!--@elvariable id="onAdvancedIndexPage" type="java.lang.Boolean"-->
+
 
     <h:head>
         <meta charset="UTF-8" />
@@ -25,7 +26,7 @@
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="navbar-brand">
                         <a href="https://microprofile.io/" target="_blank">
-                            <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="50" alt="MP-Logo" title="https://microprofile.io/" />
+                            <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="40" alt="MP-Logo" title="https://microprofile.io/" />
                         </a>
                     </div>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +36,7 @@
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
                             <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
                             <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
+                            <tag:navLink id="navBasicFaultTolerance" rendered="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" active="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" text="MP-Fault-Tolerance Basic" path="/basic/faulttolerance/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
                             <tag:navLink id="navBasicMetrics" rendered="#{pathHelper.isOnSubpage('/basic/metrics')}" active="#{pathHelper.isOnSubpage('/basic/metrics')}" text="MP-Metrics" path="/basic/metrics/index" />
                             <tag:navLink id="navAdvancedMetrics" rendered="#{pathHelper.isOnSubpage('/advanced/metrics')}" active="#{pathHelper.isOnSubpage('/advanced/metrics')}" text="MP-Metrics" path="/advanced/metrics/index" />
@@ -49,7 +51,7 @@
 
             <main class="bg-image">
                 <article class="main-article">
-                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center w-100 h-100">
+                    <div class="d-flex flex-row flex-wrap justify-content-center #{empty verticallyCentered or verticallyCentered ? 'align-items-center' : ''} w-100 h-100">
                         <div class="main-container">
                             <ui:insert name="body" />
                         </div>
