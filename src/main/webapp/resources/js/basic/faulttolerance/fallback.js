@@ -1,18 +1,27 @@
+import httpClient from '../../httpClient.js'
+import mp from "../../mp.js";
+
+const displayData = (options, response) => {
+    const {
+        responseElement,
+    } = options;
+    let serverResponseText = `HTTP-Status: ${response.status}`;
+    response.text()
+        .then((text) => serverResponseText += `, Content: ${text}`)
+        .finally(() => responseElement.innerText = serverResponseText);
+};
+
 const registerCallElementClickEventListener = (options) => {
     const {
         callElement,
         responseElement,
     } = options;
-    callElement.addEventListener("click", (event) => {
-        event.preventDefault();
+    mp.registerClickListenerPreventDefault(callElement, (event) => {
         responseElement.innerText = "";
-        fetch(event.target.href, {
-            method: "POST",
-        }).then((response) => {
-            let serverResponseText = `HTTP-Status: ${response.status}`;
-            response.text()
-                .then((text) => serverResponseText += `, Content: ${text}`)
-                .finally(() => responseElement.innerText = serverResponseText);
+        httpClient.post({
+            uri: event.target.href,
+            successCallback: (response) => displayData(options, response),
+            failureCallback: (response) => displayData(options, response),
         });
     });
 };

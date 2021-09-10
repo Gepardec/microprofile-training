@@ -115,6 +115,13 @@
     </ui:define>
 
     <ui:define name="bottom">
+        <tag:modalDialog id="init" title="Initialization" closable="true">
+            <ui:define name="content">
+                <div class="d-flex flex-row justify-content-center mt-2">
+                    <span id="initDialogContent" class="d-inline-block fs-5" />
+                </div>
+            </ui:define>
+        </tag:modalDialog>
         <tag:timerDialog id="timer" title="Waiting for response..." text="This should not take longer than 1 second" />
 
         <script type="module">
@@ -129,9 +136,9 @@
                     initElement: document.getElementById("initCallsCircuitbreakerEndpoint"),
                     callerElement: document.getElementById("startCallsCircuitbreakerEndpoint"),
                     stopElement: document.getElementById("stopCallsCircuitbreakerEndpoint"),
+                    initDialogElement: document.getElementById('init'),
+                    initDialogContentElement: document.getElementById('initDialogContent'),
                     responseContainer: document.getElementById("serverResponse"),
-                    failEachCountMin: 2,
-                    failAfterEachCountMin: 1
                 });
             });
         </script>

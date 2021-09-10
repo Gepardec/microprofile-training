@@ -1,0 +1,145 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <!--@elvariable id="successfulCount" type="java.lang.Integer"-->
+    <!--@elvariable id="failingCount" type="java.lang.Integer"-->
+    <!--@elvariable id="parallelCount" type="java.lang.Integer"-->
+
+    <ui:define name="title">
+        Advanced Fault-Tolerance (Bulkhead, Circuitbreaker and Fallback)
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>Bulkhead, Circuitbreaker and Fallback</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.faultToleranceUri}"
+                        target="_blank">
+                        Fault Tolerance
+                    </a>
+                </p>
+
+                <p>
+                    A service endpoint may receives to many parallel request, repeatedly fails and wants a default result if the circuit is open or because of being rejected by bulkhead.
+                </p>
+
+                <hr class="my-3" />
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        The code changes have to be done in
+                        <code>com.gepardec.training.microprofile.advanced.faulttolerance.BulkheadCircuitBreakerController#invoke</code>.
+                        <br />
+                        Test your changes after each step by refreshing the page and starting the request.
+                    </p>
+
+                    <ol>
+                        <li>
+                            Chnage nothing and try it <br />
+                            <i>You only see the successful request and failing request</i>
+                        </li>
+                        <li>
+                            Allow only 4 request in parallel<br />
+                            <i>Additionaly you see that #{parallelCount - 4} request fail because they are rejected by the bulkhead mechanism</i>
+                        </li>
+                        <li>Apply a circuit breaker definition as you wish<br />
+                            <i>Additionaly you see that some request fail because they are sikpped by the circuit-breaker mechanism</i>
+                        </li>
+                        <li>
+                            Provide a specific fallback result
+                            <ul>
+                                <li>Return the http status code 503 for all exceptions.<br />
+                                    <i>All intentionally failed, failed because the circuit is open and rejected by bulkhead are not shown as otherFails.</i>
+                                </li>
+                                <li>Return the http status code
+                                    <code>ApplicationHttpStatusCode.TOO_MANY_FAILURES_TRY_AGAIN_LATER</code> if the request fails because the circuit is open<br />
+                                    <i>Additionaly you see that all requests which failed because the circuit is open now get your fallback result</i>
+                                </li>
+                                <li>Return the http status code <code>ApplicationHttpStatusCode.TOO_MANY_REQUESTS</code> if the request fails because they are rejected by the
+                                    bulkhead mechanism <br />
+                                    <i>Additionaly you see that all requests which fialed because of being rejected by bulkhead now get your fallback result</i>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <div class="alert alert-info mt-2" role="alert">
+                        Why do you think you don't get any <b>IntentionalFails</b> anymore?
+                    </div>
+
+                    <hr class="my-3" />
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    <p>
+                        When you click <b>Start</b> indefinite parallel requests are made each parallel bundle with a 1 second delay.<br />
+                        When you click <b>Stop</b> the execution will stop.
+                    </p>
+
+                    <div class="d-flex justify-content-center flex-row  my-2">
+                        <div id="failEachCountOutline" class="me-2">
+                            Parallel: #{parallelCount} |
+                        </div>
+                        <div id="failAfterEachCountOutline" class="me-2">
+                            Successful:  #{successfulCount} |
+                        </div>
+                        <div class="ms-2 d-flex align-items-center">
+                            Failing: #{failingCount}
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center flex-row my-2">
+                        <div class="ms-2 d-flex align-items-center">
+                            <tag:button id="startCallsBulkheadCircuitbreakerEndpoint" path="/advanced/faulttolerance/bulkhead-circuitbreaker-fallback/invoke" text="Start" />
+                        </div>
+                        <div class="ms-2 d-flex align-items-center">
+                            <tag:button id="stopCallsBulkheadCircuitbreakerEndpoint" path="/advanced/faulttolerance/bulkhead-circuitbreaker-fallback/reset" text="Stop" />
+                        </div>
+                    </div>
+
+                    <hr class="my-3" />
+                </div>
+            </div>
+
+            <div class="row my-2 text-start">
+                <div class="col-sm me-sm-1 font-weight-bold">
+                    Server Response:
+                </div>
+                <div id="serverResponse" class="col-sm ms-sm-1" style="word-wrap: break-word;">
+                </div>
+
+                <hr class="my-3" />
+            </div>
+        </section>
+    </ui:define>
+
+
+    <ui:define name="bottom">
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import bulkheadCircuitBreaker from '#{pathHelper.buildResourcePath("/js/advanced/faulttolerance/bulkhead-circuitbreaker-fallback.js")}'
+
+            mp.registerOnLoad(() => {
+                bulkheadCircuitBreaker.init({
+                    delayMillis: 1000,
+                    parallelCount: #{parallelCount},
+                    callerElement: document.getElementById("startCallsBulkheadCircuitbreakerEndpoint"),
+                    stopElement: document.getElementById("stopCallsBulkheadCircuitbreakerEndpoint"),
+                    responseContainer: document.getElementById("serverResponse"),
+                });
+            });
+        </script>
+    </ui:define>
+</ui:composition>

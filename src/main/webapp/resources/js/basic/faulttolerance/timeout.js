@@ -1,27 +1,45 @@
-const registerCallElementClickEventListener = (options) => {
+import mp from "../../mp.js";
+import httpClient from '../../httpClient.js'
+import modalDialog from "../../modalDialog.js";
+
+const state = {
+    timerDialog: null,
+    options: null,
+};
+
+const displayData = (response) => {
+    const {
+        responseElement,
+    } = state.options;
+    let serverResponseText = `HTTP-Status: ${response.status}`;
+    response.text()
+        .then((text) => serverResponseText += `, Content: ${text}`)
+        .finally(() => responseElement.innerText = serverResponseText);
+};
+
+const registerCallElementClickEventListener = () => {
     const {
         callElement,
         responseElement,
-        timerElement,
-    } = options;
-    callElement.addEventListener("click", (event) => {
-        event.preventDefault();
+    } = state.options;
+    mp.registerClickListenerPreventDefault(callElement, (event) => {
         responseElement.innerText = "";
-        const modal = mdb.Modal.getInstance(timerElement)
-        modal.show();
-        fetch(event.target.href, {
-            method: "POST",
-        }).then((response) => {
-            let serverResponseText = `HTTP-Status: ${response.status}`;
-            response.text()
-                .then((text) => serverResponseText += `, Content: ${text}`)
-                .finally(() => responseElement.innerText = serverResponseText);
-        }).finally(() => modal.hide());
+        state.timerDialog.show();
+        httpClient.post({
+            uri: event.target.href,
+            successCallback: displayData,
+            failureCallback: displayData,
+        }).finally(() => state.timerDialog.hide());
     });
 }
 
 const init = (options) => {
-    registerCallElementClickEventListener(options);
+    const { timerElement } = options;
+    state.options = options;
+    state.timerDialog = modalDialog.create({
+        element: timerElement,
+    })
+    registerCallElementClickEventListener();
 };
 
 export default {

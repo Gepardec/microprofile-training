@@ -74,6 +74,13 @@
     </ui:define>
 
     <ui:define name="bottom">
+        <tag:modalDialog id="init" title="Initialization" closable="true">
+            <ui:define name="content">
+                <div class="d-flex flex-row justify-content-center mt-2">
+                    <span id="initDialogContent" class="d-inline-block fs-5" />
+                </div>
+            </ui:define>
+        </tag:modalDialog>
         <tag:timerDialog id="timer" title="Waiting for responses..." />
 
         <script type="module">
@@ -81,11 +88,12 @@
             import bulkhead from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/bulkhead.js")}'
 
             mp.registerOnLoad(() => bulkhead.init({
-                callerElement: document.getElementById("callBulkheadedEndpoint"),
-                countElement: document.getElementById("parallelCountOutline"),
-                timerElement: document.getElementById("timer"),
-                responseContainer: document.getElementById("serverResponse"),
-                countMin: 2
+                callerElement: document.getElementById('callBulkheadedEndpoint'),
+                countElement: document.getElementById('parallelCountOutline'),
+                timerElement: document.getElementById('timer'),
+                initDialogElement: document.getElementById('init'),
+                initDialogContentElement: document.getElementById('initDialogContent'),
+                responseContainer: document.getElementById('serverResponse'),
             }));
         </script>
     </ui:define>

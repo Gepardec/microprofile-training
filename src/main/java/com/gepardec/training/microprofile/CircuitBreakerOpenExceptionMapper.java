@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile;
 
-import com.gepardec.training.microprofile.basic.faulttolerance.CircuitBreakerCallState;
+import com.gepardec.training.microprofile.common.faulttolerance.CircuitBreakerCallState;
 import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
 import org.slf4j.Logger;
 

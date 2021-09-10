@@ -152,5 +152,34 @@
             <required>false</required>
             <type>java.lang.String</type>
         </attribute>
+        <attribute>
+            <description>The flag indicating that the user can close the dialog</description>
+            <name>closable</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+
+    <tag>
+        <tag-name>modalDialog</tag-name>
+        <source>tags/modalDialog.xhtml</source>
+        <attribute>
+            <description>The page unique id</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The title of the modal dialog</description>
+            <name>title</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>The flag indicating that the user can close the dialog</description>
+            <name>closable</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
     </tag>
 </facelet-taglib>

@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 @Path("/basic/faulttolerance")
 @RequestScoped
 @Controller
-public class Index {
+public class IndexController {
 
     @GET
     @Path("/index")

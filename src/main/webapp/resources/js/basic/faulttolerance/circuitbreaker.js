@@ -1,7 +1,15 @@
+import httpClient from '../../httpClient.js'
+import timer from "../../timer.js";
+import mp from "../../mp.js";
+import modalDialog from "../../modalDialog.js";
+import inputNumber from "../../inputNumber.js";
+
 const state = {
+    timer: null,
+    initDialog: null,
+    options: null,
     failEachCount: 1,
     failAfterEachCount: 1,
-    timerReference: null,
     count: 0,
     intentionalFailedCount: 0,
     circuitOpenFailedCount: 0,
@@ -14,8 +22,13 @@ const statusCodes = {
     circuitOpen: 490,
 }
 
+const showInitDialog = (message) => {
+    const { initDialogContentElement } = state.options;
+    initDialogContentElement.innerText = message;
+    state.initDialog.show();
+}
+
 const resetState = () => {
-    state.timerReference = null;
     state.count = 0;
     state.intentionalFailedCount = 0;
     state.successCount = 0;
@@ -24,138 +37,111 @@ const resetState = () => {
     state.failAfterEachCount = 1;
 }
 
-const displayState = (options) => {
+const displayState = () => {
     const {
         responseContainer,
-    } = options;
+    } = state.options;
     responseContainer.innerHTML = `Call: ${state.count} </br> Success: ${state.successCount} </br> IntentionalFail: ${state.intentionalFailedCount} </br> CircuitOpenFail: ${state.circuitOpenFailedCount} </br> otherFail: ${state.otherFailedCount}`;
 }
 
-const run = async (options) => {
+const run = () => {
     const {
-        href,
-    } = options;
-    const response = await fetch(href, {
-        method: "POST",
-    }).finally(() => state.count += 1);
-    await response.text()
-        .then((text) => {
+        callerElement,
+    } = state.options;
+    httpClient.post({
+        uri: callerElement.href,
+        successCallback: () => state.successCount += 1,
+        failureCallback: (response) => {
             if (response.status === statusCodes.intentionalFail) {
                 state.intentionalFailedCount += 1;
             } else if (response.status === statusCodes.circuitOpen) {
                 state.circuitOpenFailedCount += 1;
-            } else if (response.status === 200) {
-                state.successCount += 1;
             } else {
                 state.otherFailedCount += 1;
             }
-            console.log(state);
-        }).finally(() => {
-            displayState(options);
-        }).catch((error) => {
-            state.intentionalFailedCount += 1;
-            console.log(error);
-        });
+        },
+    }).finally(() => {
+        state.count += 1;
+        displayState();
+    });
 };
 
-const stop = async (options) => {
-    if (state.timerReference) {
-        clearInterval(state.timerReference);
-        resetState();
-        const {
-            stopElement,
-        } = options;
-        await fetch(stopElement.href, {
-            method: "POST",
-        }).finally(() => console.log('Reset call state on server'))
-    }
+const timerStopCallback = async () => {
+    const { stopElement } = state.options;
+    await httpClient.post({
+        uri: stopElement.href,
+        failureCallback: () => alert('Endpoint reset failed'),
+    });
 };
 
-const start = async (options) => {
-    const { delayMillis } = options;
-    if (state.timerReference) {
-        await stop(options);
-    }
-    state.timerReference = setInterval(run, delayMillis, options);
-};
-
-const validateInputNumber = (element, min) => {
-    const inputElement = element.querySelector('input');
-    const stringValue = inputElement.value;
-    const value = parseInt(stringValue) || -1;
-    if (value <= 0 || value < min) {
-        element.focus();
-        inputElement.value = "";
-        alert(`Your ${inputElement.id} value is invalid. value: '${stringValue}', min: '${min}'`);
-        inputElement.value = min;
-        return false;
-    }
-
-    return true;
-};
-
-const registerInitElementClickEventListener = (options) => {
+const registerInitElementClickEventListener = () => {
     const {
         failEachCountElement,
         failAfterEachCountElement,
         initElement,
-        failEachCountMin,
-        failAfterEachCountMin,
-    } = options;
-    initElement.addEventListener('click', async (event) => {
-            event.preventDefault();
-            if (state.timerReference) {
-                alert('Cannot initialize while running, please stop first');
+    } = state.options;
+    mp.registerClickListenerPreventDefault(initElement, (event) => {
+            if (state.timer.isRunning()) {
+                showInitDialog('Cannot initialize while running, please stop first');
                 return;
             }
-            if (validateInputNumber(failEachCountElement, failEachCountMin) && validateInputNumber(failAfterEachCountElement, failAfterEachCountMin)) {
-                const failEachCountInputElement = failEachCountElement.querySelector('input');
-                const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
-                const searchParams = new URLSearchParams();
-                searchParams.append(failEachCountInputElement.id, failEachCountInputElement.value);
-                searchParams.append(failAfterEachCountInputElement.id, failAfterEachCountInputElement.value);
-                await fetch(`${event.target.href}?` + searchParams, {
-                    method: "POST"
-                }).then((result) => {
-                    if (!result.ok) {
-                        alert('Endpoint initialization failed');
-                    }
-                });
-                alert(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`);
-            }
+            const failEachCountInputElement = failEachCountElement.querySelector('input');
+            const failAfterEachCountInputElement = failAfterEachCountElement.querySelector('input');
+            httpClient.post({
+                uri: event.target.href,
+                queryParameters: new Map([
+                    [failEachCountInputElement.id, failEachCountInputElement.value],
+                    [failAfterEachCountInputElement.id, failAfterEachCountInputElement.value]
+                ]),
+                successCallback: () => showInitDialog(`Endpoint successfully initialized with failEachCount: '${failEachCountInputElement.value}', failAfterEachCount: '${failAfterEachCountInputElement.value}'`),
+                failureCallback: () => showInitDialog('Endpoint initialization failed'),
+            });
         }
     );
 };
 
-const registerStopElementClickEventListener = (options) => {
+const registerStopElementClickEventListener = () => {
     const {
         stopElement,
-    } = options;
-    stopElement.addEventListener('click', async (event) => {
-        event.preventDefault();
-        await stop(options);
-    });
+    } = state.options;
+    mp.registerClickListenerPreventDefault(stopElement, state.timer.stop);
 };
 
-const registerCallElementClickEventListener = (options) => {
+const registerCallElementClickEventListener = () => {
     const {
         callerElement
-    } = options;
-    callerElement.addEventListener('click', async (event) => {
-        event.preventDefault();
-        await stop(options);
-        start({
-            href: event.target.href,
-            ...options,
-        });
-    });
+    } = state.options;
+    mp.registerClickListenerPreventDefault(callerElement, state.timer.start);
 };
 
 const init = (options) => {
-    displayState(options);
-    registerStopElementClickEventListener(options);
-    registerCallElementClickEventListener(options);
-    registerInitElementClickEventListener(options);
+    const {
+        initDialogElement,
+        delayMillis,
+        callerElement,
+        failEachCountElement,
+        failAfterEachCountElement,
+    } = options;
+    state.options = options;
+    state.initDialog = modalDialog.create({
+        element: initDialogElement,
+    })
+    state.timer = timer.create({
+        delayMillis: delayMillis,
+        runFunction: run,
+        runData: {
+            href: callerElement.href,
+            ...options
+        },
+        startCallback: resetState,
+        stopCallback: timerStopCallback,
+    });
+    inputNumber.init(failEachCountElement);
+    inputNumber.init(failAfterEachCountElement);
+    displayState();
+    registerStopElementClickEventListener();
+    registerCallElementClickEventListener();
+    registerInitElementClickEventListener();
 };
 
 export default {
