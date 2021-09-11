@@ -22,6 +22,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <version.omnifaces>3.11</version.omnifaces>
         <version.webjar.font-awesome>5.15.2</version.webjar.font-awesome>
+        <version.webjar.mdb-ui-kit>3.9.0</version.webjar.mdb-ui-kit>
 
         <!-- Test Dependency Versions -->
         <version.weld-junit5>2.0.2.Final</version.weld-junit5>
@@ -159,6 +160,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
             <version>${version.webjar.font-awesome}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>mdb-ui-kit</artifactId>
+            <version>${version.webjar.mdb-ui-kit}</version>
         </dependency>
 
         <!-- Wildfly Runtime Dependencies -->
