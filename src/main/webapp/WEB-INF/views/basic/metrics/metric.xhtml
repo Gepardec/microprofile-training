@@ -26,7 +26,8 @@
                         </p>
 
                         <p>
-                            @Metric allows you to inject a metric and retrieve the measured values.
+                            The <code>@Metric</code> annotation requests that a metric should be injected or registered. Thereby,
+                            you can retrieve the measured values.
                         </p>
 
                         <hr class="mt-3 mb-3"/>
@@ -53,8 +54,8 @@
                         </h5>
 
                         <p>
-                            Use @Metric to so that <code>com.gepardec.training.microprofile.basic.metrics.MPMetricsController#counter</code>
-                            is injected with the Counter "count-example". Then, count should be the same as in
+                            Use <code>@Metric</code> to so that <code>com.gepardec.training.microprofile.basic.metrics.MPMetricsController#counter</code>
+                            is injected with the Counter <code>"count-example"</code>. Then, count should be the same as in
                             <a href="http://localhost:9990/metrics"
                                target="_blank">
                                 Wildfly

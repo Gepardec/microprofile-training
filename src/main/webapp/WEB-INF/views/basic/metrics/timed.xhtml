@@ -26,7 +26,10 @@
                         </p>
 
                         <p>
-                            With @Timed annotation each time the method is invoked, the method's execution will be timed.
+                            <code>@Timed</code> is an annotation for marking a constructor or method of an annotated object as timed. The metric of
+                            type Timer tracks how frequently the annotated object is invoked, and tracks how long it took the
+                            invocations to complete. The data is aggregated to calculate duration statistics and throughput
+                            statistics.
                         </p>
 
                         <hr class="mt-3 mb-3"/>
@@ -47,7 +50,7 @@
                         </h5>
 
                         <p>
-                            Use @Timed Annotation for marking a <code>time()</code> methode in
+                            Use <code>@Timed</code> for marking a <code>time()</code> methode in
                             <code>com.gepardec.training.microprofile.basic.metrics.ExampleController</code>.
                             Each time a method is invoked, the execution will be timed with the respective timer.
                             The name of the metric should be <code>"timed-example"</code>.
