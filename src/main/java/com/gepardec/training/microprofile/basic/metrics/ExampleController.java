@@ -27,8 +27,11 @@ public class ExampleController {
     @Path("/counted")
     @GET
     public String getCounted(){
-        Counter change = metricRegistry.counter("count-example");
-        model.put("count", change.getCount());
+        // TODO make many calls
+        Counter change = metricRegistry.getCounter(new MetricID("count-example"));
+        if(change != null) {
+            model.put("count", change.getCount());
+        }
         return "basic/metrics/counted.xhtml";
     }
 
@@ -48,8 +51,11 @@ public class ExampleController {
     @Path("/metered")
     @GET
     public String getMetered(){
-        Meter meter = metricRegistry.meter("metered-example");
-        model.put("meter", meter.getOneMinuteRate());
+        // TODO make many calls
+        Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
+        if(meter != null) {
+            model.put("meter", meter.getOneMinuteRate());
+        }
         return "basic/metrics/metered.xhtml";
     }
 
@@ -62,29 +68,35 @@ public class ExampleController {
     @Path("/timed")
     @GET
     public String getTimed(){
-        Timer timed = metricRegistry.timer("timed-example");
-        model.put("time", timed.getOneMinuteRate());
+        Timer timed = metricRegistry.getTimer(new MetricID("timed-example"));
+        if(timed != null) {
+            model.put("time", timed.getOneMinuteRate());
+        }
         return "basic/metrics/timed.xhtml";
     }
 
     @Path("/time")
     @GET
-    public String time() {
+    public String time() throws InterruptedException {
+        Thread.sleep((long) Math.random() * 1000);
         return getTimed();
     }
 
     @Path("/simply-timed")
     @GET
     public String getSimplyTimed(){
-        SimpleTimer timed = metricRegistry.simpleTimer("simply-timed-example");
-        model.put("count", timed.getCount());
-        model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
-        return "basic/metrics/simply-timed.xhtml";
+        SimpleTimer timed = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
+        if(timed != null) {
+            model.put("count", timed.getCount());
+            model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
+        }
+        return "basic/metrics/simply_timed.xhtml";
     }
 
     @Path("/simple-time")
     @GET
-    public String simpleTime() {
+    public String simpleTime() throws InterruptedException {
+        Thread.sleep((long) Math.random() * 1000);
         return getSimplyTimed();
     }
 }
