@@ -2,20 +2,20 @@ html {
     height: 100%;
 }
 
-html > nav {
-    min-height: 75px;
+body > nav {
+    height: 70px;
 }
 
 body {
-    padding-top: 75px;
-    padding-bottom: 75px;
+    padding-top: 70px;
+    padding-bottom: 70px;
     height: 100%;
     font-size: 1.25rem;
 }
 
 footer {
     bottom: 0;
-    height: 75px;
+    height: 70px;
     text-align: center;
     padding: 5px;
     background: #1f6c04;
