@@ -9,6 +9,9 @@ import javax.mvc.Controller;
 import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 @Path("/basic/metrics")
 @RequestScoped
@@ -26,10 +29,10 @@ public class ExampleController {
 
     @Path("/counted")
     @GET
-    public String getCounted(){
+    public String getCounted() {
         // TODO make many calls
         Counter change = metricRegistry.getCounter(new MetricID("count-example"));
-        if(change != null) {
+        if (change != null) {
             model.put("count", change.getCount());
         }
         return "basic/metrics/counted.xhtml";
@@ -50,10 +53,10 @@ public class ExampleController {
 
     @Path("/metered")
     @GET
-    public String getMetered(){
+    public String getMetered() {
         // TODO make many calls
         Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
-        if(meter != null) {
+        if (meter != null) {
             model.put("meter", meter.getOneMinuteRate());
         }
         return "basic/metrics/metered.xhtml";
@@ -67,10 +70,12 @@ public class ExampleController {
 
     @Path("/timed")
     @GET
-    public String getTimed(){
+    public String getTimed() {
         Timer timed = metricRegistry.getTimer(new MetricID("timed-example"));
-        if(timed != null) {
-            model.put("time", timed.getOneMinuteRate());
+        if (timed != null) {
+            DecimalFormat format = new DecimalFormat("#0.000", new DecimalFormatSymbols(Locale.ENGLISH));
+            model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
+            model.put("rate", format.format(timed.getOneMinuteRate()));
         }
         return "basic/metrics/timed.xhtml";
     }
@@ -84,9 +89,9 @@ public class ExampleController {
 
     @Path("/simply-timed")
     @GET
-    public String getSimplyTimed(){
+    public String getSimplyTimed() {
         SimpleTimer timed = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
-        if(timed != null) {
+        if (timed != null) {
             model.put("count", timed.getCount());
             model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
         }

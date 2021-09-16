@@ -34,9 +34,24 @@
 
                         <hr class="mt-3 mb-3"/>
 
-                        <tag:button id="toMetricsExampleTimed" text="Time" path="/basic/metrics/time"/>
-                        <h:outputText value="${time}" class="font-weight-bold" style="padding-left: 30pt"/>
+                        <tag:button id="toMetricsExampleTimed" text="Call" path="/basic/metrics/time"/>
 
+                        <div class="row my-1">
+                            <div class="col-sm text-lg-start text-sm-right mr-sm-1">
+                                One-minute-rate:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${rate}" style="padding-left: 30pt"/>
+                            </div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm text-lg-start text-sm-right mr-sm-1">
+                                Elapsed time (in seconds):
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${time}" style="padding-left: 30pt"/>
+                            </div>
+                        </div>
                         <hr class="mt-3 mb-3"/>
                     </section>
                 </div>
