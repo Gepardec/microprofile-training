@@ -53,7 +53,7 @@ public class ExampleController {
     @Produces(MediaType.TEXT_PLAIN)
     public Response count() {
         Counter change = metricRegistry.getCounter(new MetricID("count-example"));
-        return  Response.ok(change.getCount()).build();
+        return Response.ok(change.getCount()).build();
     }
 
     @Path("/metric")
@@ -68,7 +68,6 @@ public class ExampleController {
     @GET
     @Controller
     public String getMetered() {
-        // TODO make many calls
         Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
         if (meter != null) {
             model.put("meter", meter.getOneMinuteRate());
@@ -77,10 +76,12 @@ public class ExampleController {
     }
 
     @Path("/meter")
-    @GET
-    @Controller
-    public String meter(){
-        return getMetered();
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response meter() throws InterruptedException {
+        Thread.sleep((long) Math.random() * 100);
+        Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
+        return Response.ok(meter != null ? meter.getOneMinuteRate() : "0").build();
     }
 
     @Path("/timed")
