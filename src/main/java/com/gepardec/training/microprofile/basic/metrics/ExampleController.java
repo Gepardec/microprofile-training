@@ -57,12 +57,6 @@ public class ExampleController {
         return "basic/metrics/metric.xhtml";
     }
 
-    @Path("/count")
-    @GET
-    public String count(){
-        return getCounted();
-    }
-
     @Path("/metered")
     @GET
     @Controller
@@ -77,6 +71,7 @@ public class ExampleController {
 
     @Path("/meter")
     @GET
+    @Controller
     public String meter(){
         return getMetered();
     }
@@ -96,6 +91,7 @@ public class ExampleController {
 
     @Path("/time")
     @GET
+    @Controller
     public String time() throws InterruptedException {
         Thread.sleep((long) Math.random() * 1000);
         return getTimed();
@@ -115,6 +111,7 @@ public class ExampleController {
 
     @Path("/simple-time")
     @GET
+    @Controller
     public String simpleTime() throws InterruptedException {
         Thread.sleep((long) Math.random() * 1000);
         return getSimplyTimed();
