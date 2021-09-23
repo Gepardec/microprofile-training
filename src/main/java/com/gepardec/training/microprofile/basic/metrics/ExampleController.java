@@ -109,18 +109,19 @@ public class ExampleController {
     @GET
     @Controller
     public String getSimplyTimed() {
-        SimpleTimer timed = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
-        if (timed != null) {
-            model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
+        SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
+        if (simpleTimer != null) {
+            model.put("time", DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), "s.SSS"));
         }
         return "basic/metrics/simply_timed.xhtml";
     }
 
     @Path("/simple-time")
-    @GET
-    @Controller
-    public String simpleTime() throws InterruptedException {
-        Thread.sleep((long) Math.random() * 1000);
-        return getSimplyTimed();
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response simpleTime() throws InterruptedException {
+        Thread.sleep((long) (Math.random() * 1000));
+        SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
+        return Response.ok(simpleTimer != null ? DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), "s.SSS") : "0.000").build();
     }
 }
