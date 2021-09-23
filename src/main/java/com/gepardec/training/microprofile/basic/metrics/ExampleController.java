@@ -8,14 +8,17 @@ import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 @Path("/basic/metrics")
 @RequestScoped
-@Controller
 public class ExampleController {
 
     @Inject
@@ -27,10 +30,10 @@ public class ExampleController {
     @Inject
     private Counter counter;
 
+    @Controller
     @Path("/counted")
     @GET
     public String getCounted() {
-        // TODO make many calls
         Counter change = metricRegistry.getCounter(new MetricID("count-example"));
         if (change != null) {
             model.put("count", change.getCount());
@@ -38,8 +41,17 @@ public class ExampleController {
         return "basic/metrics/counted.xhtml";
     }
 
+    @Path("/count")
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response count() {
+        Counter change = metricRegistry.getCounter(new MetricID("count-example"));
+        return  Response.ok(change.getCount()).build();
+    }
+
     @Path("/metric")
     @GET
+    @Controller
     public String getMetric() {
         model.put("count", counter.getCount());
         return "basic/metrics/metric.xhtml";
@@ -53,6 +65,7 @@ public class ExampleController {
 
     @Path("/metered")
     @GET
+    @Controller
     public String getMetered() {
         // TODO make many calls
         Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
@@ -70,6 +83,7 @@ public class ExampleController {
 
     @Path("/timed")
     @GET
+    @Controller
     public String getTimed() {
         Timer timed = metricRegistry.getTimer(new MetricID("timed-example"));
         if (timed != null) {
@@ -89,6 +103,7 @@ public class ExampleController {
 
     @Path("/simply-timed")
     @GET
+    @Controller
     public String getSimplyTimed() {
         SimpleTimer timed = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
         if (timed != null) {

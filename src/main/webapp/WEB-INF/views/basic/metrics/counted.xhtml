@@ -31,8 +31,8 @@
 
                         <hr class="mt-3 mb-3"/>
 
-                        <tag:button id="toMetricsExampleCounted" text="Count" path="/basic/metrics/count"/>
-                        <h:outputText value="${count}" class="font-weight-bold" style="padding-left: 30pt"/>
+                        <tag:button id="callCountEndpoint" text="Call" path="/basic/metrics/count"/>
+                        <h:outputText id="serverResponse" value="${count}" class="font-weight-bold" style="padding-left: 30pt"/>
 
                         <hr class="mt-3 mb-3"/>
                     </section>
@@ -62,11 +62,35 @@
                             </a>
 
                         </p>
-
                     </section>
                 </div>
             </div>
         </div>
+
+    </ui:define>
+
+    <ui:define name="bottom">
+        <tag:modalDialog id="init" title="Initialization" closable="true">
+            <ui:define name="content">
+                <div class="d-flex flex-row justify-content-center mt-2">
+                    <span id="initDialogContent" class="d-inline-block fs-5" />
+                </div>
+            </ui:define>
+        </tag:modalDialog>
+        <tag:timerDialog id="timer" title="Waiting for responses..." />
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import bulkhead from '#{pathHelper.buildResourcePath("/js/basic/metrics/count.js")}'
+
+            mp.registerOnLoad(() => bulkhead.init({
+                callerElement: document.getElementById('callCountEndpoint'),
+                timerElement: document.getElementById('timer'),
+                initDialogElement: document.getElementById('init'),
+                initDialogContentElement: document.getElementById('initDialogContent'),
+                responseElement: document.getElementById('serverResponse'),
+            }));
+        </script>
     </ui:define>
 </ui:composition>
 
