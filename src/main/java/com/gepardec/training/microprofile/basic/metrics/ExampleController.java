@@ -31,6 +31,13 @@ public class ExampleController {
     private Counter counter;
 
     @Controller
+    @Path("/base")
+    @GET
+    public String getBase() {
+        return "basic/metrics/base.xhtml";
+    }
+
+    @Controller
     @Path("/counted")
     @GET
     public String getCounted() {

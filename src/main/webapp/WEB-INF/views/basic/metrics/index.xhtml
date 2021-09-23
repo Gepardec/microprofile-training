@@ -7,7 +7,7 @@
     </ui:define>
 
     <ui:define name="additionalNavLink">
-        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
+        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward"/></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -16,12 +16,12 @@
             <tag:card id="mp-metrics-basic" title="Basic Metrics">
                 <ui:define name="body">
                     <p>
-                        With this example, you will use a basic metrics.
-                        <a href="http://localhost:9990/metrics#" target="_blank">
-                            Base Metrics
-                        </a>
+                        Take a look at the already existing metrics.
                     </p>
-                </ui:define>
+                </ui:define> <ui:define name="buttons">
+                <tag:button id="toBaseExample" text="Examples" path="/basic/metrics/base"/>
+            </ui:define>
+
 
             </tag:card>
 
@@ -32,7 +32,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleCounted" text="Examples" path="/basic/metrics/counted" />
+                    <tag:button id="toMetricsExampleCounted" text="Examples" path="/basic/metrics/counted"/>
                 </ui:define>
 
             </tag:card>
@@ -44,7 +44,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleMetric" text="Examples" path="/basic/metrics/metric" />
+                    <tag:button id="toMetricsExampleMetric" text="Examples" path="/basic/metrics/metric"/>
                 </ui:define>
 
             </tag:card>
@@ -52,11 +52,12 @@
             <tag:card id="mp-metrics-metered" title="@Metered">
                 <ui:define name="body">
                     <p>
-                        With <code>@Metered</code> the invocations of the constructor or method are counted and the frequency of the calls is tracked.
+                        With
+                        <code>@Metered</code> the invocations of the constructor or method are counted and the frequency of the calls is tracked.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleMetered" text="Examples" path="/basic/metrics/metered" />
+                    <tag:button id="toMetricsExampleMetered" text="Examples" path="/basic/metrics/metered"/>
                 </ui:define>
 
             </tag:card>
@@ -64,11 +65,12 @@
             <tag:card id="mp-metrics-timed" title="@Timed">
                 <ui:define name="body">
                     <p>
-                        If you want to track and sample the duration for a method call, you can make use of the <code>@Timed</code> annotation.
+                        If you want to track and sample the duration for a method call, you can make use of the
+                        <code>@Timed</code> annotation.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleTimed" text="Examples" path="/basic/metrics/timed" />
+                    <tag:button id="toMetricsExampleTimed" text="Examples" path="/basic/metrics/timed"/>
                 </ui:define>
 
             </tag:card>
@@ -76,11 +78,12 @@
             <tag:card id="mp-metrics-simply-timed" title="@SimplyTimed">
                 <ui:define name="body">
                     <p>
-                        By using <code>@SimplyTimed</code> you are able to measure the duration and number of invocations.
+                        By using
+                        <code>@SimplyTimed</code> you are able to measure the duration and number of invocations.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleSimplyTimed" text="Examples" path="/basic/metrics/simply-timed" />
+                    <tag:button id="toMetricsExampleSimplyTimed" text="Examples" path="/basic/metrics/simply-timed"/>
                 </ui:define>
 
             </tag:card>
