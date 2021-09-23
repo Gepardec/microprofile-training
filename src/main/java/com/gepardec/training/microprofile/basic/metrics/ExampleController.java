@@ -92,17 +92,17 @@ public class ExampleController {
         if (timed != null) {
             DecimalFormat format = new DecimalFormat("#0.000", new DecimalFormatSymbols(Locale.ENGLISH));
             model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
-            model.put("rate", format.format(timed.getOneMinuteRate()));
         }
         return "basic/metrics/timed.xhtml";
     }
 
     @Path("/time")
-    @GET
-    @Controller
-    public String time() throws InterruptedException {
-        Thread.sleep((long) Math.random() * 1000);
-        return getTimed();
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response time() throws InterruptedException {
+        Thread.sleep((long) (Math.random() * 1000));
+        Timer timer = metricRegistry.getTimer(new MetricID("timed-example"));
+        return Response.ok(timer != null ? DurationFormatUtils.formatDuration(timer.getElapsedTime().toMillis(), "s.SSS") : "0.000").build();
     }
 
     @Path("/simply-timed")
@@ -111,7 +111,6 @@ public class ExampleController {
     public String getSimplyTimed() {
         SimpleTimer timed = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
         if (timed != null) {
-            model.put("count", timed.getCount());
             model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
         }
         return "basic/metrics/simply_timed.xhtml";
