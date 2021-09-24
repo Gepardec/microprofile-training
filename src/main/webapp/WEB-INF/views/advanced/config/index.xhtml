@@ -30,6 +30,17 @@
                 </ui:define>
             </tag:card>
 
+            <tag:card id="mp-config-common" title="Configuration from common configuration">
+                <ui:define name="body">
+                    <p>
+                        Here, you will override the configured values in the common-configuration JAR with values from this application.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExampleDropIn2" text="Example" path="/advanced/config/commonconfiguration" />
+                </ui:define>
+            </tag:card>
+
         </section>
     </ui:define>
 </ui:composition>

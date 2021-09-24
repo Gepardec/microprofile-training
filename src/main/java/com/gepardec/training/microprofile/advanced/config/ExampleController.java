@@ -18,11 +18,11 @@ public class ExampleController {
     private Models model;
 
     @Inject
-    @ConfigProperty(name = "custom.value1", defaultValue = "Missing value from custom ConfigSource")
+    @ConfigProperty(name = "db.key1", defaultValue = "Missing value from custom ConfigSource")
     private String customValue1;
 
     @Inject
-    @ConfigProperty(name = "custom.value2", defaultValue = "Missing value from custom ConfigSource")
+    @ConfigProperty(name = "db.key2", defaultValue = "Missing value from custom ConfigSource")
     private String customValue2;
 
     @Inject
@@ -47,5 +47,11 @@ public class ExampleController {
         model.put("dropInValue1", dropInValue1);
         model.put("dropInValue2", dropInValue2);
         return "advanced/config/drop_in.xhtml";
+    }
+
+    @Path("/commonconfiguration")
+    @GET
+    public String getCommonConfiguration() {
+        return "advanced/config/common_configuration.xhtml";
     }
 }
