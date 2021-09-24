@@ -15,36 +15,36 @@ public class PropertyDao {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static final String URL = "jdbc:postgresql://localhost:15432/mptraining";
+
     public static final String USER = "admin";
+
     public static final String PASSWORD = "admin@123";
 
     public Set<String> findPropertyNames() {
         Set<String> propertyNames = new HashSet<>();
         try (Connection connection = createConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT p.key FROM property p ORDER BY p.key")) {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT p.key FROM property p ORDER BY p.key")) {
             while (resultSet.next()) {
                 propertyNames.add(resultSet.getString("KEY"));
             }
-        } catch (SQLException throwables) {
-            logger.error("Unable to execute query to find property names.", throwables);
+        } catch (SQLException e) {
+            throw new IllegalStateException("An error occurred loading the database properties", e);
         }
         return propertyNames;
     }
 
     public String findProperty(String key) {
-
         try (Connection connection = createConnection();
-             PreparedStatement statement = createStatement(key, connection);
-             ResultSet resultSet = statement.executeQuery()) {
+                PreparedStatement statement = createStatement(key, connection);
+                ResultSet resultSet = statement.executeQuery()) {
 
             if (resultSet.next()) {
                 return resultSet.getString("VALUE");
             }
-            return null;
 
-        } catch (SQLException throwables) {
-            logger.error("Unable to execute Query to find property for key " + key, throwables);
+        } catch (SQLException e) {
+            throw new IllegalStateException("An error occurred loading a database property", e);
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class PropertyDao {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            logger.error("Unable to find class org.postgresql.Driver");
+            throw new IllegalStateException("Unable to find class org.postgresql.Driver", e);
         }
         Properties connectionProps = new Properties();
         connectionProps.put("user", USER);
