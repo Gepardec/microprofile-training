@@ -61,6 +61,6 @@ services:
     ports:
       - 18080:8080
     volumes:
-      - ./keycloak/v2_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
+      - ./keycloak/v3_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
     depends_on:
       - postgres

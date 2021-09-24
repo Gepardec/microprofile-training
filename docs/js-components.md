@@ -74,6 +74,20 @@ httpClient.postBatch({
     .finally(() => console.log("Call is finished"));                               
 ````
 
+`get`
+executes a get request and returns a promise with the return value of the provided callback function. If no callback is defined, then the fetch-api response is
+the return value.
+
+````javascript
+httpClient.get({
+    uri: 'http://localhost:8080/api/endpoint',
+    successCallback: (response) => extractData(response),
+    errorCallback: (response) => extractData(response),
+}).then((data) => displayData(data))
+    .catch((error) => console.log('A network eror occurred'))
+    .finally(() => console.log("Call is finished"));        
+````
+
 ### timer
 
 The timer module is used for invoking a function continuously with a specified delay and provides control functions for starting stopping the timer.
@@ -202,3 +216,13 @@ Usage:
 ````javascript
 inputNumber.update(outlineDiv);
 ````
+
+### login
+
+#### Functions
+
+`init`  
+checks if the use has a valid token and redirects to keycloak otherwise. Updates the upnElement with the logged in users upn.
+
+`token`
+returns the access_token from keycloak.

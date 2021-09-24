@@ -1,0 +1,93 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Basics JWT (Configuration)
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>JWT Configuration</h1>
+            </div>
+
+            <div class="mt-3">
+                <p>
+                    The specification for MicroProfile
+                    <a href="#{mpUri.jwtUri}#signature-verification-params"
+                       target="_blank">
+                        JWT (Signatur verification)
+                    </a>
+                    and
+                    <a href="#{mpUri.jwtUri}#laims-verification"
+                       target="_blank">
+                        JWT (Claims verification)
+                    </a>
+                </p>
+
+                <p>
+                    MicroProfile JWT is able to verify your signed JWT and some of the claims by providing it with configuration. This configuration is either the key itself or a key location and the values for the claims to be verified (e.g. issuer).
+                </p>
+                <p>
+                    The certificates (<code>jws_uri</code>) and issuer (<code>issuer</code>) can be found in the discovery document of the keycloak <a href="http://localhost:18080/auth/realms/microprofile/.well-known/openid-configuration" target="_blank">training realm</a>.
+                </p>
+
+                <hr class="my-3" />
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        Click the button below and you will see that the request fails with <code>500</code> or <code>401</code>.
+                    </p>
+
+                    <p>
+                        Fix the problem by configuring the necessary <code>mp.jwt.</code> configuration properties in <code>META-INF/microprofile-config.properties</code>.
+                    </p>
+
+                    <p>
+                        When your fix works, the request should respond with status <code>200</code> and a <strong>:-)</strong>.
+                    </p>
+
+                    <div class="text-center">
+                        <tag:button id="callConfigurationEndpoint" path="/basic/jwt/configuration/check" text="Configuration call" />
+                    </div>
+
+                    <hr class="my-3" />
+                </div>
+            </div>
+
+            <div class="row my-2 text-start font-weight-bold">
+                <div class="col-sm me-sm-1">
+                    Server Response:
+                </div>
+                <div class="col-sm ms-sm-1">
+                    <span id="serverResponse" />
+                </div>
+
+                <hr class="my-3" />
+            </div>
+
+            <tag:login />
+        </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import configuration from '#{pathHelper.buildResourcePath("/js/basic/jwt/configuration.js")}'
+
+            mp.registerOnLoad(() => {
+                configuration.init({
+                    clickElement: document.getElementById('callConfigurationEndpoint'),
+                    responseElement: document.getElementById('serverResponse')
+                });
+            });
+        </script>
+    </ui:define>
+</ui:composition>

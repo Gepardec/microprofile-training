@@ -1,0 +1,64 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Basics JWT
+    </ui:define>
+
+
+    <ui:define name="body">
+        <section>
+            <tag:card id="mp-jwt-jaxrs-application" title="JAX RS application">
+                <ui:define name="body">
+                    <p>
+                        Since the MicroProfile does not specify a deployment format, and currently does not rely on servlet metadata descriptors, we have added an org.eclipse.microprofile.jwt.LoginConfig annotation that provides the same information as the web.xml login-config element.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJaxRsApplication" text="JAX RS Application" path="/basic/jwt/jaxrs-application"/>
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-jwt-configuration" title="Configuration">
+                <ui:define name="body">
+                    <p>
+                        MicroProfile JWT leverages the MicroProfile Config specification to provide a consistent means of passing all supported configuration options. See the specification for all the configuration options. In the first example you will fix two configuration issues before we proceed.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJwtConfiguration" text="Configuration" path="/basic/jwt/configuration"/>
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-jwt-injection" title="CDI injection">
+                <ui:define name="body">
+                    <p>
+                        This section describes the requirements for MP-JWT implementations with regard to the injection of MP-JWT tokens and their associated claim values.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJwtInjection" text="Injection" path="/basic/jwt/injection"/>
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-jwt-security" title="Security">
+                <ui:define name="body">
+                    <p>
+                        Security
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJwtSecurity" text="Security" path="/basic/jwt/security"/>
+                </ui:define>
+            </tag:card>
+        </section>
+    </ui:define>
+
+</ui:composition>

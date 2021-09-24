@@ -71,7 +71,7 @@ public class MyController {
     @Path("/")
     @GET
     public String get() {
-        return "path/index.html";
+        return "path/index.xhtml";
     }
 
     @Path("/action")

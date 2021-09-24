@@ -56,6 +56,31 @@
                 </ui:define>
             </tag:card>
         </section>
+
+        <section>
+            <tag:card id="mp-jwt" title="MicroProfile JWT">
+                <ui:define name="body">
+                    <p>
+                        The MicroProfile JWT specification deals with the security aspect of RESTful services. Today, the most common solutions involving RESTful and microservices security are based on OAuth2, OpenID Connect(OIDC) and JSON Web Tokens(JWT) standards.
+                        <!-- copied from specification -->
+                    </p>
+                    <p>
+                        All the examples in this MicroProfile training use the provided keycloak server for issuing Tokens. Therefore, on opening any of the examples, you will be forwarded to keycloak and prompted with a login form. The following training users are preconfigured and used throughout the training:
+                    </p>
+                    <ul>
+                        <li>training-user</li>
+                        <li>training-admin</li>
+                    </ul>
+                    <p>
+                        If you need to switch the user, simply click 'logout' and you will be forwarded to keycloak again.
+                    </p>
+                    The specification for MicroProfile <a href="#{mpUri.jwtUri}" target="_blank">JWT</a>.
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJwtExamples" text="Examples" path="/basic/jwt/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
     </ui:define>
 </ui:composition>
 
