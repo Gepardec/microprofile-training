@@ -1,0 +1,82 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Basics Fault-Tolerance (Retry)
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="text-center">
+                <h1>Retry</h1>
+            </div>
+            <div class="mt-3">
+                <p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.faultToleranceUri}#retry"
+                        target="_blank">
+                        Fault Tolerance (Retry)
+                    </a>
+                </p>
+
+                <p>
+                    Retry is used to avoid brief errors on method invocations, if for instance the netowrok or a service is temporarly not available.
+                    The caller will experience an increased latency because of the retries but will not experience failures because of a brief glitch.
+                </p>
+
+                <hr class="my-3" />
+            </div>
+
+            <div class="row my-2">
+                <div class="col">
+                    <h4>
+                        Your Task:
+                    </h4>
+
+                    <p>
+                        Click the button below and you see the request is failing becuase there is no retry behaviour.
+                        Fix that problem by appliying a fitting retry behvaiour on the method
+                        <code>com.gepardec.training.microprofile.basic.faulttolerance.RetryService#retried</code>.
+                        <br />
+                        When your fix works, then the request will not fail anymore and you should experience a latency because of the retries.
+                    </p>
+
+                    <div class="text-center">
+                        <tag:button id="callRetriedEndpoint" path="/basic/faulttolerance/retry/retried" text="Retry call" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-2 text-start font-weight-bold">
+                <hr class="my-3" />
+
+                <div class="col-sm me-sm-1">
+                    Server Response:
+                </div>
+                <div class="col-sm ms-sm-1">
+                    <span id="serverResponse" />
+                </div>
+
+                <hr class="my-3" />
+            </div>
+        </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <tag:timerDialog id="timer" title="Waiting for response..." />
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import retry from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/retry.js")}'
+
+            mp.registerOnLoad(() => {
+                retry.init({
+                    callElement: document.getElementById("callRetriedEndpoint"),
+                    responseElement: document.getElementById("serverResponse"),
+                    timerElement: document.getElementById('timer'),
+                });
+            });
+        </script>
+    </ui:define>
+</ui:composition>
