@@ -8,7 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-/*
+
 @Liveness
 @ApplicationScoped
 public class DosLiveCheck implements HealthCheck {
@@ -37,4 +37,3 @@ public class DosLiveCheck implements HealthCheck {
     }
 }
 
- */

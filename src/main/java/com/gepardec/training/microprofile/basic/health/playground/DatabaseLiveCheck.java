@@ -4,7 +4,6 @@ import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
 import org.eclipse.microprofile.health.Liveness;
-import org.eclipse.microprofile.health.Readiness;
 import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.net.Socket;
@@ -15,22 +14,26 @@ public class DatabaseLiveCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("Database");
-        //TODO: hardcoded values
-        String hostName = "localhost";
-        Integer port = 19090;
-        try {
-            pingServer(hostName, port);
+
+        //insert the correct values to fix the healthcheck
+        String hostName = "";
+        int port = 0;
+
+        if (pingServer(hostName, port)) {
             responseBuilder.up();
-        } catch (Exception e) {
+        } else {
             responseBuilder.down()
-                           .withData("error", e.getMessage());
+                           .withData("Error", "Socket Closed");
         }
         return responseBuilder.build();
     }
 
-    private void pingServer(String dbhost, int port) throws IOException {
-        Socket socket = new Socket(dbhost, port);
-        socket.close();
+    private boolean pingServer(String dbhost, int port) {
+        try (Socket socket = new Socket(dbhost, port)) {
+            return socket.isConnected();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
 
