@@ -9,7 +9,15 @@
     <ui:define name="body">
         <section>
             <div class="container-lg">
-                <div class="row m-2">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Configuration from common configuration</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
                     <div class="col">
                         <p>
                             The specification for Microprofile
@@ -27,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="row m-2">
+                <div class="row my-2">
                     <div class="col">
                         <h4>
                             Your Task:
@@ -46,18 +54,12 @@
                             that the configuration is present in this application. Then, override the value of
                             <code>common.key</code> in another way than in <code>config/common-configuration</code>.
                         </p>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
                         <hr class="my-3" />
 
-                        <div class="d-flex justify-content-center flex-row my-2">
-                            <div class="d-flex align-items-center">
-                                <tag:button id="toCommonConfigExternal" text="Check result"
-                                    path="/advanced/config/commonconfigurationexternal" />
-                            </div>
+                        <div class="text-center">
+                            <tag:button id="toCommonConfigExternal" text="Check result"
+                                path="/advanced/config/commonconfigurationexternal" />
                         </div>
 
                         <hr class="my-3" />
