@@ -28,12 +28,25 @@ public class CheetahResource {
 
     @Produces(MediaType.APPLICATION_JSON)
     @Parameter
-    @APIResponses( value = { @APIResponse(responseCode = "404", description = "Missing description", content = @Content(mediaType = "text/plain")), @APIResponse( responseCode = "200", content = @Content( mediaType = "application/json", schema = @Schema( type = SchemaType.OBJECT, implementation = Cheetah.class)))})
+    @APIResponses(
+            value = {
+                    @APIResponse(
+                            responseCode = "200",
+                            content = @Content(
+                                    schema = @Schema(
+                                            type = SchemaType.ARRAY,
+                                            implementation = Cheetah.class))),
+                    @APIResponse(
+                            responseCode = "404",
+                            description = "Missing description"
+                    )
+            })
+
     @Operation(summary = "List full with cheetahs.")
     @GET
-    public Response list() {
+    public Set<Cheetah> list() {
         if (cheetahs.isEmpty()) Response.status(Response.Status.NOT_FOUND).entity("No cheetahs found").build();
-        return Response.ok(cheetahs).build();
+        return cheetahs;
     }
 
 
@@ -48,8 +61,8 @@ public class CheetahResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Description("Missing description")
-    @Operation( description = "Removes a cheetah from the coalition")
-    @APIResponses(value = { @APIResponse(responseCode = "202", description = "Operation executed successfully"), @APIResponse( name = "NoContent", responseCode = "204", description = "Missing description" )})
+    @Operation(description = "Removes a cheetah from the coalition")
+    @APIResponses(value = {@APIResponse(responseCode = "202", description = "Operation executed successfully"), @APIResponse(name = "NoContent", responseCode = "204", description = "Missing description")})
     @DELETE
     public Response delete(Cheetah cheetah) {
         if (cheetah == null) {

@@ -227,6 +227,11 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>openapi-generator-maven-plugin</artifactId>
             <version>5.2.0</version>
@@ -324,11 +329,15 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+                            <generatorName>java</generatorName>
                             <library>microprofile</library>
                             <inputSpec>${project.basedir}/src/main/webapp/META-INF/openapi.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <apiPackage>api</apiPackage>
                             <modelPackage>model</modelPackage>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateApiTests>false</generateApiTests>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
                             </configOptions>

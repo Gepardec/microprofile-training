@@ -10,28 +10,16 @@ paths:
     get:
       summary: List full with cheetahs.
       responses:
-        "404":
-          description: No Cheetah found
-          content:
-            text/plain: {}
         "200":
           description: OK
           content:
             application/json:
               schema:
-                description: POJO that represents a cheetah
-                required:
-                  - name
-                type: object
-                properties:
-                  age:
-                    format: int32
-                    type: integer
-                  name:
-                    type: string
-                  weight:
-                    format: double
-                    type: number
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cheetah'
+        "404":
+          description: No Cheetah found
     post:
       description: A new cheetah is born
       requestBody:
@@ -40,7 +28,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Cheetah'
       responses:
-        "202":
+        "200":
           description: OK
           content:
             application/json:
