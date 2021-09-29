@@ -31,7 +31,7 @@ const displayState = () => {
         responseContainer,
     } = state.options;
     responseContainer.innerHTML = `
-Batch-Count: ${state.count} </br> 
+Batch-Count: ${state.count} (${state.options.parallelCount} requests) </br> 
 Success: ${state.successCount} </br> 
 IntentionalFail: ${state.intentionalFailedCount} </br> 
 CircuitOpen: ${state.circuitOpenFailedCount} </br> 
@@ -83,7 +83,13 @@ const registerCallElementClickEventListener = () => {
     const {
         callerElement
     } = state.options;
-    mp.registerClickListenerPreventDefault(callerElement, state.timer.start);
+    mp.registerClickListenerPreventDefault(callerElement, () => {
+        if (!state.timer.isRunning()) {
+            resetState();
+            displayState();
+            state.timer.start();
+        }
+    });
 };
 
 const init = (options) => {
