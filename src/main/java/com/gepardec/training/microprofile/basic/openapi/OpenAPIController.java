@@ -45,5 +45,11 @@ public class OpenAPIController {
         return "basic/openapi/oasFilter.xhtml";
     }
 
+    @Path("/staticDocument")
+    @GET
+    public String getStaticDocument() {
+        return "basic/openapi/staticDocument.xhtml";
+    }
+
 
 }
