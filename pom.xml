@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>at.gepardec.training.microprofile</groupId>
     <artifactId>microprofile-training</artifactId>
@@ -22,6 +22,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <version.omnifaces>3.11</version.omnifaces>
         <version.webjar.font-awesome>5.15.2</version.webjar.font-awesome>
+        <version.webjar.mdb-ui-kit>3.9.0</version.webjar.mdb-ui-kit>
 
         <!-- Test Dependency Versions -->
         <version.weld-junit5>2.0.2.Final</version.weld-junit5>
@@ -88,6 +89,12 @@
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
             <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -170,6 +177,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
             <version>${version.webjar.font-awesome}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>mdb-ui-kit</artifactId>
+            <version>${version.webjar.mdb-ui-kit}</version>
         </dependency>
 
         <!-- Wildfly Runtime Dependencies -->

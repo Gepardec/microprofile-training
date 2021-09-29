@@ -49,7 +49,7 @@ To access the infrastructure tools use one of the following links:
 * link:http://localhost:13000[Grafana]
 * link:http://localhost:18080[Keycloak]
 
-The credentials ofr all applications can be found in our link:https://gepardec.github.io/microprofile-training/#infrastructure-guide[infrastructure guide].
+The credentials for all applications can be found in our link:https://gepardec.github.io/microprofile-training/#infrastructure-guide[infrastructure guide].
 
 == Further documentation
 

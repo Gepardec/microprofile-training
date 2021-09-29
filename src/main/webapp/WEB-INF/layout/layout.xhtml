@@ -4,16 +4,17 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com"
->
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
+    <!--@elvariable id="verticallyCentered" type="java.lang.Boolean"-->
     <!--@elvariable id="onWelcomePage" type="java.lang.Boolean"-->
     <!--@elvariable id="onBasicIndexPage" type="java.lang.Boolean"-->
     <!--@elvariable id="onAdvancedIndexPage" type="java.lang.Boolean"-->
 
+
     <h:head>
         <meta charset="UTF-8" />
-        <h:outputStylesheet library="mdb5-3.6.0" name="css/mdb.min.css" />
+        <h:outputStylesheet name="webjars/mdb-ui-kit/3.9.0/css/mdb.min.css" />
         <h:outputStylesheet name="webjars/font-awesome/5.15.2/css/all.min.css" />
         <h:outputStylesheet library="css" name="style.css" />
         <title><ui:insert name="title" /></title>
@@ -22,10 +23,10 @@
     <h:body lang="en">
         <f:view contentType="text/html">
             <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
-                <div class="container-fluid d-flex justify-content-between">
+                <div class="container-fluid d-flex justify-content-between bg-light">
                     <div class="navbar-brand">
                         <a href="https://microprofile.io/" target="_blank">
-                            <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="50" alt="MP-Logo" title="https://microprofile.io/" />
+                            <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="40" alt="MP-Logo" title="https://microprofile.io/" />
                         </a>
                     </div>
                     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navLinkContent" aria-controls="navLinkContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +36,11 @@
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
                             <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
                             <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
+                            <tag:navLink id="navBasicFaultTolerance" rendered="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" active="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" text="MP-Fault-Tolerance Basic" path="/basic/faulttolerance/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
                             <tag:navLink id="navBasicOpenApi" rendered="#{pathHelper.isOnSubpage('/basic/openapi')}" active="#{pathHelper.isOnSubpage('/basic/openapi')}" text="MP-OpenAPI Basic" path="/basic/openapi/index" />
                             <tag:navLink id="navBasicRestClient" rendered="#{pathHelper.isOnSubpage('/basic/restclient')}" active="#{pathHelper.isOnSubpage('/basic/restclient')}" text="MP-RestClient Basic" path="/basic/restclient/index" />
+                            <tag:navLink id="navAdvancedFaultTolerance" rendered="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" active="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" text="MP-Fault-Tolerance Advanced" path="/advanced/faulttolerance/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
@@ -49,7 +52,7 @@
 
             <main class="bg-image">
                 <article class="main-article">
-                    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center w-100 h-100">
+                    <div class="d-flex flex-row flex-wrap justify-content-center #{empty verticallyCentered or verticallyCentered ? 'align-items-center' : ''} w-100 h-100">
                         <div class="main-container">
                             <ui:insert name="body" />
                         </div>
@@ -60,7 +63,7 @@
             <footer class="bg-light d-flex justify-content-center align-items-center shadow-inverted">
                 &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1" title="https://www.gepardec.com/">2021 Gepardec IT Services</a>
             </footer>
-            <h:outputScript library="mdb5-3.6.0" name="js/mdb.min.js" />
+            <h:outputScript name="webjars/mdb-ui-kit/3.9.0/js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
         </f:view>
 
