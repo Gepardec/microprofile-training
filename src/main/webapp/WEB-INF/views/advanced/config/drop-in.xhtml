@@ -1,22 +1,21 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+>
 
     <ui:define name="title">
         Microprofile-Config Advanced DropIn Config
     </ui:define>
 
     <ui:define name="body">
-
-        <div class="container-lg">
-            <div class="row m-2">
-                <div class="col">
-                    <section>
+        <section>
+            <div class="container-lg">
+                <div class="row m-2">
+                    <div class="col">
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
-                               target="_blank">
+                                target="_blank">
                                 Config.
                             </a>
                         </p>
@@ -26,13 +25,32 @@
                         </p>
 
                         <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Take a look at the module <code>drop-in-configuration</code>. There, implement and register a custom ConfigSource that retrieves the configuration from
+                            <code>com.gepardec.training.microprofile.dropinconfiguration</code>. Finally, provide the drop-in-configuration JAR so that the configuration is present in this application.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <div class="col">
+                        <hr class="my-3" />
 
                         <div class="row my-1">
                             <div class="col-sm text-center text-sm-right mr-sm-1">
                                 Value1:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${dropInValue1}" class="font-weight-bold"/>
+                                <h:outputText value="${dropInValue1}" class="font-weight-bold" />
                             </div>
                         </div>
                         <div class="row my-1">
@@ -40,30 +58,15 @@
                                 Value2:
                             </div>
                             <div class="col-sm text-center text-sm-left ml-sm-1">
-                                <h:outputText value="${dropInValue2}" class="font-weight-bold"/>
+                                <h:outputText value="${dropInValue2}" class="font-weight-bold" />
                             </div>
                         </div>
 
                         <hr class="my-3" />
-                    </section>
+                    </div>
                 </div>
             </div>
-
-            <div class="row m-2">
-                <div class="col">
-                    <section>
-                        <h5>
-                            Your Task:
-                        </h5>
-
-                        <p>
-                            Take a look at the module <code>drop-in-configuration</code>. There, implement and register a custom ConfigSource that retrieves the configuration from <code>com.gepardec.training.microprofile.dropinconfiguration</code>. Finally, provide the drop-in-configuration JAR so that the configuration is present in this application.
-                        </p>
-
-                    </section>
-                </div>
-            </div>
-        </div>
+        </section>
     </ui:define>
 </ui:composition>
 

@@ -63,22 +63,32 @@ The endpoints either return
 See the following snippet for an example controller implementation.
 
 ```java
+import javax.ws.rs.core.Response;
+
 @Path("/path")
 @RequestScoped
-@Controller
 public class MyController {
 
     @Path("/")
     @GET
+    @Controller
     public String get() {
         return "path/index.xhtml";
     }
 
     @Path("/action")
     @GET
+    @Controller
     public String action() {
         // Do something and return the page
         return get();
+    }
+
+    @Path("/post")
+    @POST
+    public Response action() {
+        // Do something and return the response
+        return Response.ok().build();
     }
 }
 ```

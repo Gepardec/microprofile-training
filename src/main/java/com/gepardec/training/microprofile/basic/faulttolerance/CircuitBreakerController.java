@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
+import com.gepardec.training.microprofile.common.faulttolerance.CircuitBreakerCallState;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
