@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.jwt;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
@@ -10,6 +12,7 @@ import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
 @Path(("/basic/jwt/roles"))
+@DenyAll
 public class RolesController {
 
     @Context
@@ -18,6 +21,7 @@ public class RolesController {
     @Controller
     @GET
     @Path("/")
+    @PermitAll
     public String get() {
         return "basic/jwt/roles.xhtml";
     }
@@ -25,9 +29,6 @@ public class RolesController {
     @GET
     @Path("/secured")
     public Response secured() {
-        if (securityContext.getUserPrincipal() == null || "training-user".equalsIgnoreCase(securityContext.getUserPrincipal().getName())) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("training-user should not be able to access this method").build();
-        }
-        return Response.ok("\uD83D\uDE0E").build();
+        return Response.ok("\uD83E\uDD2B").build();
     }
 }

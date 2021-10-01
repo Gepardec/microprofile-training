@@ -1,11 +1,6 @@
 package com.gepardec.training.microprofile.basic.jwt;
 
-import org.eclipse.microprofile.jwt.Claim;
-import org.eclipse.microprofile.jwt.Claims;
-import org.eclipse.microprofile.jwt.JsonWebToken;
-
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -49,6 +44,6 @@ public class InjectionController {
     }
 
     private String formatUpn(final String upn) {
-        return String.format("%s %s", upn, upn.contains("admin") ? "\uD83D\uDC51" : "\uD83D\uDC65");
+        return String.format("%s %s", upn, upn.contains("admin") ? "\uD83E\uDD78" : "\uD83D\uDC7B");
     }
 }

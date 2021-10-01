@@ -61,11 +61,21 @@
             <tag:card id="mp-jwt" title="MicroProfile JWT">
                 <ui:define name="body">
                     <p>
-                        The MicroProfile JWT specification deals with the security aspect of RESTful services. Today, the most common solutions involving RESTful and microservices security are based on OAuth2, OpenID Connect(OIDC) and JSON Web Tokens(JWT) standards.
-                        <!-- copied from specification -->
+                        <cite>
+                            The MicroProfile <abbr title="JSON Web Token">JWT</abbr> specification deals with the security aspect of <abbr title="Representational State Transfer">REST</abbr>ful services.
+                            Today, the most common solutions involving <abbr title="Representational State Transfer">REST</abbr>ful and microservices security are based on <abbr title="Open Authorization 2.0">OAuth 2.0</abbr>, <abbr title="OpenID Connect">OIDC</abbr> and <abbr title="JSON Web Token">JWT</abbr> standards.
+                        </cite>
                     </p>
                     <p>
-                        All the examples in this MicroProfile training use the provided keycloak server for issuing Tokens. Therefore, on opening any of the examples, you will be forwarded to keycloak and prompted with a login form. The following training users are preconfigured and used throughout the training:
+                        from the
+                        <a href="#{mpUri.jwtUri}#_motivation"
+                           target="_blank">
+                            MicroProfile JWT
+                        </a>
+                        specification
+                    </p>
+                    <p>
+                        All the examples in this MicroProfile training use the provided keycloak server for issuing tokens. Therefore, on opening any of the examples, you will be forwarded to keycloak and prompted with a login form. The following training users are preconfigured and used throughout the training:
                     </p>
                     <ul>
                         <li>training-user</li>
