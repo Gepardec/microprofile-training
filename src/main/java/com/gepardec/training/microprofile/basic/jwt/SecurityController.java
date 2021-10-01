@@ -28,6 +28,6 @@ public class SecurityController {
         if (securityContext.getUserPrincipal() == null || "training-user".equalsIgnoreCase(securityContext.getUserPrincipal().getName())) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("training-user should not be able to access this method").build();
         }
-        return Response.ok(":-)").build();
+        return Response.ok("\uD83D\uDE0E").build();
     }
 }

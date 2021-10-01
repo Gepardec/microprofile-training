@@ -1,7 +1,5 @@
 package com.gepardec.training.microprofile.basic.jwt;
 
-import org.eclipse.microprofile.jwt.JsonWebToken;
-
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
@@ -23,19 +21,6 @@ public class JaxRsApplicationController {
     @GET
     @Path("/jwt-loaded")
     public Response jwtLoaded() {
-        if (isMpJwtLoaded()) {
-            return Response.ok(":-)").build();
-        } else {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("MicroProfile JWT not loaded").build();
-        }
-    }
-
-    private boolean isMpJwtLoaded() {
-        try {
-            Class.forName(JsonWebToken.class.getName());
-            return true;
-        } catch (NoClassDefFoundError | ClassNotFoundException e) {
-            return false;
-        }
+        return Response.ok("\uD83D\uDE00").build();
     }
 }
