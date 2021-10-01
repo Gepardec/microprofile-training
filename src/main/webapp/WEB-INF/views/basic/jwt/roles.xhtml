@@ -3,13 +3,13 @@
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Basics JWT (Security)
+        Basics JWT (Roles)
     </ui:define>
 
     <ui:define name="body">
         <section>
             <div class="text-center">
-                <h1>Security</h1>
+                <h1>RBAC (Role Based Access Control)</h1>
             </div>
 
             <div class="mt-3">
@@ -35,7 +35,7 @@
                     </h4>
 
                     <p>
-                        Login with the <code>training-user</code> and click the button below. You will see that the request fails with status code <code>500</code>.
+                        Login with the <code>training-user</code> and click the button below. You will see that the request fails with status code <code>400</code>.
                     </p>
 
                     <p>
@@ -47,7 +47,7 @@
                     </p>
 
                     <div class="text-center">
-                        <tag:button id="callSecurityEndpoint" path="/basic/jwt/security/admin" text="Security call" />
+                        <tag:button id="callRolesEndpoint" path="/basic/jwt/roles/secured" text="RBAC call" />
                     </div>
 
                     <hr class="my-3" />
@@ -72,11 +72,11 @@
     <ui:define name="bottom">
         <script type="module">
             import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-            import security from '#{pathHelper.buildResourcePath("/js/basic/jwt/security.js")}'
+            import roles from '#{pathHelper.buildResourcePath("/js/basic/jwt/roles.js")}'
 
             mp.registerOnLoad(() => {
-                security.init({
-                    clickElement: document.getElementById('callSecurityEndpoint'),
+                roles.init({
+                    clickElement: document.getElementById('callRolesEndpoint'),
                     responseElement: document.getElementById('serverResponse')
                 });
             });

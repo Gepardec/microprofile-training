@@ -1,6 +1,11 @@
 package com.gepardec.training.microprofile.basic.jwt;
 
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
+import org.eclipse.microprofile.jwt.JsonWebToken;
+
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,9 +28,9 @@ public class InjectionController {
     @Path("/upn-jwt")
     public Response upn_jwt() {
         if (getUpnFromJwt() != null) {
-            return Response.ok(getUpnFromJwt()).build();
+            return Response.ok(formatUpn(getUpnFromJwt())).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("upn not found").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("upn not found").build();
         }
     }
 
@@ -37,9 +42,13 @@ public class InjectionController {
     @Path("/upn-claim")
     public Response upn_claim() {
         if (upn != null) {
-            return Response.ok(upn).build();
+            return Response.ok(formatUpn(upn)).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("upn not found").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("upn not found").build();
         }
+    }
+
+    private String formatUpn(final String upn) {
+        return String.format("%s %s", upn, upn.contains("admin") ? "\uD83D\uDC51" : "\uD83D\uDC65");
     }
 }

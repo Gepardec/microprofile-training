@@ -19,8 +19,8 @@ public class JaxRsApplicationController {
     }
 
     @GET
-    @Path("/jwt-loaded")
-    public Response jwtLoaded() {
+    @Path("/mp-jwt-loaded")
+    public Response mpJwtLoaded() {
         return Response.ok("\uD83D\uDE00").build();
     }
 }

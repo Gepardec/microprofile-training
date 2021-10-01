@@ -18,8 +18,8 @@ public class ConfigurationController {
     }
 
     @GET
-    @Path("/check")
-    public Response check() {
+    @Path("/config-loaded")
+    public Response configLoaded() {
         return Response.ok("\uD83D\uDE01").build();
     }
 }

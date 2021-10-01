@@ -1,33 +1,25 @@
-import mp from "../../mp.js";
-import httpClient from "../../httpClient.js";
-import login from "../../login.js";
+import jwt from "./jwt.js";
 
-const registerCallElementClickEventListener = (options) => {
+const register = (options) => {
     const {
         clickElementJwt,
         clickElementClaim,
         responseElement
     } = options;
-    mp.registerClickListenerPreventDefault(clickElementJwt, async (event) => {
-        responseElement.innerHTML = '';
-        const response = await httpClient.get({
-            uri: event.target.href,
-            token: login.token()
-        });
-        responseElement.innerHTML = `HTTP-Status: ${response.status}` + `, Content: ${await response.text()}`;
+
+    jwt.registerClick({
+        clickElement: clickElementJwt,
+        responseElement: responseElement
     });
-    mp.registerClickListenerPreventDefault(clickElementClaim, async (event) => {
-        responseElement.innerHTML = '';
-        const response = await httpClient.get({
-            uri: event.target.href,
-            token: login.token()
-        });
-        responseElement.innerHTML = `HTTP-Status: ${response.status}` + `, Content: ${await response.text()}`;
-    });
+
+    jwt.registerClick({
+        clickElement: clickElementClaim,
+        responseElement: responseElement
+    })
 };
 
 const init = (options) => {
-    registerCallElementClickEventListener(options);
+    register(options);
 };
 
 export default {

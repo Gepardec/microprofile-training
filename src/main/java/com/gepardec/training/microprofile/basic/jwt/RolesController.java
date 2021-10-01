@@ -9,8 +9,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@Path(("/basic/jwt/security"))
-public class SecurityController {
+@Path(("/basic/jwt/roles"))
+public class RolesController {
 
     @Context
     SecurityContext securityContext;
@@ -19,14 +19,14 @@ public class SecurityController {
     @GET
     @Path("/")
     public String get() {
-        return "basic/jwt/security.xhtml";
+        return "basic/jwt/roles.xhtml";
     }
 
     @GET
-    @Path("/admin")
-    public Response admin() {
+    @Path("/secured")
+    public Response secured() {
         if (securityContext.getUserPrincipal() == null || "training-user".equalsIgnoreCase(securityContext.getUserPrincipal().getName())) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("training-user should not be able to access this method").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity("training-user should not be able to access this method").build();
         }
         return Response.ok("\uD83D\uDE0E").build();
     }

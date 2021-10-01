@@ -2,7 +2,7 @@ import mp from "../../mp.js";
 import httpClient from "../../httpClient.js";
 import login from "../../login.js";
 
-const registerCallElementClickEventListener = (options) => {
+const registerClick = (options) => {
     const {
         clickElement,
         responseElement
@@ -15,12 +15,9 @@ const registerCallElementClickEventListener = (options) => {
         });
         responseElement.innerHTML = `HTTP-Status: ${response.status}` + `, Content: ${await response.text()}`;
     });
-};
-
-const init = (options) => {
-    registerCallElementClickEventListener(options);
-};
+}
 
 export default {
-    init
+    registerClick
 };
+
