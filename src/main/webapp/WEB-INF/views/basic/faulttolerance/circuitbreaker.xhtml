@@ -84,21 +84,21 @@
                         <hr class="my-3" />
 
                         <div class="d-flex justify-content-center flex-row  my-2">
-                            <div id="failEachCountOutline" class="form-outline me-2">
+                            <div id="failEachCountOutline" class="form-outline mx-1">
                                 <input id="failEachCount" type="number" class="form-control form-control-lg" value="#{failEachCount}" min="2" />
                                 <label class="form-label" for="failEachCount">Successfull Requests</label>
                             </div>
-                            <div id="failAfterEachCountOutline" class="form-outline me-2">
+                            <div id="failAfterEachCountOutline" class="form-outline mx-1">
                                 <input id="failAfterEachCount" type="number" class="form-control form-control-lg" value="#{failAfterEachCount}" min="1" />
                                 <label class="form-label" for="failAfterEachCount">Failing Requests</label>
                             </div>
-                            <div class="ms-2 d-flex align-items-center">
+                            <div class="mx-1 d-flex align-items-center">
                                 <tag:button id="initCallsCircuitbreakerEndpoint" path="/basic/faulttolerance/circuitbreaker/init" text="Init" />
                             </div>
-                            <div class="ms-2 d-flex align-items-center">
+                            <div class="mx-1 d-flex align-items-center">
                                 <tag:button id="startCallsCircuitbreakerEndpoint" path="/basic/faulttolerance/circuitbreaker/circuitbreaked" text="Start" />
                             </div>
-                            <div class="ms-2 d-flex align-items-center">
+                            <div class="mx-1 d-flex align-items-center">
                                 <tag:button id="stopCallsCircuitbreakerEndpoint" path="/basic/faulttolerance/circuitbreaker/reset" text="Stop" />
                             </div>
                         </div>
