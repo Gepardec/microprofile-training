@@ -29,10 +29,6 @@ public class InjectionController {
         }
     }
 
-    private String getUpnFromJwt() {
-        return null;
-    }
-
     @GET
     @Path("/upn-claim")
     public Response upn_claim() {
@@ -41,6 +37,10 @@ public class InjectionController {
         } else {
             return Response.status(Response.Status.BAD_REQUEST).entity("upn not found").build();
         }
+    }
+
+    private String getUpnFromJwt() {
+        return null;
     }
 
     private String formatUpn(final String upn) {
