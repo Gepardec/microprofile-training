@@ -30,6 +30,28 @@
         </section>
 
         <section>
+            <tag:card id="mp-health" title="Microprofile Health">
+                <ui:define name="body">
+                    <p>
+                        Microprofile Config facilitates the configuration of an application. With the following
+                        examples, you will configure this application in several ways and see how you can use the
+                        configured values. In two examples, these configured values will be mapped and converted into
+                        specific target types or even aggregated into a property class. Furthermore, you will handle
+                        empty configurations which, by default, lead to exceptions.
+                    </p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.healthUri}#health"
+                       target="_blank">
+                        Health.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExamples" text="Examples" path="/basic/health/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
             <tag:card id="mp-faulttolerance" title="Microprofile Fault Tolerance">
                 <ui:define name="body">
                     <p>
