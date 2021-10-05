@@ -153,3 +153,12 @@ Attributes:
 ```
 
 The timer dialog can be controlled in Javascript via the [Javascript Component](#modalDialog) where the html element to provide has the id you provided for the tag.
+
+### Login
+
+Renders a span with the current logged in user and a button for logout.
+Automatically checks for availability of a token on load and if not present redirects to keycloak.
+
+```xml
+<tag:login />
+```

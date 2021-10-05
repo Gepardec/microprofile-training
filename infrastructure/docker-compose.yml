@@ -7,9 +7,9 @@ volumes:
 
 services:
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.30.0
     ports:
-      - 19090:9090
+      - "19090:9090"
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -17,12 +17,12 @@ services:
       - "host.docker.internal:host-gateway"
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:8.1.5
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: 'admin@123'
     ports:
-      - 13000:3000
+      - "13000:3000"
     volumes:
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
@@ -33,9 +33,9 @@ services:
       - prometheus
 
   postgres:
-    image: postgres:latest
+    image: postgres:13.4
     ports:
-      - 15432:5432
+      - "15432:5432"
     volumes:
       - ./postgres/01_init-user-db.sh:/docker-entrypoint-initdb.d/01_init-user-db.sh
       - ./postgres/02_init-mptraining.sh:/docker-entrypoint-initdb.d/02_init-mptraining.sh
@@ -45,7 +45,7 @@ services:
       POSTGRES_PASSWORD: 'admin@123'
 
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:15.0.2
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
@@ -59,8 +59,8 @@ services:
       - "-b 0.0.0.0"
       - "-Dkeycloak.import=/opt/jboss/keycloak/microprofile-realm.json"
     ports:
-      - 18080:8080
+      - "18080:8080"
     volumes:
-      - ./keycloak/v2_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
+      - ./keycloak/v3_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
     depends_on:
       - postgres
