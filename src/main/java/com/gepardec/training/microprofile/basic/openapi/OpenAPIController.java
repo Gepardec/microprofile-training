@@ -12,9 +12,6 @@ import javax.ws.rs.Path;
 @Controller
 public class OpenAPIController {
 
-    @Inject
-    private Models model;
-
     @Path("/")
     @GET
     public String get() {
