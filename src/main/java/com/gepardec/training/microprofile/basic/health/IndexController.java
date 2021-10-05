@@ -5,7 +5,7 @@ import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/basic/config")
+@Path("/basic/health")
 @RequestScoped
 @Controller
 public class IndexController {
