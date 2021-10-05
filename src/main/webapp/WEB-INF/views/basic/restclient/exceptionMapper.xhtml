@@ -1,19 +1,18 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        ExceptionMapping
+        ExceptionMapper
     </ui:define>
 
     <ui:define name="body">
-        <tag:card id="exceptionMapping" title="ExceptionMapping">
+        <tag:card id="exceptionMapper" title="Exception mapping">
             <ui:define name="body">
                 <article>
 
                     <div class="container-lg">
-                        <div class="row m-2">
+                        <div class="row my-2">
                             <div class="col">
                                 <section>
                                     <p>
@@ -25,26 +24,16 @@
                                     </p>
 
                                     <p>
-                                        blank
+                                        The MP-RestClient does not out of the box map error responses to Exceptions so we have to register
+                                        an ExceptionMapper on our own.
                                     </p>
 
-                                    <hr class="my-3" />
-
-                                    <div class="row my-1">
-                                        <div class="col-sm text-center text-sm-right mr-sm-1">
-                                            Value:
-                                        </div>
-                                        <div class="col-sm text-center text-sm-left ml-sm-1">
-                                            <h:outputText value="${value}" class="font-weight-bold"/>
-                                        </div>
-                                    </div>
-
-                                    <hr class="my-3" />
+                                    <hr class="my-3"/>
                                 </section>
                             </div>
                         </div>
 
-                        <div class="row m-2">
+                        <div class="row my-2">
                             <div class="col">
                                 <section>
                                     <h5>
@@ -52,8 +41,15 @@
                                     </h5>
 
                                     <p>
-                                        Map the error response to Java exception.
+                                        <code> RestClientExceptionMapper.class</code> has to be completed and
+                                        registered to work properly.
+                                        Map the error response to an Exception.
                                     </p>
+
+                                    <div class="text-center">
+                                        <tag:button id="callApi" path="/basic/restclient/exceptionMapper/createError"
+                                                    text="create Error"/>
+                                    </div>
 
                                 </section>
                             </div>

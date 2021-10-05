@@ -6,52 +6,58 @@
     </ui:define>
 
     <ui:define name="body">
-        <tag:card id="example1" title="Basic usage of MP-RestClient">
+        <tag:card id="example1" title="Basic usage of MP-RestClient RestClientBuilder">
             <ui:define name="body">
                 <p>
-                    In the first two examples you will learn how to call a service with the MP-RestClient. With JAX-RS it would probably look something like this:
+                    In the first example you will learn how to call a service with the MP-RestClient. With JAX-RS it would probably look something like this:
                     <br/>
                     <code> Client client = ClientBuilder.newClient();
                         String response = client.target("http://localhost:8081/cheetahs").request().get(String.class); </code>
                     <br/>
-                    With MP we can choose between CDI and the builder approach.
-                    Try to fix the errors and solve the tasks.
+                    Try out the MP-RestClient builder approach and solve the problem.
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="builder" text="RestClientBuilder" path="/basic/restclient/restClientBuilder" />
+                <tag:button id="builder" text="RestClientBuilder" path="/basic/restclient/restClientBuilder"/>
+            </ui:define>
+
+        </tag:card>
+        <tag:card id="example2" title="Basic usage of MP-RestClient CDI">
+            <ui:define name="body">
+                <p>
+                    The CDI approach is used more often and get's rid of boilerplate code.
+                </p>
+            </ui:define>
+            <ui:define name="buttons">
                 <tag:button id="cdi" text="CDI" path="/basic/restclient/cdi"/>
             </ui:define>
 
         </tag:card>
 
-        <tag:card id="example2" title="Providers / ClientHeaders">
+        <tag:card id="example3" title="Providers">
             <ui:define name="body">
                 <p>
                     The <code>@RegisterProviders</code> annotation can be used to add
-                    JAX-RS client providers and extensions. The <code>@RegisterClientHeaders</code> annotation
-                    is used for registering an implementation of the interface ClientHeadersFactory which allows to read
-                    incoming HTTP Headers and to define additional outgoing Http Headers. Solve the two tasks, <b>be aware the goal
-                    from the first example is to map the error response code to a java Exception not to fix the error</b>.
+                    JAX-RS client providers and extensions. <b>Be aware the goal
+                    from this example is to map the error response to a java Exception not to fix the error</b>.
 
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="exceptionMapping" text="Providers" path="/basic/restclient/exceptionMapping" />
-                <tag:button id="headersFactory" text="ClientHeaders" path="/basic/restclient/headersFactory" />
+                <tag:button id="exceptionMapper" text="Providers" path="/basic/restclient/exceptionMapper"/>
             </ui:define>
         </tag:card>
-
-        <tag:card id="example3" title="Generate RestClient from OpenAPI">
+        <tag:card id="example4" title="ClientHeaders">
             <ui:define name="body">
                 <p>
-                    Generate resource from OpenAPI document with the OpenAPI Generator which
-                    allows generation of API client libraries (SDK generation), server stubs,
-                    documentation and configuration automatically given an OpenAPI Spec.
+                    The <code>@RegisterClientHeaders</code> annotation
+                    is used for registering an implementation of the interface ClientHeadersFactory which allows to read
+                    incoming HTTP Headers and to define additional outgoing Http Headers.
+
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="generateSources" text="Generate" path="/basic/restclient/generate" />
+                <tag:button id="headersFactory" text="ClientHeaders" path="/basic/restclient/headersFactory"/>
             </ui:define>
         </tag:card>
     </ui:define>

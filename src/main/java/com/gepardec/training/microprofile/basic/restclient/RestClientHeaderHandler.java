@@ -19,10 +19,10 @@ public class RestClientHeaderHandler implements ClientHeadersFactory {
         log.info("Incoming Headers: {}", toJson(incomingHeaders));
         log.info("Outgoing Headers: {}", toJson(clientOutgoingHeaders));
 
-        // Will be merged with outgoing headers
-        return new MultivaluedHashMap<>() {{
-            put("X-Test", Collections.singletonList("test header"));
-        }};
+        //   Will be merged with outgoing headers
+        MultivaluedMap<String, String> map = new MultivaluedHashMap<>();
+        map.put("MyTestHeader", Collections.singletonList("test-header"));
+        return map;
     }
 
     private String toJson(final Object obj) {

@@ -10,27 +10,25 @@ import java.net.URISyntaxException;
 
 public class UseRestClientBuilder {
 
-    private ClientCheetahApi cheetahApi;
+    private RestClientAPI api;
 
 
     private void createRestClientBuilder() throws URISyntaxException {
 
         //URI is already given
-        URI apiUri = new URI("http://localhost:8080/mptraining/api/");
+        URI apiUri = new URI("http://httpbin.org/");
         //Not given
-        cheetahApi = RestClientBuilder.newBuilder()
+        api = RestClientBuilder.newBuilder()
                 .baseUri(apiUri)
-                .build(ClientCheetahApi.class);
-
+                .build(RestClientAPI.class);
     }
 
-
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    public String welcomeMessage() throws URISyntaxException {
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getResponse() throws URISyntaxException {
         createRestClientBuilder();
-        if (cheetahApi != null) {
-            return cheetahApi.welcomeMessage();
+        if (api != null) {
+            return api.get();
         }
         return null;
     }

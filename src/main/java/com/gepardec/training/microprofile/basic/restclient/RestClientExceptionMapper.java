@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
  */
 public class RestClientExceptionMapper implements ResponseExceptionMapper<RuntimeException> {
 
-    private static final Logger log = LoggerFactory.getLogger(RestClientHeaderHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(RestClientExceptionMapper.class);
 
     @Override
     public RuntimeException toThrowable(Response response) {
