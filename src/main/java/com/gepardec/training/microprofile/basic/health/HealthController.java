@@ -1,9 +1,7 @@
 package com.gepardec.training.microprofile.basic.health;
 
-import io.smallrye.health.SmallRyeHealthReporter;
 import io.smallrye.health.registry.LivenessHealthRegistry;
 import org.eclipse.microprofile.health.HealthCheck;
-import org.eclipse.microprofile.health.Liveness;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
@@ -19,7 +17,6 @@ import javax.ws.rs.QueryParam;
 @RequestScoped
 @Controller
 public class HealthController {
-
 
     @Inject
     BeanManager beanManager;
@@ -55,7 +52,7 @@ public class HealthController {
     @GET
     public String check(@QueryParam("question") Integer questionKey) {
         healthChecks.toString();
-        healthState.checkTaskDone(questionKey,healthChecks);
+        healthState.checkTaskDone(questionKey, healthChecks);
         return index();
     }
 
