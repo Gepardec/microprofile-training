@@ -1,0 +1,26 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <div class="row text-start font-weight-bold">
+        <div class="col">
+            <span id="login-info-upn">You are not logged in</span>
+        </div>
+        <div class="col">
+            <tag:button id="logoutAll" path="" text="logout"/>
+        </div>
+    </div>
+
+    <script type="module">
+        import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+        import login from '#{pathHelper.buildResourcePath("/js/login.js")}'
+
+        mp.registerOnLoad(() => {
+            login.init({
+                upnElement: document.getElementById('login-info-upn'),
+                clickElement: document.getElementById('logoutAll')
+            });
+        });
+    </script>
+
+</ui:component>

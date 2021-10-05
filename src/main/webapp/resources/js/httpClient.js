@@ -19,11 +19,16 @@ const buildFullUri = (options) => {
 const callAsync = (options) => {
     const {
         method,
+        token,
         successCallback = emptyFunction,
         failureCallback = emptyFunction,
     } = options;
+    const headers = token ? {Authorization: `Bearer ${token}`} : {};
     return fetch(`${buildFullUri(options)}`, {
-        method: method
+        method: method,
+        headers: {
+            ...headers
+        }
     }).then((response) => {
         if (!response.ok) {
             return failureCallback(response);
@@ -58,18 +63,26 @@ const callNTimesAsync = (options) => {
 const postBatch = (options) => {
     return callNTimesAsync({
         method: 'POST',
-        ...options,
+        ...options
     });
 };
 
 const post = (options) => {
     return callAsync({
         method: 'POST',
-        ...options,
+        ...options
     });
 };
+
+const get = (options) => {
+    return callAsync({
+        method: 'GET',
+        ...options
+    })
+}
 
 export default {
     postBatch,
     post,
+    get
 }

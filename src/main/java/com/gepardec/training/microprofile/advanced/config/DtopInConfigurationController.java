@@ -9,21 +9,12 @@ import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/advanced/config")
+@Path("/advanced/config/dropinconfiguration")
 @RequestScoped
-@Controller
-public class ExampleController {
+public class DtopInConfigurationController {
 
     @Inject
     private Models model;
-
-    @Inject
-    @ConfigProperty(name = "custom.value1", defaultValue = "Missing value from custom ConfigSource")
-    private String customValue1;
-
-    @Inject
-    @ConfigProperty(name = "custom.value2", defaultValue = "Missing value from custom ConfigSource")
-    private String customValue2;
 
     @Inject
     @ConfigProperty(name = "drop.in.key1", defaultValue = "Missing value from Drop-In ConfigSource")
@@ -33,19 +24,12 @@ public class ExampleController {
     @ConfigProperty(name = "drop.in.key2", defaultValue = "Missing value from Drop-In ConfigSource")
     private String dropInValue2;
 
-    @Path("/customconfigsource")
+    @Path("/")
     @GET
-    public String getCustomConfigSource() {
-        model.put("customValue1", customValue1);
-        model.put("customValue2", customValue2);
-        return "advanced/config/custom_config_source.xhtml";
-    }
-
-    @Path("/dropinconfiguration")
-    @GET
+    @Controller
     public String getDropInConfiguration() {
         model.put("dropInValue1", dropInValue1);
         model.put("dropInValue2", dropInValue2);
-        return "advanced/config/drop_in.xhtml";
+        return "advanced/config/drop-in.xhtml";
     }
 }

@@ -182,4 +182,9 @@
             <type>java.lang.Boolean</type>
         </attribute>
     </tag>
+
+    <tag>
+        <tag-name>login</tag-name>
+        <source>tags/login.xhtml</source>
+    </tag>
 </facelet-taglib>

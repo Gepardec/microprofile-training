@@ -23,7 +23,7 @@
     <h:body lang="en">
         <f:view contentType="text/html">
             <nav id="navbar-container" class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
-                <div class="container-fluid d-flex justify-content-between">
+                <div class="container-fluid d-flex justify-content-between bg-light">
                     <div class="navbar-brand">
                         <a href="https://microprofile.io/" target="_blank">
                             <img src="#{pathHelper.buildResourcePath('/img/mp-logo.png')}" height="40" alt="MP-Logo" title="https://microprofile.io/" />
@@ -37,7 +37,9 @@
                             <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
                             <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
                             <tag:navLink id="navBasicFaultTolerance" rendered="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" active="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" text="MP-Fault-Tolerance Basic" path="/basic/faulttolerance/index" />
+                            <tag:navLink id="navBasicJwt" rendered="#{pathHelper.isOnSubpage('/basic/jwt')}" active="#{pathHelper.isOnSubpage('/basic/jwt')}" text="MP-JWT Basic" path="/basic/jwt/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
+                            <tag:navLink id="navAdvancedFaultTolerance" rendered="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" active="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" text="MP-Fault-Tolerance Advanced" path="/advanced/faulttolerance/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
@@ -62,6 +64,7 @@
             </footer>
             <h:outputScript name="webjars/mdb-ui-kit/3.9.0/js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
+            <script src="http://localhost:18080/auth/js/keycloak.js"></script>
         </f:view>
 
         <ui:insert name="bottom" />

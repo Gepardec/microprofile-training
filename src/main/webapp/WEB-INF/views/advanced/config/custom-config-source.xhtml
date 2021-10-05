@@ -1,0 +1,86 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <ui:define name="title">
+        Microprofile-Config Advanced ConfigSource
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Configuration from custom ConfigSource</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.configUri}#config"
+                                target="_blank">
+                                Config.
+                            </a>
+                        </p>
+
+                        <p>
+                            Configuration can be provided by property file, environment variable, system property or a custom ConfigSource.
+                        </p>
+                        <p>
+                            A custom ConfigSource allows individual retrieval of your configuration, for example from a database.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Implement and register a custom ConfigSource that retrieves the configuration from the database. Use
+                            <code>com.gepardec.training.microprofile.advanced.config.PropertyDao</code> to access the database.
+                            Take a look at the controller class <code>com.gepardec.training.microprofile.advanced.config.ExampleController</code>
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value1:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${customValue1}" class="font-weight-bold" />
+                            </div>
+                        </div>
+                        <div class="row my-1">
+                            <div class="col-sm text-center text-sm-right mr-sm-1">
+                                Value2:
+                            </div>
+                            <div class="col-sm text-center text-sm-left ml-sm-1">
+                                <h:outputText value="${customValue2}" class="font-weight-bold" />
+                            </div>
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
+
+
+

@@ -1,20 +1,28 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+>
 
     <ui:define name="title">
         Microprofile-Config Property Class
     </ui:define>
 
     <ui:define name="body">
-        <div class="container-lg">
-            <div class="row m-2">
-                <div class="col">
-                    <section>
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Configuration from property class</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
                         <p>
                             The specification for Microprofile
-                            <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                            <a href="#{mpUri.configUri}#config"
                                 target="_blank">
                                 Config.
                             </a>
@@ -25,6 +33,27 @@
                         </p>
 
                         <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            <code>src\main\resources\META-INF\microprofile-config.properties</code> contains properties for a backend server configuration as well as a frontend server configuration. Make sure those values are used to populate the fields of
+                            <code>com.gepardec.training.microprofile.basic.config.ServerConfig</code>. Take a look at the controller class
+                            <code>com.gepardec.training.microprofile.basic.config.PropertyClassController</code>
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
 
                         <p>
                             Backend:
@@ -55,6 +84,8 @@
                             </div>
                         </div>
 
+                        <hr class="my-3" />
+
                         <p>Frontend:</p>
 
                         <div class="row my-1">
@@ -83,26 +114,10 @@
                         </div>
 
                         <hr class="my-3" />
-                    </section>
+                    </div>
                 </div>
             </div>
 
-            <div class="row m-2">
-                <div class="col">
-                    <section>
-                        <h5>
-                            Your Task:
-                        </h5>
-
-                        <p>
-                            <code>src\main\resources\META-INF\microprofile-config.properties</code> contains properties for a backend server configuration as well as a frontend server configuration. Make sure those values are used to populate the fields of
-                            <code>com.gepardec.training.microprofile.basic.config.ServerConfig</code>. Take a look at the controller class
-                            <code>com.gepardec.training.microprofile.basic.config.ExampleController</code>
-                        </p>
-
-                    </section>
-                </div>
-            </div>
-        </div>
+        </section>
     </ui:define>
 </ui:composition>

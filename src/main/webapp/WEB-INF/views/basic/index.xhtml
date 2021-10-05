@@ -1,14 +1,9 @@
-<ui:composition template="/WEB-INF/layout/layout.xhtml"
-                xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Microprofile Basics
-    </ui:define>
-
-    <ui:define name="additionalNavLink">
-        <tag:navLink id="toWelcome" path="/welcome" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -16,63 +11,20 @@
             <tag:card id="mp-config" title="Microprofile Config">
                 <ui:define name="body">
                     <p>
-                        Microprofile Config facilitates the configuration of an
-                        application. With the following
-                        examples, you will configure this application in several
-                        ways and see how you can use the
-                        configured values. In two examples, these configured
-                        values will be mapped and converted into
-                        specific target types or even aggregated into a property
-                        class. Furthermore, you will handle
-                        empty configurations which, by default, lead to
-                        exceptions.
+                        Microprofile Config facilitates the configuration of an application. With the following
+                        examples, you will configure this application in several ways and see how you can use the
+                        configured values. In two examples, these configured values will be mapped and converted into
+                        specific target types or even aggregated into a property class. Furthermore, you will handle
+                        empty configurations which, by default, lead to exceptions.
                     </p>
                     The specification for Microprofile
-                    <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
-                       target="_blank">
+                    <a href="#{mpUri.configUri}#config"
+                        target="_blank">
                         Config.
                     </a>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples"
-                                path="/basic/config/index"/>
-                </ui:define>
-            </tag:card>
-        </section>
-        <section>
-            <tag:card id="mp-health" title="Microprofile Health 3.0">
-                <ui:define name="body">
-                    <p>
-                        Microprofile Health aims to provide a standardized way
-                        to expose information about the applications current
-                        liveness and readiness conditions cumulated as a health
-                        status.
-                        This Information is predicated to be utilized in
-                        container and cloud environments for orchestration, as
-                        well as for monitoring and alerting purposes independent of
-                        the environment.
-                    </p>
-                    <p>
-                        TL;DR:
-                        /health endpoint so k8s can detect unhealthy pods
-                    </p>
-                    In the examples you will:
-                    <ul>
-                        <li>
-                            take a look at at the /health endpoint
-                        </li>
-                        <li>
-                            correct faulty healthchecks
-                        </li>
-                    </ul>
-                    The specification for
-                    <a href="https://download.eclipse.org/microprofile/microprofile-health-3.0/microprofile-health-spec-3.0.html"
-                       target="_blank">
-                        Microprofile Health 3.0</a>.
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toHealthExamples" text="Examples"
-                                path="/basic/health/index"/>
+                    <tag:button id="toConfigExamples" text="Examples" path="/basic/config/index" />
                 </ui:define>
             </tag:card>
         </section>
@@ -101,6 +53,41 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaultToleranceExamples" text="Examples" path="/basic/faulttolerance/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-jwt" title="MicroProfile JWT">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                            The MicroProfile <abbr title="JSON Web Token">JWT</abbr> specification deals with the security aspect of <abbr title="Representational State Transfer">REST</abbr>ful services.
+                            Today, the most common solutions involving <abbr title="Representational State Transfer">REST</abbr>ful and microservices security are based on <abbr title="Open Authorization 2.0">OAuth 2.0</abbr>, <abbr title="OpenID Connect">OIDC</abbr> and <abbr title="JSON Web Token">JWT</abbr> standards.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="#{mpUri.jwtUri}#_motivation"
+                           target="_blank">
+                            MicroProfile JWT
+                        </a>
+                        specification
+                    </p>
+                    <p>
+                        All the examples in this MicroProfile training use the provided keycloak server for issuing tokens. Therefore, on opening any of the examples, you will be forwarded to keycloak and prompted with a login form. The following training users are preconfigured and used throughout the training:
+                    </p>
+                    <ul>
+                        <li>training-user</li>
+                        <li>training-admin</li>
+                    </ul>
+                    <p>
+                        If you need to switch the user, simply click 'logout' and you will be forwarded to keycloak again.
+                    </p>
+                    The specification for MicroProfile <a href="#{mpUri.jwtUri}" target="_blank">JWT</a>.
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJwtExamples" text="Examples" path="/basic/jwt/index"/>
                 </ui:define>
             </tag:card>
         </section>
