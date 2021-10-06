@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Basics Fault-Tolerance (Fallback)
+        Basics JWT (Roles)
     </ui:define>
 
     <ui:define name="body">
@@ -12,7 +12,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>Fallback</h1>
+                            <h1>RBAC (Role Based Access Control)</h1>
                         </div>
                     </div>
                 </div>
@@ -20,17 +20,15 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="#{mpUri.faultToleranceUri}#fallback"
+                            The specification for MicroProfile
+                            <a href="#{mpUri.jwtUri}#_jax_rs_container_api_integration"
                                 target="_blank">
-                                Fault Tolerance (Fallback)
+                                JWT (JAX-RS Container API integration)
                             </a>
                         </p>
 
                         <p>
-                            Fallbacks are used to provide a fallback result for failing method invocations which the caller can work with.
-                            Of course, the fallback must match the result type of the failed method invocation and should provide a meaningful
-                            result for the caller. Fallbacks can be applied to exception types for different fallback results for different kind of exceptions.
+                            MicroProfile JWT integrates integrates with JAX-RS security and JSR-250 security annotations. These can be used to allow access for specific users with specific roles.
                         </p>
 
                         <hr class="my-3" />
@@ -44,16 +42,24 @@
                         </h4>
 
                         <p>
-                            Click the button below and you will see that the request always fails.
-                            Fixed the failing requests by applying a fallback for the method
-                            <code>com.gepardec.training.microprofile.basic.faulttolerance.FallbackService#fails</code>
-                            you see fit.
+                            Click the button below and you will see that the request fails with status code <code>403</code>.
                         </p>
 
-                        <hr class="my-3" />
+                        <p>
+                            Fix the problem by only allowing access to this method for the
+                            <code>training-admin</code>. The necessary role can be found in the groups claim of the token.
+                        </p>
+
+                        <p>
+                            When your fix works, the request should respond with status code <code>403</code> for the
+                            <strong>training-user</strong>
+                            (and status code <code>200</code> and &#x1F92B; for the
+                            <strong>training-admin</strong>
+                            ).
+                        </p>
 
                         <div class="text-center">
-                            <tag:button id="callFallbackedEndpoint" path="/basic/faulttolerance/fallback/fallbacked" text="Fallback call" />
+                            <tag:button id="callRolesEndpoint" path="/basic/jwt/roles/secured" text="RBAC call" />
                         </div>
 
                         <hr class="my-3" />
@@ -74,6 +80,14 @@
                         <hr class="my-3" />
                     </div>
                 </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <tag:login />
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
             </div>
         </section>
     </ui:define>
@@ -81,12 +95,12 @@
     <ui:define name="bottom">
         <script type="module">
             import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-            import fallback from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/fallback.js")}'
+            import roles from '#{pathHelper.buildResourcePath("/js/basic/jwt/roles.js")}'
 
             mp.registerOnLoad(() => {
-                fallback.init({
-                    callElement: document.getElementById("callFallbackedEndpoint"),
-                    responseElement: document.getElementById("serverResponse"),
+                roles.init({
+                    clickElement: document.getElementById('callRolesEndpoint'),
+                    responseElement: document.getElementById('serverResponse')
                 });
             });
         </script>

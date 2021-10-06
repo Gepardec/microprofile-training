@@ -18,7 +18,7 @@
                         empty configurations which, by default, lead to exceptions.
                     </p>
                     The specification for Microprofile
-                    <a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#config"
+                    <a href="#{mpUri.configUri}#config"
                         target="_blank">
                         Config.
                     </a>
@@ -71,6 +71,41 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaultToleranceExamples" text="Examples" path="/basic/faulttolerance/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-jwt" title="MicroProfile JWT">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                            The MicroProfile <abbr title="JSON Web Token">JWT</abbr> specification deals with the security aspect of <abbr title="Representational State Transfer">REST</abbr>ful services.
+                            Today, the most common solutions involving <abbr title="Representational State Transfer">REST</abbr>ful and microservices security are based on <abbr title="Open Authorization 2.0">OAuth 2.0</abbr>, <abbr title="OpenID Connect">OIDC</abbr> and <abbr title="JSON Web Token">JWT</abbr> standards.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="#{mpUri.jwtUri}#_motivation"
+                           target="_blank">
+                            MicroProfile JWT
+                        </a>
+                        specification
+                    </p>
+                    <p>
+                        All the examples in this MicroProfile training use the provided keycloak server for issuing tokens. Therefore, on opening any of the examples, you will be forwarded to keycloak and prompted with a login form. The following training users are preconfigured and used throughout the training:
+                    </p>
+                    <ul>
+                        <li>training-user</li>
+                        <li>training-admin</li>
+                    </ul>
+                    <p>
+                        If you need to switch the user, simply click 'logout' and you will be forwarded to keycloak again.
+                    </p>
+                    The specification for MicroProfile <a href="#{mpUri.jwtUri}" target="_blank">JWT</a>.
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJwtExamples" text="Examples" path="/basic/jwt/index"/>
                 </ui:define>
             </tag:card>
         </section>

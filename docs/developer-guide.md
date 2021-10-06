@@ -5,7 +5,7 @@ This page represents the guide which will help you setup the project on your loc
 The project is based on the following listed specifications.
 
 * `Jakarte-EE-8`
-* `Microprofile 3.3`
+* `Microprofile 4.0`
 * `Jakarta-MVC-1.1.0` (JSF as template engine)
 
 The project uses the following client side libraries.
@@ -63,22 +63,32 @@ The endpoints either return
 See the following snippet for an example controller implementation.
 
 ```java
+import javax.ws.rs.core.Response;
+
 @Path("/path")
 @RequestScoped
-@Controller
 public class MyController {
 
     @Path("/")
     @GET
+    @Controller
     public String get() {
-        return "path/index.html";
+        return "path/index.xhtml";
     }
 
     @Path("/action")
     @GET
+    @Controller
     public String action() {
         // Do something and return the page
         return get();
+    }
+
+    @Path("/post")
+    @POST
+    public Response action() {
+        // Do something and return the response
+        return Response.ok().build();
     }
 }
 ```
