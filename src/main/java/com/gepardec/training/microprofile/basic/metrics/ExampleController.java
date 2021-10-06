@@ -124,4 +124,14 @@ public class ExampleController {
         SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
         return Response.ok(simpleTimer != null ? DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), "s.SSS") : "0.000").build();
     }
+
+    @Path("/gauge")
+    @GET
+    @Controller
+    public String getGauge() {
+        Gauge<?> gauge = metricRegistry.getGauge(new MetricID("gauge-example"));
+        model.put("gauge", gauge != null ? gauge.getValue() : "Metric 'gauge-example' does not exist.");
+        return "basic/metrics/gauge.xhtml";
+    }
+
 }
