@@ -5,7 +5,6 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
 import org.eclipse.microprofile.health.Liveness;
 import javax.enterprise.context.ApplicationScoped;
-import java.io.IOException;
 import java.net.Socket;
 
 @Liveness
@@ -15,9 +14,8 @@ public class DatabaseLiveCheck implements HealthCheck {
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("Database");
 
-        //insert the correct values to fix the healthcheck
-        String hostName = "";
-        int port = 0;
+        String hostName = "";  //insert the correct values to fix the healthcheck
+        int port = 0;  //insert the correct values to fix the healthcheck
 
         if (pingServer(hostName, port)) {
             responseBuilder.up();
