@@ -26,18 +26,29 @@
                 </ui:define>
             </tag:card>
 
-            <tag:card id="mp-config-sys-prop" title="Configuration from system properties">
+            <tag:card id="mp-health-fixme-ready" title="Fix the Readiness Check">
                 <ui:define name="body">
                     <p>
-                        Here, system properties are used to configure this application.
+                        Make the Readiness Check return "UP"
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExampleSysProp" text="Example" path="/basic/config/sys" />
+                    <tag:button id="toHealthExampleReady" text="Example" path="/basic/health/ready" />
                 </ui:define>
             </tag:card>
 
-            <tag:card id="mp-config-env" title="Configuration from environment">
+            <tag:card id="mp-health-fixme-live" title="Fix the Liveness Check">
+                <ui:define name="body">
+                    <p>
+                        Make the Liveness Check return "UP"
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExampleLive" text="Example" path="/basic/health/live" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-health-env" title="Configuration from environment">
                 <ui:define name="body">
                     <p>
                         By using environment variables, you will configure this application.
