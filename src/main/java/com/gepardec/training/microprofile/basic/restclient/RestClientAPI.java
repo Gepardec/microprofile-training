@@ -2,17 +2,14 @@ package com.gepardec.training.microprofile.basic.restclient;
 
 import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
-import org.eclipse.microprofile.rest.client.annotation.RegisterProviders;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @RegisterClientHeaders(RestClientHeaderHandler.class)
-@RegisterProviders({
-        @RegisterProvider(RestClientExceptionMapper.class),
-        @RegisterProvider(ResponseFilter.class)
-})
+@RegisterProvider(RestClientExceptionMapper.class)
+// @RegisterProvider(ResponseFilter.class)
 @RegisterRestClient(configKey = "user-api")
 @Path("/")
 public interface RestClientAPI {

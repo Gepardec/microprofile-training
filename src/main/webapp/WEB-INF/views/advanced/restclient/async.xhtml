@@ -1,0 +1,100 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        example 1
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row m-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.restClientUri}#config"
+                               target="_blank">
+                                RestClient.
+                            </a>
+                        </p>
+
+                        <p>
+                            This part is built poorly, the site has to wait to load until three get request are sequentially done.
+                        </p>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            First change the <code>getAsync()</code> method in the
+                            <code>src/main/java/com/gepardec/training/microprofile/advanced/restclient/RestClientAPIAdvanced.java</code>
+                            interface to work asynchronous. The async call should take not longer then two seconds.
+                        </p>
+
+                        <div class="text-center">
+                            <tag:button id="getSync" path="/advanced/restclient/async/getSync"
+                                        text="three get Requests"/>
+                        </div>
+                        <hr class="my-3"/>
+                        <div class="text-center">
+                            <tag:button id="getAsync" path="/advanced/restclient/async/getAsync"
+                                        text="three get Requests async"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <hr class="my-3"/>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col">
+                            <div class="row text-start font-weight-bold">
+                                <div class="col">
+                                    Server Response:
+                                </div>
+                                <div class="col">
+                                    <span id="serverResponse"/>
+                                </div>
+                            </div>
+
+                            <hr class="my-3"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+    <ui:define name="bottom">
+        <tag:timerDialog id="timer" title="Waiting for response..."/>
+
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import timeout from '#{pathHelper.buildResourcePath("/js/basic/faulttolerance/timeout.js")}'
+
+            mp.registerOnLoad(() => {
+                timeout.init({
+                    callElement: document.getElementById("getAsync"),
+                    responseElement: document.getElementById("serverResponse"),
+                    timerElement: document.getElementById('timer'),
+                });
+                timeout.init({
+                    callElement: document.getElementById("getSync"),
+                    responseElement: document.getElementById("serverResponse"),
+                    timerElement: document.getElementById('timer'),
+                });
+            });
+        </script>
+    </ui:define>
+</ui:composition>
+
+
+
