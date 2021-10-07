@@ -12,7 +12,7 @@ public class LookController {
     @Path("/")
     @GET
     @Controller
-    public String getConfigFromPropertyFile() {
+    public String getLook() {
         return "basic/health/look.xhtml";
     }
 }
