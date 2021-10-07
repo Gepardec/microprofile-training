@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <ui:define name="title">
+        Microprofile-Health Basics Readiness Check FixMe
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Readiness Check</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.healthUri}#health"
+                               target="_blank">
+                                Health.
+                            </a>
+                        </p>
+
+                        <p>
+                            There is a Readiness Check named "FixMe".
+                            It returns "DOWN".
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Make it return "UP"
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
