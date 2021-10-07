@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.concurrent.CompletionStage;
 
 @RegisterProvider(RestClientExceptionMapper.class)
+//@RegisterProvider(MyClientRequestFilter.class)
 @RegisterProvider(MyFactory.class)
 @RegisterRestClient(configKey = "user-api")
 @Path("/")

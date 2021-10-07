@@ -20,7 +20,7 @@
                         </p>
 
                         <p>
-                            This part is built poorly, the site has to wait to load until three get request are sequentially done.
+                            An API is called three times and the responses are combined.
                         </p>
 
                         <hr class="my-3"/>
@@ -68,6 +68,39 @@
 
                             <hr class="my-3"/>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row m-2">
+                    <div class="col">
+                        <h4>
+                            Your second Task:
+                        </h4>
+
+                        <p>
+                            Add a ClientRequestFilter Provider which logs the value of <code>threadLocalValue</code>
+                            in the <code>AsyncController</code> class and try to understand the outcome.
+                        </p>
+
+                        <p>
+                            To solve this problem we can use the AsyncInvocationInterceptor.
+                            This is a provider type that allows users to propagate ThreadLocal objects
+                            - or anything that is associated with the calling thread.
+                            This interface contains three methods. The first one is invoked on the calling thread prior to "swapping" threads.
+                            The other two invoked on the async thread.
+                        </p>
+
+                        <h4>
+                            Your third Task:
+                        </h4>
+
+                        <p>
+                            To implement the provider you need an <code>AsyncInvocationInterceptorFactory</code>.
+                            Create a Factory which implements AsyncInvocationInterceptorFactory and return in the
+                            <code>newInterceptor</code> method an interceptor which implements <code>AsyncInvocationInterceptor</code>.
+
+                        </p>
+
                     </div>
                 </div>
             </div>

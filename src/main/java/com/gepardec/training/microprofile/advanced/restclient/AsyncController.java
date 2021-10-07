@@ -5,7 +5,6 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
-import javax.mvc.Models;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,10 +20,7 @@ public class AsyncController {
     @RestClient
     RestClientAPIAdvanced restClientAPIAdvanced;
 
-    @Inject
-    private Models models;
-
-    static volatile String value;
+    private static ThreadLocal<Integer> threadLocalValue = new ThreadLocal<>();
 
     @Path("/")
     @GET
@@ -49,7 +45,7 @@ public class AsyncController {
             }
             latch.countDown();
         };
-
+        threadLocalValue.set(1);
         restClientAPIAdvanced.getAsync().whenCompleteAsync(consumer);
         restClientAPIAdvanced.getAsync().whenCompleteAsync(consumer);
         restClientAPIAdvanced.getAsync().whenCompleteAsync(consumer);
@@ -77,12 +73,14 @@ public class AsyncController {
 
     }
 
-    public static String getValue() {
-        return value;
+
+    public static ThreadLocal<Integer> getThreadLocalValue() {
+        return threadLocalValue;
     }
 
-    public static void setValue(String value) {
-        AsyncController.value = value;
+    public static void setThreadLocalValue(Integer i) {
+        ThreadLocal<Integer> threadLocalValue = new ThreadLocal<>();
+        threadLocalValue.set(i);
+        AsyncController.threadLocalValue = threadLocalValue;
     }
-
 }
