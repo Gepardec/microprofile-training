@@ -134,4 +134,11 @@ public class ExampleController {
         return "basic/metrics/gauge.xhtml";
     }
 
+    @Path("/grafana")
+    @GET
+    @Controller
+    public String getGrafana() {
+        return "basic/metrics/grafana.xhtml";
+    }
+
 }
