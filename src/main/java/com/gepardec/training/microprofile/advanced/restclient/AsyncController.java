@@ -20,7 +20,7 @@ public class AsyncController {
     @RestClient
     RestClientAPIAdvanced restClientAPIAdvanced;
 
-    private static ThreadLocal<Integer> threadLocalValue = new ThreadLocal<>();
+    static ThreadLocal<Integer> threadLocalValue;
 
     @Path("/")
     @GET
@@ -45,9 +45,12 @@ public class AsyncController {
             }
             latch.countDown();
         };
+        threadLocalValue = new ThreadLocal<>();
         threadLocalValue.set(1);
         restClientAPIAdvanced.getAsync().whenCompleteAsync(consumer);
+        threadLocalValue.set(2);
         restClientAPIAdvanced.getAsync().whenCompleteAsync(consumer);
+        threadLocalValue.set(3);
         restClientAPIAdvanced.getAsync().whenCompleteAsync(consumer);
         try {
             latch.await();
@@ -71,16 +74,5 @@ public class AsyncController {
         final String s2 = restClientAPIAdvanced.get();
         return Response.ok(s + s1 + s + s2).build();
 
-    }
-
-
-    public static ThreadLocal<Integer> getThreadLocalValue() {
-        return threadLocalValue;
-    }
-
-    public static void setThreadLocalValue(Integer i) {
-        ThreadLocal<Integer> threadLocalValue = new ThreadLocal<>();
-        threadLocalValue.set(i);
-        AsyncController.threadLocalValue = threadLocalValue;
     }
 }

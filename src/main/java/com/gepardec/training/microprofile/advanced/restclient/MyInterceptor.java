@@ -10,26 +10,23 @@ public class MyInterceptor implements AsyncInvocationInterceptor {
     private static final Logger log = LoggerFactory.getLogger(MyInterceptor.class);
 
     // This field is temporary storage to facilitate copying a ThreadLocal value
-    volatile Integer value;
+    Integer value;
 
     @Override
     public void prepareContext() {
-        log.info("prepare Context: {}", Thread.currentThread());
-        value = AsyncController.getThreadLocalValue().get();
-        log.info("prepare Context: Value of thread that invoked the call {}", value);
+        value = AsyncController.threadLocalValue.get();
+        log.info("prepare Context Thread {}: Value of thread that invoked the call {}",Thread.currentThread(), value);
     }
 
     @Override
     public void applyContext() {
-        log.info("apply Context: {}", Thread.currentThread());
-        AsyncController.setThreadLocalValue(value);
-        log.info("apply Context: Value of thread that invoked the call {}", value);
+        AsyncController.threadLocalValue.set(value);
+        log.info("apply Context Thread {}: Value of thread that invoked the call {}",Thread.currentThread(), value);
     }
 
     @Override
     public void removeContext() {
-        log.info("remove Context: {}", Thread.currentThread());
-        AsyncController.setThreadLocalValue(null);
-        log.info("remove Context: Value of thread that invoked the call {}", value);
+        AsyncController.threadLocalValue.remove();
+        log.info("remove Context Thread {}: Value of thread that invoked the call {}",Thread.currentThread(), value);
     }
 }
