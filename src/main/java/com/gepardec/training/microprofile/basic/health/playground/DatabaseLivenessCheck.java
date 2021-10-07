@@ -9,7 +9,7 @@ import java.net.Socket;
 
 @Liveness
 @ApplicationScoped
-public class DatabaseLiveCheck implements HealthCheck {
+public class DatabaseLivenessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("Database");
