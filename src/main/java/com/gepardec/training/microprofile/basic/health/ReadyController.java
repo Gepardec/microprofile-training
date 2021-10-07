@@ -4,22 +4,20 @@ import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Readiness;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import java.lang.annotation.Annotation;
 
 @Path("/basic/health/ready")
 @RequestScoped
 public class ReadyController {
 
     @Inject
-    @Any
-    Instance<HealthCheck> healthChecks;
+    @Readiness
+    Instance<HealthCheck> readinessChecks;
 
     @Inject
     private Models model;
@@ -28,7 +26,7 @@ public class ReadyController {
     @GET
     @Controller
     public String getReady() {
-        if (getHealthCheckStateByNameAndAnnotation("FixMe", Readiness.class)) {
+        if (getHealthCheckStateByName("FixMe", readinessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
@@ -36,11 +34,10 @@ public class ReadyController {
         return "basic/health/ready.xhtml";
     }
 
-    private boolean getHealthCheckStateByNameAndAnnotation(String nameOfHealthCheck, Class<? extends Annotation> healthCheckAnnotation) {
+    private boolean getHealthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {
         return healthChecks
-                        .stream()
-                        .filter(check -> check.call().getName().contentEquals(nameOfHealthCheck))
-                        .filter(check -> check.getClass().isAnnotationPresent(healthCheckAnnotation))
-                        .anyMatch(readinessCheck -> readinessCheck.call().getStatus().equals(HealthCheckResponse.Status.UP));
+                .stream()
+                .filter(check -> check.call().getName().contentEquals(nameOfHealthCheck))
+                .anyMatch(readinessCheck -> readinessCheck.call().getStatus().equals(HealthCheckResponse.Status.UP));
     }
 }

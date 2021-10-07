@@ -12,7 +12,7 @@ public class ReadinessCheckFixMe implements HealthCheck {
     public HealthCheckResponse call() {
 
         return HealthCheckResponse.named("FixMe")
-                                  .down()// Fix Me
+                                  .up()// Fix Me
                                   .build();
     }
 }
