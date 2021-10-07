@@ -7,7 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Liveness
 @ApplicationScoped
-public class FixeMeLiveCheck implements HealthCheck {
+public class LivenessCheckFixMe implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         return HealthCheckResponse.named("FixMeLive")
