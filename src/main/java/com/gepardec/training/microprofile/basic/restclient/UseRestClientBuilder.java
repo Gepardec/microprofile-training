@@ -1,7 +1,5 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
-import org.eclipse.microprofile.rest.client.RestClientBuilder;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -17,10 +15,7 @@ public class UseRestClientBuilder {
 
         //URI is already given
         URI apiUri = new URI("http://httpbin.org/");
-        //Not given
-        api = RestClientBuilder.newBuilder()
-                .baseUri(apiUri)
-                .build(RestClientAPI.class);
+        // initialize api with RestClientBuilder
     }
 
     @GET

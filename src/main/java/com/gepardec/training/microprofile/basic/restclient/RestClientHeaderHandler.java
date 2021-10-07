@@ -5,9 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.json.bind.JsonbBuilder;
-import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
-import java.util.Collections;
 
 public class RestClientHeaderHandler implements ClientHeadersFactory {
 
@@ -20,9 +18,7 @@ public class RestClientHeaderHandler implements ClientHeadersFactory {
         log.info("Outgoing Headers: {}", toJson(clientOutgoingHeaders));
 
         //   Will be merged with outgoing headers
-        MultivaluedMap<String, String> map = new MultivaluedHashMap<>();
-        map.put("MyTestHeader", Collections.singletonList("test-header"));
-        return map;
+        return clientOutgoingHeaders;
     }
 
     private String toJson(final Object obj) {
