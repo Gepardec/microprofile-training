@@ -10,8 +10,8 @@ import javax.enterprise.context.ApplicationScoped;
 public class LivenessCheckFixMe implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("FixMeLive")
-                                  .down()
+        return HealthCheckResponse.named("FixMe")
+                                  .down() // Fix Me
                                   .build();
     }
 }

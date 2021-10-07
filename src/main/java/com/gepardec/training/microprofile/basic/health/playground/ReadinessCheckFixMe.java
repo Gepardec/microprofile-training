@@ -11,8 +11,8 @@ public class ReadinessCheckFixMe implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
 
-        return HealthCheckResponse.named("FixMeReady")
-                                  .down()
+        return HealthCheckResponse.named("FixMe")
+                                  .down()// Fix Me
                                   .build();
     }
 }
