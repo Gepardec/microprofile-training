@@ -143,7 +143,6 @@
             <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
             <version>3.2.4</version>
             <scope>provided</scope>
-
         </dependency>
 
         <!-- Application Dependencies -->
@@ -316,34 +315,6 @@
                 <configuration>
                     <skip>true</skip>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <!-- RELEASE_VERSION -->
-                <version>5.1.0</version>
-                <!-- /RELEASE_VERSION -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <generatorName>java</generatorName>
-                            <library>microprofile</library>
-                            <inputSpec>${project.basedir}/src/main/webapp/META-INF/openapi.yaml</inputSpec>
-                            <generatorName>java</generatorName>
-                            <apiPackage>api</apiPackage>
-                            <modelPackage>model</modelPackage>
-                            <generateModelTests>false</generateModelTests>
-                            <generateModelDocumentation>false</generateModelDocumentation>
-                            <generateApiTests>false</generateApiTests>
-                            <configOptions>
-                                <sourceFolder>src/gen/java/main</sourceFolder>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,14 +1,5 @@
 package com.gepardec.training.microprofile.basic.openapi;
 
-import jdk.jfr.Description;
-import org.eclipse.microprofile.openapi.annotations.Operation;
-import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
-import org.eclipse.microprofile.openapi.annotations.media.Content;
-import org.eclipse.microprofile.openapi.annotations.media.Schema;
-import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
-import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -27,22 +18,6 @@ public class CheetahResource {
     }
 
     @Produces(MediaType.APPLICATION_JSON)
-    @Parameter
-    @APIResponses(
-            value = {
-                    @APIResponse(
-                            responseCode = "200",
-                            content = @Content(
-                                    schema = @Schema(
-                                            type = SchemaType.ARRAY,
-                                            implementation = Cheetah.class))),
-                    @APIResponse(
-                            responseCode = "404",
-                            description = "Missing description"
-                    )
-            })
-
-    @Operation(summary = "List full with cheetahs.")
     @GET
     public Set<Cheetah> list() {
         if (cheetahs.isEmpty()) Response.status(Response.Status.NOT_FOUND).entity("No cheetahs found").build();
@@ -60,9 +35,6 @@ public class CheetahResource {
 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Description("Missing description")
-    @Operation(description = "Removes a cheetah from the coalition")
-    @APIResponses(value = {@APIResponse(responseCode = "202", description = "Operation executed successfully"), @APIResponse(name = "NoContent", responseCode = "204", description = "Missing description")})
     @DELETE
     public Response delete(Cheetah cheetah) {
         if (cheetah == null) {
