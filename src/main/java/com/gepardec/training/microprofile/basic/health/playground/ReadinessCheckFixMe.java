@@ -7,7 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 @Readiness
 @ApplicationScoped
-public class FixMeReadyCheck implements HealthCheck {
+public class ReadinessCheckFixMe implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
 
