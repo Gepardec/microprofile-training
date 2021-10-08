@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class MeteredController {
 
+    public static final String METRIC_ID = "metered-example";
     @Inject
     private MetricRegistry metricRegistry;
 
@@ -28,7 +29,7 @@ public class MeteredController {
     @GET
     @Controller
     public String getMetered() {
-        Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
+        Meter meter = metricRegistry.getMeter(new MetricID(METRIC_ID));
         if (meter != null) {
             model.put("meter", meter.getOneMinuteRate());
         }
@@ -40,8 +41,8 @@ public class MeteredController {
     @Produces(MediaType.TEXT_PLAIN)
     public Response meter() throws InterruptedException {
         Thread.sleep((long) Math.random() * 100);
-        Meter meter = metricRegistry.getMeter(new MetricID("metered-example"));
-        return Response.ok(meter != null ? meter.getOneMinuteRate() : "0").build();
+        Meter meter = metricRegistry.getMeter(new MetricID(METRIC_ID));
+        return Response.ok(meter != null ? meter.getOneMinuteRate() : "Metric '" + METRIC_ID + "' does not exist.").build();
     }
 
 }

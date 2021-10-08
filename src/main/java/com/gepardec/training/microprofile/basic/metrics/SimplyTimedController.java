@@ -18,6 +18,8 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class SimplyTimedController {
 
+    public static final String METRIC_ID = "simply-timed-example";
+    public static final String FORMAT = "s.SSS";
     @Inject
     private MetricRegistry metricRegistry;
 
@@ -28,9 +30,9 @@ public class SimplyTimedController {
     @GET
     @Controller
     public String getSimplyTimed() {
-        SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
+        SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID(METRIC_ID));
         if (simpleTimer != null) {
-            model.put("time", DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), "s.SSS"));
+            model.put("time", DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), FORMAT));
         }
         return "basic/metrics/simply_timed.xhtml";
     }
@@ -40,8 +42,8 @@ public class SimplyTimedController {
     @Produces(MediaType.TEXT_PLAIN)
     public Response simpleTime() throws InterruptedException {
         Thread.sleep((long) (Math.random() * 1000));
-        SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID("simply-timed-example"));
-        return Response.ok(simpleTimer != null ? DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), "s.SSS") : "0.000").build();
+        SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID(METRIC_ID));
+        return Response.ok(simpleTimer != null ? DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), FORMAT) : "Metric '" + METRIC_ID + "' does not exist.").build();
     }
 
 }

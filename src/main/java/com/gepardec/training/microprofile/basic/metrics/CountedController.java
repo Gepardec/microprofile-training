@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class CountedController {
 
+    public static final String METRIC_ID = "count-example";
     @Inject
     private MetricRegistry metricRegistry;
 
@@ -27,9 +28,9 @@ public class CountedController {
     @Path("/counted")
     @GET
     public String getCounted() {
-        Counter counter = metricRegistry.getCounter(new MetricID("count-example"));
+        Counter counter = metricRegistry.getCounter(new MetricID(METRIC_ID));
         if (counter != null) {
-            model.put("count", counter != null ? counter.getCount() : "Metric 'count-example' does not exist.");
+            model.put("count", counter != null ? counter.getCount() : "Metric '" + METRIC_ID + "' does not exist.");
         }
         return "basic/metrics/counted.xhtml";
     }
@@ -38,8 +39,8 @@ public class CountedController {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     public Response count() {
-        Counter change = metricRegistry.getCounter(new MetricID("count-example"));
-        return Response.ok(change != null ? change.getCount() : "Metric 'count-example' does not exist.").build();
+        Counter change = metricRegistry.getCounter(new MetricID(METRIC_ID));
+        return Response.ok(change != null ? change.getCount() : "Metric '" + METRIC_ID + "' does not exist.").build();
     }
 
 

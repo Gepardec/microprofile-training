@@ -18,6 +18,8 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class TimedController {
 
+    public static final String METRIC_ID = "timed-example";
+    public static final String FORMAT = "s.SSS";
     @Inject
     private MetricRegistry metricRegistry;
 
@@ -28,9 +30,9 @@ public class TimedController {
     @GET
     @Controller
     public String getTimed() {
-        Timer timed = metricRegistry.getTimer(new MetricID("timed-example"));
+        Timer timed = metricRegistry.getTimer(new MetricID(METRIC_ID));
         if (timed != null) {
-            model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), "s.SSS"));
+            model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), FORMAT));
         }
         return "basic/metrics/timed.xhtml";
     }
@@ -40,8 +42,8 @@ public class TimedController {
     @Produces(MediaType.TEXT_PLAIN)
     public Response time() throws InterruptedException {
         Thread.sleep((long) (Math.random() * 1000));
-        Timer timer = metricRegistry.getTimer(new MetricID("timed-example"));
-        return Response.ok(timer != null ? DurationFormatUtils.formatDuration(timer.getElapsedTime().toMillis(), "s.SSS") : "0.000").build();
+        Timer timer = metricRegistry.getTimer(new MetricID(METRIC_ID));
+        return Response.ok(timer != null ? DurationFormatUtils.formatDuration(timer.getElapsedTime().toMillis(), FORMAT) : "Metric '" + METRIC_ID + "' does not exist.").build();
     }
 
 }
