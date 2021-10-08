@@ -48,77 +48,14 @@
                 </ui:define>
             </tag:card>
 
-            <tag:card id="mp-health-env" title="Configuration from environment">
+            <tag:card id="mp-database-live" title="Create a working database healthcheck">
                 <ui:define name="body">
                     <p>
-                        By using environment variables, you will configure this application.
+                        Lets have a look at out database and the corresponding healthcheck.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExampleEnv" text="Example" path="/basic/config/env" />
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="answer1" title="">
-                <ui:define name="body" id="answer1">
-                    <div class="col-sm text-center text-sm-left ml-sm-1">
-                        <h:outputText value="${healthState.answer(1)}">
-                        </h:outputText>
-                    </div>
-                </ui:define>
-            </tag:card>
-
-            <tag:card id="mp-health2" title="Disable default HeathChecks">
-                <ui:define name="body">
-                    <p>
-                        <h:outputText value="${healthState.questionText(2)}">
-                        </h:outputText>
-                    </p>
-                    <p>
-                        <h:outputLink value="https://download.eclipse.org/microprofile/microprofile-health-2.1/microprofile-health-spec.html#_disabling_default_vendor_procedures"
-                                      target="_blank">
-                            Disabling default vendor procedures
-                        </h:outputLink>
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="q2r1" text="Yes"
-                                path="/basic/health/response?question=2&amp;response=1">
-                    </tag:button>
-                    <tag:button id="q2r2" text="No"
-                                path="/basic/health/response?question=2&amp;response=2">
-                    </tag:button>
-                </ui:define>
-            </tag:card>
-            <tag:card id="answer2" title="">
-                <ui:define name="body" id="answer2">
-                    <div class="col-sm text-center text-sm-left ml-sm-1">
-                        <h:outputText value="${healthState.answer(2)}">
-                        </h:outputText>
-                    </div>
-                </ui:define>
-            </tag:card>
-
-
-            <tag:card id="mp-health3" title="Fix the custom HealthCheck">
-                <ui:define name="body">
-                    <p>
-                        <h:outputText value="${healthState.questionText(3)}">
-                        </h:outputText>
-                    </p>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="q2r1" text="Check /health"
-                                path="/basic/health/check?question=3">
-                    </tag:button>
-                </ui:define>
-            </tag:card>
-            <tag:card id="answer3" title="">
-                <ui:define name="body" id="answer3">
-                    <div class="col-sm text-center text-sm-left ml-sm-1">
-                        <h:outputText value="${healthState.answer(3)}">
-                        </h:outputText>
-                    </div>
+                    <tag:button id="toHealthExampleDBLive" text="Example" path="/basic/health/databaselive" />
                 </ui:define>
             </tag:card>
 
