@@ -1,0 +1,69 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <ui:define name="title">
+        Microprofile-Health Basics Liveness Check FixMe
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Liveness Check</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.healthUri}#health"
+                               target="_blank">
+                                Health.
+                            </a>
+                        </p>
+
+                        <p>
+                            There is a database included in our infrastructure.
+                            Configure the Database Healthcheck so it properly reflects the state of the database.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Make it work.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="col-sm text-center text-sm-right mr-sm-1">
+                            Status:
+                        </div>
+                        <div class="col-sm text-center text-sm-left ml-sm-1">
+                            <h:outputText value="${stateMessage}" class="alert-warning" />
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
