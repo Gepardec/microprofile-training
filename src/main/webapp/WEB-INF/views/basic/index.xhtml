@@ -1,6 +1,7 @@
-<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Microprofile Basics
@@ -19,12 +20,82 @@
                     </p>
                     The specification for Microprofile
                     <a href="#{mpUri.configUri}#config"
-                        target="_blank">
+                       target="_blank">
                         Config.
                     </a>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples" path="/basic/config/index" />
+                    <tag:button id="toConfigExamples" text="Examples"
+                                path="/basic/config/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
+        <section>
+            <tag:card id="mp-openapi" title="Microprofile OpenAPI">
+                <ui:define name="body">
+                    <p>
+                        With Microprofile OpenAPI you will generate OpenAPI v3 documents which are representing rest services.
+                        From these you will generate again Java Ressources. To make this process more comfortable you will learn
+                        about OAS3 annotations, OASModelReaders and OASFilters.
+                    </p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.openApiUri}"
+                       target="_blank">
+                        OpenAPI.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toOpenAPIExamples" text="Examples" path="/basic/openapi/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
+        <section>
+            <tag:card id="mp-restClient" title="Microprofile RestClient">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                            The MicroProfile Rest Client provides a type-safe approach to invoke RESTful services over HTTP. As much as possible the MP Rest Client attempts to use Jakarta RESTful Web Services 2.1 APIs for consistency and easier re-use.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="https://github.com/eclipse/microprofile-rest-client#_Rationale"
+                           target="_blank">
+                            microprofile-rest-client
+                        </a>
+                         github
+                    </p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.restClientUri}"
+                       target="_blank">
+                        Rest Client.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toRestClientExamples" text="Examples" path="/basic/restclient/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
+        <section>
+            <tag:card id="mp-health" title="Microprofile Health 2.1">
+                <ui:define name="body">
+                    <p>
+                        The Eclipse MicroProfile Health Check specification defines
+                        a single container runtime mechanism for validating the availability
+                        and status of a MicroProfile implementation.
+                        This is primarily intended as a machine to machine (M2M)
+                        mechanism for use in containerized environments like cloud
+                        providers.
+                    </p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.healthUri}#health"
+                       target="_blank">
+                        Health.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExamples" text="Examples"
+                                path="/basic/health/index"/>
                 </ui:define>
             </tag:card>
 
@@ -48,7 +119,8 @@
         </section>
 
         <section>
-            <tag:card id="mp-faulttolerance" title="Microprofile Fault Tolerance">
+            <tag:card id="mp-faulttolerance"
+                      title="Microprofile Fault Tolerance">
                 <ui:define name="body">
                     <p>
                         The Microprofile Fault Tolerance specification emerged from the Netflix-Hystrixs project and facilitates the resilience of a service.
@@ -56,21 +128,34 @@
                     </p>
 
                     <ul>
-                        <li><code>@Asnychronous</code> for asynchronous invocations of methods</li>
-                        <li><code>@Fallback</code> for fallback results of methods which invocations fail</li>
-                        <li><code>@Timeout</code> for limiting method invocation durations</li>
-                        <li><code>@Retry</code> for retry behaviour of methods temporarly failing</li>
-                        <li><code>@Bulkhead</code> for limiting concurrrent method invocations</li>
-                        <li><code>@CircuitBreaker</code> for preventing method invocations of method frequently failing</li>
+                        <li>
+                            <code>@Asnychronous</code> for asynchronous invocations of methods
+                        </li>
+                        <li>
+                            <code>@Fallback</code> for fallback results of methods which invocations fail
+                        </li>
+                        <li>
+                            <code>@Timeout</code> for limiting method invocation durations
+                        </li>
+                        <li>
+                            <code>@Retry</code> for retry behaviour of methods temporarly failing
+                        </li>
+                        <li>
+                            <code>@Bulkhead</code> for limiting concurrrent method invocations
+                        </li>
+                        <li>
+                            <code>@CircuitBreaker</code> for preventing method invocations of method frequently failing
+                        </li>
                     </ul>
                     The specification for Microprofile
                     <a href="#{mpUri.faultToleranceUri}"
-                        target="_blank">
+                       target="_blank">
                         Fault Tolerance.
                     </a>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaultToleranceExamples" text="Examples" path="/basic/faulttolerance/index" />
+                    <tag:button id="toFaultToleranceExamples" text="Examples"
+                                path="/basic/faulttolerance/index"/>
                 </ui:define>
             </tag:card>
         </section>
@@ -80,8 +165,14 @@
                 <ui:define name="body">
                     <p>
                         <cite>
-                            The MicroProfile <abbr title="JSON Web Token">JWT</abbr> specification deals with the security aspect of <abbr title="Representational State Transfer">REST</abbr>ful services.
-                            Today, the most common solutions involving <abbr title="Representational State Transfer">REST</abbr>ful and microservices security are based on <abbr title="Open Authorization 2.0">OAuth 2.0</abbr>, <abbr title="OpenID Connect">OIDC</abbr> and <abbr title="JSON Web Token">JWT</abbr> standards.
+                            The MicroProfile <abbr
+                                title="JSON Web Token">JWT</abbr> specification deals with the security aspect of
+                            <abbr title="Representational State Transfer">REST</abbr>ful services.
+                            Today, the most common solutions involving <abbr
+                                title="Representational State Transfer">REST</abbr>ful and microservices security are based on
+                            <abbr title="Open Authorization 2.0">OAuth 2.0</abbr>,
+                            <abbr title="OpenID Connect">OIDC</abbr> and <abbr
+                                title="JSON Web Token">JWT</abbr> standards.
                         </cite>
                     </p>
                     <p>
@@ -102,10 +193,12 @@
                     <p>
                         If you need to switch the user, simply click 'logout' and you will be forwarded to keycloak again.
                     </p>
-                    The specification for MicroProfile <a href="#{mpUri.jwtUri}" target="_blank">JWT</a>.
+                    The specification for MicroProfile <a href="#{mpUri.jwtUri}"
+                                                          target="_blank">JWT</a>.
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJwtExamples" text="Examples" path="/basic/jwt/index"/>
+                    <tag:button id="toJwtExamples" text="Examples"
+                                path="/basic/jwt/index"/>
                 </ui:define>
             </tag:card>
         </section>

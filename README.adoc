@@ -35,7 +35,8 @@ Refer to the documentation of the IDE of your choice, which must provide integra
 
 Configure you wildfly to use microprofile configuration by adding `-c standalone-microprofile.xml` to your startup script in your run configuration.
 
-On first startup you need to run the `scripts.cli` on your wildfly with `jboss-cli` for further configuration (<your-JBOSS_HOME-directory>/bin/jboss-cli.sh --file=infrastructure/wildfly/scripts.cli --connect).
+On first startup you need to run the `scripts.cli` on your wildfly with `jboss-cli` for further configuration:
+<your-JBOSS_HOME-directory>/bin/jboss-cli.sh --file=infrastructure/wildfly/scripts.cli --connect
 
 IMPORTANT: You need to run the server with the `standalone-microprofile.xml` otherwise microprofile extensions are not available.
 
