@@ -85,7 +85,7 @@
 
         <script type="module">
             import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-            import metered from '#{pathHelper.buildResourcePath("/js/basic/metrics/timed.js")}'
+            import metered from '#{pathHelper.buildResourcePath("/js/basic/metrics/metered.js")}'
 
             mp.registerOnLoad(() => {
                 metered.init({
