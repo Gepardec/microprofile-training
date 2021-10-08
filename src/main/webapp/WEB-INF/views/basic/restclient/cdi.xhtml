@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
 
     <ui:define name="title">
         Microprofile-Rest-Client CDI
@@ -22,7 +22,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.restClientUri}"
-                                target="_blank">
+                               target="_blank">
                                 Rest Client
                             </a>
                         </p>
@@ -34,7 +34,7 @@
                             The configKey is also an annotation parameter and it sets the prefix for MicroProfile-Config provided configurations. (Otherwise it would use the fully qualified class name)
                         </p>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
                             with CDI and the <code>RestClientAPI</code> interface.
                         </p>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
 
@@ -61,11 +61,11 @@
                                 Value:
                             </div>
                             <div class="col text-center">
-                                <h:outputText value="${value}" class="font-weight-bold" />
+                                <pre> <h:outputText value="${value}" class="font-weight-bold"/></pre>
                             </div>
                         </div>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
             </div>
