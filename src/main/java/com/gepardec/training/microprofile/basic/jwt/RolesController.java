@@ -16,7 +16,7 @@ import javax.ws.rs.core.SecurityContext;
 public class RolesController {
 
     @Context
-    SecurityContext securityContext;
+    private SecurityContext securityContext;
 
     @Controller
     @GET
