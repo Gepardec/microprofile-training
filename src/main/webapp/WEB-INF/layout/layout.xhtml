@@ -34,13 +34,17 @@
                     </button>
                     <div class="collapse navbar-collapse" style="flex-grow: 0;" id="navLinkContent">
                         <div class="navbar-nav navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex flex-lg-row flex-column justify-content-end fs-5">
-                            <!-- All example index pages, we display if the user is on the index page or a example of the idnex page -->
+                            <!-- All example index pages, we display if the user is on the index page or a example of the index page -->
                             <tag:navLink id="navBasicConfig" rendered="#{pathHelper.isOnSubpage('/basic/config')}" active="#{pathHelper.isOnSubpage('/basic/config')}" text="MP-Config Basic" path="/basic/config/index" />
                             <tag:navLink id="navBasicHealth" rendered="#{pathHelper.isOnSubpage('/basic/health')}" active="#{pathHelper.isOnSubpage('/basic/health')}" text="MP-Health Basic" path="/basic/health/index" />
                             <tag:navLink id="navBasicFaultTolerance" rendered="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" active="#{pathHelper.isOnSubpage('/basic/faulttolerance')}" text="MP-Fault-Tolerance Basic" path="/basic/faulttolerance/index" />
                             <tag:navLink id="navBasicJwt" rendered="#{pathHelper.isOnSubpage('/basic/jwt')}" active="#{pathHelper.isOnSubpage('/basic/jwt')}" text="MP-JWT Basic" path="/basic/jwt/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
                             <tag:navLink id="navAdvancedFaultTolerance" rendered="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" active="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" text="MP-Fault-Tolerance Advanced" path="/advanced/faulttolerance/index" />
+                            <tag:navLink id="navAdvancedRestClient" rendered="#{pathHelper.isOnSubpage('/advanced/restclient')}" active="#{pathHelper.isOnSubpage('/advanced/restclient')}" text="MP-RestClient Advanced" path="/advanced/restclient/index" />
+                            <tag:navLink id="navAdvancedOpenApi" rendered="#{pathHelper.isOnSubpage('/advanced/openapi')}" active="#{pathHelper.isOnSubpage('/advanced/openapi')}" text="MP-OpenAPI Advanced" path="/advanced/openapi/index" />
+                            <tag:navLink id="navBasicOpenApi" rendered="#{pathHelper.isOnSubpage('/basic/openapi')}" active="#{pathHelper.isOnSubpage('/basic/openapi')}" text="MP-OpenAPI Basic" path="/basic/openapi/index" />
+                            <tag:navLink id="navBasicRestClient" rendered="#{pathHelper.isOnSubpage('/basic/restclient')}" active="#{pathHelper.isOnSubpage('/basic/restclient')}" text="MP-RestClient Basic" path="/basic/restclient/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />

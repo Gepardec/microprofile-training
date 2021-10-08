@@ -1,0 +1,62 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Microprofile-Rest-Client ExceptionMapper
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>ExceptionMapper</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.restClientUri}"
+                                target="_blank">
+                                Rest Client
+                            </a>
+                        </p>
+
+                        <p>
+                            The MP-RestClient does not out of the box map error responses to Exceptions so we have to register
+                            an ExceptionMapper on our own.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            <code> RestClientExceptionMapper.class</code> has to be completed and
+                            registered to work properly.
+                            Map the error response to an Exception.
+                        </p>
+
+                        <div class="text-center">
+                            <tag:button id="callApi" path="/basic/restclient/exception-mapper/error"
+                                text="create Error" />
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
