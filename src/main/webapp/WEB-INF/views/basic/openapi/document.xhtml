@@ -6,42 +6,56 @@
     </ui:define>
     <ui:define name="body">
         <section>
-            <div class="text-center">
-                <h1>Generate Document from JAX-RS</h1>
-            </div>
-            <div class="mt-3">
-                <p>
-                    The specification for Microprofile
-                    <a href="#{mpUri.openApiUri}"
-                        target="_blank">
-                        OpenAPI.
-                    </a>
-                </p>
 
-                <p>
-                    A basic JAX-RS interface does already provide sufficient information for an openAPI document.
-                    Try out <a href="http://localhost:8080/openapi"> OpenApi</a> and analyse it.
-                </p>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Generate Document from JAX-RS</h1>
+                        </div>
+                    </div>
+                </div>
 
-            </div>
 
-            <hr class="my-3" />
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.openApiUri}"
+                               target="_blank">
+                                OpenAPI.
+                            </a>
+                        </p>
 
-            <div class="mt-2">
-                <h4>
-                    Your Task:
-                </h4>
+                        <p>
+                            A basic JAX-RS interface does already provide sufficient information for an openAPI document.
+                            Try out <a href="http://localhost:8080/openapi"> OpenApi</a> and analyse it.
+                        </p>
+                        <hr class="my-3"/>
+                    </div>
+                </div>
 
-                <p>
-                    We only want the documentation for our REST resource and not for the whole MVC.
-                    Try to find a way to only generate the document for
-                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>.
 
-                    In the MP configuration file you can configure something like this <code>mp.openapi.scan.classes </code>
-                    Multiple solution are valid for this task. Check again <a href="http://localhost:8080/openapi"> OpenApi</a>
-                    if your filter worked.
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
 
-                </p>
+                        <p>
+                            We only want the documentation for our REST resource and not for the whole MVC.
+                            Try to find a way to only generate the document for
+                            <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>.
+
+                            In the MP configuration file you can configure something like this
+                            <code>mp.openapi.scan.classes </code>
+                            Multiple solution are valid for this task. Check again <a
+                                href="http://localhost:8080/openapi"> OpenApi</a>
+                            if your filter worked.
+
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     </ui:define>
