@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
-import org.eclipse.microprofile.metrics.*;
+import org.eclipse.microprofile.metrics.Counter;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

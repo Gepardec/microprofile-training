@@ -1,7 +1,9 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
 import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.eclipse.microprofile.metrics.*;
+import org.eclipse.microprofile.metrics.MetricID;
+import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.Timer;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,7 +21,9 @@ import javax.ws.rs.core.Response;
 public class TimedController {
 
     public static final String METRIC_ID = "timed-example";
+
     public static final String FORMAT = "s.SSS";
+
     @Inject
     private MetricRegistry metricRegistry;
 
@@ -43,7 +47,9 @@ public class TimedController {
     public Response time() throws InterruptedException {
         Thread.sleep((long) (Math.random() * 1000));
         Timer timer = metricRegistry.getTimer(new MetricID(METRIC_ID));
-        return Response.ok(timer != null ? DurationFormatUtils.formatDuration(timer.getElapsedTime().toMillis(), FORMAT) : "Metric '" + METRIC_ID + "' does not exist.").build();
+        return Response.ok(
+                        timer != null ? DurationFormatUtils.formatDuration(timer.getElapsedTime().toMillis(), FORMAT) : "Metric '" + METRIC_ID + "' does not exist.")
+                .build();
     }
 
 }

@@ -1,6 +1,8 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
-import org.eclipse.microprofile.metrics.*;
+import org.eclipse.microprofile.metrics.Meter;
+import org.eclipse.microprofile.metrics.MetricID;
+import org.eclipse.microprofile.metrics.MetricRegistry;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -18,12 +20,12 @@ import javax.ws.rs.core.Response;
 public class MeteredController {
 
     public static final String METRIC_ID = "metered-example";
+
     @Inject
     private MetricRegistry metricRegistry;
 
     @Inject
     private Models model;
-
 
     @Path("/metered")
     @GET

@@ -12,13 +12,19 @@ import java.util.Set;
 @Dependent
 public class PropertyDao {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     public static final String URL = "jdbc:postgresql://localhost:15432/mptraining";
 
     public static final String USER = "admin";
 
     public static final String PASSWORD = "admin@123";
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    private static PreparedStatement createStatement(String key, Connection connection) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT p.value FROM property p WHERE KEY = ?");
+        statement.setString(1, key);
+        return statement;
+    }
 
     public Set<String> findPropertyNames() {
         Set<String> propertyNames = new HashSet<>();
@@ -59,11 +65,5 @@ public class PropertyDao {
         connectionProps.put("user", USER);
         connectionProps.put("password", PASSWORD);
         return DriverManager.getConnection(URL, connectionProps);
-    }
-
-    private static PreparedStatement createStatement(String key, Connection connection) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("SELECT p.value FROM property p WHERE KEY = ?");
-        statement.setString(1, key);
-        return statement;
     }
 }

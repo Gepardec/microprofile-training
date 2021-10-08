@@ -1,7 +1,9 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
 import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.eclipse.microprofile.metrics.*;
+import org.eclipse.microprofile.metrics.MetricID;
+import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.SimpleTimer;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,7 +21,9 @@ import javax.ws.rs.core.Response;
 public class SimplyTimedController {
 
     public static final String METRIC_ID = "simply-timed-example";
+
     public static final String FORMAT = "s.SSS";
+
     @Inject
     private MetricRegistry metricRegistry;
 
@@ -34,7 +38,7 @@ public class SimplyTimedController {
         if (simpleTimer != null) {
             model.put("time", DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), FORMAT));
         }
-        return "basic/metrics/simply_timed.xhtml";
+        return "basic/metrics/simply-timed.xhtml";
     }
 
     @Path("/simple-time")
@@ -43,7 +47,8 @@ public class SimplyTimedController {
     public Response simpleTime() throws InterruptedException {
         Thread.sleep((long) (Math.random() * 1000));
         SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID(METRIC_ID));
-        return Response.ok(simpleTimer != null ? DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), FORMAT) : "Metric '" + METRIC_ID + "' does not exist.").build();
+        return Response.ok(simpleTimer != null ? DurationFormatUtils.formatDuration(simpleTimer.getElapsedTime().toMillis(), FORMAT) :
+                "Metric '" + METRIC_ID + "' does not exist.").build();
     }
 
 }
