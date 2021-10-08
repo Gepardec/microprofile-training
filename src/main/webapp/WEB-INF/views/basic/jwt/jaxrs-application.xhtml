@@ -77,7 +77,8 @@
             mp.registerOnLoad(() => {
                 jaxrs_application.init({
                     clickElement: document.getElementById('callJaxRsApplicationEndpoint'),
-                    responseElement: document.getElementById('serverResponse')
+                    responseElement: document.getElementById('serverResponse'),
+                    sendToken: false
                 });
             });
         </script>
