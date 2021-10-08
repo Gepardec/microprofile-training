@@ -35,11 +35,11 @@ public class MicroprofileSpecificationUri {
         return HEALTH_URI;
     }
 
-    public  String getOpenApiUri() {
+    public String getOpenApiUri() {
         return OPEN_API_URI;
     }
 
-    public  String getRestClientUri() {
+    public String getRestClientUri() {
         return REST_CLIENT_URI;
     }
 }

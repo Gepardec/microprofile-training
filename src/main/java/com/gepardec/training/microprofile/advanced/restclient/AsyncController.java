@@ -16,11 +16,11 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 public class AsyncController {
 
+    static ThreadLocal<Integer> threadLocalValue;
+
     @Inject
     @RestClient
     RestClientAPIAdvanced restClientAPIAdvanced;
-
-    static ThreadLocal<Integer> threadLocalValue;
 
     @Path("/")
     @GET

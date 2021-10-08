@@ -4,12 +4,14 @@ import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
 import org.eclipse.microprofile.health.Liveness;
+
 import javax.enterprise.context.ApplicationScoped;
 import java.net.Socket;
 
 @Liveness
 @ApplicationScoped
 public class DatabaseLivenessCheck implements HealthCheck {
+
     @Override
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse.named("Database");
@@ -21,7 +23,7 @@ public class DatabaseLivenessCheck implements HealthCheck {
             responseBuilder.up();
         } else {
             responseBuilder.down()
-                           .withData("Error", "Socket Closed");
+                    .withData("Error", "Socket Closed");
         }
         return responseBuilder.build();
     }

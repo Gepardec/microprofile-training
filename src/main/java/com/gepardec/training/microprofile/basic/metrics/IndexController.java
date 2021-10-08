@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic;
+package com.gepardec.training.microprofile.basic.metrics;
 
 import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Metered;
@@ -10,7 +10,7 @@ import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/basic")
+@Path("/basic/metrics")
 @RequestScoped
 @Controller
 @Counted(name = "counted")
@@ -28,6 +28,7 @@ public class IndexController {
     @Path("/index")
     @GET
     public String index() {
-        return "basic/index.xhtml";
+        return "basic/metrics/index.xhtml";
     }
+
 }
