@@ -100,7 +100,8 @@
             mp.registerOnLoad(() => {
                 roles.init({
                     clickElement: document.getElementById('callRolesEndpoint'),
-                    responseElement: document.getElementById('serverResponse')
+                    responseElement: document.getElementById('serverResponse'),
+                    sendToken: true
                 });
             });
         </script>

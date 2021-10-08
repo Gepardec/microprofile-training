@@ -14,7 +14,7 @@ public class JwtFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        if (requestContext.getUriInfo().getPath().contains("jwt") && requestContext.getHeaders().get("Authorization") != null) {
+        if (requestContext.getUriInfo().getPath().contains("jwt") && requestContext.getHeaders().get("X-HttpClient-Training") != null) {
             try {
                 Class.forName(JsonWebToken.class.getName());
             } catch (NoClassDefFoundError | ClassNotFoundException e) {

@@ -46,7 +46,52 @@
                 </ui:define>
             </tag:card>
         </section>
-
+        <section>
+            <tag:card id="mp-openapi" title="Microprofile OpenAPI">
+                <ui:define name="body">
+                    <p>
+                        With Microprofile OpenAPI you will generate OpenAPI v3 documents which are representing rest services.
+                        From these you will generate again Java Ressources. To make this process more comfortable you will learn
+                        about OAS3 annotations, OASModelReaders and OASFilters.
+                    </p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.openApiUri}"
+                       target="_blank">
+                        OpenAPI.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toOpenAPIExamples" text="Examples" path="/basic/openapi/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
+        <section>
+            <tag:card id="mp-restClient" title="Microprofile RestClient">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                            The MicroProfile Rest Client provides a type-safe approach to invoke RESTful services over HTTP. As much as possible the MP Rest Client attempts to use Jakarta RESTful Web Services 2.1 APIs for consistency and easier re-use.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="https://github.com/eclipse/microprofile-rest-client#_Rationale"
+                           target="_blank">
+                            microprofile-rest-client
+                        </a>
+                         github
+                    </p>
+                    The specification for Microprofile
+                    <a href="#{mpUri.restClientUri}"
+                       target="_blank">
+                        Rest Client.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toRestClientExamples" text="Examples" path="/basic/restclient/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
         <section>
             <tag:card id="mp-faulttolerance" title="Microprofile Fault Tolerance">
                 <ui:define name="body">
