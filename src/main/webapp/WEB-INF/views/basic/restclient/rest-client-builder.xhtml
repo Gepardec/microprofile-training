@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
 
     <ui:define name="title">
         Microprofile-Rest-Client RestClientBuilder
@@ -22,7 +22,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.restClientUri}"
-                                target="_blank">
+                               target="_blank">
                                 Rest Client
                             </a>
                         </p>
@@ -32,7 +32,7 @@
                             It's also easy to use and the syntax feels intuitive.
                         </p>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                             in the <code>UseRestClientBuilder.class</code>.
                         </p>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
 
@@ -59,12 +59,12 @@
                             <div class="col text-center">
                                 Value:
                             </div>
-                            <div class="col text-center">
-                                <pre><h:outputText value="${value}" class="font-weight-bold" /></pre>
+                            <div class="font-weight-bold">
+                                <pre>${value}</pre>
                             </div>
                         </div>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
             </div>

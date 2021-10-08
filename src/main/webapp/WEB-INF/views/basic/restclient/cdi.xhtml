@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html">
+>
 
     <ui:define name="title">
         Microprofile-Rest-Client CDI
@@ -60,8 +60,10 @@
                             <div class="col text-center">
                                 Value:
                             </div>
-                            <div class="col text-center">
-                                <pre> <h:outputText value="${value}" class="font-weight-bold"/></pre>
+                            <div class="font-weight-bold">
+                                <pre>
+                                    ${value}
+                                </pre>
                             </div>
                         </div>
 
