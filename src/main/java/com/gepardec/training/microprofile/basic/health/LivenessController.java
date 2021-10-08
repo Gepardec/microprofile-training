@@ -2,7 +2,7 @@ package com.gepardec.training.microprofile.basic.health;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
-import org.eclipse.microprofile.health.Readiness;
+import org.eclipse.microprofile.health.Liveness;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
@@ -11,13 +11,13 @@ import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/basic/health/ready")
+@Path("/basic/health/live")
 @RequestScoped
-public class ReadyController {
+public class LivenessController {
 
     @Inject
-    @Readiness
-    Instance<HealthCheck> readinessChecks;
+    @Liveness
+    private Instance<HealthCheck> livenessChecks;
 
     @Inject
     private Models model;
@@ -25,19 +25,19 @@ public class ReadyController {
     @Path("/")
     @GET
     @Controller
-    public String getReady() {
-        if (getHealthCheckStateByName("FixMe", readinessChecks)) {
+    public String getLive() {
+        if (getHealthCheckStateByName("FixMe", livenessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
         }
-        return "basic/health/ready.xhtml";
+        return "basic/health/liveness.xhtml";
     }
 
     private boolean getHealthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {
         return healthChecks
                 .stream()
                 .filter(check -> check.call().getName().contentEquals(nameOfHealthCheck))
-                .anyMatch(readinessCheck -> readinessCheck.call().getStatus().equals(HealthCheckResponse.Status.UP));
+                .anyMatch(check -> check.call().getStatus().equals(HealthCheckResponse.Status.UP));
     }
 }

@@ -1,7 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
->
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Microprofile-Health Basics First Look
@@ -23,7 +22,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.healthUri}#health"
-                               target="_blank">
+                                target="_blank">
                                 Health.
                             </a>
                         </p>
@@ -44,16 +43,15 @@
                         </h4>
 
                         <p>
-                            Have a look at the health endpoint: <br></br>
-                            <code>http://localhost:9990/health</code><br></br>
-                            <code>http://localhost:9990/health/ready</code><br></br>
-                            <code>http://localhost:9990/health/live</code><br></br>
+                            Have a look at the health endpoint: <br />
+                            <code><tag:link id="toHealthCheckEndpoint" path="http://localhost:9990/health" text="http://localhost:9990/health" target="_blank" /></code><br />
+                            <code><tag:link id="toReadyCheckEndpoint" path="http://localhost:9990/ready" text="http://localhost:9990/ready" target="_blank" /></code><br />
+                            <code><tag:link id="toLiveCheckEndpoint" path="http://localhost:9990/live" text="http://localhost:9990/live" target="_blank" /></code><br />
                         </p>
 
                         <hr class="my-3" />
                     </div>
                 </div>
-
             </div>
         </section>
     </ui:define>

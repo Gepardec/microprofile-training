@@ -33,7 +33,7 @@ public class PathHelper {
     public String buildPath(String path) {
         if (StringUtils.isBlank(path)) {
             return "#";
-        } else if (path.startsWith("#")) {
+        } else if (path.startsWith("#") || path.startsWith("http")) {
             return path;
         }
         return basePath() + path;

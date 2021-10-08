@@ -1,10 +1,10 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
 >
 
     <ui:define name="title">
-        Microprofile-Health Basics Liveness Check FixMe
+        Microprofile-Health Basics Readiness Check FixMe
     </ui:define>
 
     <ui:define name="body">
@@ -13,7 +13,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>Liveness Check</h1>
+                            <h1>Readiness Check</h1>
                         </div>
                     </div>
                 </div>
@@ -23,13 +23,13 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.healthUri}#health"
-                               target="_blank">
+                                target="_blank">
                                 Health.
                             </a>
                         </p>
 
                         <p>
-                            There is a Liveness Check named "FixMe".
+                            There is a Readiness Check named "ReadinessCheck".
                             It returns "DOWN".
                         </p>
 
@@ -53,11 +53,13 @@
 
                 <div class="row my-2">
                     <div class="col">
-                        <div class="col-sm text-center text-sm-right mr-sm-1">
-                            Status:
-                        </div>
-                        <div class="col-sm text-center text-sm-left ml-sm-1">
-                            <h:outputText value="${stateMessage}" class="alert-warning" />
+                        <div class="row">
+                            <div class="col text-center">
+                                Status:
+                            </div>
+                            <div class="col text-center">
+                                <h:outputText value="${stateMessage}" class="alert-warning" />
+                            </div>
                         </div>
 
                         <hr class="my-3" />

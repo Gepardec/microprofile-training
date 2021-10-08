@@ -11,13 +11,13 @@ import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/basic/health/live")
+@Path("/basic/health/database-live")
 @RequestScoped
-public class LiveController {
+public class DatabaseLivenessController {
 
     @Inject
     @Liveness
-    Instance<HealthCheck> livenessChecks;
+    private Instance<HealthCheck> livenessChecks;
 
     @Inject
     private Models model;
@@ -25,13 +25,13 @@ public class LiveController {
     @Path("/")
     @GET
     @Controller
-    public String getLive() {
-        if (getHealthCheckStateByName("FixMe", livenessChecks)) {
+    public String getDatabaseLive() {
+        if (getHealthCheckStateByName("Database", livenessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
         }
-        return "basic/health/live.xhtml";
+        return "basic/health/database-liveness.xhtml";
     }
 
     private boolean getHealthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {

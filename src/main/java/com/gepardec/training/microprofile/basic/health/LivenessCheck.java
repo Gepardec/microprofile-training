@@ -1,18 +1,17 @@
-package com.gepardec.training.microprofile.basic.health.playground;
+package com.gepardec.training.microprofile.basic.health;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
-import org.eclipse.microprofile.health.Readiness;
+import org.eclipse.microprofile.health.Liveness;
 import javax.enterprise.context.ApplicationScoped;
 
-@Readiness
+@Liveness
 @ApplicationScoped
-public class ReadinessCheckFixMe implements HealthCheck {
+public class LivenessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
-
         return HealthCheckResponse.named("FixMe")
-                                  .down()// Fix Me
+                                  .down() // Fix Me
                                   .build();
     }
 }

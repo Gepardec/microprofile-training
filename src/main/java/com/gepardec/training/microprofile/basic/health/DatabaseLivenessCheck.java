@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.health.playground;
+package com.gepardec.training.microprofile.basic.health;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
