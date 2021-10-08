@@ -1,9 +1,9 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Microprofile-Rest-Client CDI
+        Microprofile-Rest-Client ExceptionMapper
     </ui:define>
 
     <ui:define name="body">
@@ -12,7 +12,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>CDI</h1>
+                            <h1>ExceptionMapper</h1>
                         </div>
                     </div>
                 </div>
@@ -28,10 +28,8 @@
                         </p>
 
                         <p>
-                            When using CDI with MP-restclient the annotations <code>@RestClient</code> and
-                            <code>@RegisterRestClient</code>
-                            are needed. Also the baseUri has to be defined. This can be done direct as an annotation parameter for RegisterRestClient or in the MP-config file.
-                            The configKey is also an annotation parameter and it sets the prefix for MicroProfile-Config provided configurations. (Otherwise it would use the fully qualified class name)
+                            The MP-RestClient does not out of the box map error responses to Exceptions so we have to register
+                            an ExceptionMapper on our own.
                         </p>
 
                         <hr class="my-3" />
@@ -45,24 +43,14 @@
                         </h4>
 
                         <p>
-                            Invoke the Restservice
-                            <a>https://reqres.in/api/users/1</a>
-                            with CDI and the <code>RestClientAPI</code> interface.
+                            <code> RestClientExceptionMapper.class</code> has to be completed and
+                            registered to work properly.
+                            Map the error response to an Exception.
                         </p>
 
-                        <hr class="my-3" />
-                    </div>
-                </div>
-
-                <div class="row my-2">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col text-center">
-                                Value:
-                            </div>
-                            <div class="col text-center">
-                                <h:outputText value="${value}" class="font-weight-bold" />
-                            </div>
+                        <div class="text-center">
+                            <tag:button id="callApi" path="/basic/restclient/exception-mapper/error"
+                                text="create Error" />
                         </div>
 
                         <hr class="my-3" />

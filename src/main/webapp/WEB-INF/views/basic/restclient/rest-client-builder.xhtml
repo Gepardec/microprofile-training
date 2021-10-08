@@ -3,7 +3,7 @@
     xmlns:h="http://java.sun.com/jsf/html">
 
     <ui:define name="title">
-        Microprofile-Rest-Client CDI
+        Microprofile-Rest-Client RestClientBuilder
     </ui:define>
 
     <ui:define name="body">
@@ -12,7 +12,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>CDI</h1>
+                            <h1>RestClientBuilder</h1>
                         </div>
                     </div>
                 </div>
@@ -28,10 +28,8 @@
                         </p>
 
                         <p>
-                            When using CDI with MP-restclient the annotations <code>@RestClient</code> and
-                            <code>@RegisterRestClient</code>
-                            are needed. Also the baseUri has to be defined. This can be done direct as an annotation parameter for RegisterRestClient or in the MP-config file.
-                            The configKey is also an annotation parameter and it sets the prefix for MicroProfile-Config provided configurations. (Otherwise it would use the fully qualified class name)
+                            The RestClientBuilder from MP allows to make typesafe rest calls.
+                            It's also easy to use and the syntax feels intuitive.
                         </p>
 
                         <hr class="my-3" />
@@ -47,7 +45,8 @@
                         <p>
                             Invoke the Restservice
                             <a>https://reqres.in/api/users/1</a>
-                            with CDI and the <code>RestClientAPI</code> interface.
+                            with the help of the RestClientBuilder
+                            in the <code>UseRestClientBuilder.class</code>.
                         </p>
 
                         <hr class="my-3" />

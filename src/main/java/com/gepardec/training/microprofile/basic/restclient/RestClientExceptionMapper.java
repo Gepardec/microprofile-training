@@ -20,7 +20,6 @@ public class RestClientExceptionMapper implements ResponseExceptionMapper<Runtim
         return null;
     }
 
-
     private String readEntity(final Response response) {
         try {
             return response.readEntity(String.class);

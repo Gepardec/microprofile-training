@@ -9,22 +9,21 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 @RequestScoped
-@Path("/basic/restclient/exceptionMapper")
+@Path("/basic/restclient/exception-mapper")
 public class ExceptionMapperController {
 
     @Inject
     @RestClient
-    RestClientAPI api;
+    private RestClientAPI api;
 
     @Controller
     @Path("/")
     @GET
     public String get() {
-        return "basic/restclient/exceptionMapper.xhtml";
+        return "basic/restclient/exception-mapper.xhtml";
     }
 
-
-    @Path("/createError")
+    @Path("/error")
     @GET
     public String createError() {
         return api.invalid();

@@ -1,9 +1,9 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html">
+>
 
     <ui:define name="title">
-        Microprofile-Rest-Client CDI
+        Microprofile-Rest-Client HeadersFactory
     </ui:define>
 
     <ui:define name="body">
@@ -12,7 +12,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>CDI</h1>
+                            <h1>HeadersFactory</h1>
                         </div>
                     </div>
                 </div>
@@ -28,10 +28,10 @@
                         </p>
 
                         <p>
-                            When using CDI with MP-restclient the annotations <code>@RestClient</code> and
-                            <code>@RegisterRestClient</code>
-                            are needed. Also the baseUri has to be defined. This can be done direct as an annotation parameter for RegisterRestClient or in the MP-config file.
-                            The configKey is also an annotation parameter and it sets the prefix for MicroProfile-Config provided configurations. (Otherwise it would use the fully qualified class name)
+                            The
+                            <code>@RegisterClientHeaders</code> annotation registers an implementation of the ClientHeadersFactory interface
+                            which allows to read incoming HTTP Headers and to define additional outgoing Http Headers.
+
                         </p>
 
                         <hr class="my-3" />
@@ -45,9 +45,9 @@
                         </h4>
 
                         <p>
-                            Invoke the Restservice
-                            <a>https://reqres.in/api/users/1</a>
-                            with CDI and the <code>RestClientAPI</code> interface.
+                            Use the
+                            <code>src/main/java/at/gepardec/training/microprofile/basic/restclient/RestClientHeaderHandler</code>
+                            to read the headers in the log. Also add a new outgoing header and check the response.
                         </p>
 
                         <hr class="my-3" />
@@ -60,8 +60,10 @@
                             <div class="col text-center">
                                 Value:
                             </div>
-                            <div class="col text-center">
-                                <h:outputText value="${value}" class="font-weight-bold" />
+                            <div class="col font-weight-bold">
+                                <pre>
+${value}
+                                </pre>
                             </div>
                         </div>
 

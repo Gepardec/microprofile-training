@@ -1,40 +1,39 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
     <ui:define name="title">
         RestClient
     </ui:define>
 
     <ui:define name="body">
-        <tag:card id="example1" title="Basic usage of MP-RestClient RestClientBuilder">
+        <tag:card id="example1" title="RestClientBuilder">
             <ui:define name="body">
                 <p>
                     In the first example you will learn how to call a service with the MP-RestClient. With JAX-RS it would probably look something like this:
-                    <br/>
+                    <br />
                     <code> Client client = ClientBuilder.newClient();
                         String response = client.target("http://localhost:8081/cheetahs").request().get(String.class); </code>
-                    <br/>
+                    <br />
                     Try out the MP-RestClient builder approach and solve the problem.
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="builder" text="RestClientBuilder" path="/basic/restclient/restClientBuilder"/>
+                <tag:button id="builder" text="Example" path="/basic/restclient/rest-client-builder" />
             </ui:define>
-
         </tag:card>
-        <tag:card id="example2" title="Basic usage of MP-RestClient CDI">
+
+        <tag:card id="example2" title="CDI">
             <ui:define name="body">
                 <p>
                     The CDI approach is used more often and get's rid of boilerplate code.
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="cdi" text="CDI" path="/basic/restclient/cdi"/>
+                <tag:button id="cdi" text="Example" path="/basic/restclient/cdi" />
             </ui:define>
-
         </tag:card>
 
-        <tag:card id="example3" title="Providers">
+        <tag:card id="example3" title="ExceptionMapper">
             <ui:define name="body">
                 <p>
                     The <code>@RegisterProviders</code> annotation can be used to add
@@ -44,9 +43,10 @@
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="exceptionMapper" text="Providers" path="/basic/restclient/exceptionMapper"/>
+                <tag:button id="exceptionMapper" text="Example" path="/basic/restclient/exception-mapper" />
             </ui:define>
         </tag:card>
+
         <tag:card id="example4" title="ClientHeaders">
             <ui:define name="body">
                 <p>
@@ -57,7 +57,7 @@
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="headersFactory" text="ClientHeaders" path="/basic/restclient/headersFactory"/>
+                <tag:button id="headersFactory" text="Example" path="/basic/restclient/headers-factory" />
             </ui:define>
         </tag:card>
     </ui:define>

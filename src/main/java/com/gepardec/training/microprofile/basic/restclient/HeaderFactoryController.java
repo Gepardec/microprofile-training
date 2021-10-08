@@ -10,21 +10,21 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 @RequestScoped
-@Path(("/basic/restclient/headersFactory"))
-public class ClientHeaderController {
-
-    @Inject
-    private Models model;
+@Path(("/basic/restclient/headers-factory"))
+public class HeaderFactoryController {
 
     @Inject
     @RestClient
-    RestClientAPI api;
+    private RestClientAPI api;
+
+    @Inject
+    private Models model;
 
     @Controller
     @Path("/")
     @GET
     public String get() {
         model.put("value", api.patch());
-        return "basic/restclient/headersFactory.xhtml";
+        return "basic/restclient/headers-factory.xhtml";
     }
 }

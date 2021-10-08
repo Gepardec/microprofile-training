@@ -10,7 +10,6 @@ public class UseRestClientBuilder {
 
     private RestClientAPI api;
 
-
     private void createRestClientBuilder() throws URISyntaxException {
 
         //URI is already given

@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import java.net.URISyntaxException;
 
 @RequestScoped
-@Path(("/basic/restclient/restClientBuilder"))
+@Path(("/basic/restclient/rest-client-builder"))
 public class RestClientBuilderController {
 
     @Inject
@@ -21,7 +21,7 @@ public class RestClientBuilderController {
     public String builder() throws URISyntaxException {
         UseRestClientBuilder restClientBuilder = new UseRestClientBuilder();
         model.put("value", restClientBuilder.getResponse());
-        return "basic/restclient/restClientBuilder.xhtml";
+        return "basic/restclient/rest-client-builder.xhtml";
 
     }
 }

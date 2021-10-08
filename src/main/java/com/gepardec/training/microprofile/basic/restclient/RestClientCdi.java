@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 public class RestClientCdi {
 
-    RestClientAPI api;
+    private RestClientAPI api;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

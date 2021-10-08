@@ -13,7 +13,7 @@ public class RestClientHeaderHandler implements ClientHeadersFactory {
 
     @Override
     public MultivaluedMap<String, String> update(MultivaluedMap<String, String> incomingHeaders,
-                                                 MultivaluedMap<String, String> clientOutgoingHeaders) {
+            MultivaluedMap<String, String> clientOutgoingHeaders) {
         log.info("Incoming Headers: {}", toJson(incomingHeaders));
         log.info("Outgoing Headers: {}", toJson(clientOutgoingHeaders));
 
