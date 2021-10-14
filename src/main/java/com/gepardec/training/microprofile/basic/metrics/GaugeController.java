@@ -1,6 +1,8 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
-import org.eclipse.microprofile.metrics.*;
+import org.eclipse.microprofile.metrics.Gauge;
+import org.eclipse.microprofile.metrics.MetricID;
+import org.eclipse.microprofile.metrics.MetricRegistry;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

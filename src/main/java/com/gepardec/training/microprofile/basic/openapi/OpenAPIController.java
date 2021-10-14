@@ -1,9 +1,7 @@
 package com.gepardec.training.microprofile.basic.openapi;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.mvc.Controller;
-import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
@@ -47,6 +45,5 @@ public class OpenAPIController {
     public String getStaticDocument() {
         return "basic/openapi/staticDocument.xhtml";
     }
-
 
 }

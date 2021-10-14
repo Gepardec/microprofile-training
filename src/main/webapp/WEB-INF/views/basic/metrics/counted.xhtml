@@ -1,7 +1,7 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Basics Microprofile-Metrics Counted
@@ -23,7 +23,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html#_counted"
-                               target="_blank">
+                                target="_blank">
                                 Metrics (Counted).
                             </a>
                         </p>
@@ -38,58 +38,62 @@
 
                 <div class="row my-2">
                     <div class="col">
-                        <section>
-                            <h4>
-                                Your Task:
-                            </h4>
+                        <h4>
+                            Your Task:
+                        </h4>
 
-                            <p>
-                                Use <code>@Counted</code> to measure how often <code>count()</code> in
-                                <code>com.gepardec.training.microprofile.basic.metrics.CountedController</code> is invocated.
-                                The name of the metric should be <code>"count-example"</code>.
-                                Make sure that the metric is displayed at
-                                <a href="http://localhost:9990/metrics"
-                                   target="_blank">
-                                    Wildfly
-                                </a>
-                                and
-                                <a href="http://localhost:19090/"
-                                   target="_blank">
-                                    Prometheus.
-                                </a>
+                        <p>
+                            Use <code>@Counted</code> to measure how often <code>count()</code> in
+                            <code>com.gepardec.training.microprofile.basic.metrics.CountedController</code> is invocated.
+                            The name of the metric should be <code>"count-example"</code>.
+                            Make sure that the metric is displayed at
+                            <a href="http://localhost:9990/metrics"
+                                target="_blank">
+                                Wildfly
+                            </a>
+                            and
+                            <a href="http://localhost:19090/"
+                                target="_blank">
+                                Prometheus.
+                            </a>
 
-                            </p>
+                        </p>
 
-                            <hr class="my-3" />
+                        <hr class="my-3" />
 
-                            <div class="text-center">
-                                <tag:button id="callCountEndpoint" text="Call" path="/basic/metrics/count"/>
-                                <h:outputText id="serverResponse" value="${count}" class="font-weight-bold" style="padding-left: 30pt"/>
-                            </div>
+                        <div class="text-center">
+                            <tag:button id="callCountEndpoint" text="Call" path="/basic/metrics/count" />
+                        </div>
 
-                            <hr class="my-3" />
-                        </section>
+                        <hr class="my-3" />
                     </div>
                 </div>
+
+                <div class="row my-2 text-start">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col font-weight-bold">
+                                Server Response:
+                            </div>
+                            <div class="col" style="word-wrap: break-word;">
+                                <h:outputText id="serverResponse" value="${count}" class="font-weight-bold" style="padding-left: 30pt" />
+                            </div>
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
             </div>
         </section>
     </ui:define>
 
     <ui:define name="bottom">
-        <tag:modalDialog id="init" title="Initialization" closable="true">
-            <ui:define name="content">
-                <div class="d-flex flex-row justify-content-center mt-2">
-                    <span id="initDialogContent" class="d-inline-block fs-5" />
-                </div>
-            </ui:define>
-        </tag:modalDialog>
-        <tag:timerDialog id="timer" title="Waiting for responses..." />
-
         <script type="module">
             import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
-            import bulkhead from '#{pathHelper.buildResourcePath("/js/basic/metrics/count.js")}'
+            import count from '#{pathHelper.buildResourcePath("/js/basic/metrics/count.js")}'
 
-            mp.registerOnLoad(() => bulkhead.init({
+            mp.registerOnLoad(() => count.init({
                 callerElement: document.getElementById('callCountEndpoint'),
                 timerElement: document.getElementById('timer'),
                 initDialogElement: document.getElementById('init'),

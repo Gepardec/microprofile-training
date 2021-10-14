@@ -20,32 +20,19 @@ const registerCallElementClickEventListener = () => {
     const {
         callerElement,
         responseElement,
-        // countElement,
     } = state.options;
     mp.registerClickListenerPreventDefault(callerElement, (event) => {
         responseElement.innerText = "";
-        state.timerDialog.show();
         httpClient.post({
             uri: event.target.href,
             successCallback: displayData,
             failureCallback: displayData,
-        }).finally(() => state.timerDialog.hide());
+        });
     });
 }
 
 const init = (options) => {
-    const {
-        timerElement,
-        initDialogElement,
-        // countElement,
-    } = options;
     state.options = options;
-    state.timerDialog = modalDialog.create({
-        element: timerElement,
-    })
-    state.initDialog = modalDialog.create({
-        element: initDialogElement,
-    })
     registerCallElementClickEventListener();
 }
 

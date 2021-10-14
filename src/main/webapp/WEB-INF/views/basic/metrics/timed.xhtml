@@ -1,7 +1,7 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Basics Microprofile-Metrics Timed
@@ -23,7 +23,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html#_timed"
-                               target="_blank">
+                                target="_blank">
                                 Metrics (Timed).
                             </a>
                         </p>
@@ -41,47 +41,55 @@
 
                 <div class="row my-2">
                     <div class="col">
-                        <section>
-                            <h4>
-                                Your Task:
-                            </h4>
+                        <h4>
+                            Your Task:
+                        </h4>
 
-                            <p>
-                                Use <code>@Timed</code> for marking a <code>time()</code> methode in
-                                <code>com.gepardec.training.microprofile.basic.metrics.TimedController</code>.
-                                Each time a method is invoked, the execution will be timed with the respective timer.
-                                The name of the metric should be <code>"timed-example"</code>.
-                                Make sure that the metric is displayed at
-                                <a href="http://localhost:9990/metrics"
-                                   target="_blank">
-                                    Wildfly
-                                </a>
-                                and
-                                <a href="http://localhost:19090/"
-                                   target="_blank">
-                                    Prometheus.
-                                </a>
+                        <p>
+                            Use <code>@Timed</code> for marking a <code>time()</code> methode in
+                            <code>com.gepardec.training.microprofile.basic.metrics.TimedController</code>.
+                            Each time a method is invoked, the execution will be timed with the respective timer.
+                            The name of the metric should be <code>"timed-example"</code>.
+                            Make sure that the metric is displayed at
+                            <a href="http://localhost:9990/metrics"
+                                target="_blank">
+                                Wildfly
+                            </a>
+                            and
+                            <a href="http://localhost:19090/"
+                                target="_blank">
+                                Prometheus.
+                            </a>
 
-                            </p>
+                        </p>
 
-                            <hr class="my-3" />
+                        <hr class="my-3" />
 
-                            <div class="text-center">
-                                <tag:button id="callTimeEndpoint" text="Start" path="/basic/metrics/time"/>
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="mx-1 d-flex align-items-center">
+                                <tag:button id="callTimeEndpoint" text="Start" path="/basic/metrics/time" />
+                            </div>
+                            <div class="mx-1 d-flex align-items-center">
                                 <tag:button id="stopCallingTimeEndpoint" text="Stop" />
                             </div>
+                        </div>
 
-                            <div class="row my-1">
-                                <div class="col-sm text-lg-start text-sm-right mr-sm-1">
-                                    Elapsed time (in seconds):
-                                </div>
-                                <div class="col-sm text-center text-sm-left ml-sm-1">
-                                    <h:outputText id="serverResponse" value="${time}" style="padding-left: 30pt"/>
-                                </div>
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col text-center">
+                                Elapsed time (in seconds):
                             </div>
+                            <div class="col text-center">
+                                <h:outputText id="serverResponse" value="${time}" class="font-weight-bold" />
+                            </div>
+                        </div>
 
-                            <hr class="my-3" />
-                        </section>
+                        <hr class="my-3" />
                     </div>
                 </div>
             </div>

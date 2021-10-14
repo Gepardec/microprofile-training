@@ -4,7 +4,7 @@
 >
 
     <ui:define name="title">
-        Microprofile-Config System-Property Config
+        Microprofile-Health Basics Database HealthCheck
     </ui:define>
 
     <ui:define name="body">
@@ -13,7 +13,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>Configuration from system properties</h1>
+                            <h1>Database HealthCheck</h1>
                         </div>
                     </div>
                 </div>
@@ -22,17 +22,15 @@
                     <div class="col">
                         <p>
                             The specification for Microprofile
-                            <a href="#{mpUri.configUri}#config"
+                            <a href="#{mpUri.healthUri}#health"
                                 target="_blank">
-                                Config.
+                                Health.
                             </a>
                         </p>
 
                         <p>
-                            Configuration can be provided by property file, environment variable, system property or a custom ConfigSource.
-                        </p>
-                        <p>System properties are set outside of the application and therefore the application does not need to be rebuilt after changing the configuration.
-                            System properties can be altered at runtime, a system restart is not required.
+                            There is a database included in our infrastructure.
+                            Configure the Database Healthcheck so it properly reflects the state of the database.
                         </p>
 
                         <hr class="my-3" />
@@ -46,8 +44,7 @@
                         </h4>
 
                         <p>
-                            Provide the application name via a system property. Also take a look at the controller class
-                            <code>com.gepardec.training.microprofile.basic.config.SystemPropertyController</code>.
+                            Make it work.
                         </p>
 
                         <hr class="my-3" />
@@ -56,14 +53,13 @@
 
                 <div class="row my-2">
                     <div class="col">
-                        <div class="row my-1">
+                        <div class="row">
                             <div class="col text-center">
-                                Application name:
+                                Status:
                             </div>
                             <div class="col text-center">
-                                <h:outputText value="${sysApplicationName}" class="font-weight-bold" />
+                                <h:outputText value="${stateMessage}" class="alert-warning" />
                             </div>
-                            <div><h:outputText value="${sysMessage}" class="alert-warning" /></div>
                         </div>
 
                         <hr class="my-3" />
@@ -73,6 +69,3 @@
         </section>
     </ui:define>
 </ui:composition>
-
-
-

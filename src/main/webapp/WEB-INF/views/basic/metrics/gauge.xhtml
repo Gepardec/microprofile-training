@@ -1,7 +1,7 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Basics Microprofile-Metrics Gauge
@@ -23,7 +23,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html#_gauge"
-                               target="_blank">
+                                target="_blank">
                                 Metrics (Gauge).
                             </a>
                         </p>
@@ -33,49 +33,53 @@
                             always be specified explicitly.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
                 <div class="row my-2">
                     <div class="col">
-                        <section>
-                            <h4>
-                                Your Task:
-                            </h4>
+                        <h4>
+                            Your Task:
+                        </h4>
 
-                            <p>
-                                In this example we want to monitor the value of
-                                <code>RandomNumberGenerator#getValue()</code>.
-                                Therefore, use the <code>@Gauge</code> annotation. The name of the metric should be
-                                "gauge-example". Make sure that the metric is displayed at
-                                <a href="http://localhost:9990/metrics"
-                                   target="_blank">
-                                    Wildfly
-                                </a>
-                                and
-                                <a href="http://localhost:19090/"
-                                   target="_blank">
-                                    Prometheus.
-                                </a>
+                        <p>
+                            In this example we want to monitor the value of
+                            <code>RandomNumberGenerator#getValue()</code>.
+                            Therefore, use the <code>@Gauge</code> annotation. The name of the metric should be
+                            "gauge-example". Make sure that the metric is displayed at
+                            <a href="http://localhost:9990/metrics"
+                                target="_blank">
+                                Wildfly
+                            </a>
+                            and
+                            <a href="http://localhost:19090/"
+                                target="_blank">
+                                Prometheus.
+                            </a>
+                        </p>
 
-                            </p>
+                        <hr class="my-3" />
+                    </div>
+                </div>
 
-                            <hr class="my-3"/>
-
-                            <div class="text-center">
-                                <tag:button id="toMetricsExampleGauge" text="Gauge" path="/basic/metrics/gauge"/>
-                                <h:outputText value="${gauge}" class="font-weight-bold" style="padding-left: 30pt"/>
+                <div class="row my-2 text-start">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col font-weight-bold">
+                                Server Response:
                             </div>
+                            <div class="col" style="word-wrap: break-word;">
+                                <h:outputText value="${gauge}" class="font-weight-bold" style="padding-left: 30pt" />
+                            </div>
+                        </div>
 
-                            <hr class="my-3"/>
-                        </section>
+                        <hr class="my-3" />
                     </div>
                 </div>
             </div>
         </section>
     </ui:define>
-
 </ui:composition>
 
 
