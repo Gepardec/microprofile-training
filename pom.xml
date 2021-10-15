@@ -23,7 +23,7 @@
         <version.webjar.font-awesome>5.15.2</version.webjar.font-awesome>
         <version.webjar.mdb-ui-kit>3.9.0</version.webjar.mdb-ui-kit>
         <version.postgresql>42.2.23</version.postgresql>
-        <version.cxf-rt-rs-extension-providers>3.2.6</version.cxf-rt-rs-extension-providers>
+        <version.cxf-rt-rs-service-description-openapi-v3>3.4.5</version.cxf-rt-rs-service-description-openapi-v3>
 
         <!-- Plugin Properties -->
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -145,6 +145,13 @@
         <dependency>
             <groupId>org.eclipse.microprofile.openapi</groupId>
             <artifactId>microprofile-openapi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
+            <version>${version.cxf-rt-rs-service-description-openapi-v3}</version>
             <scope>provided</scope>
         </dependency>
 
