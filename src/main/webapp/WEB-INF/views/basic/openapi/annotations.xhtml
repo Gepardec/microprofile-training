@@ -7,81 +7,91 @@
 
     <ui:define name="body">
         <section>
-            <div class="text-center">
-                <h1>JAX-RS + OpenAPI</h1>
-            </div>
-            <div class="mt-3">
-                <p>
-                    The specification for Microprofile
-                    <a href="#{mpUri.openApiUri}"
-                       target="_blank">
-                        OpenAPI.
-                    </a>
-                </p>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>JAX-RS + OpenAPI</h1>
+                        </div>
+                    </div>
+                </div>
 
-                <p>
-                    JAX-RS annotations are processed by default, you can augment the existing code with OpenAPI annotations.
-                </p>
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.openApiUri}"
+                               target="_blank">
+                                OpenAPI.
+                            </a>
+                        </p>
 
-            </div>
+                        <p>
+                            JAX-RS annotations are processed by default, you can augment the existing code with OpenAPI annotations.
+                        </p>
 
-            <hr class="my-3" />
+                        <hr class="my-3"/>
+                    </div>
+                </div>
 
-            <div class="mt-2">
-                <h4>
-                    Your Task:
-                </h4>
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
 
-                <p>
-                    At first we will define a schema for our data. Go to
-                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/Cheetah.java</code>
-                    and add the following annotation
-                    <code> @Schema(name="Cheetah", description="POJO that represents a cheetah") </code> to the class
-                    and <code> @Schema(required = true)</code> to the <code> name</code> variable.
-                </p>
+                        <p>
+                            At first we will define a schema for our data. Go to
+                            <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/Cheetah.java</code>
+                            and add the following annotation
+                            <code> @Schema(name="Cheetah", description="POJO that represents a cheetah") </code> to the class
+                            and <code> @Schema(required = true)</code> to the <code> name</code> variable.
+                        </p>
 
-                <p>
-                    Now we will add some information to our operations.
-                    Add the following annotation to <code>@GET list()</code> method:
-                </p>
-                <ul>
-                    <li><code>@Parameter</code></li>
-                    <li><code> @APIResponses(
-                        value = {
-                        @APIResponse(
-                        responseCode = "200",
-                        content = @Content(
-                        schema = @Schema(
-                        type = SchemaType.ARRAY,
-                        implementation = Cheetah.class))),
-                        @APIResponse(
-                        responseCode = "404",
-                        description = "Missing description"
-                        )
-                        })</code></li>
-                    <li><code>@Operation(summary = "List full with cheetahs.")</code></li>
-                </ul>
+                        <p>
+                            Now we will add some information to our operations.
+                            Add the following annotation to <code>@GET list()</code> method:
+                        </p>
+                        <ul>
+                            <li><code>@Parameter</code></li>
+                            <li><code> @APIResponses(
+                                value = {
+                                @APIResponse(
+                                responseCode = "200",
+                                content = @Content(
+                                schema = @Schema(
+                                type = SchemaType.ARRAY,
+                                implementation = Cheetah.class))),
+                                @APIResponse(
+                                responseCode = "404",
+                                description = "Missing description"
+                                )
+                                })</code></li>
+                            <li><code>@Operation(summary = "List full with cheetahs.")</code></li>
+                        </ul>
 
-                <p>
-                    And For the @Delete add:
-                </p>
-                <ul>
-                    <li><code>@Description("Missing description")</code></li>
-                    <li><code> @Operation(
-                        description = "Removes a cheetah from the coalition")</code></li>
-                    <li><code>@APIResponses(value = {
-                        @APIResponse(responseCode = "202",
-                        description = "Operation executed successfully"),
+                        <p>
+                            And For the @Delete add:
+                        </p>
+                        <ul>
+                            <li><code>@Description("Missing description")</code></li>
+                            <li><code> @Operation(
+                                description = "Removes a cheetah from the coalition")</code></li>
+                            <li><code>@APIResponses(value = {
+                                @APIResponse(responseCode = "202",
+                                description = "Operation executed successfully"),
 
-                        @APIResponse(
-                        name = "NoContent",
-                        responseCode = "204",
-                        description = "Missing description"
-                        )})</code></li>
-                </ul>
-                <p> Than again call <a
-                        href="http://localhost:8080/openapi"> OpenApi</a> and look if the changes are applied as intended
-                </p>
+                                @APIResponse(
+                                name = "NoContent",
+                                responseCode = "204",
+                                description = "Missing description"
+                                )})</code></li>
+                        </ul>
+                        <p> Than again call <a
+                                href="http://localhost:8080/openapi"> OpenApi</a> and look if the changes are applied as intended
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     </ui:define>
