@@ -1,5 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
         Microprofile-OpenAPI Basics OASFilter
@@ -10,7 +10,9 @@
             <div class="container-lg">
                 <div class="row my-2">
                     <div class="col">
-                        <h1>Generate Document from JAX-RS</h1>
+                        <div class="text-center">
+                            <h1>Generate Document from JAX-RS</h1>
+                        </div>
                     </div>
                 </div>
                 <div class="row my-2">
@@ -18,7 +20,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.openApiUri}"
-                               target="_blank">
+                                target="_blank">
                                 OpenAPI.
                             </a>
                         </p>
@@ -28,7 +30,7 @@
                             The implementation has to be registered in the config.
                             <code>mp.openapi.filter=com.mypackage.MyFilter</code>
                         </p>
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -43,8 +45,10 @@
                             <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/MyFilter.java</code>
                             class and override the filterAPIResponse method.
                             Change all ApiResponse description which are "Missing description" to "No Cheetah found"
-                            and check the openApi document if it worked. <a
-                                href="http://localhost:8080/openapi"> OpenApi</a>
+                            and check the openApi document if it worked.
+                            <a
+                                href="http://localhost:8080/openapi"> OpenApi
+                            </a>
 
                         </p>
                     </div>
