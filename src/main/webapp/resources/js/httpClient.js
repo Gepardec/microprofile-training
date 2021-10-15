@@ -27,6 +27,7 @@ const callAsync = (options) => {
     return fetch(`${buildFullUri(options)}`, {
         method: method,
         headers: {
+            'X-HttpClient-Training': 'MicroProfile',
             ...headers
         }
     }).then((response) => {

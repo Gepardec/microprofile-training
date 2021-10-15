@@ -1,0 +1,61 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Microprofile-Health Basics
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+
+            <tag:card id="mp-health-firstlook" title="Take a look at the health endpoint">
+                <ui:define name="body">
+                    <p>
+                        In this example you will have a quick look at the health endpoint.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExampleLook" text="Example" path="/basic/health/look" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-health-fixme-ready" title="Fix the Readiness Check">
+                <ui:define name="body">
+                    <p>
+                        Lets have a look at a failing readiness check and repair it.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExampleReady" text="Example" path="/basic/health/ready" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-health-fixme-live" title="Fix the Liveness Check">
+                <ui:define name="body">
+                    <p>
+                        Lets have a look at a failing liveness check and repair it.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExampleLive" text="Example" path="/basic/health/live" />
+                </ui:define>
+            </tag:card>
+
+            <tag:card id="mp-database-live" title="Create a working database healthcheck">
+                <ui:define name="body">
+                    <p>
+                        Lets have a look at out database and the corresponding healthcheck.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExampleDBLive" text="Example" path="/basic/health/database-live" />
+                </ui:define>
+            </tag:card>
+
+        </section>
+    </ui:define>
+</ui:composition>
+

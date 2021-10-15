@@ -20,10 +20,10 @@ public class CheetahResource {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public Set<Cheetah> list() {
-        if (cheetahs.isEmpty()) Response.status(Response.Status.NOT_FOUND).entity("No cheetahs found").build();
+        if (cheetahs.isEmpty())
+            Response.status(Response.Status.NOT_FOUND).entity("No cheetahs found").build();
         return cheetahs;
     }
-
 
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
