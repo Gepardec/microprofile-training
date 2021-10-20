@@ -12,7 +12,7 @@ import javax.ws.rs.Path;
 @Path("/advanced/config")
 @RequestScoped
 @Controller
-public class ExampleController {
+public class CommonConfigurationController {
 
     @Inject
     private Models model;
@@ -25,7 +25,7 @@ public class ExampleController {
     @GET
     public String getConfigFromPropertyFile() {
         model.put("value", commonConfigurationValue);
-        return "advanced/config/common_configuration_result.xhtml";
+        return "advanced/config/common-configuration-result.xhtml";
     }
 
 }
