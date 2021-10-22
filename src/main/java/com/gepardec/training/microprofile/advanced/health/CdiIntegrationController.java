@@ -13,11 +13,11 @@ import javax.ws.rs.Path;
 
 @Path("/advanced/health/cdiintegration")
 @RequestScoped
-public class LivenessController {
+public class CdiIntegrationController {
 
     @Inject
     @Liveness
-    private Instance<HealthCheck> livenessChecks;
+    private Instance<HealthCheck> healthChecks;
 
     @Inject
     private Models model;
@@ -26,7 +26,7 @@ public class LivenessController {
     @GET
     @Controller
     public String getLive() {
-        if (getHealthCheckStateByName("FixMe", livenessChecks)) {
+        if (getHealthCheckStateByName("produced", healthChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
