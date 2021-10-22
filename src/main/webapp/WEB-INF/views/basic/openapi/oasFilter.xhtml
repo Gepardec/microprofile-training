@@ -1,5 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
         Microprofile-OpenAPI Basics OASFilter
@@ -7,41 +7,52 @@
 
     <ui:define name="body">
         <section>
-            <div class="text-center">
-                <h1>Generate Document from JAX-RS</h1>
-            </div>
-            <div class="mt-3">
-                <p>
-                    The specification for Microprofile
-                    <a href="#{mpUri.openApiUri}"
-                       target="_blank">
-                        OpenAPI.
-                    </a>
-                </p>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Generate Document from JAX-RS</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.openApiUri}"
+                                target="_blank">
+                                OpenAPI.
+                            </a>
+                        </p>
 
-                <p>
-                    The OASFilter interface allows to adapt elements and fields of the generated OpenAPI document.
-                    The implementation has to be registered in the config.
-                    <code>mp.openapi.filter=com.mypackage.MyFilter</code>
-                </p>
+                        <p>
+                            The OASFilter interface allows to adapt elements and fields of the generated OpenAPI document.
+                            The implementation has to be registered in the config.
+                            <code>mp.openapi.filter=com.mypackage.MyFilter</code>
+                        </p>
+                        <hr class="my-3" />
+                    </div>
+                </div>
 
-            </div>
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
 
-            <hr class="my-3" />
+                        <p>
+                            Implement the OASFilter interface in the
+                            <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/MyFilter.java</code>
+                            class and override the filterAPIResponse method.
+                            Change all ApiResponse description which are "Missing description" to "No Cheetah found"
+                            and check the openApi document if it worked.
+                            <a
+                                href="http://localhost:8080/openapi"> OpenApi
+                            </a>
 
-            <div class="mt-2">
-                <h4>
-                    Your Task:
-                </h4>
-
-                <p>
-                    Implement the OASFilter interface in the
-                    <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/MyFilter.java</code>
-                    class and override the filterAPIResponse method.
-                    Change all ApiResponse description which are "Missing description" to "No Cheetah found"
-                    and check the openApi document if it worked. <a href="http://localhost:8080/openapi"> OpenApi</a>
-
-                </p>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
     </ui:define>

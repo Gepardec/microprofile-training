@@ -8,9 +8,9 @@ The project is based on the following listed specifications.
 * `Microprofile 4.0`
 * `Jakarta-MVC-1.1.0` (JSF as template engine)
 
-The project uses the following client side libraries.
+The project uses the following client side libraries in form os webjars.
 
-* `MDB-3.6.0` (Based on Bootstrap 5.Final)
+* `MDB-3.9.0` (Based on Bootstrap 5.Final)
 * `Fontawesome-5.15.2`
 
 ## System Requirements
@@ -30,7 +30,7 @@ See the repository root README for further details.
 
 ## How to provide documentation
 
-All of our documentation is done in this Github WIKI which relates to the projects repository.
+All of our documentation is available as Github Pages, which relates to the projects repository.
 
 ## How to use Git Branching
 
