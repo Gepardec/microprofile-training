@@ -27,7 +27,7 @@ public class LivenessController {
     @GET
     @Controller
     public String getLive() {
-        if (getHealthCheckStateByName("FixMe", livenessChecks)) {
+        if (getHealthCheckStateByName("FixMeLive", livenessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");

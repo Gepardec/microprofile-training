@@ -12,7 +12,7 @@ public class LivenessCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("FixMe")
+        return HealthCheckResponse.named("FixMeLive")
                 .down() // Fix Me
                 .build();
     }
