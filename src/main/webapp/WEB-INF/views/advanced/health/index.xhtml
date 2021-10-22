@@ -14,12 +14,14 @@
             <tag:card id="mp-health-cdiintegration" title="CDI Integration">
                 <ui:define name="body">
                     <p>
+                        <cite>
                         Any enabled bean with a bean of
                         type org.eclipse.microprofile.health.HealthCheck and @Liveness, @Readiness or @Health qualifier
                         can be used as health check procedure.
 
                         Contextual references of health check procedures are invoked by runtime
                         when the outermost protocol entry point (i.e. http://HOST:PORT/health) receives an inbound request.
+                        </cite>
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
