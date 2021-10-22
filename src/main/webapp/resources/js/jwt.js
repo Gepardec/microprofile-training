@@ -1,6 +1,6 @@
-import mp from "../../mp.js";
-import httpClient from "../../httpClient.js";
-import login from "../../login.js";
+import mp from "./mp.js";
+import httpClient from "./httpClient.js";
+import login from "./login.js";
 
 const registerClick = (options) => {
     const {

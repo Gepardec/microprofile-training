@@ -1,0 +1,110 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Advanced JWT (CDI injection proxying)
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>CDI injection proxying</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for MicroProfile
+                            <a href="#{mpUri.jwtUri}#_handling_of_non_requestscoped_injection_of_claim_values"
+                                target="_blank">
+                                JWT (CDI injection proxying)
+                            </a>
+                        </p>
+
+                        <p>
+                            MicroProfile JWT implementations must handle injection of claims in <code>@ApplicationScoped</code> beans. Therefore they have to proxy the claim somehow.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Remove the comments around <code>@inject</code> in <code>InjectionProxyingController</code> and redeploy.
+                            Login with the <code>training-user</code>, logout again and login with the <code>training-admin</code>.
+                        </p>
+                        <p>
+                            Click the button below and you will see that the requests fail with status code <code>400</code>.
+                        </p>
+
+                        <p>
+                            Fix the problems by injecting a proxyable claim in <code>com.gepardec.training.microprofile.advanced.jwt.InjectionProxyingService.upn</code>.
+                        </p>
+
+                        <p>
+                            When your fix works, the request should respond with status code <code>200</code> and &#x1F973;
+                        </p>
+
+                        <div class="d-flex justify-content-center flex-row  my-2">
+                            <div class="mx-1">
+                                <tag:button id="callInjectionProxyingJwtEndpoint" path="/advanced/jwt/injection-proxying/upn" text="CDI call" />
+                            </div>
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="row text-start font-weight-bold">
+                            <div class="col">
+                                Server Response:
+                            </div>
+                            <div class="col">
+                                <span id="serverResponse" />
+                            </div>
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <tag:login />
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <script type="module">
+            import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'
+            import injection_proxying from '#{pathHelper.buildResourcePath("/js/advanced/jwt/injection-proxying.js")}'
+
+            mp.registerOnLoad(() => {
+                injection_proxying.init({
+                    clickElement: document.getElementById('callInjectionProxyingJwtEndpoint'),
+                    responseElement: document.getElementById('serverResponse'),
+                    sendToken: true
+                });
+            });
+        </script>
+    </ui:define>
+</ui:composition>

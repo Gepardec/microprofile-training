@@ -40,6 +40,7 @@
                             <tag:navLink id="navBasicJwt" rendered="#{pathHelper.isOnSubpage('/basic/jwt')}" active="#{pathHelper.isOnSubpage('/basic/jwt')}" text="MP-JWT Basic" path="/basic/jwt/index" />
                             <tag:navLink id="navAdvancedConfig" rendered="#{pathHelper.isOnSubpage('/advanced/config')}" active="#{pathHelper.isOnSubpage('/advanced/config')}" text="MP-Config Advanced" path="/advanced/config/index" />
                             <tag:navLink id="navAdvancedFaultTolerance" rendered="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" active="#{pathHelper.isOnSubpage('/advanced/faulttolerance')}" text="MP-Fault-Tolerance Advanced" path="/advanced/faulttolerance/index" />
+                            <tag:navLink id="navAdvancedJwt" rendered="#{pathHelper.isOnSubpage('/advanced/jwt')}" active="#{pathHelper.isOnSubpage('/advanced/jwt')}" text="MP-JWT Advanced" path="/advanced/jwt/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
@@ -64,7 +65,6 @@
             </footer>
             <h:outputScript name="webjars/mdb-ui-kit/3.9.0/js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
-            <script src="http://localhost:18080/auth/js/keycloak.js"></script>
         </f:view>
 
         <ui:insert name="bottom" />

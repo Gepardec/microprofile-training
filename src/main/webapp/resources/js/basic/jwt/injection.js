@@ -1,4 +1,4 @@
-import jwt from "./jwt.js";
+import jwt from "../../jwt.js";
 
 const register = (options) => {
     const {
