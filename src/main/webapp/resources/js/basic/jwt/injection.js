@@ -4,17 +4,20 @@ const register = (options) => {
     const {
         clickElementJwt,
         clickElementClaim,
-        responseElement
+        responseElement,
+        sendToken
     } = options;
 
     jwt.registerClick({
         clickElement: clickElementJwt,
-        responseElement: responseElement
+        responseElement: responseElement,
+        sendToken: sendToken
     });
 
     jwt.registerClick({
         clickElement: clickElementClaim,
-        responseElement: responseElement
+        responseElement: responseElement,
+        sendToken: sendToken
     })
 };
 
