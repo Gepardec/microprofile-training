@@ -1,0 +1,58 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Microprofile-Health Basics First Look
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Health Endpoint</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.healthUri}#health"
+                                target="_blank">
+                                Health.
+                            </a>
+                        </p>
+
+                        <p>
+                            The health endpoint is usually served either on the management port
+                            of the application server(e.g.: Wildfly), or the application port(e.g.: Quarkus)
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Have a look at the health endpoint: <br />
+                            <code><tag:link id="toHealthCheckEndpoint" path="http://localhost:9990/health" text="http://localhost:9990/health" target="_blank" /></code><br />
+                            <code><tag:link id="toReadyCheckEndpoint" path="http://localhost:9990/ready" text="http://localhost:9990/ready" target="_blank" /></code><br />
+                            <code><tag:link id="toLiveCheckEndpoint" path="http://localhost:9990/live" text="http://localhost:9990/live" target="_blank" /></code><br />
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

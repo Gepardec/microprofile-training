@@ -1,0 +1,66 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+
+    <ui:define name="title">
+        Basics Microprofile-Metrics Grafana
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Grafana</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html"
+                               target="_blank">
+                                Metrics.
+                            </a>
+                        </p>
+
+                        <p>
+                            <a href="http://localhost:13000/d/lqG7bTv7z/smallrye-microprofile-metrics-2021-06-02-13-25-36-utc?orgId=1"
+                               target="_blank"> Grafana
+                            </a> allows you to visualize a variety of metrics.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <section>
+                            <h4>
+                                Your Task:
+                            </h4>
+
+                            <p>
+                                Take a look at the Grafana <a href="http://localhost:13000/d/lqG7bTv7z/smallrye-microprofile-metrics-2021-06-02-13-25-36-utc?orgId=1"
+                                                              target="_blank"> Dashboard.
+                            </a> It contains diagrams for app, vendor and base metrics. Choose one of the metrics of the previous examples and add a new diagram to the Grafana Dashboard visualizing this metric.
+
+                            </p>
+
+                            <hr class="my-3" />
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+
+</ui:composition>
+
+
+

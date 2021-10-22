@@ -1,0 +1,76 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+    <ui:define name="title">
+        Microprofile-Rest-Client HeadersFactory
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>HeadersFactory</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.restClientUri}"
+                               target="_blank">
+                                Rest Client
+                            </a>
+                        </p>
+
+                        <p>
+                            The
+                            <code>@RegisterClientHeaders</code> annotation registers an implementation of the ClientHeadersFactory interface
+                            which allows to read incoming HTTP Headers and to define additional outgoing Http Headers.
+
+                        </p>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Use the
+                            <code>src/main/java/at/gepardec/training/microprofile/basic/restclient/RestClientHeaderHandler</code>
+                            to read the headers in the log. Also add a new outgoing header and check the response.
+                        </p>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col text-center">
+                                Value:
+                            </div>
+                            <div class="col font-weight-bold">
+                                <pre>
+                                    ${value}
+                                </pre>
+                            </div>
+                        </div>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

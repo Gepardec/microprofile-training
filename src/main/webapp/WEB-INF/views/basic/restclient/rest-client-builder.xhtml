@@ -1,0 +1,73 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+
+    <ui:define name="title">
+        Microprofile-Rest-Client RestClientBuilder
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>RestClientBuilder</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.restClientUri}"
+                               target="_blank">
+                                Rest Client
+                            </a>
+                        </p>
+
+                        <p>
+                            The RestClientBuilder from MP allows to make typesafe rest calls.
+                            It's also easy to use and the syntax feels intuitive.
+                        </p>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Invoke the Restservice
+                            <a>https://reqres.in/api/users/1</a>
+                            with the help of the RestClientBuilder
+                            in the <code>UseRestClientBuilder.class</code>.
+                        </p>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col text-center">
+                                Value:
+                            </div>
+                            <div class="font-weight-bold">
+                                <pre>${value}</pre>
+                            </div>
+                        </div>
+
+                        <hr class="my-3"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

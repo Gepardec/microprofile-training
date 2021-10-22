@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 
 @Path("/advanced/config/customconfigsource")
 @RequestScoped
-public class CustomConfigSource {
+public class CustomConfigSourceController {
 
     @Inject
     private Models model;

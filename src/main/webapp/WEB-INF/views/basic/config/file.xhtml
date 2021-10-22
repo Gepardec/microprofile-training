@@ -46,7 +46,7 @@
                         </h4>
 
                         <p>
-                            Provide the application name via property file. Take a look at
+                            Provide the application name via property file, the key should be <code>file.application.name</code>.Take a look at
                             <code>src/main/resources/META-INF/microprofile-config.properties</code> and the controller class
                             <code>com.gepardec.training.microprofile.basic.config.FileController</code>.
                         </p>
@@ -57,10 +57,10 @@
 
                 <div class="row my-2">
                     <div class="col">
-                        <div class="col-sm text-center text-sm-right mr-sm-1">
+                        <div class="col text-center">
                             Application name:
                         </div>
-                        <div class="col-sm text-center text-sm-left ml-sm-1">
+                        <div class="col text-center">
                             <h:outputText value="${applicationName}" class="font-weight-bold" />
                         </div>
                         <div>
