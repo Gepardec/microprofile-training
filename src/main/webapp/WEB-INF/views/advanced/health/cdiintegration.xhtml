@@ -1,0 +1,70 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <ui:define name="title">
+        Microprofile-Health Advanced CDI Producer
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>CDI Integration</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for Microprofile
+                            <a href="#{mpUri.healthUri}#health"
+                                target="_blank">
+                                Health.
+                            </a>
+                        </p>
+                        Replace the existing Healthchecks with your own.
+                        <p>
+
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>
+                            Provide your own Healthchecks using a producer.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col text-center">
+                                Status:
+                            </div>
+                            <div class="col text-center">
+                                <h:outputText value="${stateMessage}" class="alert-warning" />
+                            </div>
+                        </div>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
