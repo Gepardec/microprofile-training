@@ -13,7 +13,7 @@ public class ReadinessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
 
-        return HealthCheckResponse.named("FixMe")
+        return HealthCheckResponse.named("FixMeReady")
                 .down()// Fix Me
                 .build();
     }

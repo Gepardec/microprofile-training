@@ -27,7 +27,7 @@ public class ReadinessController {
     @GET
     @Controller
     public String getReady() {
-        if (getHealthCheckStateByName("FixMe", readinessChecks)) {
+        if (getHealthCheckStateByName("FixMeReady", readinessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
