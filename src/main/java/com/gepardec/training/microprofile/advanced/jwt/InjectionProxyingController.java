@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 public class InjectionProxyingController {
 
     /*@Inject*/
-    InjectionProxyingService injectionProxyingService;
+    private InjectionProxyingService injectionProxyingService;
 
     @Controller
     @GET

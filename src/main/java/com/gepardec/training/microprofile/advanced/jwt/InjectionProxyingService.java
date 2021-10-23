@@ -12,10 +12,10 @@ public class InjectionProxyingService {
 
     @Inject
     @Claim(standard = Claims.upn)
-    String upn;
+    private String upn;
 
     @Inject
-    JsonWebToken jsonWebToken;
+    private JsonWebToken jsonWebToken;
 
     public boolean isUpnValid() {
         return jsonWebToken.getClaim(Claims.upn).equals(upn);
