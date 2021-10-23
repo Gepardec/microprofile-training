@@ -51,7 +51,7 @@ const registerCallElementClickEventListener = () => {
             uri: event.target.href,
             count: parallelCount,
             successCallback: (response, count) => extractResponseData(response, count),
-            errorCallback: (response, count) => extractResponseData(response, count),
+            failureCallback: (response, count) => extractResponseData(response, count),
         }).then((data) => {
             displayData(data)
             state.timerDialog.hide()

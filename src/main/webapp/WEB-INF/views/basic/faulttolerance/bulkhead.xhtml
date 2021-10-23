@@ -30,7 +30,7 @@
                         </p>
 
                         <p>
-                            <code>@Bulkhead</code> prevents a service, in particular a service endpoint, to process to many parallel requests which could overload the service.
+                            Bulkhead prevents a service, in particular a service endpoint, to process to many parallel requests which could overload the service.
                             All calls to an endpoint which cannot be processed will fail with a <code>BulkheadException</code> exception which in our case gets handled by an
                             <code>ExceptionMapper</code> which returns a specific response for that case.
                         </p>

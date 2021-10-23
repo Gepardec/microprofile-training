@@ -33,27 +33,34 @@
                         </p>
 
                         <p>
-                            <code>@CircuitBreaker</code> prevents the service from being under load because of frequent failures, which could be caused by network failures,
+                            CircuitBreaker prevents the service from being under load because of frequent failures, which could be caused by network failures,
                             or maybe a resart of a dependent service.
                             The circuit breaker mechanism has three states which the spec explains as follows.
                         </p>
 
                         <ol>
                             <li>
-                                <b>Closed:</b>
-                                In normal operation, the circuit breaker is closed. The circuit breaker records whether each call is a success or failure and keeps track of the most
-                                recent results in a rolling window. Once the rolling window is full, if the proportion of failures in the rolling window rises above the failureRatio,
-                                the circuit breaker will be opened.
+                                <cite>
+                                    <b>Closed:</b>
+                                    In normal operation, the circuit breaker is closed. The circuit breaker records whether each call is a success or failure and keeps track of the most
+                                    recent results in a rolling window. Once the rolling window is full, if the proportion of failures in the rolling window rises above the failureRatio,
+                                    the circuit breaker will be opened.
+                                </cite>
                             </li>
                             <li>
-                                <b>Open:</b>
-                                When the circuit breaker is open, calls to the service operating under the circuit breaker will fail immediately with a CircuitBreakerOpenException.
-                                After a configurable delay, the circuit breaker transitions to half-open state.
+                                <cite>
+                                    <b>Open:</b>
+                                    When the circuit breaker is open, calls to the service operating under the circuit breaker will fail immediately with a
+                                    <code>CircuitBreakerOpenException</code>.
+                                    After a configurable delay, the circuit breaker transitions to half-open state.
+                                </cite>
                             </li>
                             <li>
-                                <b>Half-open:</b>
-                                In half-open state, a configurable number of trial executions of the service are allowed. If any of them fail, the circuit breaker transitions back to open state.
-                                If all the trial executions succeed, the circuit breaker transitions to the closed state.
+                                <cite>
+                                    <b>Half-open:</b>
+                                    In half-open state, a configurable number of trial executions of the service are allowed. If any of them fail, the circuit breaker transitions back to open state.
+                                    If all the trial executions succeed, the circuit breaker transitions to the closed state.
+                                </cite>
                             </li>
                         </ol>
 
@@ -142,7 +149,7 @@
 
             mp.registerOnLoad(() => {
                 circuitbreaker.init({
-                    delayMillis: 500,
+                    delayMillis: 1000,
                     failEachCountElement: document.getElementById("failEachCountOutline"),
                     failAfterEachCountElement: document.getElementById("failAfterEachCountOutline"),
                     initElement: document.getElementById("initCallsCircuitbreakerEndpoint"),

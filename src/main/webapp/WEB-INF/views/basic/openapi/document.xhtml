@@ -1,5 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
         Microprofile-OpenAPI Basics Document
@@ -22,16 +22,18 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.openApiUri}"
-                               target="_blank">
+                                target="_blank">
                                 OpenAPI.
                             </a>
                         </p>
 
                         <p>
                             A basic JAX-RS interface does already provide sufficient information for an openAPI document.
-                            Try out <a href="http://localhost:8080/openapi"> OpenApi</a> and analyse it.
+                            Try out
+                            <a href="http://localhost:8080/openapi"> OpenApi</a>
+                            and analyse it.
                         </p>
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -49,8 +51,10 @@
 
                             In the MP configuration file you can configure something like this
                             <code>mp.openapi.scan.classes </code>
-                            Multiple solution are valid for this task. Check again <a
-                                href="http://localhost:8080/openapi"> OpenApi</a>
+                            Multiple solution are valid for this task. Check again
+                            <a
+                                href="http://localhost:8080/openapi"> OpenApi
+                            </a>
                             if your filter worked.
 
                         </p>

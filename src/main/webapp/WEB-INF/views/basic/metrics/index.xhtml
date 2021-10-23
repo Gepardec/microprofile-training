@@ -1,13 +1,13 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="headerText">
         Microprofile Metrics Basic
     </ui:define>
 
     <ui:define name="additionalNavLink">
-        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward"/></tag:navLink>
+        <tag:navLink id="toBasicIndex" path="/basic/index" text="Back"><i class="fas fa-step-backward" /></tag:navLink>
     </ui:define>
 
     <ui:define name="body">
@@ -19,7 +19,7 @@
                         Take a look at the already existing metrics.
                     </p>
                 </ui:define> <ui:define name="buttons">
-                <tag:button id="toBaseExample" text="Examples" path="/basic/metrics/base"/>
+                <tag:button id="toBaseExample" text="Examples" path="/basic/metrics/base" />
             </ui:define>
 
 
@@ -32,7 +32,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleCounted" text="Examples" path="/basic/metrics/counted"/>
+                    <tag:button id="toMetricsExampleCounted" text="Examples" path="/basic/metrics/counted" />
                 </ui:define>
 
             </tag:card>
@@ -44,7 +44,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleMetric" text="Examples" path="/basic/metrics/metric"/>
+                    <tag:button id="toMetricsExampleMetric" text="Examples" path="/basic/metrics/metric" />
                 </ui:define>
 
             </tag:card>
@@ -57,7 +57,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleMetered" text="Examples" path="/basic/metrics/metered"/>
+                    <tag:button id="toMetricsExampleMetered" text="Examples" path="/basic/metrics/metered" />
                 </ui:define>
 
             </tag:card>
@@ -70,7 +70,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleTimed" text="Examples" path="/basic/metrics/timed"/>
+                    <tag:button id="toMetricsExampleTimed" text="Examples" path="/basic/metrics/timed" />
                 </ui:define>
 
             </tag:card>
@@ -83,7 +83,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toMetricsExampleSimplyTimed" text="Examples" path="/basic/metrics/simply-timed"/>
+                    <tag:button id="toMetricsExampleSimplyTimed" text="Examples" path="/basic/metrics/simply-timed" />
                 </ui:define>
 
             </tag:card>

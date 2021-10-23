@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Microprofile Advanced
@@ -16,10 +16,11 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples" path="/advanced/config/index"/>
+                    <tag:button id="toConfigExamples" text="Examples" path="/advanced/config/index" />
                 </ui:define>
             </tag:card>
         </section>
+
         <section>
             <tag:card id="mp-openapi" title="Microprofile OpenAPI">
                 <ui:define name="body">
@@ -29,10 +30,11 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toopenApiExamples" text="Examples" path="/advanced/openapi/index"/>
+                    <tag:button id="toopenApiExamples" text="Examples" path="/advanced/openapi/index" />
                 </ui:define>
             </tag:card>
         </section>
+
         <section>
             <tag:card id="mp-restclient" title="Microprofile Rest Client">
                 <ui:define name="body">
@@ -41,10 +43,11 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toRestClientExamples" text="Examples" path="/advanced/restclient/index"/>
+                    <tag:button id="toRestClientExamples" text="Examples" path="/advanced/restclient/index" />
                 </ui:define>
             </tag:card>
         </section>
+
         <section>
             <tag:card id="mp-faulttolerance" title="Microprofile Fault Tolerance">
                 <ui:define name="body">
@@ -53,7 +56,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaultToleranceExamples" text="Examples" path="/advanced/faulttolerance/index"/>
+                    <tag:button id="toFaultToleranceExamples" text="Examples" path="/advanced/faulttolerance/index" />
                 </ui:define>
             </tag:card>
         </section>
@@ -66,7 +69,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJWTExamples" text="Examples" path="/advanced/jwt/index"/>
+                    <tag:button id="toJWTExamples" text="Examples" path="/advanced/jwt/index" />
                 </ui:define>
             </tag:card>
         </section>

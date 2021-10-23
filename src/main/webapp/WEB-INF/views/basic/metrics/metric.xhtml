@@ -1,7 +1,7 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+>
 
     <ui:define name="title">
         Basics Microprofile-Metrics Metric
@@ -23,7 +23,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html#_metric"
-                               target="_blank">
+                                target="_blank">
                                 Metrics (Metric).
                             </a>
                         </p>
@@ -47,12 +47,12 @@
                                 Use <code>@Metric</code> to so that <code>com.gepardec.training.microprofile.basic.metrics.MetricController#counter</code>
                                 is injected with the Counter <code>"count-example"</code>. Then, count should be the same as in
                                 <a href="http://localhost:9990/metrics"
-                                   target="_blank">
+                                    target="_blank">
                                     Wildfly
                                 </a>
                                 and
                                 <a href="http://localhost:19090/"
-                                   target="_blank">
+                                    target="_blank">
                                     Prometheus.
                                 </a>
 

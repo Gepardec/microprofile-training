@@ -1,11 +1,10 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
         Basics Fault-Tolerance
     </ui:define>
-
 
 
     <ui:define name="body">
@@ -20,7 +19,7 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaulttoleranceAsynchronous" text="Example"
-                                path="/basic/faulttolerance/asynchronous"/>
+                        path="/basic/faulttolerance/asynchronous" />
                 </ui:define>
             </tag:card>
         </section>
@@ -33,7 +32,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceFallback" text="Example" path="/basic/faulttolerance/fallback"/>
+                    <tag:button id="toFaulttoleranceFallback" text="Example" path="/basic/faulttolerance/fallback" />
                 </ui:define>
             </tag:card>
         </section>
@@ -48,7 +47,7 @@
                     </p>
                     from the
                     <a href="#{mpUri.faultToleranceUri}#timeout"
-                       target="_blank">
+                        target="_blank">
                         Microprofile Fault Tolerance (Timeout)
                     </a>
                     specification
@@ -57,7 +56,7 @@
                     </div>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceTimeout" text="Example" path="/basic/faulttolerance/timeout"/>
+                    <tag:button id="toFaulttoleranceTimeout" text="Example" path="/basic/faulttolerance/timeout" />
                 </ui:define>
             </tag:card>
         </section>
@@ -71,7 +70,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceRetry" text="Example" path="/basic/faulttolerance/retry"/>
+                    <tag:button id="toFaulttoleranceRetry" text="Example" path="/basic/faulttolerance/retry" />
                 </ui:define>
             </tag:card>
         </section>
@@ -89,13 +88,13 @@
                     </p>
                     from the
                     <a href="#{mpUri.faultToleranceUri}#bulkhead"
-                       target="_blank">
+                        target="_blank">
                         Microprofile Fault Tolerance (Bulkhead)
                     </a>
                     specification
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaulttoleranceBulkhead" text="Example" path="/basic/faulttolerance/bulkhead"/>
+                    <tag:button id="toFaulttoleranceBulkhead" text="Example" path="/basic/faulttolerance/bulkhead" />
                 </ui:define>
             </tag:card>
         </section>
@@ -111,14 +110,14 @@
                     </p>
                     from the
                     <a href="#{mpUri.faultToleranceUri}#circuitbreaker"
-                       target="_blank">
+                        target="_blank">
                         Microprofile Fault Tolerance (Circuitbreaker)
                     </a>
                     specification
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaulttoleranceCircuitBreaker" text="Example"
-                                path="/basic/faulttolerance/circuitbreaker"/>
+                        path="/basic/faulttolerance/circuitbreaker" />
                 </ui:define>
             </tag:card>
         </section>
