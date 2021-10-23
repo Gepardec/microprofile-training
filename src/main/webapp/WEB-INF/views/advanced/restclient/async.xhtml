@@ -91,7 +91,8 @@
 
                             Add a ClientRequestFilter Provider which logs the value of <code>threadLocalValue</code>
                             in the <code>AsyncController</code> and adds a new header to the outgoing request.
-                            If you get the mistake continue.
+                            Try it out, and look at the log and value of the new header.
+                            If you understand the dilemma continue.
                         </p>
 
                         <p>
@@ -107,9 +108,12 @@
                         </h4>
 
                         <p>
-                            To implement the provider you need an <code>AsyncInvocationInterceptorFactory</code>.
+                            To implement the provider you need an <code>AsyncInvocationInterceptorFactory</code> and an <code>AsyncInvocationInterceptor</code>
                             Create a Factory which implements AsyncInvocationInterceptorFactory and return in the
                             <code>newInterceptor</code> method an interceptor which implements <code>AsyncInvocationInterceptor</code>.
+                            Now you can use the Interceptor method <code>prepareContext()</code> to get the value of AsyncController.
+                            In the <code>applyContext()</code> you can set the value.
+                            If everthing is done correctly you can check once again the asyncRequests and see the values of the new header is set.
 
                         </p>
 
