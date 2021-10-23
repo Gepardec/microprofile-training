@@ -47,6 +47,7 @@
                             <tag:navLink id="navAdvancedOpenApi" rendered="#{pathHelper.isOnSubpage('/advanced/openapi')}" active="#{pathHelper.isOnSubpage('/advanced/openapi')}" text="MP-OpenAPI Advanced" path="/advanced/openapi/index" />
                             <tag:navLink id="navBasicOpenApi" rendered="#{pathHelper.isOnSubpage('/basic/openapi')}" active="#{pathHelper.isOnSubpage('/basic/openapi')}" text="MP-OpenAPI Basic" path="/basic/openapi/index" />
                             <tag:navLink id="navBasicRestClient" rendered="#{pathHelper.isOnSubpage('/basic/restclient')}" active="#{pathHelper.isOnSubpage('/basic/restclient')}" text="MP-RestClient Basic" path="/basic/restclient/index" />
+                            <tag:navLink id="navAdvancedJwt" rendered="#{pathHelper.isOnSubpage('/advanced/jwt')}" active="#{pathHelper.isOnSubpage('/advanced/jwt')}" text="MP-JWT Advanced" path="/advanced/jwt/index" />
                             <!-- All static nav links to the welcome and main index pages -->
                             <tag:navLink id="navWelcomeLink" text="Welcome" path="/welcome" />
                             <tag:navLink id="navBasicLink" text="Basic" path="/basic/index" />
@@ -71,7 +72,6 @@
             </footer>
             <h:outputScript name="webjars/mdb-ui-kit/3.9.0/js/mdb.min.js" />
             <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
-            <script src="http://localhost:18080/auth/js/keycloak.js"></script>
         </f:view>
 
         <ui:insert name="bottom" />
