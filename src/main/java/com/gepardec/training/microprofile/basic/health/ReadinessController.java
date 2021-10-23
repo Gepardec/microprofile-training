@@ -2,7 +2,6 @@ package com.gepardec.training.microprofile.basic.health;
 
 import com.gepardec.training.microprofile.common.health.HealthHelper;
 import org.eclipse.microprofile.health.HealthCheck;
-import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Readiness;
 
 import javax.enterprise.context.RequestScoped;
