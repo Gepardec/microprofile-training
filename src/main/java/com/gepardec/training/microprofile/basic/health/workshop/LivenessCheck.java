@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.health;
+package com.gepardec.training.microprofile.basic.health.workshop;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
@@ -12,7 +12,7 @@ public class LivenessCheck implements HealthCheck {
 
     @Override
     public HealthCheckResponse call() {
-        return HealthCheckResponse.named("FixMe")
+        return HealthCheckResponse.named("FixMeLive")
                 .down() // Fix Me
                 .build();
     }
