@@ -9,15 +9,17 @@
 
     <ui:define name="body">
         <section>
-            <tag:card id="mp-health" title="Microprofile Health">
+            <tag:card id="mp-health" title="Microprofile Health 2.1">
                 <ui:define name="body">
                     <p>
-                        The Eclipse MicroProfile Health Check specification defines
-                        a single container runtime mechanism for validating the availability
-                        and status of a MicroProfile implementation.
-                        This is primarily intended as a machine to machine (M2M)
-                        mechanism for use in containerized environments like cloud
-                        providers.
+                        <cite>
+                            The Eclipse MicroProfile Health Check specification defines
+                            a single container runtime mechanism for validating the availability
+                            and status of a MicroProfile implementation.
+                            This is primarily intended as a machine to machine (M2M)
+                            mechanism for use in containerized environments like cloud
+                            providers.
+                        </cite>
                     </p>
                     The specification for Microprofile
                     <a href="#{mpUri.healthUri}#health"
@@ -27,30 +29,7 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toHealthExamples" text="Examples"
-                        path="/basic/health/index" />
-                </ui:define>
-            </tag:card>
-        </section>
-
-        <section>
-            <tag:card id="mp-config" title="Microprofile Config">
-                <ui:define name="body">
-                    <p>
-                        Microprofile Config facilitates the configuration of an application. With the following
-                        examples, you will configure this application in several ways and see how you can use the
-                        configured values. In two examples, these configured values will be mapped and converted into
-                        specific target types or even aggregated into a property class. Furthermore, you will handle
-                        empty configurations which, by default, lead to exceptions.
-                    </p>
-                    The specification for Microprofile
-                    <a href="#{mpUri.configUri}#config"
-                        target="_blank">
-                        Config.
-                    </a>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples"
-                        path="/basic/config/index" />
+                        path="/basic/health/index"/>
                 </ui:define>
             </tag:card>
         </section>

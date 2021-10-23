@@ -1,9 +1,8 @@
-package com.gepardec.training.microprofile.basic.health;
+package com.gepardec.training.microprofile.advanced.health;
 
 import com.gepardec.training.microprofile.common.health.HealthHelper;
 import org.eclipse.microprofile.health.HealthCheck;
-import org.eclipse.microprofile.health.HealthCheckResponse;
-import org.eclipse.microprofile.health.Readiness;
+import org.eclipse.microprofile.health.Liveness;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
@@ -13,16 +12,16 @@ import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/basic/health/ready")
+@Path("/advanced/health/cdiintegration")
 @RequestScoped
-public class ReadinessController {
+public class CdiIntegrationController {
 
     @Inject
     private HealthHelper healthHelper;
 
     @Inject
-    @Readiness
-    private Instance<HealthCheck> readinessChecks;
+    @Liveness
+    private Instance<HealthCheck> healthChecks;
 
     @Inject
     private Models model;
@@ -30,12 +29,13 @@ public class ReadinessController {
     @Path("/")
     @GET
     @Controller
-    public String getReady() {
-        if (healthHelper.healthCheckStateByName("FixMeReady", readinessChecks)) {
+    public String getLive() {
+        if (healthHelper.healthCheckStateByName("produced", healthChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
         }
-        return "basic/health/readiness.xhtml";
+        return "advanced/health/cdiintegration.xhtml";
     }
+
 }

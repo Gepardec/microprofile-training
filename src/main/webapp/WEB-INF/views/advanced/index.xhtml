@@ -22,6 +22,23 @@
         </section>
 
         <section>
+            <tag:card id="mp-health" title="Microprofile Health 2.1">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                        Any enabled bean with a bean of type
+                        org.eclipse.microprofile.health.HealthCheck and @Liveness, @Readiness or @Health qualifier
+                        can be used as health check procedure.
+                        Health check procedures are CDI beans, therefore, they can also be defined with CDI producers.
+                        </cite>
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExamples" text="Examples" path="/advanced/health/index"/>
+                </ui:define>
+            </tag:card>
+        </section>
+        <section>
             <tag:card id="mp-openapi" title="Microprofile OpenAPI">
                 <ui:define name="body">
                     <p>
