@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.basic.health;
 
+import com.gepardec.training.microprofile.common.health.HealthHelper;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Readiness;
@@ -17,6 +18,9 @@ import javax.ws.rs.Path;
 public class ReadinessController {
 
     @Inject
+    private HealthHelper healthHelper;
+
+    @Inject
     @Readiness
     private Instance<HealthCheck> readinessChecks;
 
@@ -27,18 +31,11 @@ public class ReadinessController {
     @GET
     @Controller
     public String getReady() {
-        if (getHealthCheckStateByName("FixMeReady", readinessChecks)) {
+        if (healthHelper.healthCheckStateByName("FixMeReady", readinessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
         }
         return "basic/health/readiness.xhtml";
-    }
-
-    private boolean getHealthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {
-        return healthChecks
-                .stream()
-                .filter(check -> check.call().getName().contentEquals(nameOfHealthCheck))
-                .anyMatch(readinessCheck -> readinessCheck.call().getStatus().equals(HealthCheckResponse.Status.UP));
     }
 }
