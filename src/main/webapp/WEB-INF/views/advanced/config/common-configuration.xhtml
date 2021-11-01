@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:tag="http://tags.microprofile.training.gepardec.com">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="header">
         Microprofile-Config Advanced ConfigSource
@@ -22,7 +22,7 @@
                         <p>
                             The specification for Microprofile
                             <a href="#{mpUri.configUri}#config"
-                                target="_blank">
+                               target="_blank">
                                 Config.
                             </a>
                         </p>
@@ -31,7 +31,7 @@
                             Within your application, you can provide the configuration to a seperate JAR.
                         </p>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
 
@@ -47,22 +47,33 @@
                             <code>com.gepardec.training.microprofile.common.CommonConfigurationController</code> uses the ConfigProperty
                             <code>common.key</code>. <code>common.key</code> is provided by the config-file
                             <code>config\common-configuration\src\main\resources\META-INF\microprofile-config.properties</code>.
-                            <br />
+                            <br/>
                             However, in this example we want to include the common-configuration JAR and override the value from
                             <code>config/common-configuration</code>
                             with a configuration value from our application. Therefore, provide the common-configuration JAR so
-                            that the configuration is present in this application. Then, override the value of
+                            that the configuration is present in this application:</p>
+                        <ol>
+                            <li>build the common-configuration JAR (<code>mvn clean install</code>)</li>
+                            <li>add the common-configuration-dependency
+                                to the <code>pom.xml</code> of the main application
+                            </li>
+                            <li>build the main application (<code>mvn clean install</code>)</li>
+                            <li>deploy the main application</li>
+                        </ol>
+                        <p>
+                            Then, override the value of
                             <code>common.key</code> in another way than in <code>config/common-configuration</code>.
                         </p>
 
-                        <hr class="my-3" />
+
+                        <hr class="my-3"/>
 
                         <div class="text-center">
                             <tag:button id="toCommonConfigExternal" text="Check result"
-                                path="/advanced/config/commonconfigurationexternal" />
+                                        path="/advanced/config/commonconfigurationexternal"/>
                         </div>
 
-                        <hr class="my-3" />
+                        <hr class="my-3"/>
                     </div>
                 </div>
             </div>
