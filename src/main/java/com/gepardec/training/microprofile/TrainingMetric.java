@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile;
 
 import org.eclipse.microprofile.metrics.annotation.*;
+import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.inject.Stereotype;
 import java.lang.annotation.ElementType;
@@ -16,6 +17,7 @@ import java.lang.annotation.Target;
 @Timed(name = "timed")
 @SimplyTimed(name = "simply-timed")
 @ConcurrentGauge(name = "concurrent-gauge")
+@Traced
 public @interface TrainingMetric {
 
 }
