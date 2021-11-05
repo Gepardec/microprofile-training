@@ -4,7 +4,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        MicroProfile Basics
+        Basic
     </ui:define>
 
     <ui:define name="body">
@@ -21,8 +21,17 @@
                             providers.
                         </cite>
                     </p>
+                    <p>
+                    from the
+                    <a href="#{mpUri.healthUri}#_rationale"
+                       target="_blank">
+                        MicroProfile Health
+                    </a>
+                    specification
+                    </p>
+
                     The specification for MicroProfile
-                    <a href="#{mpUri.healthUri}#health"
+                    <a href="#{mpUri.healthUri}"
                         target="_blank">
                         Health.
                     </a>
@@ -45,7 +54,7 @@
                         empty configurations which, by default, lead to exceptions.
                     </p>
                     The specification for MicroProfile
-                    <a href="#{mpUri.configUri}#config"
+                    <a href="#{mpUri.configUri}"
                         target="_blank">
                         Config.
                     </a>
@@ -82,7 +91,7 @@
                 <ui:define name="body">
                     <p>
                         <cite>
-                            The MicroProfile Rest Client provides a type-safe approach to invoke RESTful services over HTTP. As much as possible the MP Rest Client attempts to use Jakarta RESTful Web Services 2.1 APIs for consistency and easier re-use.
+                            The MicroProfile RestClient provides a type-safe approach to invoke RESTful services over HTTP. As much as possible the MicroProfile RestClient attempts to use Jakarta RESTful Web Services 2.1 APIs for consistency and easier re-use.
                         </cite>
                     </p>
                     <p>
@@ -96,7 +105,7 @@
                     The specification for MicroProfile
                     <a href="#{mpUri.restClientUri}"
                         target="_blank">
-                        Rest Client.
+                        RestClient.
                     </a>
                 </ui:define>
                 <ui:define name="buttons">
@@ -114,7 +123,7 @@
                         metrics, for example Metered, Counted or Timed.
                     </p>
                     The specification for MicroProfile
-                    <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html#metrics"
+                    <a href="#{mpUri.metricsUri}"
                         target="_blank">
                         Metrics.
                     </a>

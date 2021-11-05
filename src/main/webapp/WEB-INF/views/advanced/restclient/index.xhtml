@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Advanced MP-RestClient
+        RestClient Advanced
     </ui:define>
 
     <ui:define name="body">
@@ -11,7 +11,7 @@
             <tag:card id="mp-async" title="Asynchronous">
                 <ui:define name="body">
                     <p>
-                        It is possible for Rest Client interface methods to be declared asynchronous.
+                        It is possible for RestClient interface methods to be declared asynchronous.
                         This allows the implementation to utilize non blocking behavior in handling the request.
                         This is the case when the return type of the method is <code>java.util.concurrent.CompletionStage</code>.
                         To send an request from the client async works by default.

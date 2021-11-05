@@ -19,6 +19,8 @@ public class MicroprofileSpecificationUri {
 
     private static final String HEALTH_URI = "https://download.eclipse.org/microprofile/microprofile-health-2.1/microprofile-health-spec.html";
 
+    private static final String METRICS_URI = "https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html";
+
     public String getFaultToleranceUri() {
         return FAULT_TOLERANCE_URI;
     }
@@ -41,5 +43,9 @@ public class MicroprofileSpecificationUri {
 
     public String getRestClientUri() {
         return REST_CLIENT_URI;
+    }
+
+    public String getMetricsUri() {
+        return METRICS_URI;
     }
 }

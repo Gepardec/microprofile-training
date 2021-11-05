@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        MicroProfile Advanced
+        Advanced
     </ui:define>
 
     <ui:define name="body">
@@ -18,11 +18,14 @@
                             Health check procedures are CDI beans, therefore, they can also be defined with CDI producers.
                         </cite>
                     </p>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.configUri}#health"
-                        target="_blank">
-                        Health.
-                    </a>
+                    <p>
+                        from the
+                        <a href="#{mpUri.jwtUri}#_integration_with_cdi"
+                           target="_blank">
+                            MicroProfile Health
+                        </a>
+                        specification
+                    </p>
                 </ui:define>
 
                 <ui:define name="buttons">
@@ -60,7 +63,7 @@
         </section>
 
         <section>
-            <tag:card id="mp-restclient" title="MicroProfile Rest Client">
+            <tag:card id="mp-restclient" title="MicroProfile RestClient">
                 <ui:define name="body">
                     <p>
                         After the basic examples let's look into some enhanced features.
