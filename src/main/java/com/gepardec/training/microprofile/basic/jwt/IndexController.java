@@ -2,6 +2,7 @@ package com.gepardec.training.microprofile.basic.jwt;
 
 import com.gepardec.training.microprofile.TrainingMetric;
 import org.eclipse.microprofile.metrics.annotation.*;
+import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
@@ -12,6 +13,7 @@ import javax.ws.rs.Path;
 @RequestScoped
 @Controller
 @TrainingMetric
+@Traced
 public class IndexController {
 
     @GET

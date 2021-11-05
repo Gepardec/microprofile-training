@@ -27,9 +27,9 @@ else
     echo PostgresDS data-source already created
 end-if
 
-if (outcome != success) of /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:read-resource()
-    /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=jaeger:add(host=localhost, port=16831)
-    /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=mp-jaeger:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-binding=jaeger)
+if (outcome != success) of /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mp-jaeger:read-resource()
+    /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mp-jaeger:add(host=localhost, port=16831)
+    /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=mp-jaeger:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-binding=mp-jaeger, reporter-flush-interval=1000)
     /subsystem=microprofile-opentracing-smallrye:write-attribute(name=default-tracer, value=mp-jaeger)
     echo Created Jaeger Configuration
 else

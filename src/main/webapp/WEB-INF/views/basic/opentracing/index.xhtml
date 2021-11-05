@@ -3,20 +3,41 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Basics OpenTracing
+        Open-Tracing Basic
     </ui:define>
 
 
     <ui:define name="body">
         <section>
-            <tag:card id="example-jaeger-ui" title="Jaeger UI">
+            <tag:card id="example-jaeger-ui" title="Basics">
                 <ui:define name="body">
                     <p>
-                        Bla bla
+                        Let's walk through the
+                        <a href="https://opentracing.io/docs/overview/"
+                            target="_blank">
+                            docs
+                        </a>
+                        to learn the Open-Tracing Architecture and Terminology.
+                    </p>
+
+                    <p>
+                        Let's take a tour through the
+                        <a href="http://localhost:16686/search" target="_blank">Jaeger-UI</a>
+                        .
+                    </p>
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="example-tracer" title="Basics">
+                <ui:define name="body">
+                    <p>
+                        Let's use the <code>Tracer</code> to create our own spances instead of using <code>@Traced</code>.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toExampleJaegerUi" text="Example" path="/basic/opentracing/jaeger-ui" />
+                    <tag:button id="toExampleTracer" text="Example" path="/basic/opentracing/tracer" />
                 </ui:define>
             </tag:card>
         </section>

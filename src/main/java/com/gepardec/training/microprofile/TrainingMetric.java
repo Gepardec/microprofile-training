@@ -17,7 +17,6 @@ import java.lang.annotation.Target;
 @Timed(name = "timed")
 @SimplyTimed(name = "simply-timed")
 @ConcurrentGauge(name = "concurrent-gauge")
-@Traced
 public @interface TrainingMetric {
 
 }

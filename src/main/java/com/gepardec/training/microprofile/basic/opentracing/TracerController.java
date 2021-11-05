@@ -1,9 +1,9 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
-import com.gepardec.training.microprofile.TrainingMetric;
 import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,9 +11,11 @@ import javax.ws.rs.Path;
 @Path("/basic/opentracing")
 @RequestScoped
 @Controller
-@TrainingMetric
 @Traced
-public class IndexController {
+public class TracerController {
+
+    @Inject
+    private TracerService tracerService;
 
     @Path("/")
     @GET
@@ -21,9 +23,11 @@ public class IndexController {
         return index();
     }
 
-    @Path("/index")
+    @Path("/tracer")
     @GET
     public String index() {
-        return "basic/opentracing/index.xhtml";
+        tracerService.auoTraced();
+        tracerService.customTraced();
+        return "basic/opentracing/tracer.xhtml";
     }
 }

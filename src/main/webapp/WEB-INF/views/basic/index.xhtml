@@ -134,9 +134,8 @@
             </tag:card>
         </section>
 
-
         <section>
-            <tag:card id="mp-opentracing" title="MicroProfile OpenTracing">
+            <tag:card id="mp-opentracing" title="MicroProfile Open-Tracing">
                 <ui:define name="body">
                     <p>
                         <cite>
@@ -149,29 +148,14 @@
                         from the
                         <a href="#{mpUri.openApiUri}#_introduction"
                             target="_blank">
-                            MicroProfile Open Tracing
+                            MicroProfile Open-Tracing
                         </a>
                         specification
-                    </p>
-                    <p>
-                        All the examples in this MicroProfile training use the provided keycloak server for issuing tokens. Therefore, on opening any of the examples, you will be forwarded to keycloak and prompted with a login form. The following training users are preconfigured and used throughout the training:
-                    </p>
-                    <ul>
-                        <li>training-user</li>
-                        <li>training-admin</li>
-                    </ul>
-                    <p>
-                        If you need to switch the user, simply click 'logout' and you will be forwarded to keycloak again.
-                    </p>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.jwtUri}"
-                        target="_blank">JWT
-                    </a>
-                    .
+                    </p>.
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJwtExamples" text="Examples"
-                        path="/basic/jwt/index" />
+                    <tag:button id="toOpentracingExample" text="Examples"
+                        path="/basic/opentracing/index" />
                 </ui:define>
             </tag:card>
         </section>
