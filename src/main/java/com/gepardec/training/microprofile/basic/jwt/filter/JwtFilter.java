@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.basic.jwt.filter;
 
+import com.gepardec.training.microprofile.HeaderHelper;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import javax.ws.rs.WebApplicationException;
@@ -14,7 +15,7 @@ public class JwtFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
-        if (requestContext.getUriInfo().getPath().contains("jwt") && requestContext.getHeaders().get("X-HttpClient-Training") != null) {
+        if (requestContext.getUriInfo().getPath().contains("jwt") && HeaderHelper.isJsHttpClientRequest(requestContext.getHeaders())) {
             try {
                 Class.forName(JsonWebToken.class.getName());
             } catch (NoClassDefFoundError | ClassNotFoundException e) {

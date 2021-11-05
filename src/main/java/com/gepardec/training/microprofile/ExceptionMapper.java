@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.mvc.Models;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
@@ -22,6 +24,9 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Throwabl
     @Context
     private UriInfo uriInfo;
 
+    @Context
+    private HttpHeaders httpHeaders;
+
     @Inject
     private Logger log;
 
@@ -30,14 +35,18 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Throwabl
 
     @Override
     public Response toResponse(Throwable exception) {
-        final Viewable view = new Viewable("error.xhtml");
+        if (exception instanceof WebApplicationException && HeaderHelper.isJsHttpClientRequest(httpHeaders.getRequestHeaders())) {
+            return ((WebApplicationException) exception).getResponse();
+        } else {
+            final Viewable view = new Viewable("error.xhtml");
 
-        models.put("exceptionType", exception.getClass().getName());
-        models.put("exceptionMessage", exception.getMessage());
-        models.put("uri", uriInfo.getAbsolutePath().toString());
-        models.put("stackTrace", ExceptionUtils.getStackTrace(exception));
-        log.error("Error occurred on '" + uriInfo.getAbsolutePath() + "'", exception);
+            models.put("exceptionType", exception.getClass().getName());
+            models.put("exceptionMessage", exception.getMessage());
+            models.put("uri", uriInfo.getAbsolutePath().toString());
+            models.put("stackTrace", ExceptionUtils.getStackTrace(exception));
+            log.error("Error occurred on '" + uriInfo.getAbsolutePath() + "'", exception);
 
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(view).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(view).build();
+        }
     }
 }
