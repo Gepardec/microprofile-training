@@ -1,4 +1,4 @@
-= Microprofile Training
+= MicroProfile Training
 
 This repository holds the training for the microprofile specifications.
 After working through the training one should be able to understand the most common microprofile specifications, their impacts, their interoperability and how to use them properly in real time applications.

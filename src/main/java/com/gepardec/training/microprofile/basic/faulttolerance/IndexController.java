@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
+import com.gepardec.training.microprofile.TrainingMetric;
 import org.eclipse.microprofile.metrics.annotation.*;
 
 import javax.enterprise.context.RequestScoped;
@@ -10,11 +11,7 @@ import javax.ws.rs.Path;
 @Path("/basic/faulttolerance")
 @RequestScoped
 @Controller
-@Counted(name = "counted")
-@Metered(name = "metered")
-@Timed(name = "timed")
-@SimplyTimed(name = "simply-timed")
-@ConcurrentGauge(name = "concurrent-gauge")
+@TrainingMetric
 public class IndexController {
 
     @GET

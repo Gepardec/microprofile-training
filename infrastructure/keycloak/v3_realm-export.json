@@ -835,7 +835,7 @@
         "saml.artifact.binding": "false",
         "backchannel.logout.session.required": "false",
         "client_credentials.use_refresh_token": "false",
-        "consent.screen.text": "Training Microprofile done right (local)",
+        "consent.screen.text": "Training MicroProfile done right (local)",
         "saml_force_name_id_format": "false",
         "require.pushed.authorization.requests": "false",
         "saml.client.signature": "false",
@@ -908,7 +908,7 @@
     {
       "id": "e6b45892-fbd2-4b5a-990e-81b49187654f",
       "name": "microprofile-jwt",
-      "description": "Microprofile - JWT built-in scope",
+      "description": "MicroProfile - JWT built-in scope",
       "protocol": "openid-connect",
       "attributes": {
         "include.in.token.scope": "true",

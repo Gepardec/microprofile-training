@@ -10,11 +10,6 @@ import javax.ws.rs.Path;
 @Path("/basic")
 @RequestScoped
 @Controller
-@Counted(name = "counted")
-@Metered(name = "metered")
-@Timed(name = "timed")
-@SimplyTimed(name = "simply-timed")
-@ConcurrentGauge(name = "concurrent-gauge")
 public class IndexController {
 
     @Path("/")

@@ -20,7 +20,7 @@ The following listed application are available.
 
 ## Keycloak
 
-Keycloak is used to secure the training application via Microprofile JWT.
+Keycloak is used to secure the training application via MicroProfile JWT.
 
 The resources of Keycloak are located at `/infrastructure/keycloak` and are:
 
