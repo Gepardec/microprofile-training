@@ -30,7 +30,8 @@
 
                         <p>
                             There is a database included in our infrastructure.
-                            Configure the Database HealthCheck so it properly reflects the state of the database.
+                            If an application uses a database its a good idea to run a database health check.
+                            Depending on the scenario it can be a liveness or readiness check.
                         </p>
 
                         <hr class="my-3" />
@@ -44,7 +45,7 @@
                         </h4>
 
                         <p>
-                            Make it work.
+                            Implement a readiness check for our database named "Database"
                         </p>
 
                         <hr class="my-3" />
@@ -55,7 +56,13 @@
                     <div class="col">
                         <div class="row">
                             <div class="col text-center">
-                                Status:
+                                Database Status:
+                            </div>
+                            <div class="col text-center">
+                                <h:outputText value="${stateMessageDB}" class="alert-warning" />
+                            </div>
+                            <div class="col text-center">
+                                Readiness Check Status:
                             </div>
                             <div class="col text-center">
                                 <h:outputText value="${stateMessage}" class="alert-warning" />
