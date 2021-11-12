@@ -11,14 +11,47 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>Open-Tracing Basics</h1>
+                            <h1>Open-Tracing Tracer</h1>
                         </div>
                     </div>
                 </div>
 
                 <div class="row my-2">
                     <div class="col">
+                        <p>
+                            Instead of using the provided instrumentation implementations, we can provide our own spans by integrating our implementtions into JAX-RS lifecycle for instance.
+                        </p>
 
+                        <p>
+                            We will provide spans for all of the JAX-RS requests to the training backend.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>Your task:</h4>
+
+                        <p>
+                            Go to
+                            <code>com.gepardec.training.microprofile.basic.opentracing.RestRequestFilter#filter</code> and
+                            <code>com.gepardec.training.microprofile.basic.opentracing.RestResponseFilter#filter</code> method and use the injected tracer to create a span
+                            with the operation name <i>&lt;HTTP_PATH (request | response)&gt;</i> which
+                            contains the following tags:
+                        </p>
+                        <ol>
+                            <li>
+                                <code>http-uri</code> is the uri the span is for
+                            </li>
+                            <li>
+                                <code>http-method</code> the http method of the request
+                            </li>
+                            <li>
+                                <code>http-header-&lt;NAME&gt;</code> all of the set headers of the request
+                            </li>
+                        </ol>
 
                         <hr class="my-3" />
                     </div>

@@ -30,7 +30,20 @@
         </section>
 
         <section>
-            <tag:card id="example-tracer" title="Basics">
+            <tag:card id="example-traced" title="Provided instrumentations">
+                <ui:define name="body">
+                    <p>
+                        Let's use the <code>@Traced</code> and use the provided implementation.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toExampleTraced" text="Example" path="/basic/opentracing/traced" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="example-tracer" title="Custom instrumentation">
                 <ui:define name="body">
                     <p>
                         Let's use the <code>Tracer</code> to create our own spances instead of using <code>@Traced</code>.

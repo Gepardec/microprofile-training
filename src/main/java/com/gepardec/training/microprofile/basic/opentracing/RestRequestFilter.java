@@ -1,6 +1,5 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
-import io.opentracing.Span;
 import io.opentracing.Tracer;
 
 import javax.annotation.Priority;
