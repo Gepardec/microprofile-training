@@ -32,9 +32,7 @@ public class CountedController {
     @GET
     public String getCounted() {
         Counter counter = metricRegistry.getCounter(new MetricID(METRIC_ID));
-        if (counter != null) {
-            model.put("count", counter != null ? counter.getCount() : "Metric '" + METRIC_ID + "' does not exist.");
-        }
+        model.put("count", counter != null ? counter.getCount() : "Metric '" + METRIC_ID + "' does not exist.");
         return "basic/metrics/counted.xhtml";
     }
 
