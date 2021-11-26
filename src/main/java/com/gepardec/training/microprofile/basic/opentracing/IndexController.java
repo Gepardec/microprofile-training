@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.config;
+package com.gepardec.training.microprofile.basic.opentracing;
 
 import com.gepardec.training.microprofile.TrainingMetric;
 import org.eclipse.microprofile.opentracing.Traced;
@@ -8,7 +8,7 @@ import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/basic/config")
+@Path("/basic/opentracing")
 @RequestScoped
 @Controller
 @TrainingMetric
@@ -24,7 +24,6 @@ public class IndexController {
     @Path("/index")
     @GET
     public String index() {
-        return "basic/config/index.xhtml";
+        return "basic/opentracing/index.xhtml";
     }
-
 }

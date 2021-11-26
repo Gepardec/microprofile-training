@@ -64,3 +64,11 @@ services:
       - ./keycloak/v3_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
     depends_on:
       - postgres
+
+  jaeger:
+      image: jaegertracing/all-in-one:1.27
+      ports:
+        - "16831:6831/udp"
+        - "16686:16686"
+      depends_on:
+        - prometheus

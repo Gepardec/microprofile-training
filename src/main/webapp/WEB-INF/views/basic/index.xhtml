@@ -135,6 +135,32 @@
         </section>
 
         <section>
+            <tag:card id="mp-opentracing" title="MicroProfile Open-Tracing">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                            Distributed tracing allows you to trace the flow of a request across service boundaries.
+                            This is particularly important in a microservices environment where a request typically flows through multiple services.
+                            To accomplish distributed tracing, each service must be instrumented to log messages with a correlation id that may have been propagated from an upstream service.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="#{mpUri.openApiUri}#_introduction"
+                            target="_blank">
+                            MicroProfile Open-Tracing
+                        </a>
+                        specification
+                    </p>.
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toOpentracingExample" text="Examples"
+                        path="/basic/opentracing/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
             <tag:card id="mp-faulttolerance"
                 title="MicroProfile Fault Tolerance">
                 <ui:define name="body">

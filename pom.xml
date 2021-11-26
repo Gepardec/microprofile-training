@@ -24,6 +24,9 @@
         <version.webjar.mdb-ui-kit>3.9.0</version.webjar.mdb-ui-kit>
         <version.postgresql>42.2.23</version.postgresql>
         <version.cxf-rt-rs-service-description-openapi-v3>3.4.5</version.cxf-rt-rs-service-description-openapi-v3>
+        <!-- From Wildfly Modules -->
+        <version.opentracing-tracerresolver.version>0.1.8</version.opentracing-tracerresolver.version>
+        <version.opentracing-jaxrs2.version>1.0.0</version.opentracing-jaxrs2.version>
 
         <!-- Plugin Properties -->
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -107,6 +110,12 @@
 
         <!-- Wildfly MicroProfile Spec Dependencies -->
         <dependency>
+            <groupId>org.eclipse.microprofile.opentracing</groupId>
+            <artifactId>microprofile-opentracing-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.eclipse.microprofile.config</groupId>
             <artifactId>microprofile-config-api</artifactId>
             <scope>provided</scope>
@@ -161,6 +170,15 @@
             <artifactId>slf4j-api</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Wildfly Provided by modules -->
+        <dependency>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-jaxrs2</artifactId>
+            <version>${version.opentracing-jaxrs2.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!-- Application Dependencies -->
         <dependency>

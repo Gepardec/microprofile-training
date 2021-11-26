@@ -17,6 +17,7 @@ The following listed application are available.
 | Postgres      | jdbc:postgresql://localhost:15432/mptraining | Database               |
 | Grafana       | http://localhost:13000                       | Metric Frontend        |
 | Prometheus    | http://localhost:19090                       | Metric Backend         |
+| JaegerUI      | http://localhost:16686/search                | Tracing Backend          |
 
 ## Keycloak
 
