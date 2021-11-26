@@ -1,9 +1,9 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Basics JWT
+        JWT Basic
     </ui:define>
 
 
@@ -12,12 +12,14 @@
             <tag:card id="mp-jwt-jaxrs-application" title="JAX-RS Application">
                 <ui:define name="body">
                     <p>
-                        Since the MicroProfile <abbr title="JSON Web Token">JWT</abbr> specification is built around securing <abbr title="Jakarta RESTful Web Services">JAX-RS</abbr> applications, some initial preperation is necessary.
-                        In this example you will take the basic steps to tell <abbr title="Jakarta RESTful Web Services">JAX-RS</abbr> that you want to use MicroProfile JWT for <abbr title="Role Based Access Control">RBAC</abbr>.
+                        Since the MicroProfile <abbr title="JSON Web Token">JWT</abbr> specification is built around securing
+                        <abbr title="Jakarta RESTful Web Services">JAX-RS</abbr> applications, some initial preperation is necessary.
+                        In this example you will take the basic steps to tell <abbr title="Jakarta RESTful Web Services">JAX-RS</abbr> that you want to use MicroProfile JWT for
+                        <abbr title="Role Based Access Control">RBAC</abbr>.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJaxRsApplication" text="JAX-RS Application" path="/basic/jwt/jaxrs-application"/>
+                    <tag:button id="toJaxRsApplication" text="Example" path="/basic/jwt/jaxrs-application" />
                 </ui:define>
             </tag:card>
         </section>
@@ -27,13 +29,14 @@
                 <ui:define name="body">
                     <p>
                         <cite>
-                            MicroProfile <abbr title="JSON Web Token">JWT</abbr> leverages the MicroProfile Config specification to provide a consistent means of passing all supported configuration options. See the specification for all the configuration options.
+                            MicroProfile
+                            <abbr title="JSON Web Token">JWT</abbr> leverages the MicroProfile Config specification to provide a consistent means of passing all supported configuration options. See the specification for all the configuration options.
                         </cite>
                     </p>
                     <p>
                         from the
                         <a href="#{mpUri.jwtUri}#config-parameters"
-                           target="_blank">
+                            target="_blank">
                             MicroProfile JWT
                         </a>
                         specification
@@ -43,7 +46,7 @@
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJwtConfiguration" text="Configuration" path="/basic/jwt/configuration"/>
+                    <tag:button id="toJwtConfiguration" text="Example" path="/basic/jwt/configuration" />
                 </ui:define>
             </tag:card>
         </section>
@@ -52,12 +55,13 @@
             <tag:card id="mp-jwt-roles" title="RBAC (Role Based Access Control)">
                 <ui:define name="body">
                     <p>
-                        Since one of the core features of Microprofile <abbr title="JSON Web Token">JWT</abbr> is <abbr title="Role Based Access Control">RBAC</abbr> it is important how to use this.
+                        Since one of the core features of MicroProfile <abbr title="JSON Web Token">JWT</abbr> is
+                        <abbr title="Role Based Access Control">RBAC</abbr> it is important to know how to use it.
                         In this example you will learn how to use roles and restricted/allow access based on roles.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJwtRoles" text="RBAC" path="/basic/jwt/roles"/>
+                    <tag:button id="toJwtRoles" text="Example" path="/basic/jwt/roles" />
                 </ui:define>
             </tag:card>
         </section>
@@ -67,11 +71,12 @@
                 <ui:define name="body">
                     <p>
                         Besides roles the <abbr title="JSON Web Token">JWT</abbr> can also carry data (claims), which your application can utilize.
-                        In this example you will learn how to inject the whole <abbr title="JSON Web Token">JWT</abbr> or a specific claim into your application via the <abbr title="Contexts and Dependency Injection">CDI</abbr> container.
+                        In this example you will learn how to inject the whole <abbr title="JSON Web Token">JWT</abbr> or a specific claim into your application via the
+                        <abbr title="Contexts and Dependency Injection">CDI</abbr> container.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toJwtInjection" text="CDI Injection" path="/basic/jwt/injection"/>
+                    <tag:button id="toJwtInjection" text="Example" path="/basic/jwt/injection" />
                 </ui:define>
             </tag:card>
         </section>

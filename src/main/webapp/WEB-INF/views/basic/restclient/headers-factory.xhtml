@@ -1,9 +1,8 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
-        Microprofile-Rest-Client HeadersFactory
+        RestClient Basic (HeadersFactory)
     </ui:define>
 
     <ui:define name="body">
@@ -20,10 +19,10 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="#{mpUri.restClientUri}"
-                               target="_blank">
-                                Rest Client
+                            The specification for MicroProfile
+                            <a href="#{mpUri.restClientUri}#_specifying_additional_client_headers"
+                                target="_blank">
+                                RestClient (Headers-factory)
                             </a>
                         </p>
 
@@ -34,7 +33,7 @@
 
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -50,7 +49,7 @@
                             to read the headers in the log. Also add a new outgoing header and check the response.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -60,14 +59,12 @@
                             <div class="col text-center">
                                 Value:
                             </div>
-                            <div class="col font-weight-bold">
-                                <pre>
-                                    ${value}
-                                </pre>
+                            <div class="font-weight-bold">
+                                <pre>${value}</pre>
                             </div>
                         </div>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
             </div>

@@ -1,10 +1,9 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
 
     <ui:define name="title">
-        Basics Microprofile-Metrics Basic
+        Metrics Basic (Basic)
     </ui:define>
 
     <ui:define name="body">
@@ -21,9 +20,9 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html"
-                               target="_blank">
+                            The specification for MicroProfile
+                            <a href="#{mpUri.metricsUri}"
+                                target="_blank">
                                 Metrics.
                             </a>
                         </p>
@@ -51,11 +50,12 @@
                             <p>
                                 Take a look at the metrics exposed at
                                 <a href="http://localhost:9990/metrics"
-                                   target="_blank">
+                                    target="_blank">
                                     Wildfly
-                                </a> and
+                                </a>
+                                and
                                 <a href="http://localhost:19090/"
-                                   target="_blank">
+                                    target="_blank">
                                     Prometheus.
                                 </a>
 

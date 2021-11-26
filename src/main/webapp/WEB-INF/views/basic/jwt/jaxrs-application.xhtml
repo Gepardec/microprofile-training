@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Basics JWT (JAX-RS Application)
+        JWT Basic (JAX-RS Application)
     </ui:define>
 
     <ui:define name="body">
@@ -46,7 +46,8 @@
                         </p>
 
                         <p>
-                            Fix the problem by setting up your JAX-RS application to use MicroProfile JWT for RBAC. The realmName of the keycloak used in this training is
+                            Fix the problem by setting up <code>com.gepardec.training.microprofile.MvcApplication</code> to use MicroProfile JWT for RBAC. The
+                            <code>realm</code> name of the keycloak used in this training is
                             <code>microprofile</code>.
                         </p>
 
@@ -57,12 +58,12 @@
                         <div class="text-center">
                             <tag:button id="callJaxRsApplicationEndpoint" path="/basic/jwt/jaxrs-application/mp-jwt-loaded" text="JaxRs Application call" />
                         </div>
-
-                        <hr class="my-3" />
                     </div>
                 </div>
 
                 <div class="row my-2">
+                    <hr class="my-3" />
+
                     <div class="col">
                         <div class="row text-start font-weight-bold">
                             <div class="col">
@@ -81,7 +82,7 @@
                     <div class="col">
                         <tag:login />
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
             </div>

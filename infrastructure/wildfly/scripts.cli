@@ -1,14 +1,39 @@
-if (outcome != success) of /system-property=mptraining_configured:query()
-    echo configuring wildfly
-
+if (outcome != success) of /extension=org.jboss.as.jsf:read-resource()
     /extension=org.jboss.as.jsf:add()
     /subsystem=jsf:add()
-    module add --name=org.postgres --resources=target/dependency/postgresql-42.2.23.jar --dependencies=javax.api,javax.transaction.api
-    /subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql, driver-module-name=org.postgres, driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
-    /subsystem=datasources/data-source=PostgresDS:add(driver-name=postgresql, jndi-name=java:/PostgresDS, connection-url=jdbc:postgresql://localhost:15432/mptraining, user-name=admin, password=admin@123)
-    /system-property=mptraining_configured:add(value=true)
-
-    reload
+    echo Added JSF extension and subsystem
 else
-    echo wildfly already configured
+    echo JSF already added
 end-if
+
+try
+    module add --name=org.postgres --resources=target/dependency/postgresql-42.2.23.jar --dependencies=javax.api,javax.transaction.api
+    echo Created postgresql driver module
+catch
+    echo Postgresql driver module already created
+end-try
+
+if (outcome != success) of /subsystem=datasources/jdbc-driver=postgresql:read-resource()
+    /subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql, driver-module-name=org.postgres, driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
+    echo Created postgresql jdbc-driver
+else
+    echo Postgresql jdbc-driver already created
+end-if
+
+if (outcome != success)  of /subsystem=datasources/data-source=PostgresDS:read-resource()
+    /subsystem=datasources/data-source=PostgresDS:add(driver-name=postgresql, jndi-name=java:/PostgresDS, connection-url=jdbc:postgresql://localhost:15432/mptraining, user-name=admin, password=admin@123)
+    echo Created PostgresDS data-source
+else
+    echo PostgresDS data-source already created
+end-if
+
+if (outcome != success) of /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mp-jaeger:read-resource()
+    /socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mp-jaeger:add(host=localhost, port=16831)
+    /subsystem=microprofile-opentracing-smallrye/jaeger-tracer=mp-jaeger:add(sampler-type=const, sampler-param=1, reporter-log-spans=true, sender-binding=mp-jaeger, reporter-flush-interval=1000)
+    /subsystem=microprofile-opentracing-smallrye:write-attribute(name=default-tracer, value=mp-jaeger)
+    echo Created Jaeger Configuration
+else
+    echo Jaeger Configuration already created
+end-if
+
+reload

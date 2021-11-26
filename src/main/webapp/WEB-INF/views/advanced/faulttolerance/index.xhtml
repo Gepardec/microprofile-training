@@ -1,9 +1,9 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Advanced Fault-Tolerance
+        Fault Tolerance Advanced
     </ui:define>
 
     <ui:define name="body">
@@ -16,7 +16,7 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaulttoleranceRetriedAsynchronousFallback" text="Example"
-                                path="/advanced/faulttolerance/retried-asynchronous-fallback"/>
+                        path="/advanced/faulttolerance/retried-asynchronous-fallback" />
                 </ui:define>
             </tag:card>
         </section>
@@ -30,7 +30,7 @@
                 </ui:define>
                 <ui:define name="buttons">
                     <tag:button id="toFaulttoleranceBulkheadCircuitbreakerFallback" text="Example"
-                        path="/advanced/faulttolerance/bulkhead-circuitbreaker-fallback"/>
+                        path="/advanced/faulttolerance/bulkhead-circuitbreaker-fallback" />
                 </ui:define>
             </tag:card>
         </section>

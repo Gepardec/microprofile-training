@@ -1,9 +1,8 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
     <ui:define name="header">
-        Microprofile-OpenAPI Advanced generate sources
+        OpenAPI Advanced (Generate Sources)
     </ui:define>
 
 
@@ -21,9 +20,9 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
+                            The specification for MicroProfile
                             <a href="#{mpUri.openApiUri}"
-                               target="_blank">
+                                target="_blank">
                                 OpenAPI.
                             </a>
                         </p>
@@ -33,7 +32,7 @@
                             For our purpose the maven plugin openapi-generator-maven-plugin is the best pick.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -45,17 +44,24 @@
 
                         <p>
                             Take a look at the
-                            <a href="https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator-gradle-plugin/README.adoc"
-                               target="_blank">
-                                OpenAPITools</a> readme.
+                            <a href="https://github.com/OpenAPITools/openapi-generator/tree/v5.2.1/modules/openapi-generator-maven-plugin#readme"
+                                target="_blank">
+                                OpenAPITools
+                            </a>
+                            readme.
                             Your goal is to configure the plugin in a way to achieve the following:
                         </p>
                         <ul>
-                            <li>src folder <code>src/gen/java/main</code></li>
+                            <li>src folder in <code>src/gen/java/main</code></li>
                             <li>pojos generated in the folder <code>model</code></li>
+                            <li>api generated in the folder <code>api</code></li>
                             <li>uses microprofile as library</li>
-                            <li>no pre generated tests</li>
+                            <li>no pre generated tests for model and api</li>
                         </ul>
+
+                        <p> Run <code>mvn clean install</code> and look at the generated sources in the target folder.
+                            Compare if all the requirements are fullfiled.
+                        </p>
                     </div>
                 </div>
             </div>

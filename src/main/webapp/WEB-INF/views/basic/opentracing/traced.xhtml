@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">
+        Open-Tracing @Traced
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Open-Tracing @Traced</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The <code>@Traced</code> annotation binds to an CDI Interceptor which can be used to trace method invocations on CDI Beans.
+                            The implementation is provided by
+                            <a href="https://www.jaegertracing.io" target="_blank">jaeger.io</a>
+                            which is also the project behind the JaegerUI.
+                        </p>
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your task:
+                        </h4>
+
+                        <p>
+                            Annotate the class/methods <code>com.gepardec.training.microprofile.basic.opentracing.TracedService</code> and call the method <code>autoTraced</code>
+                            from the method <code>invoke</code> several times to produce spans.
+                        </p>
+                        <p>
+                            Go to the
+                            <a href="http://localhost:16686/search" target="_blank">JaegerUI</a>
+                            and take a look at your produced spans.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

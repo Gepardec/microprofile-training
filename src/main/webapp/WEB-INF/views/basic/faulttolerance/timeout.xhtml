@@ -3,7 +3,7 @@
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Basics Fault-Tolerance (Timeout)
+        Fault Tolerance Basic (Timeout)
     </ui:define>
 
     <ui:define name="body">
@@ -20,7 +20,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
+                            The specification for MicroProfile
                             <a href="#{mpUri.faultToleranceUri}#timeout"
                                 target="_blank">
                                 Fault Tolerance (Timeout)
@@ -28,7 +28,7 @@
                         </p>
 
                         <p>
-                            Timeout limit method invocation durations and terminate them with a <code>TimeoutException</code>.
+                            Timeouts limit method invocation durations, and terminate them with a <code>TimeoutException</code>.
                             Timeout behaviour prevents the service to become unresponsive if a method invocation hungs or takes longer as expected.
                             The service is meant to skip the invocation in case of a hung or unexpected long run method invocation to keep the service
                             responsive for other requests.
@@ -58,12 +58,12 @@
                         <div class="text-center">
                             <tag:button id="callTimedoutEndpoint" path="/basic/faulttolerance/timeout/timedout" text="Timeout call" />
                         </div>
-
-                        <hr class="my-3" />
                     </div>
                 </div>
 
                 <div class="row my-2">
+                    <hr class="my-3" />
+
                     <div class="col">
                         <div class="row text-start font-weight-bold">
                             <div class="col">

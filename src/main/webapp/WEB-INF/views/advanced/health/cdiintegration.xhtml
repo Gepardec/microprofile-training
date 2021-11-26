@@ -4,7 +4,7 @@
 >
 
     <ui:define name="title">
-        Microprofile-Health Basics Database HealthCheck
+        Health Advanced (CDI Producer)
     </ui:define>
 
     <ui:define name="body">
@@ -13,7 +13,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>Database HealthCheck</h1>
+                            <h1>CDI Integration</h1>
                         </div>
                     </div>
                 </div>
@@ -21,16 +21,15 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
+                            The specification for MicroProfile
                             <a href="#{mpUri.healthUri}#health"
                                 target="_blank">
                                 Health.
                             </a>
                         </p>
-
+                        Implement a HealthCheck Producer.
                         <p>
-                            There is a database included in our infrastructure.
-                            Configure the Database Healthcheck so it properly reflects the state of the database.
+
                         </p>
 
                         <hr class="my-3" />
@@ -44,7 +43,7 @@
                         </h4>
 
                         <p>
-                            Make it work.
+                            Use a producer to provide a named healthcheck "produced" with the status "UP"
                         </p>
 
                         <hr class="my-3" />

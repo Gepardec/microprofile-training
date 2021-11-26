@@ -1,7 +1,7 @@
 package com.gepardec.training.microprofile.basic.health;
 
+import com.gepardec.training.microprofile.common.health.HealthHelper;
 import org.eclipse.microprofile.health.HealthCheck;
-import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Liveness;
 
 import javax.enterprise.context.RequestScoped;
@@ -17,6 +17,9 @@ import javax.ws.rs.Path;
 public class LivenessController {
 
     @Inject
+    private HealthHelper healthHelper;
+
+    @Inject
     @Liveness
     private Instance<HealthCheck> livenessChecks;
 
@@ -27,18 +30,11 @@ public class LivenessController {
     @GET
     @Controller
     public String getLive() {
-        if (getHealthCheckStateByName("FixMe", livenessChecks)) {
+        if (healthHelper.healthCheckStateByName("LivenessCheck", livenessChecks)) {
             model.put("stateMessage", "UP");
         } else {
             model.put("stateMessage", "DOWN");
         }
         return "basic/health/liveness.xhtml";
-    }
-
-    private boolean getHealthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {
-        return healthChecks
-                .stream()
-                .filter(check -> check.call().getName().contentEquals(nameOfHealthCheck))
-                .anyMatch(check -> check.call().getStatus().equals(HealthCheckResponse.Status.UP));
     }
 }

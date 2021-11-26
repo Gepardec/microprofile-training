@@ -1,59 +1,102 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Microprofile Advanced
+        Advanced
     </ui:define>
 
     <ui:define name="body">
         <section>
-            <tag:card id="mp-config" title="Microprofile Config">
+            <tag:card id="mp-health" title="MicroProfile Health">
                 <ui:define name="body">
                     <p>
-                        Microprofile Config facilitates the configuration of an application. With the following examples,
+                        <cite>
+                            Any enabled bean with a bean of type
+                            org.eclipse.microprofile.health.HealthCheck and @Liveness, @Readiness or @Health qualifier
+                            can be used as health check procedure.
+                            Health check procedures are CDI beans, therefore, they can also be defined with CDI producers.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="#{mpUri.jwtUri}#_integration_with_cdi"
+                           target="_blank">
+                            MicroProfile Health
+                        </a>
+                        specification
+                    </p>
+                </ui:define>
+
+                <ui:define name="buttons">
+                    <tag:button id="toHealthExamples" text="Examples" path="/advanced/health/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-config" title="MicroProfile Config">
+                <ui:define name="body">
+                    <p>
+                        MicroProfile Config facilitates the configuration of an application. With the following examples,
                         you will implement a custom ConfigSource and provide a drop-in configuration in a separate JAR.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples" path="/advanced/config/index"/>
+                    <tag:button id="toConfigExamples" text="Examples" path="/advanced/config/index" />
                 </ui:define>
             </tag:card>
         </section>
+
         <section>
-            <tag:card id="mp-openapi" title="Microprofile OpenAPI">
+            <tag:card id="mp-openapi" title="MicroProfile OpenAPI">
                 <ui:define name="body">
                     <p>
-                        With Microprofile OpenAPI you will generate OpenAPI v3 documents which are representing rest services.
+                        With MicroProfile OpenAPI you will generate OpenAPI v3 documents which are representing rest services.
                         In this part you will generate sources from an existing OpenAPI document
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toopenApiExamples" text="Examples" path="/advanced/openapi/index"/>
+                    <tag:button id="toopenApiExamples" text="Examples" path="/advanced/openapi/index" />
                 </ui:define>
             </tag:card>
         </section>
+
         <section>
-            <tag:card id="mp-restclient" title="Microprofile Rest Client">
+            <tag:card id="mp-restclient" title="MicroProfile RestClient">
                 <ui:define name="body">
                     <p>
                         After the basic examples let's look into some enhanced features.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toRestClientExamples" text="Examples" path="/advanced/restclient/index"/>
+                    <tag:button id="toRestClientExamples" text="Examples" path="/advanced/restclient/index" />
                 </ui:define>
             </tag:card>
         </section>
+
         <section>
-            <tag:card id="mp-faulttolerance" title="Microprofile Fault Tolerance">
+            <tag:card id="mp-faulttolerance" title="MicroProfile Fault Tolerance">
                 <ui:define name="body">
                     <p>
-                        After the basic examples its now time to use the Microprofile Fault Tolerance annotations in conjunction.
+                        After the basic examples its now time to use the MicroProfile Fault Tolerance annotations in conjunction.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toFaultToleranceExamples" text="Examples" path="/advanced/faulttolerance/index"/>
+                    <tag:button id="toFaultToleranceExamples" text="Examples" path="/advanced/faulttolerance/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-jwt" title="MicroProfile JWT">
+                <ui:define name="body">
+                    <p>
+                        After the basic examples its now time to use the MicroProfile JWT for some advanced examples, covering some edge cases.
+                    </p>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toJWTExamples" text="Examples" path="/advanced/jwt/index" />
                 </ui:define>
             </tag:card>
         </section>

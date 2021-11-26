@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.basic.health;
 
-import org.eclipse.microprofile.metrics.annotation.*;
+import com.gepardec.training.microprofile.TrainingMetric;
+import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
@@ -10,11 +11,8 @@ import javax.ws.rs.Path;
 @Path("/basic/health")
 @RequestScoped
 @Controller
-@Counted(name = "counted")
-@Metered(name = "metered")
-@Timed(name = "timed")
-@SimplyTimed(name = "simply-timed")
-@ConcurrentGauge(name = "concurrent-gauge")
+@TrainingMetric
+@Traced
 public class IndexController {
 
     @Path("/")

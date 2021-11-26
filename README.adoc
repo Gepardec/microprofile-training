@@ -1,4 +1,4 @@
-= Microprofile Training
+= MicroProfile Training
 
 This repository holds the training for the microprofile specifications.
 After working through the training one should be able to understand the most common microprofile specifications, their impacts, their interoperability and how to use them properly in real time applications.
@@ -23,12 +23,6 @@ Follow the instructions to work through the exercises.
 
 IMPORTANT: When running in an IDE the actual port will depend on your configuration.
 
-== Running in standalone
-
-Run the application with `mvn wildfly:run`.
-
-IMPORTANT: In this mode you won't be able to hot-code deploy.
-
 == Running in an IDE
 
 Refer to the documentation of the IDE of your choice, which must provide integration for Wildfly/JBoss servers, for how to set up the project.
@@ -40,6 +34,12 @@ On first startup you need to run the `scripts.cli` on your wildfly with `jboss-c
 
 IMPORTANT: You need to run the server with the `standalone-microprofile.xml` otherwise microprofile extensions are not available.
 
+== Running in standalone
+
+Run the application with `mvn wildfly:run`.
+
+IMPORTANT: In this mode you won't be able to hot-code deploy. This mode is not recommended.
+
 == Starting up the infrastructure
 
 Change to the `infrastructure` directory and run `docker-compose up -d`.
@@ -49,6 +49,7 @@ To access the infrastructure tools use one of the following links:
 * link:http://localhost:19090[Prometheus]
 * link:http://localhost:13000[Grafana]
 * link:http://localhost:18080[Keycloak]
+* link:http://localhost:16686[Jaeger-UI]
 
 The credentials for all applications can be found in our link:https://gepardec.github.io/microprofile-training/#infrastructure-guide[infrastructure guide].
 

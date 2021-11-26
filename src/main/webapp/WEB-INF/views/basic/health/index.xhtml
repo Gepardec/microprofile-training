@@ -1,11 +1,10 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml"
-                xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
-        Microprofile-Health Basics
+        Health Basic
     </ui:define>
 
     <ui:define name="body">
@@ -33,10 +32,10 @@
                 </ui:define>
             </tag:card>
 
-            <tag:card id="mp-health-fixme-live" title="Fix the Liveness Check">
+            <tag:card id="mp-health-fixme-live" title="Implement a Liveness Check">
                 <ui:define name="body">
                     <p>
-                        Lets have a look at a failing liveness check and repair it.
+                        Implement a liveness check on your own.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
@@ -47,11 +46,11 @@
             <tag:card id="mp-database-live" title="Create a working database healthcheck">
                 <ui:define name="body">
                     <p>
-                        Lets have a look at out database and the corresponding healthcheck.
+                        Lets have a look at out database and implement a corresponding healthcheck.
                     </p>
                 </ui:define>
                 <ui:define name="buttons">
-                    <tag:button id="toHealthExampleDBLive" text="Example" path="/basic/health/database-live" />
+                    <tag:button id="toHealthExampleDBReady" text="Example" path="/basic/health/database-ready" />
                 </ui:define>
             </tag:card>
 

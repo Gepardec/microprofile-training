@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.advanced;
 
-import org.eclipse.microprofile.metrics.annotation.*;
+import com.gepardec.training.microprofile.TrainingMetric;
 
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
@@ -10,11 +10,7 @@ import javax.ws.rs.Path;
 @Path("/advanced")
 @RequestScoped
 @Controller
-@Counted(name = "counted")
-@Metered(name = "metered")
-@Timed(name = "timed")
-@SimplyTimed(name = "simply-timed")
-@ConcurrentGauge(name = "concurrent-gauge")
+@TrainingMetric
 public class IndexController {
 
     @Path("/")

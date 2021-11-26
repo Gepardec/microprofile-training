@@ -1,8 +1,8 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
-        Microprofile-OpenAPI Basics Document
+        OpenAPI Basic (Generate Document)
     </ui:define>
     <ui:define name="body">
         <section>
@@ -20,18 +20,20 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="#{mpUri.openApiUri}"
-                               target="_blank">
-                                OpenAPI.
+                            The specification for MicroProfile
+                            <a href="#{mpUri.openApiUri}#_documentation_mechanisms"
+                                target="_blank">
+                                OpenAPI (Generate Mechanisms)
                             </a>
                         </p>
 
                         <p>
                             A basic JAX-RS interface does already provide sufficient information for an openAPI document.
-                            Try out <a href="http://localhost:8080/openapi"> OpenApi</a> and analyse it.
+                            Try out
+                            <a href="http://localhost:8080/openapi"> OpenAPI</a>
+                            and analyse it.
                         </p>
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -47,10 +49,12 @@
                             Try to find a way to only generate the document for
                             <code>src/main/java/com/gepardec/training/microprofile/basic/openapi/CheetahResource.java</code>.
 
-                            In the MP configuration file you can configure something like this
+                            In the MicroProfile configuration file you can configure something like this
                             <code>mp.openapi.scan.classes </code>
-                            Multiple solution are valid for this task. Check again <a
-                                href="http://localhost:8080/openapi"> OpenApi</a>
+                            Multiple solution are valid for this task. Check again
+                            <a
+                                href="http://localhost:8080/openapi"> OpenAPI
+                            </a>
                             if your filter worked.
 
                         </p>

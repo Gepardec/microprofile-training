@@ -1,8 +1,8 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
-        Microprofile-OpenAPI Basics Annotations
+        OpenAPI Basic (Annotations)
     </ui:define>
 
     <ui:define name="body">
@@ -19,10 +19,10 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="#{mpUri.openApiUri}"
-                               target="_blank">
-                                OpenAPI.
+                            The specification for MicroProfile
+                            <a href="#{mpUri.openApiUri}#_annotations"
+                                target="_blank">
+                                OpenAPI (Annotations)
                             </a>
                         </p>
 
@@ -30,7 +30,7 @@
                             JAX-RS annotations are processed by default, you can augment the existing code with OpenAPI annotations.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
 
                         <p>
                             Now we will add some information to our operations.
-                            Add the following annotation to <code>@GET list()</code> method:
+                            Add the following annotation to <code>@GET getCheetahs()</code> method:
                         </p>
                         <ul>
                             <li><code>@Parameter</code></li>
@@ -87,8 +87,11 @@
                                 description = "Missing description"
                                 )})</code></li>
                         </ul>
-                        <p> Than again call <a
-                                href="http://localhost:8080/openapi"> OpenApi</a> and look if the changes are applied as intended
+                        <p> Than again call
+                            <a
+                                href="http://localhost:8080/openapi"> OpenAPI
+                            </a>
+                            and look if the changes are applied as intended
                         </p>
                     </div>
                 </div>

@@ -1,9 +1,8 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
-        Microprofile-Rest-Client CDI
+        RestClient Basic (CDI)
     </ui:define>
 
     <ui:define name="body">
@@ -20,21 +19,21 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="#{mpUri.restClientUri}"
-                               target="_blank">
-                                Rest Client
+                            The specification for MicroProfile
+                            <a href="#{mpUri.restClientUri}#restcdi"
+                                target="_blank">
+                                RestClient (CDI)
                             </a>
                         </p>
 
                         <p>
-                            When using CDI with MP-restclient the annotations <code>@RestClient</code> and
+                            When using CDI with MicroProfile RestClient the annotations <code>@RestClient</code> and
                             <code>@RegisterRestClient</code>
-                            are needed. Also the baseUri has to be defined. This can be done direct as an annotation parameter for RegisterRestClient or in the MP-config file.
-                            The configKey is also an annotation parameter and it sets the prefix for MicroProfile-Config provided configurations. (Otherwise it would use the fully qualified class name)
+                            are needed. Also the baseUri has to be defined. This can be done direct as an annotation parameter for RegisterRestClient or in the MicroProfile Config file.
+                            The configKey is also an annotation parameter and it sets the prefix for MicroProfile Config provided configurations. (Otherwise it would use the fully qualified class name)
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -46,11 +45,11 @@
 
                         <p>
                             Invoke the Restservice
-                            <a>https://reqres.in/api/users/1</a>
-                            with CDI and the <code>RestClientAPI</code> interface.
+                            <a>http://httpbin.org</a>
+                            with CDI and the <code>RestClientAPI</code> interface in the <code>RestClientCdi</code> class.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -65,7 +64,7 @@
                             </div>
                         </div>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
             </div>

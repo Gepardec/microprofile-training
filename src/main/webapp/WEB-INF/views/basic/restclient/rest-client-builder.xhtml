@@ -1,9 +1,9 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 
     <ui:define name="title">
-        Microprofile-Rest-Client RestClientBuilder
+        RestClient Basic (RestClientBuilder)
     </ui:define>
 
     <ui:define name="body">
@@ -20,19 +20,19 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The specification for Microprofile
-                            <a href="#{mpUri.restClientUri}"
-                               target="_blank">
-                                Rest Client
+                            The specification for MicroProfile
+                            <a href="#{mpUri.restClientUri}#_following_redirect_responses"
+                                target="_blank">
+                                RestClient (Builder)
                             </a>
                         </p>
 
                         <p>
-                            The RestClientBuilder from MP allows to make typesafe rest calls.
+                            The RestClientBuilder from MicroProfile allows to make typesafe rest calls.
                             It's also easy to use and the syntax feels intuitive.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -44,12 +44,12 @@
 
                         <p>
                             Invoke the Restservice
-                            <a>https://reqres.in/api/users/1</a>
+                            <a>http://httpbin.org</a>
                             with the help of the RestClientBuilder
                             in the <code>UseRestClientBuilder.class</code>.
                         </p>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
                             </div>
                         </div>
 
-                        <hr class="my-3"/>
+                        <hr class="my-3" />
                     </div>
                 </div>
             </div>

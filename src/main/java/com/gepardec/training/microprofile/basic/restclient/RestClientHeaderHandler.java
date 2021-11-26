@@ -1,31 +1,14 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
-import org.eclipse.microprofile.rest.client.ext.ClientHeadersFactory;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.json.bind.JsonbBuilder;
-import javax.ws.rs.core.MultivaluedMap;
+import javax.inject.Inject;
 
-public class RestClientHeaderHandler implements ClientHeadersFactory {
+public class RestClientHeaderHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(RestClientHeaderHandler.class);
+    @Inject
+    private Logger log;
 
-    @Override
-    public MultivaluedMap<String, String> update(MultivaluedMap<String, String> incomingHeaders,
-            MultivaluedMap<String, String> clientOutgoingHeaders) {
-        log.info("Incoming Headers: {}", toJson(incomingHeaders));
-        log.info("Outgoing Headers: {}", toJson(clientOutgoingHeaders));
+    //Implement ClientHeadersFactory
 
-        //   Will be merged with outgoing headers
-        return clientOutgoingHeaders;
-    }
-
-    private String toJson(final Object obj) {
-        if (obj != null) {
-            return JsonbBuilder.create().toJson(obj);
-        } else {
-            return "null";
-        }
-    }
 }
