@@ -1,7 +1,6 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
 import io.opentracing.Tracer;
-import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

@@ -1,7 +1,6 @@
 package com.gepardec.training.microprofile.advanced;
 
 import com.gepardec.training.microprofile.TrainingMetric;
-import org.eclipse.microprofile.metrics.annotation.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;

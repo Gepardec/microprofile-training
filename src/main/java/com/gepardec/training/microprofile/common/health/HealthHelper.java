@@ -13,13 +13,12 @@ import java.net.Socket;
 public class HealthHelper {
 
     @Inject
-    @ConfigProperty(name="database.port")
+    @ConfigProperty(name = "database.port")
     int databasePort;
 
     @Inject
-    @ConfigProperty(name="database.host")
+    @ConfigProperty(name = "database.host")
     String databaseHost;
-
 
     public boolean healthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {
         return healthChecks
@@ -29,10 +28,10 @@ public class HealthHelper {
     }
 
     public boolean databaseHealth() {
-            try (Socket socket = new Socket(databaseHost, databasePort)) {
-                return socket.isConnected();
-            } catch (Exception e) {
-                return false;
-            }
+        try (Socket socket = new Socket(databaseHost, databasePort)) {
+            return socket.isConnected();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

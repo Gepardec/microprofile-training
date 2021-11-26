@@ -1,7 +1,6 @@
 package com.gepardec.training.microprofile;
 
 import org.eclipse.microprofile.metrics.annotation.*;
-import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.inject.Stereotype;
 import java.lang.annotation.ElementType;

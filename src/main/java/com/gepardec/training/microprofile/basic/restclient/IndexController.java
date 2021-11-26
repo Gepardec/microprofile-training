@@ -1,7 +1,6 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
 import com.gepardec.training.microprofile.TrainingMetric;
-import org.eclipse.microprofile.metrics.annotation.*;
 import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.RequestScoped;
