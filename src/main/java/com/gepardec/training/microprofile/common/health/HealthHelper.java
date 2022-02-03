@@ -7,6 +7,7 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 @ApplicationScoped
@@ -28,7 +29,8 @@ public class HealthHelper {
     }
 
     public boolean databaseHealth() {
-        try (Socket socket = new Socket(databaseHost, databasePort)) {
+        try (Socket socket = new Socket()) {
+            socket.connect(new InetSocketAddress(databaseHost, databasePort), 1000);
             return socket.isConnected();
         } catch (Exception e) {
             return false;
