@@ -25,11 +25,14 @@ public class EnvController {
     @GET
     @Controller
     public String getConfigFromEnvVariable() {
-        model.put("envApplicationName", appName);
-        model.put("isEnv", systemHelper.isEnvVariable("env.application.name"));
-        if (!systemHelper.isEnvVariable("env.application.name") || (systemHelper.isEnvVariable("env.application.name") && systemHelper.isSystemProperty(
-                "env.application.name")))
+        // Environment variables for properties with syntax 'env.application.name' must have the form 'ENV_APPLICATION_NAME'
+        final boolean envVar = systemHelper.isEnvVariable("ENV_APPLICATION_NAME");
+        model.put("isEnv", envVar);
+        if (!envVar) {
             model.put("envMessage", "Warning: Config is not provided via environment variable.");
+        } else {
+            model.put("envApplicationName", appName);
+        }
         return "basic/config/env.xhtml";
     }
 }
