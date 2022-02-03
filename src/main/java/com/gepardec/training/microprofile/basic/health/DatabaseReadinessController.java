@@ -2,7 +2,7 @@ package com.gepardec.training.microprofile.basic.health;
 
 import com.gepardec.training.microprofile.common.health.HealthHelper;
 import org.eclipse.microprofile.health.HealthCheck;
-import org.eclipse.microprofile.health.Liveness;
+import org.eclipse.microprofile.health.Readiness;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
@@ -20,7 +20,7 @@ public class DatabaseReadinessController {
     private HealthHelper healthHelper;
 
     @Inject
-    @Liveness
+    @Readiness
     private Instance<HealthCheck> readinessChecks;
 
     @Inject
