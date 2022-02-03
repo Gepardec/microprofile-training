@@ -14,11 +14,11 @@ public class HealthHelper {
 
     @Inject
     @ConfigProperty(name = "database.port")
-    int databasePort;
+    private int databasePort;
 
     @Inject
     @ConfigProperty(name = "database.host")
-    String databaseHost;
+    private String databaseHost;
 
     public boolean healthCheckStateByName(String nameOfHealthCheck, Instance<HealthCheck> healthChecks) {
         return healthChecks
