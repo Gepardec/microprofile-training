@@ -4,12 +4,12 @@ const emptyFunction = () => {
 class Timer {
 
     constructor(options) {
-        this.timer = null;
+        this.intervalId = null;
         this.options = options;
     }
 
     isRunning = () => {
-        return this.timer != null;
+        return this.intervalId != null;
     };
 
     start = () => {
@@ -21,7 +21,7 @@ class Timer {
         } = this.options;
         if (!this.isRunning()) {
             startCallback();
-            this.timer = setInterval(runFunction, delayMillis, runData);
+            this.intervalId = setInterval(runFunction, delayMillis, runData);
         }
     };
 
@@ -30,8 +30,8 @@ class Timer {
             stopCallback = emptyFunction,
         } = this.options;
         if (this.isRunning()) {
-            clearInterval(this.timer);
-            this.timer = null;
+            clearInterval(this.intervalId);
+            this.intervalId = null;
             stopCallback();
         }
     };
