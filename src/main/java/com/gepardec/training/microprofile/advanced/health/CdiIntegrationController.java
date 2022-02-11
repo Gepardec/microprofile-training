@@ -20,21 +20,13 @@ public class CdiIntegrationController {
     private HealthHelper healthHelper;
 
     @Inject
-    @Liveness
-    private Instance<HealthCheck> healthChecks;
-
-    @Inject
     private Models model;
 
     @Path("/")
     @GET
     @Controller
     public String getLive() {
-        if (healthHelper.healthCheckStateByName("produced", healthChecks)) {
-            model.put("stateMessage", "UP");
-        } else {
-            model.put("stateMessage", "DOWN");
-        }
+        model.put("livenessCheckResults", healthHelper.getLivenessChecks());
         return "advanced/health/cdiintegration.xhtml";
     }
 
