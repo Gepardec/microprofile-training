@@ -36,9 +36,10 @@
 
                         <p>
                             Take a look at the module
-                            <code>config/drop-in-configuration</code>. There, implement and register a custom ConfigSource that retrieves the configuration from
-                            <code>com.gepardec.training.microprofile.dropinconfiguration.DropInConfiguration</code>. Finally, provide the drop-in-configuration
-                            JAR so that the configuration is present in this application:
+                            <code>config/drop-in-configuration</code>. The project contains a custom ConfigSource <code>com.gepardec.training.microprofile.dropinconfiguration.DropInConfigurationConfigSource</code>.
+                        </p>
+                        <p>
+                            Provide the drop-in-configuration JAR so that the configuration is present in this application:
                         </p>
                         <ol>
                             <li>build the drop-in-configuration JAR (<code>mvn clean install</code>)</li>

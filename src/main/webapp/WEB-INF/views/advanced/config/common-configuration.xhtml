@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:tag="http://tags.microprofile.training.gepardec.com">
+                xmlns:h="http://java.sun.com/jsf/html">
 
     <ui:define name="header">
         Config Advanced (Common ConfigSource)
@@ -28,7 +28,7 @@
                         </p>
 
                         <p>
-                            Within your application, you can provide the configuration to a seperate JAR.
+                            Within your application, you can provide the configuration to a seperate JAR (e.g. some framework).
                         </p>
 
                         <hr class="my-3"/>
@@ -44,14 +44,19 @@
                         <p>
                             Take a look at the module
                             <code>config/common-configuration</code>. There, the class
-                            <code>com.gepardec.training.microprofile.common.CommonConfigurationController</code> uses the ConfigProperty
-                            <code>common.key</code>. <code>common.key</code> is provided by the config-file
+                            <code>com.gepardec.training.microprofile.common.ConfigurableBean</code> uses the ConfigProperty
+                            <code>common.key</code> which is provided by the config-file
                             <code>config\common-configuration\src\main\resources\META-INF\microprofile-config.properties</code>.
-                            <br/>
-                            However, in this example we want to include the common-configuration JAR and override the value from
-                            <code>config/common-configuration</code>
-                            with a configuration value from our application. Therefore, provide the common-configuration JAR so
-                            that the configuration is present in this application:</p>
+                        </p>
+                            You task is to:
+                            <ul>
+                                <li>include the common-configuration JAR in your application</li>
+                                <li>inject the ConfigurableBean in the <code>com.gepardec.training.microprofile.advanced.config.CommonConfigurationSourceController</code></li>
+                                <li>call the doWork method of the ConfigurableBean in the callWorkHere method of CommonConfigurationSourceController</li>
+                                <li>override the value from <code>config/common-configuration</code> with a configuration value from our application</li>
+                            </ul>
+                        <p>
+                        Therefore, provide the common-configuration JAR so that the configuration is present in this application and inject the CommonConfigurationBean:</p>
                         <ol>
                             <li>build the common-configuration JAR (<code>mvn clean install</code>)</li>
                             <li>add the common-configuration-dependency
@@ -68,9 +73,13 @@
 
                         <hr class="my-3"/>
 
-                        <div class="text-center">
-                            <tag:button id="toCommonConfigExternal" text="Check result"
-                                        path="/advanced/config/commonconfigurationexternal"/>
+                        <div class="row my-1">
+                            <div class="col text-center">
+                                Value:
+                            </div>
+                            <div class="col text-center">
+                                <h:outputText value="${work}" class="font-weight-bold" />
+                            </div>
                         </div>
 
                         <hr class="my-3"/>
