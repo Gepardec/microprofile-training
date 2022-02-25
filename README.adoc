@@ -17,30 +17,44 @@ To get the application running you need the following software installed:
 
 == Accessing the application
 
-The application can be accessed via `http://localhost:8080/mptraining/api/welcome`. +
+The application can be accessed via `http://localhost:8080/mptraining/api/welcome`.
 
 Follow the instructions to work through the exercises.
 
 IMPORTANT: When running in an IDE the actual port will depend on your configuration.
 
-== Running in an IDE
+== Setup
+
+=== Building the application
+
+Before you progress further into the setup of the training run `mvn clean install` in the projects root directory.
+This will build the project and also gather some dependencies needed further in the setup.
+
+=== Running in an IDE
 
 Refer to the documentation of the IDE of your choice, which must provide integration for Wildfly/JBoss servers, for how to set up the project.
 
 Configure you wildfly to use microprofile configuration by adding `-c standalone-microprofile.xml` to your startup script in your run configuration.
 
-On first startup you need to run the `scripts.cli` on your wildfly with `jboss-cli` for further configuration:
-<your-JBOSS_HOME-directory>/bin/jboss-cli.sh --file=infrastructure/wildfly/scripts.cli --connect
+IMPORTANT: When running in an IDE you may have to add this to both the run and debug configurations if you use both of them.
+
+After the first startup you need to run the `scripts.cli` on your wildfly with `jboss-cli` for further configuration.
+The scripts.cli references some files (e.g. postgres driver) in the projects build folder (target).
+
+Therefore you have to run the cli script from the projects root directory:
+`<your-JBOSS_HOME-directory>/bin/jboss-cli.sh --file=infrastructure/wildfly/scripts.cli --connect`
+
+Restart your server after the script finished.
 
 IMPORTANT: You need to run the server with the `standalone-microprofile.xml` otherwise microprofile extensions are not available.
 
-== Running in standalone
+=== Running in standalone (not recommended)
 
 Run the application with `mvn wildfly:run`.
 
 IMPORTANT: In this mode you won't be able to hot-code deploy. This mode is not recommended.
 
-== Starting up the infrastructure
+=== Starting up the infrastructure
 
 Change to the `infrastructure` directory and run `docker-compose up -d`.
 

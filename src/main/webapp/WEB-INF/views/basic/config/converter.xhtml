@@ -32,6 +32,10 @@
                             Converters allow the conversion of the configuration value from String into a desired targettype. By default, converters for common classes are provided by the MicroProfile Config, such as Boolean, Integer,... . A custom converter can be implemented for a specific target type.
                         </p>
 
+                        <p>
+                            Converters are treated as PoJo's and therefore can not have dependencies (e.g. CDI injections). If no converter is found, an <a href="#{mpUri.configUri}#_automatic_converters" target="_blank">automatic</a> conversion is attempted.
+                        </p>
+
                         <hr class="my-3" />
                     </div>
                 </div>

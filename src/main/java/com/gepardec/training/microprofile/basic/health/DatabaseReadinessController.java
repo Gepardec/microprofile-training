@@ -1,11 +1,8 @@
 package com.gepardec.training.microprofile.basic.health;
 
 import com.gepardec.training.microprofile.common.health.HealthHelper;
-import org.eclipse.microprofile.health.HealthCheck;
-import org.eclipse.microprofile.health.Readiness;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.mvc.Models;
@@ -20,28 +17,14 @@ public class DatabaseReadinessController {
     private HealthHelper healthHelper;
 
     @Inject
-    @Readiness
-    private Instance<HealthCheck> readinessChecks;
-
-    @Inject
     private Models model;
 
     @Path("/")
     @GET
     @Controller
-    public String getDatabaseLive() {
-
-        if (healthHelper.healthCheckStateByName("Database", readinessChecks)) {
-            model.put("stateMessage", "UP");
-        } else {
-            model.put("stateMessage", "DOWN");
-        }
-
-        if (healthHelper.databaseHealth()) {
-            model.put("stateMessageDB", "UP");
-        } else {
-            model.put("stateMessageDB", "DOWN");
-        }
+    public String getDatabaseReady() {
+        model.put("readinessCheckResults", healthHelper.getReadinessChecks());
+        model.put("stateMessageDB", healthHelper.databaseHealth() ? "UP" : "DOWN");
         return "basic/health/database-ready.xhtml";
     }
 }

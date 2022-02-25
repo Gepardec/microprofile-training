@@ -1,0 +1,27 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:h="http://java.sun.com/jsf/html"
+>
+
+    <!--@elvariable id="healthCheckResults" type="java.util.List"-->
+
+    <ui:fragment rendered="${healthCheckResults.size() == 0}">
+        <div class="row">
+            <div class="col text-center">
+                No health checks found.
+            </div>
+        </div>
+    </ui:fragment>
+
+    <ui:repeat value="${healthCheckResults}" var="healthCheckResult">
+        <div class="row">
+            <div class="col text-center">
+                ${healthCheckResult.left}
+            </div>
+            <div class="col text-center">
+                <h:outputText value="${healthCheckResult.right}" class="alert-warning"/>
+            </div>
+        </div>
+    </ui:repeat>
+
+</ui:component>

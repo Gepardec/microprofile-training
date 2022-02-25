@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <facelet-taglib
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd"
-    version="2.2">
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd"
+        version="2.2">
 
     <namespace>http://tags.microprofile.training.gepardec.com</namespace>
     <short-name>tags</short-name>
@@ -42,7 +42,9 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
+            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined
+                then '#' is used
+            </description>
             <name>path</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -71,7 +73,9 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
+            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined
+                then '#' is used
+            </description>
             <name>path</name>
             <required>false</required>
             <type>java.lang.String</type>
@@ -106,7 +110,9 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined then '#' is used</description>
+            <description>The relative path after the rest application path, or a in page reference '#id'. If not defined
+                then '#' is used
+            </description>
             <name>path</name>
             <required>true</required>
             <type>java.lang.String</type>
@@ -186,5 +192,15 @@
     <tag>
         <tag-name>login</tag-name>
         <source>tags/login.xhtml</source>
+    </tag>
+    <tag>
+        <tag-name>healthStatus</tag-name>
+        <source>tags/healthStatus.xhtml</source>
+        <attribute>
+            <description>A list of health check results</description>
+            <name>healthCheckResults</name>
+            <required>true</required>
+            <type>java.util.List</type>
+        </attribute>
     </tag>
 </facelet-taglib>

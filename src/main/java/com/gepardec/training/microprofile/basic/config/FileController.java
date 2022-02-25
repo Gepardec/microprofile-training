@@ -26,7 +26,7 @@ public class FileController {
     @Controller
     public String getConfigFromPropertyFile() {
         model.put("applicationName", appName);
-        if (systemHelper.isEnvVariable("file.application.name")) {
+        if (systemHelper.isEnvVariable("FILE_APPLICATION_NAME")) {
             model.put("fileMessage", "Warning: Config is provided via a env variable and not via microprofile-properties.properties.");
         } else if (systemHelper.isSystemProperty("file.application.name")) {
             model.put("fileMessage", "Warning: Config is provided via system property and not via microprofile-properties.properties.");
