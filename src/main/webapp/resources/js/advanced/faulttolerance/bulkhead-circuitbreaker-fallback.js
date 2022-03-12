@@ -37,7 +37,7 @@ IntentionalFail: ${state.intentionalFailedCount} </br>
 CircuitOpen: ${state.circuitOpenFailedCount} </br> 
 BulkheadReject: ${state.bulkheadRejectCount} </br>
 TooManyFailures: ${state.tooManyFailuresTryAgainLaterCount} </br>
-TooMayRequest: ${state.tooManyRequestCount} </br>
+TooManyRequests: ${state.tooManyRequestCount} </br>
 OtherFail: ${state.otherFailedCount} </br>`;
 }
 

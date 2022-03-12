@@ -46,7 +46,7 @@
 
                         <p>
                             The code changes have to be done in
-                            <code>com.gepardec.training.microprofile.advanced.faulttolerance.BulkheadCircuitBreakerController#invoke</code>.
+                            <code>com.gepardec.training.microprofile.advanced.faulttolerance.BulkheadCircuitBreakerFallbackController#invoke</code>.
                             <br />
                             Test your changes after each step.
                         </p>
@@ -67,7 +67,7 @@
                                 Provide a specific fallback result
                                 <ol>
                                     <li>Return the http status code 503 for all exceptions.<br />
-                                        <i>All intentionally failed, failed because the circuit is open, and rejected by bulkhead are not shown as otherFails.</i>
+                                        <i>All intentionally failed, failed because the circuit is open, and rejected by bulkhead are shown as otherFails.</i>
                                     </li>
                                     <li>Return the http status code
                                         <code>ApplicationHttpStatusCode.TOO_MANY_FAILURES_TRY_AGAIN_LATER</code> if the request fails because the circuit is open<br />
