@@ -3,13 +3,11 @@ package com.gepardec.training.microprofile.advanced.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.context.Dependent;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-@Dependent
 public class PropertyDao {
 
     public static final String URL = "jdbc:postgresql://localhost:15432/mptraining";
