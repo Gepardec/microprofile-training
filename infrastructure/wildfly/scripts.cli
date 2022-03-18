@@ -36,4 +36,7 @@ else
     echo Jaeger Configuration already created
 end-if
 
-reload
+/interface=management:write-attribute(name="inet-address", value="${jboss.bind.address.management:0.0.0.0}")
+/interface=public:write-attribute(name="inet-address", value="${jboss.bind.address:0.0.0.0}")
+
+:reload
