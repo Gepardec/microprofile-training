@@ -4,6 +4,7 @@ import org.eclipse.microprofile.metrics.Gauge;
 import org.eclipse.microprofile.metrics.MetricID;
 import org.eclipse.microprofile.metrics.MetricRegistry;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
@@ -16,10 +17,18 @@ import javax.ws.rs.Path;
 public class GaugeController {
 
     @Inject
+    private Sensor sensor;
+
+    @Inject
     private MetricRegistry metricRegistry;
 
     @Inject
     private Models model;
+
+    @PostConstruct
+    void init() {
+        sensor.readCurrentValue();
+    }
 
     @Path("/gauge")
     @GET

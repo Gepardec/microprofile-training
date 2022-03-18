@@ -3,10 +3,9 @@ package com.gepardec.training.microprofile.basic.metrics;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class RandomNumberGenerator {
+public class Sensor {
 
-    public double getValue() {
+    public double readCurrentValue() {
         return Math.random();
     }
-
 }
