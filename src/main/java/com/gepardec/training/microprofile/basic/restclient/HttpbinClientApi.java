@@ -1,13 +1,10 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
-import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@RegisterRestClient(configKey = "user-api")
 @Path("/")
-public interface RestClientAPI {
+public interface HttpbinClientApi {
 
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)

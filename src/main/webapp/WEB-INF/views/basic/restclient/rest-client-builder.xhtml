@@ -43,10 +43,13 @@
                         </h4>
 
                         <p>
-                            Invoke the Restservice
-                            <a>http://httpbin.org</a>
-                            with the help of the RestClientBuilder
-                            in the <code>UseRestClientBuilder.class</code>.
+                            Create the typesafe rest-client in <code>com.gepardec.training.microprofile.basic.restclient#createAndCallClient</code> with the
+                            <code>RestClientBuilder</code> and use the uri
+                            <a href="http://httpbin.org" target="_blank">http://httpbin.org</a>
+                            which will return a json response.
+                        </p>
+                        <p>
+                            When it works, then refresh the page and you should see the returned json response.
                         </p>
 
                         <hr class="my-3" />
@@ -57,7 +60,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col text-center">
-                                Value:
+                                JSON-Response
                             </div>
                             <div class="font-weight-bold">
                                 <pre>${value}</pre>
