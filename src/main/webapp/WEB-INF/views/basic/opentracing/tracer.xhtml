@@ -19,11 +19,12 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            Instead of using the provided instrumentation implementations, we can provide our own spans by integrating our implementtions into JAX-RS lifecycle for instance.
+                            Instead of using the provided instrumentation, we can provide our own spans or enrich the current active one. <br />
                         </p>
 
                         <p>
-                            We will provide spans for all of the JAX-RS requests to the training backend.
+                            We will provide spans for all of the JAX-RS requests/responses to the training backend via JAX-RS
+                            <code>ContainerRequestFilter</code> and <code>ContainerResponseFilter</code> implementations.
                         </p>
 
                         <hr class="my-3" />
@@ -35,15 +36,13 @@
                         <h4>Your task:</h4>
 
                         <p>
-                            Go to
-                            <code>com.gepardec.training.microprofile.basic.opentracing.RestRequestFilter#filter</code> and
-                            <code>com.gepardec.training.microprofile.basic.opentracing.RestResponseFilter#filter</code> method and use the injected tracer to create a span
-                            with the operation name <i>&lt;HTTP_PATH (request | response)&gt;</i> which
-                            contains the following tags:
+                            Implement the
+                            <code>com.gepardec.training.microprofile.basic.opentracing.RestRequestFilter#filter</code>
+                            and use the current active span and enrich it with the following tags:
                         </p>
                         <ol>
                             <li>
-                                <code>http-uri</code> is the uri the span is for
+                                <code>http-uri</code> is the uri of the request
                             </li>
                             <li>
                                 <code>http-method</code> the http method of the request
@@ -52,6 +51,26 @@
                                 <code>http-header-&lt;NAME&gt;</code> all of the set headers of the request
                             </li>
                         </ol>
+                        <p>
+                            Implement the
+                            <code>com.gepardec.training.microprofile.basic.opentracing.RestResponseFilter#filter</code> methods
+                            and create a new span with the operation name <i>&lt;CLASS_NAME&gt;</i> which contains the following tags:
+                        </p>
+                        <ol>
+                            <li>
+                                <code>http-status-code</code> is the http status code of the response
+                            </li>
+                        </ol>
+                        <p>
+                            Your traces are visible in the logs and of course in the
+                            <a href="http://localhost:16686/search" target="_blank">JaegerUI</a>
+                        </p>
+
+                        <div class="alert alert-info mt-2" role="alert">
+                            Use the
+                            <code>ContainerRequestContext, ContainerResponseContext</code> instances provided to the filter methods, which will contain all the data you need.<br />
+                            Take your time to investigate the <code>Tracer API</code>, which will tell you how to get the current active span or how to create a new one.
+                        </div>
 
                         <hr class="my-3" />
                     </div>
