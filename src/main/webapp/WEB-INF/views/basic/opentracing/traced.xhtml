@@ -19,10 +19,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <p>
-                            The <code>@Traced</code> annotation binds to an CDI Interceptor which can be used to trace method invocations on CDI Beans.
-                            The implementation is provided by
-                            <a href="https://www.jaegertracing.io" target="_blank">jaeger.io</a>
-                            which is also the project behind the JaegerUI.
+                            The <code>@Traced</code> annotation binds to a CDI Interceptor which can be used to trace method invocations on CDI Beans.
                         </p>
                         <hr class="my-3" />
                     </div>
@@ -35,14 +32,23 @@
                         </h4>
 
                         <p>
-                            Annotate the class/methods <code>com.gepardec.training.microprofile.basic.opentracing.TracedService</code> and call the method <code>autoTraced</code>
-                            from the method <code>invoke</code> several times to produce spans.
-                        </p>
-                        <p>
-                            Go to the
+                            The annotation <code>@Traced</code> is meant to be used in <code>com.gepardec.training.microprofile.basic.opentracing.TracedService</code>.<br />
+                            The traced methods shall be called in <code>com.gepardec.training.microprofile.basic.opentracing.TracerController#invoke</code>. <br />
+                            Your traces are visible in the logs and of course in the
                             <a href="http://localhost:16686/search" target="_blank">JaegerUI</a>
-                            and take a look at your produced spans.
+                            .
                         </p>
+                        <ol>
+                            <li>
+                                Use the annotation <code>@Traced</code> on class and method level, and see what happens in the JaegerUI.
+                            </li>
+                            <li>
+                                Use the annotation <code>@Traced</code> on class level and skip the tracing for one of the methods, and take a look into the JaegerUI if it works.
+                            </li>
+                            <li>
+                                Give one of the traced methods a new operation name, and take a look into the JaegerUI if it works.
+                            </li>
+                        </ol>
 
                         <hr class="my-3" />
                     </div>

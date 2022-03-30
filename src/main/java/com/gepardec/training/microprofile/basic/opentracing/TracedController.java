@@ -20,8 +20,7 @@ public class TracedController {
     @Path("/")
     @GET
     public String index() {
-        tracedService.autoTracedOne();
-        tracedService.autoTracedTwo();
+        // Call the methods to trace here
         return "basic/opentracing/traced.xhtml";
     }
 }

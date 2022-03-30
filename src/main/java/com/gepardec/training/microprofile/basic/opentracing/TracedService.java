@@ -1,17 +1,22 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 /**
- * Try to trace all methods or selective ones and take a look at the JaegerUI to see your traces.
- * The methods are called in the {@link TracerController#index()}
+ * The traced methods shall be called in the {@link TracedController#index()}
  */
 @RequestScoped
 public class TracedService {
 
-    void autoTracedOne() {
+    @Inject
+    private TracedService delegate;
+
+    void traceMeOne() {
+        // Nothing to do here
     }
 
-    void autoTracedTwo() {
+    void traceMeTwo() {
+        // Nothing to do here
     }
 }
