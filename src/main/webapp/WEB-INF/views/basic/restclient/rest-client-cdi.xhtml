@@ -2,7 +2,7 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">
-        RestClient Basic (CDI)
+        RestClient Basic (RestClient-CDI)
     </ui:define>
 
     <ui:define name="body">
@@ -11,7 +11,7 @@
                 <div class="row my-2">
                     <div class="col">
                         <div class="text-center">
-                            <h1>CDI</h1>
+                            <h1>RestClient-CDI</h1>
                         </div>
                     </div>
                 </div>
@@ -28,9 +28,9 @@
 
                         <p>
                             When using CDI with MicroProfile RestClient the annotations <code>@RestClient</code> and
-                            <code>@RegisterRestClient</code>
-                            are needed. Also the baseUri has to be defined. This can be done direct as an annotation parameter for RegisterRestClient or in the MicroProfile Config file.
-                            The configKey is also an annotation parameter and it sets the prefix for MicroProfile Config provided configurations. (Otherwise it would use the fully qualified class name)
+                            <code>@RegisterRestClient</code> are needed.
+                            Also the baseUri has to be defined. The uri can be defined directly in the
+                            <code>@RegisterRestClient</code> annotation or provided via MicroProfile-Config.
                         </p>
 
                         <hr class="my-3" />
@@ -44,9 +44,12 @@
                         </h4>
 
                         <p>
-                            Invoke the Restservice
-                            <a>http://httpbin.org</a>
-                            with CDI and the <code>RestClientAPI</code> interface in the <code>RestClientCdi</code> class.
+                            Annotate the interface <code>com.gepardec.training.microprofile.basic.restclient.HttpbinClientApi</code> with all necessary annotations to make it
+                            a valid rest-client CDI bean. <br />
+                            Provide the uri
+                            <a href="https://httpbin.org" target="_blank">https://httpbin.org</a>
+                            in the <code>microprofile-config.properties</code> file. <br />
+                            Inject the client in <code>com.gepardec.training.microprofile.basic.restclient.RestClientCdiController</code>
                         </p>
 
                         <hr class="my-3" />
@@ -57,7 +60,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col text-center">
-                                Value:
+                                JSON-Response
                             </div>
                             <div class="font-weight-bold">
                                 <pre>${value}</pre>

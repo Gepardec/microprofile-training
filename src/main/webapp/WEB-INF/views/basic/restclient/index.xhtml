@@ -10,12 +10,7 @@
         <tag:card id="example1" title="RestClientBuilder">
             <ui:define name="body">
                 <p>
-                    In the first example you will learn how to call a service with the MicroProfile RestClient. With JAX-RS it would probably look something like this:
-                    <br />
-                    <code> Client client = ClientBuilder.newClient();
-                        String response = client.target("http://localhost:8081/cheetahs").request().get(String.class); </code>
-                    <br />
-                    Try out the MicroProfile RestClient builder approach and solve the problem.
+                    In the first example you will learn how to call a service with the MicroProfile RestClient by manually creating the rest-client instance.
                 </p>
             </ui:define>
             <ui:define name="buttons">
@@ -23,25 +18,25 @@
             </ui:define>
         </tag:card>
 
-        <tag:card id="example2" title="CDI">
+        <tag:card id="example2" title="RestClient-CDI">
             <ui:define name="body">
                 <p>
                     The CDI approach is used more often and get's rid of boilerplate code.
                 </p>
             </ui:define>
             <ui:define name="buttons">
-                <tag:button id="cdi" text="Example" path="/basic/restclient/cdi" />
+                <tag:button id="cdi" text="Example" path="/basic/restclient/rest-client-cdi" />
             </ui:define>
         </tag:card>
 
         <tag:card id="example3" title="ExceptionMapper">
             <ui:define name="body">
                 <p>
-                    The <code>@RegisterProviders</code> annotation can be used to add
-                    JAX-RS client providers and extensions. <b>Be aware the goal
-                    from this example is to map the error response to a java Exception not to fix the error</b>.
-
+                    On the server side of JAX-RS we use exception mappers to map Java Exceptions to http-status codes, on the client side we need to do it visa-versa.
                 </p>
+                <div class="alert alert-info mt-2" role="alert">
+                    Be aware, the goal from this example is to map the error response to a java Exception not to fix the error.
+                </div>
             </ui:define>
             <ui:define name="buttons">
                 <tag:button id="exceptionMapper" text="Example" path="/basic/restclient/exception-mapper" />
@@ -51,10 +46,7 @@
         <tag:card id="example4" title="ClientHeaders">
             <ui:define name="body">
                 <p>
-                    The <code>@RegisterClientHeaders</code> annotation
-                    is used for registering an implementation of the interface ClientHeadersFactory which allows to read
-                    incoming HTTP Headers and to define additional outgoing Http Headers.
-
+                    Sometimes it's necesary to enrich an outgoing client request with additional headers, for instance a Baerer-Token set in the http-header the service was called with.
                 </p>
             </ui:define>
             <ui:define name="buttons">

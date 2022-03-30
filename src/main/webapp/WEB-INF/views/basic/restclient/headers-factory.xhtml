@@ -28,7 +28,7 @@
 
                         <p>
                             The
-                            <code>@RegisterClientHeaders</code> annotation registers an implementation of the ClientHeadersFactory interface
+                            <code>@RegisterClientHeaders</code> annotation registers an implementation of the <code>ClientHeadersFactory</code> interface
                             which allows to read incoming HTTP Headers and to define additional outgoing Http Headers.
 
                         </p>
@@ -44,9 +44,11 @@
                         </h4>
 
                         <p>
-                            Use the
-                            <code>src/main/java/at/gepardec/training/microprofile/basic/restclient/RestClientHeaderHandler</code>
-                            to read the headers in the log. Also add a new outgoing header and check the response.
+                            Implement the
+                            <code>com.gepardec.training.microprofile.basic.restclient.RestClientHeaderHandler</code>
+                            to read the incoming headers and log them. <br />
+                            Also add a new outgoing header of your choice and check the json response below.<br />
+                            Register the implemented client-headers-factory on the <code>com.gepardec.training.microprofile.basic.restclient.HttpbinClientApi</code> interface.
                         </p>
 
                         <hr class="my-3" />
@@ -57,7 +59,7 @@
                     <div class="col">
                         <div class="row">
                             <div class="col text-center">
-                                Value:
+                                JSON-Response
                             </div>
                             <div class="font-weight-bold">
                                 <pre>${value}</pre>

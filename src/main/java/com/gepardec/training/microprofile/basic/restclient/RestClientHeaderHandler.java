@@ -9,6 +9,4 @@ public class RestClientHeaderHandler {
     @Inject
     private Logger log;
 
-    //Implement ClientHeadersFactory
-
 }

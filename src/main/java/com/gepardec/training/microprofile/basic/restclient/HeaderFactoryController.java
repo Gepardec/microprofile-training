@@ -1,7 +1,5 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
@@ -9,22 +7,24 @@ import javax.mvc.Models;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
+@Path("/basic/restclient/headers-factory")
 @RequestScoped
-@Path(("/basic/restclient/headers-factory"))
+@Controller
 public class HeaderFactoryController {
 
-    @Inject
-    @RestClient
-    private RestClientAPI api;
+    private HttpbinClientApi api;
 
     @Inject
     private Models model;
 
-    @Controller
     @Path("/")
     @GET
     public String get() {
-        model.put("value", api.patch());
+        String value = "HttpbinClientApi is not ready yet. Is it already a valid CDI bean and correctly injected?";
+        if (api != null) {
+            value = api.patch();
+        }
+        model.put("value", value);
         return "basic/restclient/headers-factory.xhtml";
     }
 }

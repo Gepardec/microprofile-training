@@ -43,9 +43,10 @@
                         </h4>
 
                         <p>
-                            <code> RestClientExceptionMapper.class</code> has to be completed and
-                            registered to work properly.
-                            Map the error response to an Exception.
+                            Implement
+                            <code>com.gepardec.training.microprofile.basic.restclient.RestClientExceptionMapper</code> to map the returned http-status code to a
+                            <code>RuntimeException</code> in case the http-status &gt; 400.<br />
+                            Register the implemented exception mapper on the <code>com.gepardec.training.microprofile.basic.restclient.HttpbinClientApi</code> interface.
                         </p>
 
                         <div class="text-center">
