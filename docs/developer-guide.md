@@ -63,7 +63,7 @@ The endpoints either return
 See the following snippet for an example controller implementation.
 
 ```java
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 @Path("/path")
 @RequestScoped

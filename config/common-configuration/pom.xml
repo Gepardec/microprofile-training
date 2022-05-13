@@ -11,8 +11,9 @@
 
     <properties>
         <!-- Dependency Versions -->
-        <wildfly.version>23.0.2.Final</wildfly.version>
-        <krazo.version>1.1.0</krazo.version>
+        <wildfly.version>26.1.0.Final</wildfly.version>
+        <krazo.version>2.0.0</krazo.version>
+        <jakartaee-api.version>9.1.0</jakartaee-api.version>
 
         <!-- Plugin Properties -->
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -38,14 +39,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${jakartaee-api.version}</version>
             <scope>provided</scope>
         </dependency>
 

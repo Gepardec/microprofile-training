@@ -7,7 +7,7 @@ else
 end-if
 
 try
-    module add --name=org.postgres --resources=target/dependency/postgresql-42.2.23.jar --dependencies=javax.api,javax.transaction.api
+    module add --name=org.postgres --resources=target/dependency/postgresql-42.2.23.jar --dependencies=jakarta.transaction.api
     echo Created postgresql driver module
 catch
     echo Postgresql driver module already created

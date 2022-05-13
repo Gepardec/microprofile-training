@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile;
 
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 public final class HeaderHelper {
 

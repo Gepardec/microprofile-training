@@ -1,11 +1,10 @@
 package com.gepardec.training.microprofile.advanced.config;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.mvc.Controller;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 import org.eclipse.microprofile.metrics.annotation.*;
-
-import javax.enterprise.context.RequestScoped;
-import javax.mvc.Controller;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 
 @Path("/advanced/config")
 @RequestScoped

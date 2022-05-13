@@ -1,8 +1,8 @@
 package com.gepardec.training.microprofile;
 
+import jakarta.enterprise.inject.Stereotype;
 import org.eclipse.microprofile.metrics.annotation.*;
 
-import javax.enterprise.inject.Stereotype;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

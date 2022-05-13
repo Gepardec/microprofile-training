@@ -1,7 +1,7 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 
 /**
  * The traced methods shall be called in the {@link TracedController#index()}

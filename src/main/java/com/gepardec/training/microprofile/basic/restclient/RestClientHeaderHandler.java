@@ -1,8 +1,7 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
-
-import javax.inject.Inject;
 
 public class RestClientHeaderHandler {
 
