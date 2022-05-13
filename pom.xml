@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>at.gepardec.training.microprofile</groupId>
     <artifactId>microprofile-training</artifactId>
-    <name>Microprofile Training with Microprofile 4.1, Jakarta-EE 9</name>
+    <name>Microprofile Training with Microprofile 5.0, Jakarta-EE 9</name>
     <version>${revision}</version>
     <packaging>war</packaging>
 
@@ -18,6 +18,7 @@
 
         <!-- Dependency Versions -->
         <wildfly.version>26.1.0.Final</wildfly.version>
+        <microprofile.version>5.0</microprofile.version>
         <jakartaee-api.version>9.1.0</jakartaee-api.version>
         <krazo.version>2.0.0</krazo.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
@@ -41,6 +42,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- For non jakarta.* dependencies only -->
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-jakartaee8</artifactId>
@@ -49,10 +51,11 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- BOM wildfly-microprofile does not include Microprofile 5.0 dependencies, but they are in the distribution -->
             <dependency>
-                <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-microprofile</artifactId>
-                <version>${wildfly.version}</version>
+                <groupId>org.eclipse.microprofile</groupId>
+                <artifactId>microprofile</artifactId>
+                <version>${microprofile.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -60,7 +63,7 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Wildfly Spec Dependencies -->
+        <!-- Jakarta EE 9 spec, no wildfly BOM found that -->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
@@ -68,8 +71,7 @@
             <scope>provided</scope>
         </dependency>
 
-
-        <!-- Wildfly MicroProfile Spec Dependencies -->
+        <!-- MicroProfile Spec Dependencies -->
         <dependency>
             <groupId>org.eclipse.microprofile.opentracing</groupId>
             <artifactId>microprofile-opentracing-api</artifactId>
@@ -132,7 +134,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Wildfly Provided by modules -->
+        <!-- Wildfly Provided by modules and not provided in the wildfly BOM -->
         <dependency>
             <groupId>io.opentracing</groupId>
             <artifactId>opentracing-api</artifactId>

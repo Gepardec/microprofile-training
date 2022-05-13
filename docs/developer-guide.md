@@ -5,7 +5,7 @@ This page represents the guide which will help you setup the project on your loc
 The project is based on the following listed specifications.
 
 * `Jakarte-EE-9`
-* `MicroProfile 4.1`
+* `MicroProfile 5.0`
 * `Jakarta-MVC-2.0` (JSF as template engine)
 
 The project uses the following client side libraries in form os webjars.

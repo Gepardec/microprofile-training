@@ -3,7 +3,7 @@
 This repository holds the training for the microprofile specifications.
 After working through the training one should be able to understand the most common microprofile specifications, their impacts, their interoperability and how to use them properly in real time applications.
 
-This training is based on the link:https://jakarta.ee/release/9/[Jakarta-EE 9.1] link:https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-4.1[(Eclipse MicroProfile 4.1)] specification and the link:https://www.wildfly.org/[Wildfly 26.1.0.Final] application server.
+This training is based on the link:https://jakarta.ee/release/9/[Jakarta-EE 9.1] link:https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-5.0[(Eclipse MicroProfile 5.0)] specification and the link:https://www.wildfly.org/[Wildfly 26.1.0.Final] application server.
 
 == Used Tools
 
