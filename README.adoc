@@ -9,7 +9,7 @@ This training is based on the link:https://jakarta.ee/release/9/[Jakarta-EE 9.1]
 
 To get the application running you need the following software installed:
 
-. link:https://jdk.java.net/java-se-ri/11[OpenJDK 11]
+. link:https://jdk.java.net/java-se-ri/17[OpenJDK 17]
 . link:https://www.wildfly.org/downloads/[Wildfly 26.1.0.FINAL (WildFly Preview EE 9.1 Distribution)]
 . link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.x.x]
 . link:https://docs.docker.com/engine/[Docker]

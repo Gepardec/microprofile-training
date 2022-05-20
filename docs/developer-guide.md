@@ -17,7 +17,7 @@ The project uses the following client side libraries in form os webjars.
 
 This project depends on the following software:
 
-1. [OpenJDK-11](https://jdk.java.net/11/)
+1. [OpenJDK-17](https://jdk.java.net/17/)
 2. [Wildfly-26.1.0.Final](https://www.wildfly.org/downloads/)
 3. [Maven-3.x.x](https://maven.apache.org/download.cgi)
 4. [Docker](https://docs.docker.com/engine/)
