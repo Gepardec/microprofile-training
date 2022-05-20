@@ -10,7 +10,7 @@
     <artifactId>drop-in-configuration</artifactId>
 
     <properties>
-        <microprofile-config-api.version>2.0</microprofile-config-api.version>
+        <wildfly.version>26.1.0.Final</wildfly.version>
 
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -20,11 +20,23 @@
         <revision>1.0.0-SNAPSHOT</revision>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-microprofile</artifactId>
+                <version>${wildfly.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.eclipse.microprofile.config</groupId>
             <artifactId>microprofile-config-api</artifactId>
-            <version>${microprofile-config-api.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

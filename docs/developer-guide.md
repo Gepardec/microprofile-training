@@ -4,9 +4,9 @@ This page represents the guide which will help you setup the project on your loc
 
 The project is based on the following listed specifications.
 
-* `Jakarte-EE-8`
-* `MicroProfile 4.0`
-* `Jakarta-MVC-1.1.0` (JSF as template engine)
+* `Jakarte-EE-9`
+* `MicroProfile 5.0`
+* `Jakarta-MVC-2.0` (JSF as template engine)
 
 The project uses the following client side libraries in form os webjars.
 
@@ -17,8 +17,8 @@ The project uses the following client side libraries in form os webjars.
 
 This project depends on the following software:
 
-1. [OpenJDK-11](https://jdk.java.net/11/)
-2. [Wildfly-23.0.2.Final](https://www.wildfly.org/downloads/)
+1. [OpenJDK-17](https://jdk.java.net/17/)
+2. [Wildfly-26.1.0.Final](https://www.wildfly.org/downloads/)
 3. [Maven-3.x.x](https://maven.apache.org/download.cgi)
 4. [Docker](https://docs.docker.com/engine/)
 5. [Docker Compose](https://docs.docker.com/compose/)
@@ -63,7 +63,7 @@ The endpoints either return
 See the following snippet for an example controller implementation.
 
 ```java
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 @Path("/path")
 @RequestScoped

@@ -4,7 +4,7 @@
 
 The custom JSF tags implement GUI components which are used globally.
 
-`xmlns:tag="http://tags.microprofile.training.gepardec.com"`
+`xmlns:tag="https://tags.microprofile.training.gepardec.com"`
 
 ### Button
 

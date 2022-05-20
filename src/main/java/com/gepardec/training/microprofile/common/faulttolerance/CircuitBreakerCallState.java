@@ -1,8 +1,8 @@
 package com.gepardec.training.microprofile.common.faulttolerance;
 
 import com.gepardec.training.microprofile.CallFailedException;
+import jakarta.enterprise.context.SessionScoped;
 
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 
 @SessionScoped

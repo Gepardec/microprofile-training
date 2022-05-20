@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class Sensor {

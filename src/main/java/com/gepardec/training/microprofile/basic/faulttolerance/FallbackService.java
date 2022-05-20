@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
-import javax.enterprise.context.Dependent;
+import jakarta.enterprise.context.Dependent;
 
 @Dependent
 public class FallbackService {
