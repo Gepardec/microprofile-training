@@ -1,5 +1,15 @@
 package com.gepardec.training.microprofile.basic.openapi;
 
-public class MyFilter {
-    //implement OASFilter
+import org.eclipse.microprofile.openapi.OASFilter;
+import org.eclipse.microprofile.openapi.models.responses.APIResponse;
+
+public class MyFilter implements OASFilter {
+
+    @Override
+    public APIResponse filterAPIResponse(APIResponse apiResponse) {
+        if (apiResponse.getDescription().equals("Missing description")) {
+            apiResponse.setDescription("No Cheetah found");
+        }
+        return apiResponse;
+    }
 }

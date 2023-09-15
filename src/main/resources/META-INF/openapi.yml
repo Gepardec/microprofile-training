@@ -1,0 +1,15 @@
+---
+openapi: 3.0.3
+info:
+  title: microprofile-training-1.0.0-SNAPSHOT.war
+  version: "1.0"
+servers:
+- url: /mptraining
+paths:
+  /cheetahs:
+    post:
+      description: A new cheetah is born
+      responses:
+        "202": {
+                 description: "OK"
+        }
