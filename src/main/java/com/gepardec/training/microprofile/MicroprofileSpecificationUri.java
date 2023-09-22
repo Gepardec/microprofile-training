@@ -17,7 +17,7 @@ public class MicroprofileSpecificationUri {
 
     private static final String REST_CLIENT_URI = "https://download.eclipse.org/microprofile/microprofile-rest-client-2.0/microprofile-rest-client-spec-2.0.html";
 
-    private static final String HEALTH_URI = "https://download.eclipse.org/microprofile/microprofile-health-2.1/microprofile-health-spec.html";
+    private static final String HEALTH_URI = "https://download.eclipse.org/microprofile/microprofile-health-3.1/microprofile-health-spec-3.1.html";
 
     private static final String METRICS_URI = "https://download.eclipse.org/microprofile/microprofile-metrics-3.0/microprofile-metrics-spec-3.0.html";
 
