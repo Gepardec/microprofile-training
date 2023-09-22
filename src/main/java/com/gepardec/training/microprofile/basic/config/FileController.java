@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.basic.config;
 
 import com.gepardec.training.microprofile.SystemHelper;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -19,6 +20,8 @@ public class FileController {
     @Inject
     private Models model;
 
+    @Inject
+    @ConfigProperty(name = "file.application.name")
     private String appName;
 
     @Path("/")

@@ -1,5 +1,11 @@
 package com.gepardec.training.microprofile.basic.config;
 
+import org.eclipse.microprofile.config.inject.ConfigProperties;
+
+import javax.enterprise.context.Dependent;
+
+@ConfigProperties(prefix="backend")
+@Dependent
 public class ServerConfig {
 
     private String host = "Configure me";

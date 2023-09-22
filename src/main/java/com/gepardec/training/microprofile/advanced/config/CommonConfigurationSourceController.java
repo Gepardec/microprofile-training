@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.advanced.config;
 
+import com.gepardec.training.microprofile.common.ConfigurableBean;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
@@ -14,6 +16,9 @@ public class CommonConfigurationSourceController {
     @Inject
     private Models model;
 
+    @Inject
+    private ConfigurableBean configurableBean;
+
     @Path("/")
     @GET
     @Controller
@@ -23,6 +28,6 @@ public class CommonConfigurationSourceController {
     }
 
     private String callWorkHere() {
-        return "nothing done yet!";
+        return configurableBean.doStuff();
     }
 }

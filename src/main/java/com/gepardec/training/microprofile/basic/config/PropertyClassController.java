@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.config;
 
+import org.eclipse.microprofile.config.inject.ConfigProperties;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
@@ -14,9 +16,13 @@ public class PropertyClassController {
     @Inject
     private Models model;
 
-    private ServerConfig backendServerConfig = new ServerConfig();
+    @Inject
+    @ConfigProperties
+    private ServerConfig backendServerConfig;
 
-    private ServerConfig frontendServerConfig = new ServerConfig();
+    @Inject
+    @ConfigProperties(prefix = "frontend")
+    private ServerConfig frontendServerConfig;
 
     @Path("/")
     @GET
