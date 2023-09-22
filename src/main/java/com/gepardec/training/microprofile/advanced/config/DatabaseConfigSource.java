@@ -8,11 +8,11 @@ import java.util.Set;
 
 public class DatabaseConfigSource implements ConfigSource {
 
-    private PropertyDao propertyDao = new PropertyDao();
+    private final PropertyDao propertyDao = new PropertyDao();
 
-    private Set<String> propertyNames = null;
+    private Set<String> propertyNames;
 
-    private Map<String, String> valueCache = new HashMap<>();
+    private Map<String, String> valueCache;
 
     @Override
     public Set<String> getPropertyNames() {
@@ -24,10 +24,10 @@ public class DatabaseConfigSource implements ConfigSource {
 
     @Override
     public String getValue(String s) {
-        if (!valueCache.containsKey(s)) {
-            valueCache.put(s, propertyDao.findProperty(s));
+        if (valueCache == null) {
+            valueCache = new HashMap<>();
         }
-        return valueCache.get(s);
+        return valueCache.computeIfAbsent(s, propertyDao::findProperty);
     }
 
     @Override
