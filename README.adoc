@@ -3,14 +3,14 @@
 This repository holds the training for the microprofile specifications.
 After working through the training one should be able to understand the most common microprofile specifications, their impacts, their interoperability and how to use them properly in real time applications.
 
-This training is based on the link:https://jakarta.ee/release/8/[Jakarta-EE 8.0] link:https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-4.0[(Eclipse MicroProfile 4)] specification and the link:https://www.wildfly.org/[Wildfly 23.0.2.Final] application server.
+This training is based on the link:https://jakarta.ee/release/8/[Jakarta-EE 8.0] link:https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-4.1[(Eclipse MicroProfile 4.1)] specification and the link:https://www.wildfly.org/[Wildfly 26.1.3.Final] application server.
 
 == Used Tools
 
 To get the application running you need the following software installed:
 
-. link:https://jdk.java.net/java-se-ri/11[OpenJDK 11]
-. link:https://www.wildfly.org/downloads/[Wildfly 23.0.2.FINAL (Jakarta EE 8 Full & Web Distribution)]
+. link:https://jdk.java.net/java-se-ri/17[OpenJDK 17]
+. link:https://www.wildfly.org/downloads/#26.1.3.Final[Wildfly 26.1.3.FINAL (Jakarta EE 8 Full & Web Distribution)]
 . link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.x.x]
 . link:https://docs.docker.com/engine/[Docker]
 . link:https://docs.docker.com/compose/[Docker Compose]
@@ -47,12 +47,6 @@ Therefore you have to run the cli script from the projects root directory:
 Restart your server after the script finished.
 
 IMPORTANT: You need to run the server with the `standalone-microprofile.xml` otherwise microprofile extensions are not available.
-
-=== Running in standalone (not recommended)
-
-Run the application with `mvn wildfly:run`.
-
-IMPORTANT: In this mode you won't be able to hot-code deploy. This mode is not recommended.
 
 === Starting up the infrastructure
 
