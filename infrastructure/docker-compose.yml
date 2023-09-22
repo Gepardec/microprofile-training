@@ -45,7 +45,7 @@ services:
       POSTGRES_PASSWORD: 'admin@123'
 
   keycloak:
-    image: quay.io/keycloak/keycloak:15.0.2
+    image: quay.io/keycloak/keycloak:19.0.3-legacy
     environment:
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
