@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.advanced.jwt;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,7 +11,7 @@ import javax.ws.rs.core.Response;
 @Path(("/advanced/jwt/injection-proxying"))
 public class InjectionProxyingController {
 
-    /*@Inject*/
+    @Inject
     private InjectionProxyingService injectionProxyingService;
 
     @Controller

@@ -2,6 +2,7 @@ package com.gepardec.training.microprofile.basic.jwt;
 
 import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
@@ -28,6 +29,7 @@ public class RolesController {
 
     @GET
     @Path("/secured")
+    @RolesAllowed("role-admin")
     public Response secured() {
         return Response.ok("\uD83E\uDD2B").build();
     }
