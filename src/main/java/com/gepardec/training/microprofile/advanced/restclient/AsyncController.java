@@ -5,12 +5,12 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.BiConsumer;
 
 @Path("/advanced/restclient/async")
 @RequestScoped
@@ -33,9 +33,6 @@ public class AsyncController {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/getAsync")
     public Response getAsync() {
-
-        //:TODO uncomment if you adapted the interface
-        /*
         final var latch = new CountDownLatch(3);
         var s = new StringBuilder();
         final AtomicReference<Throwable> throwable = new AtomicReference<>();
@@ -65,9 +62,7 @@ public class AsyncController {
                     t, 500);
         }
         return Response.ok(s.toString()).build();
-        */
 
-        return Response.noContent().build();
     }
 
     @POST
@@ -77,7 +72,7 @@ public class AsyncController {
         final String s = restClientAPIAdvanced.get();
         final String s1 = restClientAPIAdvanced.get();
         final String s2 = restClientAPIAdvanced.get();
-        return Response.ok(s + s1 + s + s2).build();
 
+        return Response.ok(s + s1 + s + s2).build();
     }
 }

@@ -1,6 +1,9 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,6 +13,8 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class ExceptionMapperController {
 
+    @Inject
+    @RestClient
     private HttpbinClientApi api;
 
     @Controller

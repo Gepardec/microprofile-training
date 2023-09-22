@@ -1,6 +1,5 @@
 package com.gepardec.training.microprofile.basic.openapi;
 
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jdk.jfr.Description;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;

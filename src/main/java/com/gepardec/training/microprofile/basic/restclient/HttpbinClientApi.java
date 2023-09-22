@@ -1,8 +1,16 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
+import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
+import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+// @RegisterRestClient(baseUri = "https://httpbin.org")
+@RegisterRestClient
+@RegisterProvider(RestClientExceptionMapper.class)
+@RegisterClientHeaders(RestClientHeaderHandler.class)
 @Path("/")
 public interface HttpbinClientApi {
 

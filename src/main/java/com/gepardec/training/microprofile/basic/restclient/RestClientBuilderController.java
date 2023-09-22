@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
+import org.eclipse.microprofile.rest.client.RestClientBuilder;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
@@ -28,7 +30,9 @@ public class RestClientBuilderController {
 
     private String createAndCallClient() throws URISyntaxException {
         final URI uri = new URI("https://httpbin.org/");
-        final HttpbinClientApi api = null; // Use the client builder to create the client instance
+        final HttpbinClientApi api = RestClientBuilder.newBuilder()
+                .baseUri(uri)
+                .build(HttpbinClientApi.class); // Use the client builder to create the client instance
 
         return (api != null) ? api.get() : null;
     }

@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.mvc.Controller;
@@ -12,6 +14,8 @@ import javax.ws.rs.Path;
 @Controller
 public class HeaderFactoryController {
 
+    @Inject
+    @RestClient
     private HttpbinClientApi api;
 
     @Inject

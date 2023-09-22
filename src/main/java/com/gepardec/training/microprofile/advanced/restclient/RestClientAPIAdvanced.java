@@ -9,8 +9,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.concurrent.CompletionStage;
 
 @RegisterProvider(RestClientExceptionMapper.class)
+@RegisterProvider(AsyncControllerRequestFilter.class)
+@RegisterProvider(RestAsyncInvocationInterceptorFactory.class)
 @RegisterRestClient(configKey = "user-api")
 @Path("/")
 public interface RestClientAPIAdvanced {
@@ -23,11 +26,10 @@ public interface RestClientAPIAdvanced {
     @Path("/delay/2")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    String getAsync();
+    CompletionStage<String> getAsync();
 
     @Path("/delay/3")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    String postAsync();
-
+    CompletionStage<String> postAsync();
 }
