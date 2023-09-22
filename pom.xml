@@ -146,57 +146,6 @@
                     </execution>
                 </executions>
             </plugin>
-<<<<<<< Updated upstream
-
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${wildfly-plugin.version}</version>
-                <configuration>
-                    <version>${wildfly.version}</version>
-                    <server-config>standalone-microprofile.xml</server-config>
-                    <javaOpts>
-                        <javaOpt>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</javaOpt>
-                    </javaOpts>
-                    <add-user>
-                        <users>
-                            <user>
-                                <username>admin</username>
-                                <password>admin@123</password>
-                            </user>
-                        </users>
-                    </add-user>
-                    <scripts>
-                        <script>infrastructure/wildfly/scripts.cli</script>
-                    </scripts>
-                    <timeout>120</timeout>
-                </configuration>
-=======
-            <plugin>
-                <groupId>org.openapitools</groupId>
-                <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi-generator-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
-                            <generatorName>java</generatorName>
-                            <modelPackage>model</modelPackage>
-                            <apiPackage>api</apiPackage>
-                            <library>microprofile</library>
-                            <generateModelTests>false</generateModelTests>
-                            <generateApiTests>false</generateApiTests>
-                            <configOptions>
-                                <sourceFolder>src/gen/java/main</sourceFolder>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-                </executions>
->>>>>>> Stashed changes
-            </plugin>
         </plugins>
     </build>
 </project>
