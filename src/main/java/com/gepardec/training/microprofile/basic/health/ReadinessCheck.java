@@ -1,4 +1,4 @@
-package com.gepardec.training.microprofile.basic.health.workshop;
+package com.gepardec.training.microprofile.basic.health;
 
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
@@ -13,7 +13,7 @@ public class ReadinessCheck implements HealthCheck {
     @Override
     public HealthCheckResponse call() {
         return HealthCheckResponse.named("FixMeReady")
-                .down()
+                .up()
                 .build();
     }
 }
