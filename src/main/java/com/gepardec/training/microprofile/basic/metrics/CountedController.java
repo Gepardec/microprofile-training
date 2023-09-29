@@ -3,6 +3,7 @@ package com.gepardec.training.microprofile.basic.metrics;
 import org.eclipse.microprofile.metrics.Counter;
 import org.eclipse.microprofile.metrics.MetricID;
 import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -39,6 +40,7 @@ public class CountedController {
     @Path("/count")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
+    @Counted(name = METRIC_ID, absolute = true)
     public Response count() {
         Counter change = metricRegistry.getCounter(new MetricID(METRIC_ID));
         return Response.ok(change != null ? change.getCount() : "Metric '" + METRIC_ID + "' does not exist.").build();

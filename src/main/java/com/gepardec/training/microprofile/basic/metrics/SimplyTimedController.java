@@ -4,6 +4,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.eclipse.microprofile.metrics.MetricID;
 import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.SimpleTimer;
+import org.eclipse.microprofile.metrics.annotation.SimplyTimed;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -44,6 +45,7 @@ public class SimplyTimedController {
     @Path("/simple-time")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
+    @SimplyTimed(name = METRIC_ID, absolute = true)
     public Response simpleTime() throws InterruptedException {
         Thread.sleep((long) (Math.random() * 1000));
         SimpleTimer simpleTimer = metricRegistry.getSimpleTimer(new MetricID(METRIC_ID));

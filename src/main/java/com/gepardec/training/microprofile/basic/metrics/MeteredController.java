@@ -3,6 +3,7 @@ package com.gepardec.training.microprofile.basic.metrics;
 import org.eclipse.microprofile.metrics.Meter;
 import org.eclipse.microprofile.metrics.MetricID;
 import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.annotation.Metered;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -41,6 +42,7 @@ public class MeteredController {
     @Path("/meter")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
+    @Metered(name = METRIC_ID, absolute = true)
     public Response meter() throws InterruptedException {
         Thread.sleep((long) Math.random() * 100);
         Meter meter = metricRegistry.getMeter(new MetricID(METRIC_ID));

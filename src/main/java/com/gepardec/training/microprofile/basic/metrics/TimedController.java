@@ -4,6 +4,7 @@ import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.eclipse.microprofile.metrics.MetricID;
 import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.Timer;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -44,6 +45,7 @@ public class TimedController {
     @Path("/time")
     @POST
     @Produces(MediaType.TEXT_PLAIN)
+    @Timed(name = "timed-example", absolute = true)
     public Response time() throws InterruptedException {
         Thread.sleep((long) (Math.random() * 1000));
         Timer timer = metricRegistry.getTimer(new MetricID(METRIC_ID));

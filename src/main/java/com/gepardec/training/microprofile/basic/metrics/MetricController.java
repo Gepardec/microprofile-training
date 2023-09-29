@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.basic.metrics;
 
 import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.annotation.Metric;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ public class MetricController {
     private Models model;
 
     @Inject
+    @Metric(name = "count-example", absolute = true)
     private Counter counter;
 
     @Path("/metric")
