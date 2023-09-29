@@ -26,7 +26,7 @@ public class RetriedAsynchronousFallbackController {
     @Path("/invoke")
     public Response invoke() {
         try {
-            return Response.ok(service.invoke().get()).build();
+            return Response.ok(service.invoke().toCompletableFuture().get()).build();
         } catch (Exception e) {
             return Response.serverError().entity(e.getMessage()).build();
         }
