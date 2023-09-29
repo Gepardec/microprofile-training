@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
+import io.opentracing.Span;
 import io.opentracing.Tracer;
 
 import javax.annotation.Priority;
@@ -21,5 +22,10 @@ public class RestRequestFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
+        Span span = tracer.activeSpan();
+        span.setTag("http-uri", requestContext.getUriInfo().getRequestUri().toString());
+        span.setTag("http-method", requestContext.getMethod());
+        requestContext.getHeaders().forEach((key, value) ->
+                span.setTag("http-header-" + key, String.join(", ", value)));
     }
 }

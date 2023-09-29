@@ -1,6 +1,8 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
+import io.opentracing.Span;
 import io.opentracing.Tracer;
+import io.opentracing.noop.NoopSpan;
 
 import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
@@ -22,5 +24,8 @@ public class RestResponseFilter implements ContainerResponseFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+        tracer.buildSpan(responseContext.getEntityClass().getName())
+                .withTag("http-status-code", responseContext.getStatus())
+                .start();
     }
 }
