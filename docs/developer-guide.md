@@ -19,7 +19,7 @@ This project depends on the following software:
 
 1. [OpenJDK-17](https://jdk.java.net/17/)
 2. [Wildfly-26.1.3.Final](https://www.wildfly.org/downloads/#26.1.3.Final)
-3. [Maven-3.x.x](https://maven.apache.org/download.cgi)
+3. [Maven-3.9.x](https://maven.apache.org/download.cgi)
 4. [Docker](https://docs.docker.com/engine/)
 5. [Docker Compose](https://docs.docker.com/compose/)
 
