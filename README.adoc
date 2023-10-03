@@ -11,7 +11,7 @@ To get the application running you need the following software installed:
 
 . link:https://jdk.java.net/java-se-ri/17[OpenJDK 17]
 . link:https://www.wildfly.org/downloads/#26.1.3.Final[Wildfly 26.1.3.FINAL (Jakarta EE 8 Full & Web Distribution)]
-. link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.x.x]
+. link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.9.x]
 . link:https://docs.docker.com/engine/[Docker]
 . link:https://docs.docker.com/compose/[Docker Compose]
 
