@@ -1,5 +1,7 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
+import org.eclipse.microprofile.faulttolerance.Bulkhead;
+
 import javax.enterprise.context.RequestScoped;
 import javax.mvc.Controller;
 import javax.ws.rs.GET;
@@ -23,6 +25,7 @@ public class BulkheadController {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/bulkheaded")
+    @Bulkhead(value = 5)
     public Response bulkheaded() throws InterruptedException {
         Thread.sleep(250);
         return Response.ok("Call worked").build();

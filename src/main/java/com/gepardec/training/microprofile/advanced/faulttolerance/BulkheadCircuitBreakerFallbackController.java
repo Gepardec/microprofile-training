@@ -1,6 +1,10 @@
 package com.gepardec.training.microprofile.advanced.faulttolerance;
 
+import com.gepardec.training.microprofile.ApplicationHttpStatusCode;
 import com.gepardec.training.microprofile.common.faulttolerance.CircuitBreakerCallState;
+import org.eclipse.microprofile.faulttolerance.*;
+import org.eclipse.microprofile.faulttolerance.exceptions.BulkheadException;
+import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -23,6 +27,20 @@ public class BulkheadCircuitBreakerFallbackController {
 
     private static final int parallelCount = 6;
 
+    static class ResponseFallbackHandler implements FallbackHandler<Response> {
+
+        @Override
+        public Response handle(ExecutionContext context) {
+            if (context.getFailure() instanceof CircuitBreakerOpenException) {
+                return Response.status(ApplicationHttpStatusCode.TOO_MANY_FAILURES_TRY_AGAIN_LATER).build();
+            } else if (context.getFailure() instanceof BulkheadException) {
+                return Response.status(ApplicationHttpStatusCode.TOO_MANY_REQUESTS).build();
+            } else {
+                return Response.status(Response.Status.SERVICE_UNAVAILABLE).build();
+            }
+        }
+    }
+
     @Inject
     private CircuitBreakerCallState callState;
 
@@ -40,6 +58,9 @@ public class BulkheadCircuitBreakerFallbackController {
     @POST
     @Path("/invoke")
     @Produces(MediaType.TEXT_PLAIN)
+    @Bulkhead(value = 4)
+    @CircuitBreaker
+    @Fallback(ResponseFallbackHandler.class)
     public Response invoke() {
         try {
             Thread.sleep(250);
