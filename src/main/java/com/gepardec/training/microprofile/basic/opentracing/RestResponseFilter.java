@@ -26,6 +26,7 @@ public class RestResponseFilter implements ContainerResponseFilter {
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
         tracer.buildSpan(responseContext.getEntityClass().getName())
                 .withTag("http-status-code", responseContext.getStatus())
-                .start();
+                .start()
+                .finish();
     }
 }
