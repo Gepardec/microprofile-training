@@ -1,16 +1,13 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
-import org.eclipse.microprofile.opentracing.Traced;
-
-import javax.enterprise.context.RequestScoped;
-import javax.mvc.Controller;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.mvc.Controller;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 @Path("/basic/opentracing/tracer")
 @RequestScoped
 @Controller
-@Traced
 public class TracerController {
 
     @Path("/")

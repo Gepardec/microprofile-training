@@ -12,23 +12,21 @@
         <!-- Plugin Properties -->
         <maven.compiler.parameters>true</maven.compiler.parameters>
 
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Wildfly Runtime Dependencies -->
-        <jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
-        <microprofile.version>4.1</microprofile.version>
-        <slf4j-api.version>1.7.36</slf4j-api.version>
+        <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>
+        <microprofile.version>7.0</microprofile.version>
+        <slf4j-api.version>2.0.16</slf4j-api.version>
 
         <!-- Application Dependencies -->
+        <jakarta.mvc-api.version>2.1.0</jakarta.mvc-api.version>
+        <krazo-resteasy.version>3.0.1</krazo-resteasy.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <krazo-resteasy.version>1.1.0</krazo-resteasy.version>
-        <omnifaces.version>3.11</omnifaces.version>
-        <font-awesome.version>5.15.2</font-awesome.version>
-        <mdb-ui-kit.version>3.9.0</mdb-ui-kit.version>
 
         <!-- Runtime Dependencies -->
         <postgresql.version>42.2.27</postgresql.version>
@@ -65,9 +63,9 @@
 
         <!-- Application Dependencies -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
+            <groupId>jakarta.mvc</groupId>
+            <artifactId>jakarta.mvc-api</artifactId>
+            <version>${jakarta.mvc-api.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -76,22 +74,11 @@
             <version>${krazo-resteasy.version}</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.omnifaces</groupId>
-            <artifactId>omnifaces</artifactId>
-            <version>${omnifaces.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>font-awesome</artifactId>
-            <version>${font-awesome.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars.npm</groupId>
-            <artifactId>mdb-ui-kit</artifactId>
-            <version>${mdb-ui-kit.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -149,7 +136,7 @@
                                     <version>3.9.0</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>17</version>
+                                    <version>21</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>

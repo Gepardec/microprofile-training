@@ -12,15 +12,15 @@
     <properties>
         <maven.compiler.parameters>true</maven.compiler.parameters>
 
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Wildfly Runtime Dependencies -->
-        <jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
-        <microprofile.version>4.1</microprofile.version>
+        <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>
+        <microprofile.version>7.0</microprofile.version>
 
         <revision>1.0.0-SNAPSHOT</revision>
     </properties>

@@ -5,16 +5,16 @@ import org.eclipse.microprofile.metrics.MetricID;
 import org.eclipse.microprofile.metrics.MetricRegistry;
 import org.eclipse.microprofile.metrics.Timer;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.mvc.Controller;
-import javax.mvc.Models;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.mvc.Controller;
+import jakarta.mvc.Models;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/basic/metrics")
 @RequestScoped
@@ -24,8 +24,8 @@ public class TimedController {
 
     public static final String FORMAT = "s.SSS";
 
-    @Inject
-    private MetricRegistry metricRegistry;
+    /*@Inject
+    private MetricRegistry metricRegistry;*/
 
     @Inject
     private Models model;
@@ -34,10 +34,11 @@ public class TimedController {
     @GET
     @Controller
     public String getTimed() {
-        Timer timed = metricRegistry.getTimer(new MetricID(METRIC_ID));
+        // TODO: fix
+        /*Timer timed = metricRegistry.getTimer(new MetricID(METRIC_ID));
         if (timed != null) {
             model.put("time", DurationFormatUtils.formatDuration(timed.getElapsedTime().toMillis(), FORMAT));
-        }
+        }*/
         return "basic/metrics/timed.xhtml";
     }
 
@@ -45,11 +46,13 @@ public class TimedController {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     public Response time() throws InterruptedException {
-        Thread.sleep((long) (Math.random() * 1000));
+        // TODO: fix
+        /*Thread.sleep((long) (Math.random() * 1000));
         Timer timer = metricRegistry.getTimer(new MetricID(METRIC_ID));
         return Response.ok(
                         timer != null ? DurationFormatUtils.formatDuration(timer.getElapsedTime().toMillis(), FORMAT) : "Metric '" + METRIC_ID + "' does not exist.")
-                .build();
+                .build();*/
+        return Response.ok().build();
     }
 
 }

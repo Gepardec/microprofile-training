@@ -24,7 +24,7 @@ footer {
 }
 
 main {
-    background: url(#{resource[ 'img/cheeta-grey.png' ]}) no-repeat center center fixed;
+    background: url("/mptraining/resources/img/cheeta-grey.png") no-repeat center center fixed;
     height: 100%;
     overflow-y: auto;
     overflow-x: auto;

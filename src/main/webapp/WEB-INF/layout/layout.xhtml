@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="jakarta.faces.html"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:f="jakarta.faces.core"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <!--@elvariable id="verticallyCentered" type="java.lang.Boolean"-->
@@ -14,9 +14,11 @@
 
     <h:head>
         <meta charset="UTF-8" />
-        <h:outputStylesheet name="webjars/mdb-ui-kit/3.9.0/css/mdb.min.css" />
-        <h:outputStylesheet name="webjars/font-awesome/5.15.2/css/all.min.css" />
-        <h:outputStylesheet library="css" name="style.css" />
+
+        <link rel="stylesheet" href="#{request.getContextPath()}/resources/css/mdb-ui-kit/mdb.min.css" />
+        <link rel="stylesheet" href="#{request.getContextPath()}/resources/css/font-awesome/all.min.css" />
+        <link rel="stylesheet" href="#{request.getContextPath()}/resources/css/style.css" />
+
         <title><ui:insert name="title" /></title>
     </h:head>
 
@@ -73,8 +75,8 @@
             <footer class="bg-light d-flex justify-content-center align-items-center shadow-inverted">
                 &#169;<a href="https://www.gepardec.com/" target="_blank" class="ps-1" title="https://www.gepardec.com/">2022 Gepardec IT Services</a>
             </footer>
-            <h:outputScript name="webjars/mdb-ui-kit/3.9.0/js/mdb.min.js" />
-            <h:outputScript name="webjars/font-awesome/5.15.2/js/all.min.js" />
+            <script type="text/javascript" src="#{request.getContextPath()}/resources/js/mdb-ui-kit/mdb.es.min.js" />
+            <script type="text/javascript" src="#{request.getContextPath()}/resources/js/font-awesome/all.min.js" />
         </f:view>
 
         <ui:insert name="bottom" />
