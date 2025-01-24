@@ -1,6 +1,6 @@
 package com.gepardec.training.microprofile.basic.opentracing;
 
-import io.opentracing.Tracer;
+/*import io.opentracing.Tracer;*/
 
 import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
@@ -17,8 +17,8 @@ import java.io.IOException;
 @ApplicationScoped
 public class RestResponseFilter implements ContainerResponseFilter {
 
-    @Inject
-    private Tracer tracer;
+    /*@Inject
+    private Tracer tracer;*/
 
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
