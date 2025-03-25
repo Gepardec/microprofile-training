@@ -1,5 +1,3 @@
-version: '3.8'
-
 volumes:
   prometheus_data:
   grafana_data:
@@ -7,7 +5,7 @@ volumes:
 
 services:
   prometheus:
-    image: prom/prometheus:v2.30.0
+    image: prom/prometheus:v2.53.4
     ports:
       - "19090:9090"
     volumes:
@@ -17,7 +15,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   grafana:
-    image: grafana/grafana:8.1.5
+    image: grafana/grafana:11.5.3
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: 'admin@123'
@@ -33,7 +31,7 @@ services:
       - prometheus
 
   postgres:
-    image: postgres:13.4
+    image: postgres:17.4
     ports:
       - "15432:5432"
     volumes:
@@ -45,28 +43,30 @@ services:
       POSTGRES_PASSWORD: 'admin@123'
 
   keycloak:
-    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    image: quay.io/keycloak/keycloak:26.1
     environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_SCHEMA: public
-      DB_DATABASE: keycloak
-      DB_USER: admin
-      DB_PASSWORD: 'admin@123'
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: 'admin@123'
-    command:
-      - "-b 0.0.0.0"
-      - "-Dkeycloak.import=/opt/jboss/keycloak/microprofile-realm.json"
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: 'admin@123'
+
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8080
+      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_HTTPS: false
+
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: 'admin@123'
+    command: "start-dev --import-realm"
     ports:
       - "18080:8080"
     volumes:
-      - ./keycloak/v3_realm-export.json:/opt/jboss/keycloak/microprofile-realm.json:ro
+      - ./keycloak/v3_realm-export.json://opt/keycloak/data/import/microprofile-realm.json:ro
     depends_on:
       - postgres
 
   jaeger:
-      image: jaegertracing/all-in-one:1.27
+      image: jaegertracing/jaeger:2.4.0
       ports:
         - "16831:6831/udp"
         - "16686:16686"
