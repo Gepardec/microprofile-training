@@ -29,10 +29,8 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
 
         <!-- Wildfly Version -->
-        <wildfly.bom.version>35.0.1.Final</wildfly.bom.version>
-
-        <!-- Runtime Dependencies -->
-        <postgresql.version>42.7.5</postgresql.version>
+        <wildfly-galleon-pack.verison>35.0.1.Final</wildfly-galleon-pack.verison>
+        <wildfly-datasources-galleon-pack.version>9.1.0.Final</wildfly-datasources-galleon-pack.version>
 
         <!-- Plugin Versions -->
         <dependency-plugin.version>3.8.1</dependency-plugin.version>
@@ -91,39 +89,10 @@
             <version>${commons-lang3.version}</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- Runtime Dependencies -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-            <scope>runtime</scope>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${dependency-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.postgresql</groupId>
-                                    <artifactId>postgresql</artifactId>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -154,7 +123,10 @@
                 <configuration>
                     <feature-packs>
                         <feature-pack>
-                            <location>org.wildfly:wildfly-galleon-pack:${wildfly.bom.version}</location>
+                            <location>org.wildfly:wildfly-galleon-pack:${wildfly-galleon-pack.verison}</location>
+                        </feature-pack>
+                        <feature-pack>
+                            <location>org.wildfly:wildfly-datasources-galleon-pack:${wildfly-datasources-galleon-pack.version}</location>
                         </feature-pack>
                     </feature-packs>
                     <layers>
@@ -162,21 +134,29 @@
                         <layer>microprofile-platform</layer>
                         <layer>mvc-krazo</layer>
                         <layer>datasources</layer>
-                        <!-- if you need jboss-cli, add this layer -> <layer>core-tools</layer>-->
+                        <layer>postgresql-driver</layer>
+                        <layer>postgresql-datasource</layer>
+                        <layer>core-tools</layer>
+                        <layer>web-console</layer>
                     </layers>
-                    <packaging-scripts>
-                        <packaging-script>
-                            <commands>
-                                <command>module add --name=org.postgres --resources=${project.build.directory}/dependency/postgresql-${postgresql.version}.jar --dependencies=jakarta.transaction.api</command>
-                                <command>/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql, driver-module-name=org.postgres, driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)</command>
-                                <command>/subsystem=datasources/data-source=PostgresDS:add(driver-name=postgresql, jndi-name=java:/PostgresDS, connection-url=jdbc:postgresql://localhost:5432/mptraining, user-name=admin, password=admin@123)</command>
-                                <command>reload</command>
-                            </commands>
-                        </packaging-script>
-                    </packaging-scripts>
                     <env>
                         <JBOSS_SOCKET_BINDING_PORT_OFFSET>100</JBOSS_SOCKET_BINDING_PORT_OFFSET>
+                        <POSTGRESQL_HOST>localhost</POSTGRESQL_HOST>
+                        <POSTGRESQL_PORT>5432</POSTGRESQL_PORT>
+                        <POSTGRESQL_DATABASE>mptraining</POSTGRESQL_DATABASE>
+                        <POSTGRESQL_USER>admin</POSTGRESQL_USER>
+                        <POSTGRESQL_PASSWORD>admin@123</POSTGRESQL_PASSWORD>
                     </env>
+                    <add-user>
+                        <users>
+                            <user>
+                                <username>admin</username>
+                                <password>admin@123</password>
+                            </user>
+                        </users>
+                    </add-user>
+                    <port>10090</port>
+                    <debug>true</debug>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,22 +1,22 @@
 package com.gepardec.training.microprofile.advanced.config;
 
+import jakarta.annotation.Resource;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
+@RequestScoped
 public class PropertyDao {
 
-    public static final String URL = "jdbc:postgresql://localhost:5432/mptraining";
-
-    public static final String USER = "admin";
-
-    public static final String PASSWORD = "admin@123";
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Resource(lookup = "java:jboss/datasources/PostgreSQLDS")
+    private DataSource dataSource;
 
     private static PreparedStatement createStatement(String key, Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT p.value FROM property p WHERE KEY = ?");
@@ -54,14 +54,6 @@ public class PropertyDao {
     }
 
     private Connection createConnection() throws SQLException {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Unable to find class org.postgresql.Driver", e);
-        }
-        Properties connectionProps = new Properties();
-        connectionProps.put("user", USER);
-        connectionProps.put("password", PASSWORD);
-        return DriverManager.getConnection(URL, connectionProps);
+        return dataSource.getConnection();
     }
 }
