@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class PropertyDao {
 
-    public static final String URL = "jdbc:postgresql://localhost:15432/mptraining";
+    public static final String URL = "jdbc:postgresql://localhost:5432/mptraining";
 
     public static final String USER = "admin";
 

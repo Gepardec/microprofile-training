@@ -1,39 +1,20 @@
 volumes:
-  prometheus_data:
-  grafana_data:
   postgres_data:
 
 services:
-  prometheus:
-    image: prom/prometheus:v2.53.4
+  otel-lgtm:
+    image: grafana/otel-lgtm
     ports:
-      - "19090:9090"
-    volumes:
-      - ./prometheus/:/etc/prometheus/
-      - prometheus_data:/prometheus
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
-  grafana:
-    image: grafana/grafana:11.5.3
+      - "3000:3000"
+      - "4317:4317"
+      - "4318:4318"
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: 'admin@123'
-    ports:
-      - "13000:3000"
-    volumes:
-      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
-      - grafana_data:/var/lib/grafana
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    depends_on:
-      - prometheus
-
   postgres:
-    image: postgres:17.4
+    image: postgres
     ports:
-      - "15432:5432"
+      - "5432:5432"
     volumes:
       - ./postgres/01_init-user-db.sh:/docker-entrypoint-initdb.d/01_init-user-db.sh
       - ./postgres/02_init-mptraining.sh:/docker-entrypoint-initdb.d/02_init-mptraining.sh
@@ -41,15 +22,9 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 'admin@123'
-
   keycloak:
-    image: quay.io/keycloak/keycloak:26.1
+    image: quay.io/keycloak/keycloak
     environment:
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
-      KC_DB_USERNAME: admin
-      KC_DB_PASSWORD: 'admin@123'
-
       KC_HOSTNAME: localhost
       KC_HOSTNAME_PORT: 8080
       KC_HOSTNAME_STRICT: false
@@ -59,16 +34,6 @@ services:
       KC_BOOTSTRAP_ADMIN_PASSWORD: 'admin@123'
     command: "start-dev --import-realm"
     ports:
-      - "18080:8080"
+      - "8080:8080"
     volumes:
       - ./keycloak/v3_realm-export.json://opt/keycloak/data/import/microprofile-realm.json:ro
-    depends_on:
-      - postgres
-
-  jaeger:
-      image: jaegertracing/jaeger:2.4.0
-      ports:
-        - "16831:6831/udp"
-        - "16686:16686"
-      depends_on:
-        - prometheus

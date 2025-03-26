@@ -8,7 +8,7 @@ import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 
 @ApplicationScoped
-public class Producer {
+public class LoggerProducer {
 
     @Produces
     public Logger produceLogger(InjectionPoint injectionPoint) {

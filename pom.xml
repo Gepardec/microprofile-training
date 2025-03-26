@@ -28,12 +28,16 @@
         <krazo-resteasy.version>3.0.1</krazo-resteasy.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
 
+        <!-- Wildfly Version -->
+        <wildfly.bom.version>35.0.1.Final</wildfly.bom.version>
+
         <!-- Runtime Dependencies -->
-        <postgresql.version>42.2.27</postgresql.version>
+        <postgresql.version>42.7.5</postgresql.version>
 
         <!-- Plugin Versions -->
-        <dependency-plugin.version>3.3.0</dependency-plugin.version>
-        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+        <dependency-plugin.version>3.8.1</dependency-plugin.version>
+        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <wildfly.maven.plugin.version>5.1.2.Final</wildfly.maven.plugin.version>
         <openapi-generator-maven-plugin.version>6.6.0</openapi-generator-maven-plugin.version>
 
         <revision>1.0.0-SNAPSHOT</revision>
@@ -53,6 +57,12 @@
             <version>${microprofile.version}</version>
             <type>pom</type>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.microprofile.metrics</groupId>
+                    <artifactId>microprofile-metrics-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -92,12 +102,6 @@
     </dependencies>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -140,6 +144,45 @@
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>${wildfly.maven.plugin.version}</version>
+                <configuration>
+                    <feature-packs>
+                        <feature-pack>
+                            <location>org.wildfly:wildfly-galleon-pack:${wildfly.bom.version}</location>
+                        </feature-pack>
+                    </feature-packs>
+                    <layers>
+                        <layer>ee-core-profile-server</layer>
+                        <layer>microprofile-platform</layer>
+                        <layer>mvc-krazo</layer>
+                        <layer>datasources</layer>
+                        <!-- if you need jboss-cli, add this layer -> <layer>core-tools</layer>-->
+                    </layers>
+                    <packaging-scripts>
+                        <packaging-script>
+                            <commands>
+                                <command>module add --name=org.postgres --resources=${project.build.directory}/dependency/postgresql-${postgresql.version}.jar --dependencies=jakarta.transaction.api</command>
+                                <command>/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql, driver-module-name=org.postgres, driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)</command>
+                                <command>/subsystem=datasources/data-source=PostgresDS:add(driver-name=postgresql, jndi-name=java:/PostgresDS, connection-url=jdbc:postgresql://localhost:5432/mptraining, user-name=admin, password=admin@123)</command>
+                                <command>reload</command>
+                            </commands>
+                        </packaging-script>
+                    </packaging-scripts>
+                    <env>
+                        <JBOSS_SOCKET_BINDING_PORT_OFFSET>100</JBOSS_SOCKET_BINDING_PORT_OFFSET>
+                    </env>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

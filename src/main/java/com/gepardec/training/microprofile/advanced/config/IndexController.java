@@ -1,7 +1,5 @@
 package com.gepardec.training.microprofile.advanced.config;
 
-import org.eclipse.microprofile.metrics.annotation.*;
-
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.mvc.Controller;
 import jakarta.ws.rs.GET;
@@ -10,11 +8,6 @@ import jakarta.ws.rs.Path;
 @Path("/advanced/config")
 @RequestScoped
 @Controller
-@Counted(name = "counted")
-//TODO: fix @Metered(name = "metered")
-@Timed(name = "timed")
-//TODO: fix @SimplyTimed(name = "simply-timed")
-//TODO: fix @ConcurrentGauge(name = "concurrent-gauge")
 public class IndexController {
 
     @Path("/")

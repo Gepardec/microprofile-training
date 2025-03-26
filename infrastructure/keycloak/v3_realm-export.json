@@ -796,9 +796,9 @@
     {
       "id": "4574a517-465e-4dc9-b21e-e4d0d07d4b0e",
       "clientId": "training",
-      "rootUrl": "http://localhost:8080/mptraining/api",
+      "rootUrl": "http://localhost:8180/mptraining/api",
       "adminUrl": "",
-      "baseUrl": "http://localhost:8080/mptraining/api/welcome",
+      "baseUrl": "http://localhost:8180/mptraining/api/welcome",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
