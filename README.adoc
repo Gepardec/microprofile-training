@@ -37,10 +37,10 @@ If you want to tear down the infrastructure change to the `infrastructure` direc
 
 === Starting up Wildfly
 
-Change to the root directory of the project and run `mvn clean package wildfly:dev`.
+Change to the root directory of the project and run `mvn clean install wildfly:dev`.
 By starting Wildfly in development mode, the server is watching for changes and will automatically redeploy your application.
 
-If necessary, you can attach a debugger in your IDE for stepping in your code.
+If necessary, you can attach a debugger in your IDE for stepping in your code. Append `-Dwildfly.debug=true -Dwildfly.debug.port=5005` to your mvn command to do so.
 
 == Accessing the application
 

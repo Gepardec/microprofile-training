@@ -82,7 +82,6 @@
             <version>${krazo-resteasy.version}</version>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -156,7 +155,6 @@
                         </users>
                     </add-user>
                     <port>10090</port>
-                    <debug>true</debug>
                 </configuration>
                 <executions>
                     <execution>
