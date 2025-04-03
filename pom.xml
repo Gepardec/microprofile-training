@@ -125,6 +125,13 @@
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${wildfly.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <feature-packs>
                         <feature-pack>
@@ -144,14 +151,6 @@
                         <layer>core-tools</layer>
                         <layer>web-console</layer>
                     </layers>
-                    <env>
-                        <JBOSS_SOCKET_BINDING_PORT_OFFSET>100</JBOSS_SOCKET_BINDING_PORT_OFFSET>
-                        <POSTGRESQL_HOST>localhost</POSTGRESQL_HOST>
-                        <POSTGRESQL_PORT>5432</POSTGRESQL_PORT>
-                        <POSTGRESQL_DATABASE>mptraining</POSTGRESQL_DATABASE>
-                        <POSTGRESQL_USER>admin</POSTGRESQL_USER>
-                        <POSTGRESQL_PASSWORD>admin@123</POSTGRESQL_PASSWORD>
-                    </env>
                     <add-user>
                         <users>
                             <user>
@@ -161,14 +160,20 @@
                         </users>
                     </add-user>
                     <port>10090</port>
+                    <debug>true</debug>
+                    <debugPort>5005</debugPort>
+                    <env>
+                        <JBOSS_SOCKET_BINDING_PORT_OFFSET>100</JBOSS_SOCKET_BINDING_PORT_OFFSET>
+                        <POSTGRESQL_HOST>localhost</POSTGRESQL_HOST>
+                        <POSTGRESQL_PORT>5432</POSTGRESQL_PORT>
+                        <POSTGRESQL_DATABASE>mptraining</POSTGRESQL_DATABASE>
+                        <POSTGRESQL_USER>admin</POSTGRESQL_USER>
+                        <POSTGRESQL_PASSWORD>admin@123</POSTGRESQL_PASSWORD>
+                        <ENV_APPLICATION_NAME>env</ENV_APPLICATION_NAME>
+                    </env>
+                    <java-opts>
+                    </java-opts>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

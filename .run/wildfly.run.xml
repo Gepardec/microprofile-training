@@ -14,8 +14,6 @@
               <option value="clean" />
               <option value="install" />
               <option value="wildfly:dev" />
-              <option value="-Dwildfly.debug=true" />
-              <option value="-Dwildfly.debug.port=5005" />
             </list>
           </option>
           <option name="multimoduleDir" />
