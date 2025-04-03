@@ -23,7 +23,7 @@ public class InjectionController {
     @Path("/upn-jwt")
     public Response upn_jwt() {
         if (getUpnFromJwt() != null) {
-            return Response.ok(formatUpn(getUpnFromJwt())).build();
+            return Response.ok(formatUpn(getUpnFromJwt(), "jwt")).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).entity("upn not found").build();
         }
@@ -33,7 +33,7 @@ public class InjectionController {
     @Path("/upn-claim")
     public Response upn_claim() {
         if (upn != null) {
-            return Response.ok(formatUpn(upn)).build();
+            return Response.ok(formatUpn(upn, "claim")).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).entity("upn not found").build();
         }
@@ -43,7 +43,7 @@ public class InjectionController {
         return null;
     }
 
-    private String formatUpn(final String upn) {
-        return String.format("%s %s", upn, upn.contains("admin") ? "\uD83E\uDD78" : "\uD83D\uDC7B");
+    private String formatUpn(final String upn, String type) {
+        return String.format("%s %s %s", upn, type, upn.contains("admin") ? "\uD83E\uDD78" : "\uD83D\uDC7B");
     }
 }
