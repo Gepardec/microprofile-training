@@ -10,14 +10,14 @@ This training is based on the following specifications:
 
 The implementation is provided by:
 
-- link:https://www.wildfly.org[Wildfly 35.0.1.Final]
+- link:https://www.wildfly.org[Wildfly 36.0.1.Final]
 
 == Used Tools
 
 To get the application running you need the following software installed:
 
-. link:https://jdk.java.net/java-se-ri/21[OpenJDK 21]
-. link:https://maven.apache.org/download.cgi?Preferred=ftp://ftp.osuosl.org/pub/apache/[Maven 3.9.x]
+. link:https://openjdk.org/projects/jdk/21/[OpenJDK 21]
+. link:https://maven.apache.org/download.cgi[Maven 3.9.x]
 . link:https://docs.docker.com/engine/[Docker]
 
 == Setup
