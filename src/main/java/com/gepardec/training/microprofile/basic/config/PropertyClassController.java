@@ -6,6 +6,8 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.eclipse.microprofile.config.inject.ConfigProperties;
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 
 @Path("/basic/config/propertyclass")
 @RequestScoped
@@ -14,9 +16,13 @@ public class PropertyClassController {
     @Inject
     private Models model;
 
-    private ServerConfig backendServerConfig = new ServerConfig();
+    @Inject
+    @ConfigProperties(prefix = "backend")
+    private ServerConfig backendServerConfig;
 
-    private ServerConfig frontendServerConfig = new ServerConfig();
+    @Inject
+    @ConfigProperties(prefix = "frontend")
+    private ServerConfig frontendServerConfig;
 
     @Path("/")
     @GET
