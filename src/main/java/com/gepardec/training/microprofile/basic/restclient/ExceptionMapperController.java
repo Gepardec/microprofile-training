@@ -1,15 +1,19 @@
 package com.gepardec.training.microprofile.basic.restclient;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.WebApplicationException;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @Path("/basic/restclient/exception-mapper")
 @RequestScoped
 public class ExceptionMapperController {
 
+    @Inject
+    @RestClient
     private HttpbinClientApi api;
 
     @Controller

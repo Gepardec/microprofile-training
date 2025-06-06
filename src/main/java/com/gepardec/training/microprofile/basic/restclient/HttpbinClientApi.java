@@ -2,7 +2,13 @@ package com.gepardec.training.microprofile.basic.restclient;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
+import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
+@RegisterRestClient(configKey = "httpbin")
+@RegisterProvider(RestClientExceptionMapper.class)
+@RegisterClientHeaders(RestClientHeaderHandler.class)
 @Path("/")
 public interface HttpbinClientApi {
 

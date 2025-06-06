@@ -6,12 +6,15 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @Path("/basic/restclient/headers-factory")
 @RequestScoped
 @Controller
 public class HeaderFactoryController {
 
+    @Inject
+    @RestClient
     private HttpbinClientApi api;
 
     @Inject
