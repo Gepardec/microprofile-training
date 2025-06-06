@@ -169,8 +169,10 @@
                         <POSTGRESQL_DATABASE>mptraining</POSTGRESQL_DATABASE>
                         <POSTGRESQL_USER>admin</POSTGRESQL_USER>
                         <POSTGRESQL_PASSWORD>admin@123</POSTGRESQL_PASSWORD>
+                        <ENV_APPLICATION_NAME>env</ENV_APPLICATION_NAME>
                     </env>
                     <java-opts>
+                        -Dsystem.application.name=system_property
                     </java-opts>
                 </configuration>
             </plugin>

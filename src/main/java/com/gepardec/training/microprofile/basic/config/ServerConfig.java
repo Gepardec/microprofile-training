@@ -1,12 +1,15 @@
 package com.gepardec.training.microprofile.basic.config;
 
+import org.eclipse.microprofile.config.inject.ConfigProperties;
+
+@ConfigProperties
 public class ServerConfig {
 
-    private String host = "Configure me";
+    private String host;
 
-    private String port = "Configure me";
+    private String port;
 
-    private String endpoint = "Configure me";
+    private String endpoint;
 
     public String getHost() {
         return host;

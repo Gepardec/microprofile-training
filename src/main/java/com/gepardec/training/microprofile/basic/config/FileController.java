@@ -8,6 +8,7 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 @Path("/basic/config/file")
 @RequestScoped
@@ -19,6 +20,8 @@ public class FileController {
     @Inject
     private Models model;
 
+    @Inject
+    @ConfigProperty(name = "file.application.name")
     private String appName;
 
     @Path("/")
