@@ -1,9 +1,13 @@
 package com.gepardec.training.microprofile.basic.openapi;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+@Schema(name="Cheetah", description="POJO that represents a cheetah")
 public class Cheetah {
 
     private int age;
 
+    @Schema(required = true)
     private String name;
 
     private double weight;
