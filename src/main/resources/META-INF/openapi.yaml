@@ -1,0 +1,6 @@
+---
+openapi: 3.1.0
+paths:
+  /cheetahs:
+    post:
+      description: A new cheetah is born
