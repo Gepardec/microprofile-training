@@ -1,16 +1,25 @@
 package com.gepardec.training.microprofile.basic.jwt;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.jwt.Claim;
+import org.eclipse.microprofile.jwt.Claims;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 @RequestScoped
 @Path(("/basic/jwt/injection"))
 public class InjectionController {
 
+    @Inject
+    @Claim(standard = Claims.upn)
     String upn;
+
+    @Inject
+    JsonWebToken jsonWebToken;
 
     @Controller
     @GET
@@ -40,7 +49,7 @@ public class InjectionController {
     }
 
     private String getUpnFromJwt() {
-        return null;
+        return jsonWebToken.getClaim(Claims.upn);
     }
 
     private String formatUpn(final String upn, String type) {

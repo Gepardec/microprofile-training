@@ -2,6 +2,7 @@ package com.gepardec.training.microprofile.basic.jwt;
 
 import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.mvc.Controller;
 import jakarta.ws.rs.GET;
@@ -28,6 +29,7 @@ public class RolesController {
 
     @GET
     @Path("/secured")
+    @RolesAllowed("role-admin")
     public Response secured() {
         return Response.ok("\uD83E\uDD2B").build();
     }
