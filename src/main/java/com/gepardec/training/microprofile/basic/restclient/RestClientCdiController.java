@@ -6,6 +6,8 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+
 import java.util.Optional;
 
 @Path("/basic/restclient/rest-client-cdi")
@@ -13,6 +15,8 @@ import java.util.Optional;
 @Controller
 public class RestClientCdiController {
 
+    @Inject
+    @RestClient
     private HttpbinClientApi api;
 
     @Inject

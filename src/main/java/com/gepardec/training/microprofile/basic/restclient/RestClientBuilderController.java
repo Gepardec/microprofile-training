@@ -6,6 +6,8 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import org.eclipse.microprofile.rest.client.RestClientBuilder;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -28,7 +30,7 @@ public class RestClientBuilderController {
 
     private String createAndCallClient() throws URISyntaxException {
         final URI uri = new URI("https://httpbin.org/");
-        final HttpbinClientApi api = null; // Use the client builder to create the client instance
+        final HttpbinClientApi api = RestClientBuilder.newBuilder().baseUri(uri).build(HttpbinClientApi.class); // Use the client builder to create the client instance
 
         return (api != null) ? api.get() : null;
     }
