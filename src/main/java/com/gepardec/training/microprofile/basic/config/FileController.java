@@ -27,11 +27,11 @@ public class FileController {
     public String getConfigFromPropertyFile() {
         model.put("applicationName", appName);
         if (systemHelper.isEnvVariable("FILE_APPLICATION_NAME")) {
-            model.put("fileMessage", "Warning: Config is provided via a env variable and not via microprofile-properties.properties.");
+            model.put("fileMessage", "Warning: Config is provided via a env variable and not via microprofile-config.properties.");
         } else if (systemHelper.isSystemProperty("file.application.name")) {
-            model.put("fileMessage", "Warning: Config is provided via system property and not via microprofile-properties.properties.");
+            model.put("fileMessage", "Warning: Config is provided via system property and not via microprofile-config.properties.");
         } else if (appName == null) {
-            model.put("fileMessage", "Warning: Config is not provided via microprofile-properties.properties.");
+            model.put("fileMessage", "Warning: Config is not provided via microprofile-config.properties.");
         }
         return "basic/config/file.xhtml";
     }

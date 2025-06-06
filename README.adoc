@@ -1,7 +1,6 @@
 = MicroProfile Training
 
-This repository contains the training for the microprofile specifications.
-After working through the training one should be able to understand the most common microprofile specifications, their impacts, their interoperability and how to use them properly in real world applications.
+This repository provides training on the most common MicroProfile specifications. Upon completion, you'll understand their impact, interoperability, and how to apply them in real-world applications.
 
 This training is based on the following specifications:
 
