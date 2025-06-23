@@ -1,5 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ui="jakarta.faces.facelets"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
@@ -21,7 +21,7 @@
                     <div class="col">
                         <p>
                             The specification for MicroProfile
-                            <a href="#{mpUri.jwtUri}#_marking_a_jax_rs_application_as_requiring_mp_jwt_access_control"
+                            <a href="#{mpUri.jwtAuthenticationUri}#_marking_a_jax_rs_application_as_requiring_mp_jwt_access_control"
                                 target="_blank">
                                 JWT (JAX-RS Application)
                             </a>

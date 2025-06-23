@@ -1,5 +1,5 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ui="jakarta.faces.facelets"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
@@ -21,12 +21,12 @@
                     <div class="col">
                         <p>
                             The specification for MicroProfile
-                            <a href="#{mpUri.jwtUri}#signature-verification-params"
+                            <a href="#{mpUri.jwtAuthenticationUri}#signature-verification-params"
                                 target="_blank">
                                 JWT (Signatur verification)
                             </a>
                             and
-                            <a href="#{mpUri.jwtUri}#claims-verification"
+                            <a href="#{mpUri.jwtAuthenticationUri}#claims-verification"
                                 target="_blank">
                                 JWT (Claims verification)
                             </a>
@@ -37,7 +37,7 @@
                         </p>
                         <p>
                             The certificates (<code>jws_uri</code>) and issuer (<code>issuer</code>) can be found in the discovery document of the keycloak
-                            <a href="http://localhost:18080/auth/realms/microprofile/.well-known/openid-configuration" target="_blank">training realm</a>
+                            <a href="http://localhost:8080/realms/microprofile/.well-known/openid-configuration" target="_blank">training realm</a>
                             .
                         </p>
 

@@ -1,5 +1,5 @@
 <ui:component xmlns="http://www.w3.org/1999/xhtml"
-              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:ui="jakarta.faces.facelets"
               xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <div class="row text-start font-weight-bold">
@@ -10,8 +10,6 @@
             <tag:button id="logoutAll" path="" text="logout"/>
         </div>
     </div>
-
-    <script src="http://localhost:18080/auth/js/keycloak.js"></script>
 
     <script type="module">
         import mp from '#{pathHelper.buildResourcePath("/js/mp.js")}'

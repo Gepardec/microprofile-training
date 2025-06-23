@@ -1,0 +1,59 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com"
+>
+
+    <ui:define name="title">
+        Custom Span
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Custom Span</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for MicroProfile
+                            <a href="#{mpUri.telemetryUri}#_withspan"
+                               target="_blank">
+                                Telemetry (@WithSpan).
+                            </a>
+                        </p>
+
+                        <p>
+                            Telemetry instrument JAX-RS resources and MicroProfile REST clients automatically. It also allows for customs spans and custom attributes in traces.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>Add a custom span to the trace which is produced when loading this page.</p>
+
+                        <p>Next, add a custom span attribute to the trace.</p>
+
+                        <p>Provide your changes in this class: <code>com.gepardec.training.microprofile.basic.telemetry.CustomSpanService</code> </p>
+
+                        <p>You should see your custom span and span attribute in Grafana after reloading this page.</p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

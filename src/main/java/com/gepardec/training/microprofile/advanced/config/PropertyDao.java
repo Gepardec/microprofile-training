@@ -1,22 +1,13 @@
 package com.gepardec.training.microprofile.advanced.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.HashSet;
-import java.util.Properties;
 import java.util.Set;
 
 public class PropertyDao {
-
-    public static final String URL = "jdbc:postgresql://localhost:15432/mptraining";
-
-    public static final String USER = "admin";
-
-    public static final String PASSWORD = "admin@123";
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static PreparedStatement createStatement(String key, Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT p.value FROM property p WHERE KEY = ?");
@@ -32,7 +23,7 @@ public class PropertyDao {
             while (resultSet.next()) {
                 propertyNames.add(resultSet.getString("KEY"));
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             throw new IllegalStateException("An error occurred loading the database properties", e);
         }
         return propertyNames;
@@ -47,21 +38,13 @@ public class PropertyDao {
                 return resultSet.getString("VALUE");
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             throw new IllegalStateException("An error occurred loading a database property", e);
         }
         return null;
     }
 
-    private Connection createConnection() throws SQLException {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Unable to find class org.postgresql.Driver", e);
-        }
-        Properties connectionProps = new Properties();
-        connectionProps.put("user", USER);
-        connectionProps.put("password", PASSWORD);
-        return DriverManager.getConnection(URL, connectionProps);
+    private Connection createConnection() throws SQLException, NamingException {
+        return ((DataSource)new InitialContext().lookup("java:jboss/datasources/PostgreSQLDS")).getConnection();
     }
 }

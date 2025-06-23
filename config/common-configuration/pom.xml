@@ -19,11 +19,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Wildfly Runtime Dependencies -->
-        <jakarta.jakartaee-api.version>8.0.0</jakarta.jakartaee-api.version>
-        <microprofile.version>4.1</microprofile.version>
+        <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>
+        <microprofile.version>7.0</microprofile.version>
 
         <!-- Application Dependencies -->
-        <krazo-resteasy.version>1.1.0</krazo-resteasy.version>
+        <krazo-resteasy.version>3.0.1</krazo-resteasy.version>
 
         <revision>1.0.0-SNAPSHOT</revision>
     </properties>

@@ -1,7 +1,8 @@
 import mp from "./mp.js";
+import Keycloak from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.1.4/+esm';
 
 const keycloak = new Keycloak({
-    url: 'http://localhost:18080/auth',
+    url: 'http://localhost:8080',
     realm: 'microprofile',
     clientId: 'training'
 });

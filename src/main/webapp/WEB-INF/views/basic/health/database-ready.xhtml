@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:h="jakarta.faces.html"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
@@ -56,12 +56,12 @@
                         </p>
 
                         <p>
-                            Shut down your your database (<code>docker stop infrastructure_postgres_1</code>) and see how the readiness check's state changes.
+                            Shut down your your database (<code>docker stop infrastructure-postgres-1</code>) and see how the readiness check's state changes.
                         </p>
 
                         <p>
                             In a second step, cache the database health result for 30 seconds and see how the actual database status and the health check status diverge.
-                            Don't forget to start your database again (<code> docker start infrastructure_postgres_1</code>).
+                            Don't forget to start your database again (<code>docker start infrastructure-postgres-1</code>).
                         </p>
 
                         <hr class="my-3" />

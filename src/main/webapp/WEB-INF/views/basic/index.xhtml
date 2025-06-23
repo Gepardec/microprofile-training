@@ -1,6 +1,6 @@
 <ui:composition template="/WEB-INF/layout/layout.xhtml"
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ui="jakarta.faces.facelets"
     xmlns:tag="http://tags.microprofile.training.gepardec.com">
 
     <ui:define name="title">
@@ -8,6 +8,72 @@
     </ui:define>
 
     <ui:define name="body">
+
+        <section>
+            <tag:card id="mp-config" title="MicroProfile Config">
+                <ui:define name="body">
+                    <p>
+                        MicroProfile Config facilitates the configuration of an application. With the following
+                        examples, you will configure this application in several ways and see how you can use the
+                        configured values. In two examples, these configured values will be mapped and converted into
+                        specific target types or even aggregated into a property class. Furthermore, you will handle
+                        empty configurations which, by default, lead to exceptions.
+                    </p>
+                    The specification for MicroProfile
+                    <a href="#{mpUri.configUri}"
+                       target="_blank">
+                        Config.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toConfigExamples" text="Examples"
+                                path="/basic/config/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
+        <section>
+            <tag:card id="mp-faulttolerance"
+                      title="MicroProfile Fault Tolerance">
+                <ui:define name="body">
+                    <p>
+                        The MicroProfile Fault Tolerance specification emerged from the Netflix-Hystrix project and facilitates the resilience of a service.
+                        The MicroProfile Fault Tolerance specification contains multiple functionalities for handling common problems in a distributed service environment such as:
+                    </p>
+
+                    <ul>
+                        <li>
+                            <code>@Asnychronous</code> for asynchronous invocations of methods
+                        </li>
+                        <li>
+                            <code>@Fallback</code> for fallback results of methods which invocations fail
+                        </li>
+                        <li>
+                            <code>@Timeout</code> for limiting method invocation durations
+                        </li>
+                        <li>
+                            <code>@Retry</code> for retry behaviour of methods temporarly failing
+                        </li>
+                        <li>
+                            <code>@Bulkhead</code> for limiting concurrrent method invocations
+                        </li>
+                        <li>
+                            <code>@CircuitBreaker</code> for preventing method invocations of method frequently failing
+                        </li>
+                    </ul>
+                    The specification for MicroProfile
+                    <a href="#{mpUri.faultToleranceUri}"
+                       target="_blank">
+                        Fault Tolerance.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toFaultToleranceExamples" text="Examples"
+                                path="/basic/faulttolerance/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
         <section>
             <tag:card id="mp-health" title="MicroProfile Health">
                 <ui:define name="body">
@@ -43,28 +109,29 @@
             </tag:card>
         </section>
 
-        <section>
-            <tag:card id="mp-config" title="MicroProfile Config">
-                <ui:define name="body">
-                    <p>
-                        MicroProfile Config facilitates the configuration of an application. With the following
-                        examples, you will configure this application in several ways and see how you can use the
-                        configured values. In two examples, these configured values will be mapped and converted into
-                        specific target types or even aggregated into a property class. Furthermore, you will handle
-                        empty configurations which, by default, lead to exceptions.
-                    </p>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.configUri}"
-                        target="_blank">
-                        Config.
-                    </a>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toConfigExamples" text="Examples"
-                        path="/basic/config/index" />
-                </ui:define>
-            </tag:card>
-        </section>
+       <section>
+           <tag:card id="mp-telemetry" title="MicroProfile Telemetry">
+               <ui:define name="body">
+                   <p>
+
+                   </p>
+
+                   <p>
+                       Telemetry data produced by this training application is sent to Grafana (<code><tag:link id="toGrafana" path="http://localhost:3000" text="http://localhost:3000" target="_blank" /></code>)
+                   </p>
+
+                   The specification for MicroProfile
+                   <a href="#{mpUri.telemetryUri}"
+                      target="_blank">
+                       Telemetry.
+                   </a>
+               </ui:define>
+               <ui:define name="buttons">
+                   <tag:button id="toTelemetryExamples" text="Examples"
+                               path="/basic/telemetry/index" />
+               </ui:define>
+           </tag:card>
+       </section>
 
         <section>
             <tag:card id="mp-openapi" title="MicroProfile OpenAPI">
@@ -87,127 +154,6 @@
         </section>
 
         <section>
-            <tag:card id="mp-restClient" title="MicroProfile RestClient">
-                <ui:define name="body">
-                    <p>
-                        <cite>
-                            The MicroProfile RestClient provides a type-safe approach to invoke RESTful services over HTTP. As much as possible the MicroProfile RestClient attempts to use Jakarta RESTful Web Services 2.1 APIs for consistency and easier re-use.
-                        </cite>
-                    </p>
-                    <p>
-                        from the
-                        <a href="https://github.com/eclipse/microprofile-rest-client#_Rationale"
-                            target="_blank">
-                            microprofile-rest-client
-                        </a>
-                        github
-                    </p>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.restClientUri}"
-                        target="_blank">
-                        RestClient.
-                    </a>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toRestClientExamples" text="Examples" path="/basic/restclient/index" />
-                </ui:define>
-            </tag:card>
-        </section>
-
-        <section>
-            <tag:card id="mp-metrics" title="MicroProfile Metrics">
-                <ui:define name="body">
-                    <p>
-                        MicroProfile Metrics gives you the ability to not only monitor pre-defined metrics.
-                        In the following, through a few examples, we will familiarise ourselves with the basic
-                        metrics, for example Metered, Counted or Timed.
-                    </p>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.metricsUri}"
-                        target="_blank">
-                        Metrics.
-                    </a>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toMetricsExamples" text="Examples" path="/basic/metrics/index" />
-                </ui:define>
-            </tag:card>
-        </section>
-
-        <section>
-            <tag:card id="mp-opentracing" title="MicroProfile Open-Tracing">
-                <ui:define name="body">
-                    <p>
-                        <cite>
-                            Distributed tracing allows you to trace the flow of a request across service boundaries.
-                            This is particularly important in a microservices environment where a request typically flows through multiple services.
-                            To accomplish distributed tracing, each service must be instrumented to log messages with a correlation id that may have been propagated from an upstream service.
-                        </cite>
-                    </p>
-                    <p>
-                        from the
-                        <a href="#{mpUri.openApiUri}#_introduction"
-                            target="_blank">
-                            MicroProfile Open-Tracing
-                        </a>
-                        specification
-                    </p>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.openTracingUri}"
-                       target="_blank">
-                        Open-Tracing.
-                    </a>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toOpentracingExample" text="Examples"
-                        path="/basic/opentracing/index" />
-                </ui:define>
-            </tag:card>
-        </section>
-
-        <section>
-            <tag:card id="mp-faulttolerance"
-                title="MicroProfile Fault Tolerance">
-                <ui:define name="body">
-                    <p>
-                        The MicroProfile Fault Tolerance specification emerged from the Netflix-Hystrixs project and facilitates the resilience of a service.
-                        The MicroProfile Fault Tolerance specification contains multiple functionalities for handling common problems in a distributed service environment such as:
-                    </p>
-
-                    <ul>
-                        <li>
-                            <code>@Asnychronous</code> for asynchronous invocations of methods
-                        </li>
-                        <li>
-                            <code>@Fallback</code> for fallback results of methods which invocations fail
-                        </li>
-                        <li>
-                            <code>@Timeout</code> for limiting method invocation durations
-                        </li>
-                        <li>
-                            <code>@Retry</code> for retry behaviour of methods temporarly failing
-                        </li>
-                        <li>
-                            <code>@Bulkhead</code> for limiting concurrrent method invocations
-                        </li>
-                        <li>
-                            <code>@CircuitBreaker</code> for preventing method invocations of method frequently failing
-                        </li>
-                    </ul>
-                    The specification for MicroProfile
-                    <a href="#{mpUri.faultToleranceUri}"
-                        target="_blank">
-                        Fault Tolerance.
-                    </a>
-                </ui:define>
-                <ui:define name="buttons">
-                    <tag:button id="toFaultToleranceExamples" text="Examples"
-                        path="/basic/faulttolerance/index" />
-                </ui:define>
-            </tag:card>
-        </section>
-
-        <section>
             <tag:card id="mp-jwt" title="MicroProfile JWT">
                 <ui:define name="body">
                     <p>
@@ -224,7 +170,7 @@
                     </p>
                     <p>
                         from the
-                        <a href="#{mpUri.jwtUri}#_motivation"
+                        <a href="#{mpUri.jwtAuthenticationUri}#_motivation"
                             target="_blank">
                             MicroProfile JWT
                         </a>
@@ -241,7 +187,7 @@
                         If you need to switch the user, simply click 'logout' and you will be forwarded to keycloak again.
                     </p>
                     The specification for MicroProfile
-                    <a href="#{mpUri.jwtUri}"
+                    <a href="#{mpUri.jwtAuthenticationUri}"
                         target="_blank">JWT.
                     </a>
                 </ui:define>
@@ -251,5 +197,34 @@
                 </ui:define>
             </tag:card>
         </section>
+
+        <section>
+            <tag:card id="mp-restClient" title="MicroProfile RestClient">
+                <ui:define name="body">
+                    <p>
+                        <cite>
+                            The MicroProfile RestClient provides a type-safe approach to invoke RESTful services over HTTP. As much as possible the MicroProfile RestClient attempts to use Jakarta RESTful Web Services 2.1 APIs for consistency and easier re-use.
+                        </cite>
+                    </p>
+                    <p>
+                        from the
+                        <a href="https://github.com/eclipse/microprofile-rest-client#_Rationale"
+                           target="_blank">
+                            microprofile-rest-client
+                        </a>
+                        github
+                    </p>
+                    The specification for MicroProfile
+                    <a href="#{mpUri.restClientUri}"
+                       target="_blank">
+                        RestClient.
+                    </a>
+                </ui:define>
+                <ui:define name="buttons">
+                    <tag:button id="toRestClientExamples" text="Examples" path="/basic/restclient/index" />
+                </ui:define>
+            </tag:card>
+        </section>
+
     </ui:define>
 </ui:composition>

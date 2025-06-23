@@ -2,8 +2,8 @@ package com.gepardec.training.microprofile.advanced.faulttolerance;
 
 import org.slf4j.Logger;
 
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
