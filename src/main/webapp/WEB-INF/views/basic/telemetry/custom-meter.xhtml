@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com"
+>
+
+    <ui:define name="title">
+        Custom Meter
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Custom Meter</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for MicroProfile
+                            <a href="#{mpUri.telemetryUri}#metrics"
+                               target="_blank">
+                                Telemetry (Metrics).
+                            </a>
+                        </p>
+
+                        <p>
+                            Telemetry provides the most important runtime metrics out-of-the-box. You can also create custom meters for special cases.
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>Add a custom meter when loading this page.</p>
+
+                        <p>Provide your changes in this class: <code>com.gepardec.training.microprofile.basic.telemetry.CustomMeterService</code> </p>
+
+                        <p>You should see your meter count up in Grafana after reloading this page.</p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

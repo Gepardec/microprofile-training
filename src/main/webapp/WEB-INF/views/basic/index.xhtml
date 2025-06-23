@@ -37,7 +37,7 @@
                       title="MicroProfile Fault Tolerance">
                 <ui:define name="body">
                     <p>
-                        The MicroProfile Fault Tolerance specification emerged from the Netflix-Hystrixs project and facilitates the resilience of a service.
+                        The MicroProfile Fault Tolerance specification emerged from the Netflix-Hystrix project and facilitates the resilience of a service.
                         The MicroProfile Fault Tolerance specification contains multiple functionalities for handling common problems in a distributed service environment such as:
                     </p>
 
@@ -112,7 +112,23 @@
        <section>
            <tag:card id="mp-telemetry" title="MicroProfile Telemetry">
                <ui:define name="body">
-                   TODO
+                   <p>
+
+                   </p>
+
+                   <p>
+                       Telemetry data produced by this training application is sent to Grafana (<code><tag:link id="toGrafana" path="http://localhost:3000" text="http://localhost:3000" target="_blank" /></code>)
+                   </p>
+
+                   The specification for MicroProfile
+                   <a href="#{mpUri.telemetryUri}"
+                      target="_blank">
+                       Telemetry.
+                   </a>
+               </ui:define>
+               <ui:define name="buttons">
+                   <tag:button id="toTelemetryExamples" text="Examples"
+                               path="/basic/telemetry/index" />
                </ui:define>
            </tag:card>
        </section>

@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/layout/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:tag="http://tags.microprofile.training.gepardec.com"
+>
+
+    <ui:define name="title">
+        Enable telemetry
+    </ui:define>
+
+    <ui:define name="body">
+        <section>
+            <div class="container-lg">
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="text-center">
+                            <h1>Enable telemetry</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <p>
+                            The specification for MicroProfile
+                            <a href="#{mpUri.telemetryUri}#sec:enabling-opentelemetry-support"
+                               target="_blank">
+                                Telemetry (Enabling OpenTelemetry support).
+                            </a>
+                        </p>
+
+                        <p>
+                            OpenTelemetry support is disabled by default. You can read the full explaination why this behaviour wos chosen in the spec (link above).
+                        </p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+
+                <div class="row my-2">
+                    <div class="col">
+                        <h4>
+                            Your Task:
+                        </h4>
+
+                        <p>First, check Grafana for any existing observability data. At this point, you shouldn't see any logs, traces, or metrics.</p>
+
+                        <p>Next, enable OpenTelemetry support by adding the necessary configuration property.</p>
+
+                        <p>Finally, take another look at Grafana. You should now see logs, traces, and metrics. To view even more data, browse through the different pages of this training and then check Grafana again.</p>
+
+                        <hr class="my-3" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
