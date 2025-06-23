@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.basic.faulttolerance;
 
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.slf4j.Logger;
 
 import jakarta.enterprise.context.Dependent;
@@ -11,6 +12,7 @@ public class TimeoutService {
     @Inject
     private Logger log;
 
+    @Timeout
     public void fails() {
         try {
             Thread.sleep(4000);

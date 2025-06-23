@@ -14,6 +14,8 @@
               <option value="clean" />
               <option value="install" />
               <option value="wildfly:dev" />
+              <option value="-Dwildfly.debug=true" />
+              <option value="-Dwildfly.debug.port=5005" />
             </list>
           </option>
           <option name="multimoduleDir" />
@@ -29,6 +31,16 @@
         </MavenRunnerParameters>
       </option>
     </MavenSettings>
+    <extension name="net.ashald.envfile">
+      <option name="IS_ENABLED" value="false" />
+      <option name="IS_SUBST" value="false" />
+      <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+      <option name="IS_IGNORE_MISSING_FILES" value="false" />
+      <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+      <ENTRIES>
+        <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+      </ENTRIES>
+    </extension>
     <method v="2" />
   </configuration>
 </component>

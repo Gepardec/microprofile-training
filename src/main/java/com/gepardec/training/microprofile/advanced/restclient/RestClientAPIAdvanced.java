@@ -10,6 +10,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
+import java.util.concurrent.CompletionStage;
+
 @RegisterProvider(RestClientExceptionMapper.class)
 @RegisterRestClient(configKey = "user-api")
 @Path("/")
@@ -23,11 +25,11 @@ public interface RestClientAPIAdvanced {
     @Path("/delay/2")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    String getAsync();
+    CompletionStage<String> getAsync();
 
     @Path("/delay/3")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    String postAsync();
+    CompletionStage<String> postAsync();
 
 }

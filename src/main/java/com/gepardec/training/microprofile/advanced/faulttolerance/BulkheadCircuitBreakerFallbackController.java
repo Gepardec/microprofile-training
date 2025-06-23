@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.advanced.faulttolerance;
 
+import com.gepardec.training.microprofile.ApplicationHttpStatusCode;
 import com.gepardec.training.microprofile.common.faulttolerance.CircuitBreakerCallState;
 
 import jakarta.enterprise.context.RequestScoped;
@@ -12,6 +13,9 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.*;
+import org.eclipse.microprofile.faulttolerance.exceptions.BulkheadException;
+import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
 
 @RequestScoped
 @Path("/advanced/faulttolerance/bulkhead-circuitbreaker-fallback")
@@ -29,6 +33,20 @@ public class BulkheadCircuitBreakerFallbackController {
     @Inject
     private Models models;
 
+    static class ResponseFallbackHandler implements FallbackHandler<Response> {
+
+        @Override
+        public Response handle(ExecutionContext context) {
+            if (context.getFailure() instanceof CircuitBreakerOpenException) {
+                return Response.status(ApplicationHttpStatusCode.TOO_MANY_FAILURES_TRY_AGAIN_LATER).build();
+            } else if (context.getFailure() instanceof BulkheadException) {
+                return Response.status(ApplicationHttpStatusCode.TOO_MANY_REQUESTS).build();
+            } else {
+                return Response.status(Response.Status.SERVICE_UNAVAILABLE).build();
+            }
+        }
+    }
+
     @Controller
     @GET
     @Path("/")
@@ -40,6 +58,9 @@ public class BulkheadCircuitBreakerFallbackController {
     @POST
     @Path("/invoke")
     @Produces(MediaType.TEXT_PLAIN)
+    @Bulkhead(4)
+    @CircuitBreaker
+    @Fallback(ResponseFallbackHandler.class)
     public Response invoke() {
         try {
             Thread.sleep(250);

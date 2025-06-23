@@ -94,6 +94,13 @@
             <version>${commons-lang3.version}</version>
             <scope>compile</scope>
         </dependency>
+
+<!--         for resolving generated classes from openapi generation -->
+<!--        <dependency>-->
+<!--            <groupId>io.swagger</groupId>-->
+<!--            <artifactId>swagger-annotations</artifactId>-->
+<!--            <version>1.6.11</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -176,6 +183,31 @@
                     </java-opts>
                 </configuration>
             </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.openapitools</groupId>-->
+<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
+<!--                <version>7.13.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>generate</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>-->
+<!--                            <generatorName>jaxrs-spec</generatorName>-->
+<!--                            <configOptions>-->
+<!--                                <sourceFolder>src/gen/java/main</sourceFolder>-->
+<!--                                <useJakartaEe>true</useJakartaEe>-->
+<!--                            </configOptions>-->
+<!--                            <modelPackage>model</modelPackage>-->
+<!--                            <apiPackage>api</apiPackage>-->
+<!--                            <generateApiTests>false</generateApiTests>-->
+<!--                            <generateModelTests>false</generateModelTests>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>
