@@ -13,6 +13,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 
 @Path("/basic/faulttolerance/circuitbreaker")
 @RequestScoped
@@ -52,6 +53,7 @@ public class CircuitBreakerController {
 
     @POST
     @Path("/circuitbreaked")
+    @CircuitBreaker
     public Response circuitbreaked() {
         callState.failIfSupposedTo();
         return Response.ok().build();

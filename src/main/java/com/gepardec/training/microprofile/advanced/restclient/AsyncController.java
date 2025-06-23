@@ -1,16 +1,17 @@
 package com.gepardec.training.microprofile.advanced.restclient;
 
+import jakarta.ws.rs.*;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.BiConsumer;
 
 @Path("/advanced/restclient/async")
 @RequestScoped
@@ -33,9 +34,6 @@ public class AsyncController {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/getAsync")
     public Response getAsync() {
-
-        //:TODO uncomment if you adapted the interface
-        /*
         final var latch = new CountDownLatch(3);
         var s = new StringBuilder();
         final AtomicReference<Throwable> throwable = new AtomicReference<>();
@@ -65,9 +63,7 @@ public class AsyncController {
                     t, 500);
         }
         return Response.ok(s.toString()).build();
-        */
 
-        return Response.noContent().build();
     }
 
     @POST

@@ -1,11 +1,14 @@
 package com.gepardec.training.microprofile.advanced.faulttolerance;
 
+import org.eclipse.microprofile.faulttolerance.Asynchronous;
+import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.slf4j.Logger;
 
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
+import java.util.concurrent.CompletionStage;
 
 @Dependent
 public class RetriedAsynchronousFallbackService {
@@ -15,7 +18,10 @@ public class RetriedAsynchronousFallbackService {
 
     private int counter = 0;
 
-    public Future<Integer> invoke() {
+    @Asynchronous
+    @Fallback(fallbackMethod = "fallbackMethod")
+    @Retry(maxRetries = 1) // @Retry(maxRetries = 1)
+    public CompletionStage<Integer> invoke() {
         counter++;
         final CompletableFuture<Integer> result = new CompletableFuture<>();
         if (counter < 4) {
@@ -25,5 +31,9 @@ public class RetriedAsynchronousFallbackService {
         }
 
         return result;
+    }
+
+    public CompletionStage<Integer> fallbackMethod() {
+        return CompletableFuture.completedFuture(42);
     }
 }

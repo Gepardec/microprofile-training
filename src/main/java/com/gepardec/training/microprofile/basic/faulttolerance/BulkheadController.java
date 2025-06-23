@@ -8,6 +8,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.Bulkhead;
 
 @RequestScoped
 @Path("/basic/faulttolerance/bulkhead")
@@ -23,6 +24,7 @@ public class BulkheadController {
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/bulkheaded")
+    @Bulkhead(value = 5)
     public Response bulkheaded() throws InterruptedException {
         Thread.sleep(250);
         return Response.ok("Call worked").build();
