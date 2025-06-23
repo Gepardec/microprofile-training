@@ -1,5 +1,6 @@
 package com.gepardec.training.microprofile.advanced.config;
 
+import com.gepardec.training.microprofile.common.ConfigurableBean;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
@@ -10,6 +11,9 @@ import jakarta.ws.rs.Path;
 @Path("/advanced/config/commonconfiguration")
 @RequestScoped
 public class CommonConfigurationSourceController {
+
+    @Inject
+    ConfigurableBean configurableBean;
 
     @Inject
     private Models model;
@@ -23,6 +27,6 @@ public class CommonConfigurationSourceController {
     }
 
     private String callWorkHere() {
-        return "nothing done yet!";
+        return configurableBean.doStuff();
     }
 }
