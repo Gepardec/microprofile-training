@@ -11,7 +11,7 @@ import jakarta.ws.rs.Path;
 
 @Path("/advanced/config/dropinconfiguration")
 @RequestScoped
-public class DtopInConfigurationController {
+public class DropInConfigurationController {
 
     @Inject
     private Models model;

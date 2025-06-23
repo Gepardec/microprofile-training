@@ -1,22 +1,13 @@
 package com.gepardec.training.microprofile.advanced.config;
 
-import jakarta.annotation.Resource;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.HashSet;
-import java.util.Properties;
 import java.util.Set;
 
-@RequestScoped
 public class PropertyDao {
-
-    @Resource(lookup = "java:jboss/datasources/PostgreSQLDS")
-    private DataSource dataSource;
 
     private static PreparedStatement createStatement(String key, Connection connection) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT p.value FROM property p WHERE KEY = ?");
@@ -32,7 +23,7 @@ public class PropertyDao {
             while (resultSet.next()) {
                 propertyNames.add(resultSet.getString("KEY"));
             }
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             throw new IllegalStateException("An error occurred loading the database properties", e);
         }
         return propertyNames;
@@ -47,13 +38,13 @@ public class PropertyDao {
                 return resultSet.getString("VALUE");
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             throw new IllegalStateException("An error occurred loading a database property", e);
         }
         return null;
     }
 
-    private Connection createConnection() throws SQLException {
-        return dataSource.getConnection();
+    private Connection createConnection() throws SQLException, NamingException {
+        return ((DataSource)new InitialContext().lookup("java:jboss/datasources/PostgreSQLDS")).getConnection();
     }
 }
