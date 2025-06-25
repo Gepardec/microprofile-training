@@ -13,6 +13,8 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.concurrent.CompletionStage;
 
 @RegisterProvider(RestClientExceptionMapper.class)
+@RegisterProvider(AsyncClientRequestFilter.class)
+@RegisterProvider(RestAsyncInvocationInterceptorFactory.class)
 @RegisterRestClient(configKey = "user-api")
 @Path("/")
 public interface RestClientAPIAdvanced {

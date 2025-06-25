@@ -1,6 +1,7 @@
 package com.gepardec.training.microprofile.advanced.restclient;
 
 import jakarta.ws.rs.*;
+import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import jakarta.enterprise.context.RequestScoped;
